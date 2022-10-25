@@ -1,7 +1,55 @@
+:root{
+  /* za koristenje rem mjera */
+  font-size: 16px;
+  --bg-primary: #337895;
+  --bg-secundary: #F89B3E;
+}
+
 body {
+    /* Za background image */
     background-image: url('../img/Bcg.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     image-rendering: crisp-edges;
-  }
+
+    margin: 0;
+    padding: 0;
+}
+
+main{
+  /* 16px + 6 = 96px */
+  margin-left: 6rem;
+}
+
+.navbar{
+  width: 5rem;
+  /* 100% viewporta */
+  height: 100vh;
+  position: fixed;
+  /* Pozivanje boje iz :root */
+  background-color: var(--bg-primary);
+  justify-content: center;
+}
+
+.navbar-nav{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-item{
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Targetiramo predzadnji element u flex-u */
+.bottom{
+  /* Auto ce stavit najcevi moguci margin, sto ce ga stavit skroz dolje */
+  margin-top: auto;
+}
