@@ -1,0 +1,127 @@
+.container{
+    width: 400px;
+    height: 500px;
+    background-color: white;
+    border-radius: 30px;
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo{
+    width: 250px;
+    height: 100px;
+    padding-top: 2rem;
+}
+
+.buttonFrame{
+    width: 250px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0px;
+}
+
+.button{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+
+    width: 150px;
+    height: 50px;
+
+    background-color: var(--bg-secundary);
+    border-radius: 15px;
+    color: aliceblue;
+    font-size: 1.2rem;
+}
+
+.box{
+    width: 250px;
+    margin: 0px auto;
+}
+
+label {
+	display: block;
+}
+
+form {
+    --text-color: rgb(94, 94, 94);
+}
+
+.field {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    border-bottom: 2px dashed var(--text-color);
+    margin: 4rem auto 1rem;
+    transition: 500ms;
+}
+
+.label {
+    color:var(--text-color);
+    font-size: 1.2rem;
+}
+
+.input {
+    outline: none;
+    border: none;
+    overflow: hidden;
+    margin: 0;
+    width: 100%;
+    padding: 0.25rem 0;
+    background: none;
+    color: black;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: border 500ms;
+}
+
+/* Border animation */
+
+.field::after {
+    content: "";
+    position: relative;
+    display: block;
+    height: 4px;
+    width: 100%;
+    background: var(--bg-secundary);
+    transform: scaleX(0);
+    transform-origin: 0%;
+    opacity: 0;
+    transition: all 500ms ease;
+    top: 2px;
+}
+
+.field:focus-within {
+    border-color: transparent;
+}
+
+.field:focus-within::after {
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+/* Label animation */
+
+.label {
+    pointer-events: none; 
+    position: absolute;
+    transform: translateY(-2rem);
+    transform-origin: 0%;
+    transition: transform 400ms;
+}
+
+.field:focus-within .label,
+.input:not(:placeholder-shown) + .label {
+    transform: scale(0.8) translateY(-5rem);
+    opacity: 1;
+}

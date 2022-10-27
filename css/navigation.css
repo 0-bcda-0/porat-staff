@@ -1,22 +1,3 @@
-:root{
-  /* za koristenje rem mjera */
-  font-size: 16px;
-  --bg-primary: #337895;
-  --bg-secundary: #F89B3E;
-}
-
-body {
-    /* Za background image */
-    background-image: url('../img/Bcg.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    image-rendering: crisp-edges;
-
-    margin: 0;
-    padding: 0;
-}
-
 main{
   /* 16px + 6 = 96px */
   margin-left: 6rem;
