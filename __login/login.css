@@ -15,7 +15,7 @@
 body{
     margin: 0;
     padding: 0;
-    background-image: url('../img/Bcg.jpg');
+    background-image: url('../__img/Bcg.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;

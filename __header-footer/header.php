@@ -30,7 +30,7 @@ echo '
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet"/>
     
         <title>Rent a boat Porat</title>
-        <link rel = "icon" href = "img/Icon.ico" type = "image/x-icon">
+        <link rel = "icon" href = "__img/Icon.ico" type = "image/x-icon">
     </head>
 
 <body>
