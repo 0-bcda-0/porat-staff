@@ -10,97 +10,96 @@
         <meta name="theme-color" content="#F89B3E">
         <link rel="apple-touch-icon" href="img/Logo-192.png">
     
-        <!-- Bootstrap CSS -->
+        <!-- CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/navigation.css" rel="stylesheet">
         <link href="css/background.css" rel="stylesheet">
 
-        <!-- Navigacija ikone -->
+        <!-- Navigacija -->
+        <link rel="stylesheet" href="__navigation/__navigation.css">
         <script src="https://cdn.lordicon.com/qjzruarw.js"></script>
+
+        <!-- Fontovi -->
+        <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet"/>
     
         <title>Rent a boat Porat</title>
         <link rel = "icon" href = "img/Icon.ico" type = "image/x-icon">
     </head>
 
 <body>
-    <nav class="navbar">
-        <ul class="navbar-nav">
-            <!-- Logo -->
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <img src="./img/Logo.png" alt="Porat Logo" width="48" height="48">
-                </a>
-            </li>
-
-            <!-- Kalendar -->
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <!-- Active stanje se mjenja tako da togglamo "colors= svojstvo" -->
-                    <lord-icon class="active"
-                        src="https://cdn.lordicon.com/qjuahhae.json"
-                        trigger="hover"
-                        colors="primary:#F89B3E"
-                        state="hover"
-                        style="width:48px;height:48px">
-                    </lord-icon>
-                </a>
-            </li>
-
-            <!-- Add Reservation -->
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <lord-icon
-                        src="https://cdn.lordicon.com/ynwbvguu.json"
-                        trigger="hover"
-                        colors="primary:#ffffff"
-                        style="width:48px;height:48px">
-                    </lord-icon>
-                </a>
-            </li>
-
-            <!-- Photo Gallery Folder -->
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <lord-icon
-                        src="https://cdn.lordicon.com/fpmskzsv.json"
-                        trigger="hover"
-                        colors="primary:#ffffff"
-                        style="width:48px;height:48px">
-                    </lord-icon>
-                </a>
-            </li>
-
-            <!-- Settings -->
-            <li class="nav-item bottom">
-                <a href="#" class="nav-link">
-                    <lord-icon
-                        src="https://cdn.lordicon.com/hwuyodym.json"
-                        trigger="hover"
-                        colors="primary:#ffffff"
-                        style="width:48px;height:48px">
-                    </lord-icon>
-                </a>
-            </li>
-
-            <!-- Switch User -->
-            <li class="nav-item">
-                <!-- Privremeno linkano dok se ne poveze PHP i SQL -->
-                <a href="__login/index.html" class="nav-link">
-                    <lord-icon
-                        src="https://cdn.lordicon.com/bhfjfgqz.json"
-                        trigger="hover"
-                        colors="primary:#ffffff"
-                        state="hover"
-                        style="width:48px;height:48px">
-                    </lord-icon>
-                </a>
-            </li>
-
+    <nav class="navbarm">
+        <ul class="navbar-navm">
+          <!-- Logotip -->
+          <li class="logo">
+            <a href="#" class="nav-linkm nav-linkm-logo">
+              <span class="link-text logo-text">Porat</span>
+              <img class="icon logo-icon" src="/porat-stuff/img/Logo.png" alt="">
+            </a>
+          </li>
+         <!-- Raspored -->
+          <li class="nav-item">
+            <a href="#" class="nav-linkm">
+              <lord-icon class="icon"
+                  src="icons/calendar.json"
+                  target="a.nav-linkm"
+                  trigger="loop-on-hover"
+                  delay="500"
+                  colors="primary:#F89B3E"
+                  state="hover"
+                  style="width:48px;height:48px">
+              </lord-icon>
+              <span class="link-text">Raspored</span>
+            </a>
+          </li>
+          <!-- Novi Unos -->
+          <li class="nav-item">
+            <a href="#" class="nav-linkm">
+              <lord-icon class="icon"
+                  src="icons/addReservation.json"
+                  target="a.nav-linkm"
+                  trigger="loop-on-hover"
+                  delay="500"
+                  colors="primary:#F89B3E"
+                  style="width:48px;height:48px">
+              </lord-icon>
+              <span class="link-text">Novi unos</span>
+            </a>
+          </li>
+          <!-- Setting -->
+          <li class="nav-item bottom" id="themeButton">
+            <a href="#" class="nav-linkm">
+              <lord-icon class="icon"
+                  src="icons/settings.json"
+                  target="a.nav-linkm"
+                  trigger="loop-on-hover"
+                  delay="500"
+                  colors="primary:#F89B3E"
+                  style="width:48px;height:48px">
+              </lord-icon>
+              <span class="link-text">Tema</span>
+            </a>
+          </li>
+          <!-- Korisnik -->
+          <li class="nav-item">
+            <a href="__login/index.html" class="nav-linkm">
+              <lord-icon class="icon"
+                  src="icons/switchUser.json"
+                  target="a.nav-linkm"
+                  trigger="loop-on-hover"
+                  delay="500"
+                  colors="primary:#F89B3E"
+                  state="hover"
+                  style="width:48px;height:48px">
+              </lord-icon>
+              <span class="link-text">Korisnik</span>
+            </a>
+          </li>
         </ul>
-    </nav>
+      </nav>
 
     <main>
         <!-- TU IDE SADRZAJ -->
+        <h1>Placeholder</h1>
     </main>
 
     <script src="pwa.js"></script>

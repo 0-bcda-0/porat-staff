@@ -1,0 +1,147 @@
+/* Zbog Bootstrapa je nadodano slovo m, inace se sve strga */
+.navbarm {
+  position: fixed;
+  background-color: var(--bg-primary);
+  transition: width 600ms ease;
+  overflow: hidden;
+}
+
+.navbar-navm {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-item {
+  width: 100%;
+}
+
+/* Targetiramo predzadnji element u flex-u */
+.bottom{
+  /* Auto ce stavit najcevi moguci margin, sto ce ga stavit skroz dolje */
+  margin-top: auto;
+}
+
+/* Hardcode centriranje ikona */
+.icon{
+  margin-left: 1rem;
+}
+
+.nav-linkm {
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  filter: grayscale(100%) opacity(1);
+  transition: var(--transition-speed);
+}
+
+.nav-linkm:hover {
+  filter: grayscale(0%) opacity(1);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+}
+
+.nav-linkm-logo
+{
+  filter: grayscale(0%) opacity(1) !important;
+}
+
+.link-text {
+  display: none;
+  margin-left: 1rem;
+}
+
+.logo {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  font-size: 1.5rem;
+  letter-spacing: 0.3ch;
+  width: 100%;
+}
+
+/* Pomicanje logotipa u desno */
+.logo img {
+  transition: var(--transition-speed);
+}
+
+/* Slajdanje logotip teksta */
+.logo-text
+{
+  display: inline;
+  position: absolute;
+  left: -999px;
+  transition: var(--transition-speed);
+  font-family: 'Kalam';
+}
+
+/* Small screens */
+@media only screen and (max-width: 600px) {
+  .navbarm {
+    bottom: 0;
+    width: 100vw;
+    height: 5rem;
+    padding: 0;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .navbar-navm {
+    flex-direction: row;
+  }
+
+  .nav-linkm {
+    justify-content: center;
+  }
+
+  main {
+    margin: 0 !important;
+  }
+
+  .bottom{
+    margin-top: 0;
+  }
+
+  .icon{
+    margin-left: 0rem;
+  }
+}
+
+/* Large screens */
+@media only screen and (min-width: 600px) {
+  .navbarm {
+    top: 0;
+    width: 5rem;
+    height: 100vh;
+  }
+
+  .navbarm:hover {
+    width: 16rem;
+  }
+
+  .navbarm:hover .link-text {
+    display: inline;
+  }
+
+  .navbarm:hover .logo img
+  {
+    margin-left: 11rem;
+  }
+
+  .navbarm:hover .logo-text
+  {
+    left: 0px;
+  }
+}
+

@@ -1,12 +1,41 @@
 :root{
     /* za koristenje rem mjera */
     font-size: 16px;
+    font-family: 'Open Sans';
+
+    --text-primary: #ececec;
+    --text-secondary: #ececec;
     --bg-primary: #337895;
     --bg-secundary: #F89B3E;
 
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    /* za navigaciju */
+    --transition-speed: 600ms;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+/* Tako da se sadrzaj ne sakrije iza navigacije */
+main {
+    margin-left: 5rem;
     background-image: url('../img/Bcg.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    height: 100vh;
+}
+
+/* Za scrollbar */
+body::-webkit-scrollbar {
+    width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+body::-webkit-scrollbar-thumb {
+    background: var(--bg-secundary);
 }
