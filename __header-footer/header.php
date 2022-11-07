@@ -12,7 +12,7 @@ echo '
         <!--
         <link rel="manifest" href="manifest.json">
         <meta name="theme-color" content="#F89B3E">
-        <link rel="apple-touch-icon" href="img/Logo-192.png">
+        <link rel="apple-touch-icon" href="__img/Logo-192.png">
         -->
     
         <!-- CSS -->
@@ -26,6 +26,7 @@ echo '
         <script src="https://cdn.lordicon.com/qjzruarw.js"></script>
 
         <!-- Fontovi -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet"/>
     
