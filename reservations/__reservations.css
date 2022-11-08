@@ -1,11 +1,184 @@
-/* PRIVREMENO TEK TOLKO DA VIDIM DAL RADI */
-h1
+body{
+    font-size: 16px;
+    font-family: 'Montserrat';
+}
+.spacer
 {
-    font-size: 1.5em;
+    height: 1rem;
+}
+.glass
+{
+    border-radius: 1rem;
+    border: 2px solid #F89B3E;
+    
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    width: 1fr;
+    height: calc(100vh - 2rem);
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+.header
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2.5rem;
+}
+
+.big-text
+{
+    color: #dff7f7;
+    font-size: 2rem;
+}
+
+.date-wrapper
+{
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+}
+
+.arrow-icon{
+    width: 50px;
+    height: 50px;
+    margin-right: 5rem;
+    margin-left: 5rem;
+}
+
+.rotate-arrow{
+    transform: rotate(180deg);
+}
+
+.grid{
+    height: 80%;
+    margin: 2.5rem;
+    display: grid;
+    column-gap: 2rem;
+    row-gap: 8rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.card{
+    background-color: #fafafa;
+    border: 2px solid #F89B3E;
+
+    
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    justify-content: center;
+}
+
+/* drugi pokusaj */
+.card-grid
+{
+    margin: 1rem 1rem 1rem 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.card-icon-size{
+    height: 100%;
+    width: 100px;
+}
+
+.card-title{
     font-weight: bold;
-    color: #ffffff;
-    text-align: center;
-    margin: 0px;
-    padding: 0px;
-    border: 0px;
+    font-size: 1.2rem;
+}
+
+/* TABLET */
+@media only screen and (max-width: 1280px) {
+    .big-text{
+        font-size: 25px;
+    }
+    .grid{
+        gap: 1rem;
+    }
+    .card-title{
+        font-size: 1.1rem;
+    }
+    .col-hidden{
+        display: none;
+    }
+}
+
+/* MOBILE */
+@media only screen and (max-width: 600px) {
+    main {
+        background-image: none;
+    }
+    .spacer{
+        display: none;
+    }
+    .glass{
+        border-radius: none;
+        border: 1px solid #F89B3E;
+        
+        background: none;
+        box-shadow: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+
+        width: 1fr;
+        height: auto;
+        margin-bottom: 4rem;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+    }
+    .header{
+        flex-direction: column;
+        margin: 1rem;
+    }
+    .big-text{
+        font-size: 20px;
+        color: #e7f7f7;
+    }
+    .m-title{
+        font-size: 25px;
+    }
+    .date-wrapper
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .arrow-icon{
+        width: 50px;
+        height: 50px;
+        margin-right: 3rem;
+        margin-left: 3rem;
+    }
+    .grid{
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .card{
+        height: 100px;
+        width: 100%;
+    }
+
+    .card-grid
+    {
+        margin: 0.5rem 1rem 0.5rem 1rem;
+    }
+
+    .card-icon-size{
+        height: 70px;
+        width: 70px;
+    }
+    
+    .col-hidden{
+        display: none;
+    }
 }
