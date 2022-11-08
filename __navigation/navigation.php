@@ -19,8 +19,7 @@ echo '
                   trigger="loop-on-hover"
                   delay="500"
                   colors="primary:#F89B3E"
-                  state="hover"
-                  style="width:48px;height:48px">
+                  state="hover">
               </lord-icon>
               <span class="link-text">Raspored</span>
             </a>
@@ -33,8 +32,7 @@ echo '
                   target="a.nav-linkm"
                   trigger="loop-on-hover"
                   delay="500"
-                  colors="primary:#F89B3E"
-                  style="width:48px;height:48px">
+                  colors="primary:#F89B3E"">
               </lord-icon>
               <span class="link-text">Novi unos</span>
             </a>
@@ -47,8 +45,7 @@ echo '
                   target="a.nav-linkm"
                   trigger="loop-on-hover"
                   delay="500"
-                  colors="primary:#F89B3E"
-                  style="width:48px;height:48px">
+                  colors="primary:#F89B3E">
               </lord-icon>
               <span class="link-text">Tema</span>
             </a>
@@ -62,8 +59,7 @@ echo '
                   trigger="loop-on-hover"
                   delay="500"
                   colors="primary:#F89B3E"
-                  state="hover"
-                  style="width:48px;height:48px">
+                  state="hover">
               </lord-icon>
               <span class="link-text">Korisnik</span>
             </a>

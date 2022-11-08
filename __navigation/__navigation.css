@@ -29,6 +29,8 @@
 /* Hardcode centriranje ikona */
 .icon{
   margin-left: 1rem;
+  width: 48px;
+  height: 48px;
 }
 
 .nav-linkm {
@@ -89,8 +91,12 @@
   .navbarm {
     bottom: 0;
     width: 100vw;
-    height: 5rem;
+    height: 4rem;
     padding: 0;
+  }
+
+  .nav-linkm {
+    height: 4rem;
   }
 
   .logo {
@@ -115,6 +121,8 @@
 
   .icon{
     margin-left: 0rem;
+    width: 40px;
+    height: 40px;
   }
 }
 

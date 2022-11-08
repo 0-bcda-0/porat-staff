@@ -19,6 +19,7 @@ echo '
         <link href="__css/bootstrap.min.css" rel="stylesheet">
         <link href="__css/background.css" rel="stylesheet">
         <link href="reservations/__reservations.css" rel="stylesheet">
+        <link rel="stylesheet" href="../__css/watermark-remove.css">
 
 
         <!-- Navigacija -->
