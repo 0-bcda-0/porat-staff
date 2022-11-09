@@ -160,6 +160,14 @@ body{
 
 /* MOBILE */
 @media only screen and (max-width: 600px) {
+    body {
+        background: url(../__img/Bcg.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        height: 100vh;
+      }
     main {
         background-image: none;
     }
@@ -168,7 +176,7 @@ body{
     }
     .glass{
         border-radius: none;
-        border: 1px solid #F89B3E;
+        border: none;
         
         background: none;
         box-shadow: none;
