@@ -48,7 +48,7 @@ self.addEventListener('install', e => {
     })
   );
 });
-
+/*
 self.addEventListener('fetch', e => {
     e.respondWith(
         caches.match(e.request)
@@ -60,4 +60,9 @@ self.addEventListener('fetch', e => {
           return fetch(e.request);
         })
     );
+});*/
+
+// dont cache anything
+self.addEventListener('fetch', function(event) {
+  event.respondWith(fetch(event.request));
 });
