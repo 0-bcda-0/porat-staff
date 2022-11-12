@@ -9,11 +9,9 @@ echo '
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- PWA - Web Aplication  -->
-        <!--
         <link rel="manifest" href="manifest.json">
         <meta name="theme-color" content="#F89B3E">
         <link rel="apple-touch-icon" href="__img/Logo-192.png">
-        -->
     
         <!-- CSS -->
         <link href="__css/bootstrap.min.css" rel="stylesheet">

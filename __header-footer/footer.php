@@ -1,7 +1,7 @@
 <?php
 
 echo '
-    <!-- <script src="pwa.js"></script> -->
+    <script src="pwa.js"></script>
     </body>
 </html>
 ';

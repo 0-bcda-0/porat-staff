@@ -22,12 +22,26 @@
         {
             "name": "Calendar",
             "url": "/index.php",
-            "icons": "__icons/calendar.png"
+            "icons": [
+                {
+                    "src": "__icons/calendar.png",
+                    "sizes": "512x512",
+                    "type": "image/png",
+                    "purpose": "maskable"
+                }
+            ]
         },
         {
             "name": "Add Reservation",
             "url": "/index.php",
-            "icons": "__icons/addReservation.png"
+            "icons": [
+                {
+                    "src": "__icons/addReservation.png",
+                    "sizes": "512x512",
+                    "type": "image/png",
+                    "purpose": "maskable"
+                }
+            ]
         }
     ]
 }
