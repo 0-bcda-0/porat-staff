@@ -13,7 +13,7 @@ echo '
          <!-- Raspored -->
           <li class="nav-item">
             <a href="#" class="nav-linkm">
-              <lord-icon class="icon"
+              <lord-icon class="icon ico"
                   src="__icons/calendar.json"
                   target="a.nav-linkm"
                   trigger="loop-on-hover"
