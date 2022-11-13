@@ -1,12 +1,20 @@
 body{
     font-size: 16px;
     font-family: 'Montserrat';
-}
+}   
+
+a {
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
+  }
+
+/* Daje mt i mb glass elementu jer standardno ne radi */
 .spacer
 {
     height: 1rem;
 }
 
+/* Stakleni container */
 .glass
 {
     border-radius: 1rem;
@@ -22,6 +30,7 @@ body{
     margin-left: 1rem;
     margin-right: 1rem;
 }
+/* Red u kojem stoje naslov(big-text) datum sa strelicama (data-wrapper), te dan u tjednu */
 .header
 {
     display: flex;
@@ -49,11 +58,12 @@ body{
     margin-right: 5rem;
     margin-left: 5rem;
 }
-
+/* Janky rjesenje za rotaciju lijeve strelice */
 .rotate-arrow{
     transform: rotate(180deg);
 }
 
+/* Glavni grid za sadrzaj */
 .grid{
     height: 80%;
     margin: 2.5rem;
@@ -64,6 +74,7 @@ body{
     grid-template-rows: repeat(4, 1fr);
 }
 
+/* Pojedina kartica */
 .card{
     background-color: #fafafa;
     border: 2px solid #F89B3E;
@@ -75,14 +86,25 @@ body{
     overflow: hidden;
     justify-content: center;
     font-size: 0.8rem;
+
+    /* Glass efekt */
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.59);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+/* Svojstvo koje ce se primjenjivati kada je brod rezerviran na cijeli dan */
 .disabled{
     background-color: rgb(142, 142, 142);
     pointer-events: none;
     border: 0;
 }
 
+/* Grid unutar kartice koji razdvaja sadrzaj u 5 kolona */
 .card-grid
 {
     margin: 0rem 0.8rem 0rem 0.8rem;
@@ -91,36 +113,43 @@ body{
     gap: 1rem;
 }
 
+/* Pojedina kolona u card-gridu */
 .col{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
+/* Svojstvo primjenjeno jedino na eurima */
 .col-align{
     align-items: flex-end;
 }
 
+/* Skaliranje ikonice broda */
 .card-icon-size{
     height: 100%;
     width: 100px;
 }
 
+ /* Naziv broda */
 .card-title{
     font-weight: bold;
     font-size: 1.2rem;
 }
 
+/* Odvajanje skupa podataka */
 .card-textrow
 {
     margin-top: 0.5rem;
 }
 
+/* Janky rjesenja za odvajanje sadrzaja drugog i treceg stupca */
 .col-special
 {
     margin-left: 2rem;
 }
 
+/* OBOJANI KRUG (ne znam kako radi :before) */
 .status:before {
     content: '';
     display: inline-block;
@@ -149,16 +178,190 @@ body{
     box-shadow: 0px 0px 4px 1px #C9404D;
 }
 
+/* Koristi se za "Status" sadrzaj */
 .flex{
     display: flex;
 }
 
+/* POPUP */
+/* Gdje se stavi ovaj ID, to ce se zamaglit */
+#blur.active{
+    filter: blur(15px);
+    pointer-events: none;
+    user-select: none;
+    --webkit-user-select: none;
+}
+/* Popup div */
+#popup{
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    padding: 50px;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.30);
+    background: #fff;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+
+    /* Glass efekt */
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.60);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+#popup.active{
+    top: 50%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+/* DELETE POPUP */
+#popupWindow.active{
+    filter: blur(15px);
+    pointer-events: none;
+    user-select: none;
+    --webkit-user-select: none;
+}
+
+#deleteWindow{
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 550px;
+    padding: 50px;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.30);
+    background: #fff;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+
+    /* Glass efekt */
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.60);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+#deleteWindow.active{
+    top: 50%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.deleteWindow-rows{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+/* Pozicioniranje ikonice Close */
+.popup-icon-close-position
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+}
+
+/* Velicina ikonice Close */
+.popup-icon-close-size
+{
+    width: 35px;
+    height: 35px;
+}
+
+/* Velicina ikonice Boat */
+.popup-icon-size{
+    height: 100px;
+    width: 100px;
+}
+
+/* div za redove podataka */
+.popup-flex{
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+/* div za redove */
+.popup-col-flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+/* container za button */
+.popup-col-flex-buttons
+{display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.popup-title{
+    text-align: center;
+}
+
+.popup-text{
+    border-bottom: 2px solid #F89B3E;
+    padding: 1rem;
+}
+
+.button-delete{
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 25px;
+    color: #DA1A20;
+    border: 1px solid #DA1A20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.25rem;
+}
+
+.button-delete-deletePopup{
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 20px;
+    color: #DA1A20;
+    border: 1px solid #DA1A20;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.25rem;
+}
+.button-edit{
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 20px;
+    color: #337895;
+    border: 2px solid #337895;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.25rem;
+}
 
 /* BlueBook */
+/* Testirano na 13" plavom laptopu */
 @media only screen and (max-width: 1366px) {
     .big-text{
         font-size: 25px;
     }
+    /* Smanjenje razmaka izmedu elemenata */
     .grid{
         gap: 1rem;
     }
@@ -169,6 +372,7 @@ body{
         height: 100%;
         width: 80px;
     }
+    /* Micanje sredisnja dva reda informacija */
     .col-hidden{
         display: none;
     }
@@ -180,6 +384,7 @@ body{
 }
 
 /* TABLET */
+/* Testirano na Crnom Win10 tabletu */
 @media only screen and (max-width: 1280px) {
     .big-text{
         font-size: 25px;
@@ -205,6 +410,7 @@ body{
 }
 
 /* MOBILE */
+/* Testirano na Samsung S20+ */
 @media only screen and (max-width: 600px) {
     body {
         background: url(../__img/Bcg.jpg);
@@ -217,13 +423,16 @@ body{
     main {
         background-image: none;
     }
+    /* Micanje janky mt i mb za glass element */
     .spacer{
         display: none;
     }
+    /* Janky rjesenje da se uvijek vidi zadnji sadrzaj (inade ode iza navigacije */
     .spacer-bottom{
         display: grid;
         height: 2rem;
     }
+    /* Resetiranje/nuliranje/micanje glass containera */
     .glass{
         border-radius: 0;
         border: none;
@@ -287,5 +496,56 @@ body{
     
     .col-hidden{
         display: none;
+    }
+
+
+    #blur.active{
+        height: calc(100vh - 6rem);
+        overflow-y:hidden;
+    }
+
+    #popup{
+        width: 95%;
+        padding: 30px;
+    }
+
+    #deleteWindow{
+        width: 90%;
+        padding: 30px;
+    }
+
+    /* Janky nacin, moguce da ce se raspast  */
+    #popup.active{
+        top: calc(50% - 2rem);
+    }
+
+    .popup-col-flex-mobile{
+        flex-direction: column;
+    }
+
+    .popup-icon-size
+    {
+        width: 58px;
+        height: 58px;
+    }
+
+    .button-delete{
+        padding: 0.3rem 0.6rem 0.3rem 0.6rem;
+        border-radius: 25px;
+        color: #DA1A20;
+        border: 1px solid #DA1A20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .popup-col-flex-mobile-icon
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
     }
 }
