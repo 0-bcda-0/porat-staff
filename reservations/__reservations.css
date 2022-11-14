@@ -193,6 +193,7 @@ a {
 }
 /* Popup div */
 #popup{
+    will-change: transform;
     position: fixed;
     top: 40%;
     left: 50%;
@@ -231,6 +232,7 @@ a {
 }
 
 #deleteWindow{
+    will-change: transform;
     position: fixed;
     top: 40%;
     left: 50%;
@@ -418,6 +420,7 @@ a {
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
+        will-change: transform;
         height: 100vh;
       }
     main {

@@ -5,6 +5,7 @@
   transition: width 600ms ease;
   overflow: hidden;
   z-index: 1;
+  will-change: transform;
 }
 
 .navbar-navm {
