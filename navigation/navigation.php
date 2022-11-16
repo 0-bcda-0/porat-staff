@@ -5,16 +5,16 @@ echo '
         <ul class="navbar-navm">
           <!-- Logotip -->
           <li class="logo">
-            <a href="#" class="nav-linkm nav-linkm-logo">
+            <a href="http://www.porat-boat.com/" class="nav-linkm nav-linkm-logo">
               <span class="link-text logo-text">Porat</span>
-              <img class="icon logo-icon" src="__img/Logo.png" alt="">
+              <img class="icon logo-icon" src="img/Logo.png" alt="">
             </a>
           </li>
          <!-- Raspored -->
           <li class="nav-item">
             <a href="#" class="nav-linkm">
               <lord-icon class="icon ico"
-                  src="__icons/calendar.json"
+                  src="icons/calendar.json"
                   target="a.nav-linkm"
                   trigger="loop-on-hover"
                   delay="500"
@@ -28,7 +28,7 @@ echo '
           <li class="nav-item">
             <a href="#" class="nav-linkm">
               <lord-icon class="icon"
-                  src="__icons/addReservation.json"
+                  src="icons/addReservation.json"
                   target="a.nav-linkm"
                   trigger="loop-on-hover"
                   delay="500"
@@ -41,7 +41,7 @@ echo '
           <li class="nav-item bottom" id="themeButton">
             <a href="#" class="nav-linkm">
               <lord-icon class="icon"
-                  src="__icons/settings.json"
+                  src="icons/settings.json"
                   target="a.nav-linkm"
                   trigger="loop-on-hover"
                   delay="500"
@@ -52,9 +52,9 @@ echo '
           </li>
           <!-- Korisnik -->
           <li class="nav-item">
-            <a href="__login/index.html" class="nav-linkm">
+            <a href="login/index.html" class="nav-linkm">
               <lord-icon class="icon"
-                  src="__icons/switchUser.json"
+                  src="icons/switchUser.json"
                   target="a.nav-linkm"
                   trigger="loop-on-hover"
                   delay="500"

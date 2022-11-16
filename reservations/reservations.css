@@ -415,7 +415,7 @@ a {
 /* Testirano na Samsung S20+ */
 @media only screen and (max-width: 600px) {
     body {
-        background: url(../__img/Bcg.jpg);
+        background: url(../img/Bcg.jpg);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
