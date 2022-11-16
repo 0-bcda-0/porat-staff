@@ -14,7 +14,7 @@ echo '
           <li class="nav-item">
             <a href="#" class="nav-linkm">
               <lord-icon class="icon ico"
-                  src="icons/calendar.json"
+                  src="icon/calendar.json"
                   target="a.nav-linkm"
                   trigger="loop-on-hover"
                   delay="500"
@@ -28,7 +28,7 @@ echo '
           <li class="nav-item">
             <a href="#" class="nav-linkm">
               <lord-icon class="icon"
-                  src="icons/addReservation.json"
+                  src="icon/addReservation.json"
                   target="a.nav-linkm"
                   trigger="loop-on-hover"
                   delay="500"
@@ -41,7 +41,7 @@ echo '
           <li class="nav-item bottom" id="themeButton">
             <a href="#" class="nav-linkm">
               <lord-icon class="icon"
-                  src="icons/settings.json"
+                  src="icon/settings.json"
                   target="a.nav-linkm"
                   trigger="loop-on-hover"
                   delay="500"
@@ -54,7 +54,7 @@ echo '
           <li class="nav-item">
             <a href="login/index.html" class="nav-linkm">
               <lord-icon class="icon"
-                  src="icons/switchUser.json"
+                  src="icon/switchUser.json"
                   target="a.nav-linkm"
                   trigger="loop-on-hover"
                   delay="500"

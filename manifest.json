@@ -5,7 +5,7 @@
     "display": "standalone",
     "background_color": "#F89B3E",
     "theme_color": "#F89B3E",
-    "icons": [
+    "icon": [
         {
             "src": "img/Logo-192.png",
             "sizes": "192x192",
@@ -22,9 +22,9 @@
         {
             "name": "Calendar",
             "url": "/index.php",
-            "icons": [
+            "icon": [
                 {
-                    "src": "icons/calendar.png",
+                    "src": "icon/calendar.png",
                     "sizes": "512x512",
                     "type": "image/png",
                     "purpose": "maskable"
@@ -34,9 +34,9 @@
         {
             "name": "Add Reservation",
             "url": "/index.php",
-            "icons": [
+            "icon": [
                 {
-                    "src": "icons/addReservation.png",
+                    "src": "icon/addReservation.png",
                     "sizes": "512x512",
                     "type": "image/png",
                     "purpose": "maskable"
