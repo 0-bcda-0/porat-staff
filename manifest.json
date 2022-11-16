@@ -5,7 +5,7 @@
     "display": "standalone",
     "background_color": "#F89B3E",
     "theme_color": "#F89B3E",
-    "icon": [
+    "icons": [
         {
             "src": "img/Logo-192.png",
             "sizes": "192x192",
@@ -22,7 +22,7 @@
         {
             "name": "Calendar",
             "url": "/index.php",
-            "icon": [
+            "icons": [
                 {
                     "src": "icon/calendar.png",
                     "sizes": "512x512",
@@ -34,7 +34,7 @@
         {
             "name": "Add Reservation",
             "url": "/index.php",
-            "icon": [
+            "icons": [
                 {
                     "src": "icon/addReservation.png",
                     "sizes": "512x512",

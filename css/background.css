@@ -26,7 +26,6 @@ main {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    will-change: transform;
 }
 
 /* Za scrollbar */
