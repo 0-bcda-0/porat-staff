@@ -387,7 +387,7 @@ a {
 
 /* TABLET */
 /* Testirano na Crnom Win10 tabletu */
-@media only screen and (max-width: 1280px) {
+@media only screen and (max-width: 1920px) {
     .big-text{
         font-size: 25px;
     }
