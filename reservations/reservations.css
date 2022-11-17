@@ -76,8 +76,8 @@ a {
 
 /* Pojedina kartica */
 .card{
-    background-color: #fafafa;
-    border: 2px solid #F89B3E;
+    background-color: rgba(250, 250, 250, 0.59);
+    /*border: 2px solid #F89B3E;*/
 
     
     height: 100%;
@@ -89,12 +89,14 @@ a {
 
     /* Glass efekt */
     /* From https://css.glass */
+    /*
     background: rgba(255, 255, 255, 0.59);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
+    */
 }
 
 /* Svojstvo koje ce se primjenjivati kada je brod rezerviran na cijeli dan */
