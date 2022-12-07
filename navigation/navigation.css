@@ -91,20 +91,26 @@
 /* Small screens */
 @media only screen and (max-width: 600px) {
   .navbarm {
-    bottom: 1rem;
+    /* bottom: 1.0rem; */
+    bottom: 1.5rem;
     width: 100vw;
-    height: 4rem;
+    /* height: 4rem; */
+    height: 3rem;
     padding: 0;
 
-    width: 95%;
+    /* width: 95%; */
+    width: 70%;
 
-    margin-left: 2.5%;
+    /* margin-left: 2.5%; */
+    margin-left: 15%;
 
-    border-radius: 20px;
+    /* border-radius: 20px; */
+    border-radius: 100px;
   }
 
   .nav-linkm {
-    height: 4rem;
+    /* height: 4rem; */
+    height: 3rem;
   }
 
   .logo {
@@ -129,8 +135,10 @@
 
   .icon{
     margin-left: 0rem;
-    width: 40px;
-    height: 40px;
+    /* width: 40px; */
+    width: 30px;
+    /* height: 40px; */
+    height: 30px;
   }
 }
 
