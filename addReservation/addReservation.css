@@ -88,8 +88,27 @@ body{
   height: 100%;
 }
 
-.add-panel-left-content-dropdown{
-  height: 15%;
+/* main dropdown */
+
+.addBrodovi-dropdown-container{
+width: 100%;
+height: 15%;
+padding-top: 1rem;
+}
+
+#addBrodovi-dropdown{
+  width: 30rem;
+  height: 4rem;
+  padding: 1rem;
+  margin-left: 2rem;
+  font-size: 20px;
+  border-color: #F89B3E;
+  border-width: 2px;
+  border-radius: 0.5rem;
+}
+
+#addBrodovi-dropdown > option{
+  font-size: 20px;
 }
 
 /* - TOP CONTENT ZA LIJEVI PANEL - */
@@ -122,11 +141,16 @@ body{
 
 .add-radio-button-container{
   padding-top: 2rem;
+  text-align: center;
 }
 
 .add-time-input-container{
   padding-top: 2rem;
   font-size: 18px;
+}
+
+.add-time-input-container > label{
+  margin-left: 2rem;
 }
 
 #addreserv-vrijeme-od{
@@ -154,7 +178,8 @@ body{
 }
 
 .add-panel-left-content-bottom-left-side > div{
-  padding-top: 1rem;
+  padding-bottom: 0.75rem;
+  padding-top: 0.5rem;
   display: flex;
 }
 
@@ -163,6 +188,10 @@ body{
   width:100%;
   margin-right: 1rem;
   margin-left: 0.5rem;
+  border-top: none;
+  border-left: none;
+  border-right:none;
+  border-bottom: 1.5px solid black;
 }
 
 
@@ -171,10 +200,10 @@ body{
 }
 
 .add-panel-left-content-bottom-right-side > div{
-  padding-top: 1rem;
+  padding-bottom: 0.75rem;
+  padding-top: 0.5rem;
   display: flex;
 }
-
 
 .add-panel-left-content-bottom-right-side > div > input{
   width:100%;
@@ -182,12 +211,87 @@ body{
   margin-left: 0.5rem;
 }
 
+/* mali dropdown */
+
+.addDjelatnici-dropdown-container{
+  width: 100%;
+  }
+  
+#addDjelatnici-dropdown{
+  width: 100%;
+  margin: 0 1rem;
+  height: 2.25rem;
+  font-size: 1.125rem;
+  border-color: #000000;
+  border-width: 1.5px;
+  border-radius: 0.3rem;
+}
+  
+#addDjelatnici-dropdown > option{
+  font-size: 18px;
+}
+
+#addInput-cijena{
+  width: 6rem;
+  margin: 0 2rem 0 auto;
+  text-align: center;
+}
+
+#addInput-akontacija{
+  width: 6rem;
+  margin: 0 2rem 0 auto;
+  text-align: center;
+}
+
+#addInput-razlika{
+  width: 6rem;
+  margin: 0 2rem 0 auto;
+  text-align: center;
+}
+
+.add-input-bottomright-container > label{
+ margin-left: 1rem;
+}
+
 /* - BUTTONI ZA LIJEVI PANEL - */
 
 .add-panel-left-content-buttons{
   height: 15%;
+  display: flex;
 }
 
+.add-button-half{
+  width: 50%;
+}
+
+.add-button-container{
+  width: 100%;
+}
+
+.add-button-container > button{
+  width: 9rem;
+  height: 3rem;
+}
+
+.add-button-ocisti{
+  margin-left: 25%;
+  margin-right: auto;
+  font-size: 1.25rem;
+  color: red;
+  font-weight: bolder;
+  border-color: red;
+  border-radius: 1.5rem;
+}
+
+.add-button-rezerviraj{
+  margin-left: 25%;
+  margin-right: auto;
+  background-color: #337895;
+  color: white;
+  font-size: 1.25rem;
+  border-radius: 1.5rem;
+  border: none;
+}
 
 /* ---- KALENDAR ---- */
 
@@ -196,6 +300,7 @@ body{
   height: 100%;
 }
 
+.show {display:block;}
 
 /*
 .glass-left{

@@ -1,7 +1,6 @@
 <main  id="blur">
   <div class="spacer"></div>
   <div class="add-glass-container">
-
     <!--LIJEVI DIO-->
     <div class="add-glass-left">
 
@@ -14,10 +13,19 @@
       <div class="add-panel-left">
         <div class="add-panel-left-content">
           <!-- dropdown -->
-          <div class="add-panel-left-content-dropdown">
-            Dropdown goes here lol
+          <div class="addBrodovi-dropdown-container">
+            <select id="addBrodovi-dropdown">
+              <option value="odaberi">Odaberite svoj brod...</option>
+              <option value="orca">Orca</option>
+              <option value="shark">Shark</option>
+              <option value="dolphin">Dolphin</option>
+              <option value="barracuda">Barracuda</option>
+            </select>
           </div>
-          <!-- content-top -->
+
+        <!-- content-top -->
+
+
           <div class="add-panel-left-content-top">
 
             <div class="add-inputs-top">
@@ -40,9 +48,12 @@
             </div>
 
           </div>
+
           <!-- content-bottom -->
+
           <div class="add-panel-left-content-bottom">
 
+            <!-- lijeva strana bottom contenta -->
             <div class="add-panel-left-content-bottom-left-side">
               <div>
                 <label for="add-input-ime">Ime: </label>
@@ -62,33 +73,50 @@
               </div>
             </div>
 
+              <!-- desna strana bottom contenta -->
             <div class="add-panel-left-content-bottom-right-side">
-              <div>
-                <label for="add-input-ime">Ime: </label>
-                <input type="text" id="add-input-ime">
+              <div class="addDjelatnici-dropdown-container">
+                <select id="addDjelatnici-dropdown">
+                  <option value="odaberi">Rezervirao...</option>
+                  <option value="orca">Jan Jurjec</option>
+                  <option value="shark">Goran Bratoš</option>
+                  <option value="dolphin">Cohinator 3000</option>
+                  <option value="barracuda">Barack Obama</option>
+                </select>
               </div>
-              <div>
-                <label for="add-input-prezime">Prezime: </label>
-                <input type="text" id="add-input-prezime">
+              <div class="add-input-bottomright-container">
+                <label for="addInput-cijena">Cijena: </label>
+                <input type="text" id="addInput-cijena">
               </div>
-              <div>
-                <label for="add-input-mobitel">Mobitel: </label>
-                <input type="text" id="add-input-mobitel">
+              <div class="add-input-bottomright-container">
+                <label for="addInput-akontacija">Akontacija: </label>
+                <input type="text" id="addInput-akontacija">
               </div>
-              <div>
-                <label for="add-input-oib">OIB: </label>
-                <input type="text" id="add-input-oib">
+              <div class="add-input-bottomright-container">
+                <label for="addInput-razlika">Razlika: </label>
+                <input type="text" id="addInput-razlika">
               </div>
             </div>
 
           </div>
+
           <!-- buttoni -->
+
           <div class="add-panel-left-content-buttons">
-            buttons go here lol
+            <div class="add-button-half">
+              <div class="add-button-container">
+                <button class="add-button-ocisti">Očisti</button>
+              </div>
+            </div>
+            <div class="add-button-half">
+              <div class="add-button-container">
+                <button class="add-button-rezerviraj">Rezerviraj</button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
+      </div>
     </div>
 
       <!--DESNI DIO-->
