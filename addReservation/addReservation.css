@@ -97,10 +97,10 @@ padding-top: 1rem;
 }
 
 #addBrodovi-dropdown{
-  width: 30rem;
+  width: 32rem;
   height: 4rem;
   padding: 1rem;
-  margin-left: 2rem;
+  margin-left: 4.5rem;
   font-size: 20px;
   border-color: #F89B3E;
   border-width: 2px;
@@ -115,6 +115,7 @@ padding-top: 1rem;
 
 .add-panel-left-content-top{
   height: 32%;
+  width: 100%;
 }
 
 .add-inputs-top{
@@ -124,16 +125,19 @@ padding-top: 1rem;
 
 .add-date-label{
   font-size: 18px;
+  margin-left: 1rem;
 }
 
 #addreserv-datum-od{
   font-size: 18px;
   width: 8rem;
-  margin-right: 2rem;
+  margin-left: 0.5rem;
+  margin-right: 6rem;
   color: #013358;
 }
 
 #addreserv-datum-do{
+  margin-left: 0.5rem;
   font-size: 18px;
   width: 8rem;
   color: #013358;
@@ -150,12 +154,12 @@ padding-top: 1rem;
 }
 
 .add-time-input-container > label{
-  margin-left: 2rem;
+  margin-left: 4rem;
 }
 
 #addreserv-vrijeme-od{
   padding-right: 0;
-  margin-right: 2rem;
+  margin-right: 3rem;
 }
 
 #ad-radio-button{
@@ -170,6 +174,7 @@ padding-top: 1rem;
   height: 38%;
   display: inline-flex;
   font-size: 18px;
+  width: 100%;
 }
 
 .add-panel-left-content-bottom-left-side{
@@ -178,8 +183,8 @@ padding-top: 1rem;
 }
 
 .add-panel-left-content-bottom-left-side > div{
-  padding-bottom: 0.75rem;
-  padding-top: 0.5rem;
+  padding-bottom: 1.1rem;
+  padding-top: 0.65rem;
   display: flex;
 }
 
@@ -200,10 +205,11 @@ padding-top: 1rem;
 }
 
 .add-panel-left-content-bottom-right-side > div{
-  padding-bottom: 0.75rem;
-  padding-top: 0.5rem;
+  padding-bottom: 1.75rem;
+  padding-top: 0rem;
   display: flex;
 }
+
 
 .add-panel-left-content-bottom-right-side > div > input{
   width:100%;
@@ -230,6 +236,8 @@ padding-top: 1rem;
 #addDjelatnici-dropdown > option{
   font-size: 18px;
 }
+
+/* cijena / akontacija / razlika inputi */
 
 #addInput-cijena{
   width: 6rem;
@@ -302,46 +310,266 @@ padding-top: 1rem;
 
 .show {display:block;}
 
-/*
-.glass-left{
-  border-radius: 1rem;
-  border: 2px solid #F89B3E;
+
+/* |||||||||||||||||||||||||RESPONZIVNOST||||||||||||||||||||||||||| */
+
+/*---(1366x768)---*/
+
+@media only screen and (max-width: 1366px) {
+
+  .add-title-container{
+    padding-bottom: 30px;
+  }
+
+  #addBrodovi-dropdown{
+    width: 23rem;
+    height: 3rem;
+    padding: 0.75rem;
+    margin-left: 2rem;
+    font-size: 16px;
+  }
+
+  #addreserv-datum-od{
+    font-size: 16px;
+    margin-right: 0.5rem;
+    width: 6rem;
+  }
+
+  #addreserv-datum-do{
+    font-size: 16px;
+    width: 6rem;
+  }
+
+  .add-date-label{
+   font-size: 16px;
+   margin-left: 0rem;
+ }
+
+  .add-panel-left-content-bottom-right-side > div{
+    padding-bottom: 0.5rem;
+    padding-top: 0.35rem;
+  }
+
+  .add-panel-left-content-bottom-left-side > div{
+    padding-bottom: 0.5rem;
+    padding-top: 0.35rem;
+  }
+
+  .add-inputs-top{
+    padding-top: 1.1rem;
+  }
+
+  .add-radio-button-container{
+    padding-top: 1.1rem;
+  }
+
+  .add-time-input-container{
+    padding-top: 1.1rem;
+    font-size: 16px;
+  }
+
+  .add-time-input-container > label{
+    margin-left: 1rem;
+  }
+
+  #addreserv-vrijeme-od{
+    padding-right: 0;
+    margin-right: 1rem;
+  }
+
+  .add-panel-left-content-bottom{
+    font-size: 16px;
+  }
+
+  #addDjelatnici-dropdown{
+    margin: 0 0.75rem;
+    height: 1.75rem;
+    font-size: 16px;
+    border-width: 1.25px;
+    border-radius: 0.2rem;
+  }
+
+  #addDjelatnici-dropdown > option{
+    font-size: 16px;
+  }
+
+  #addInput-cijena{
+    width: 4.5rem;
+    margin: 0 1rem 0 auto;
+  }
+
+  #addInput-akontacija{
+    width: 4.5rem;
+    margin: 0 1rem 0 auto;
+  }
+
+  #addInput-razlika{
+    width: 4.5rem;
+    margin: 0 1rem 0 auto;
+  }
+
+  .add-button-ocisti{
+    font-size: 1.1rem;
+    border-radius: 1.5rem;
+  }
   
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  .add-button-rezerviraj{
+    font-size: 1.1rem;
+    border-radius: 1.5rem;
+  }
 
-  width: 0.5fr;
-  height: calc(100vh - 2rem);
-  margin-right: 0.5rem;
+  .add-button-container{
+    padding-top: 0.5rem;
+  }
+
+  .add-button-container > button{
+    width: 8rem;
+    height: 2.5rem;
+  }
 }
 
-.glass-right{
-  border-radius: 1rem;
-  border: 2px solid #F89B3E;
+/*---2K (2560x1440)---*/
+
+
+@media only screen and (min-width: 2560px) {
+
+  .add-panel-left{
+    width: 75%;
+    height: 68%;
+    margin-top: 3rem;
+  }
   
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  .add-panel-right{
+    width: 75%;
+    height: 68%;
+    margin-top: 3rem;
+  }
 
-  width: 0.5fr;
-  height: calc(100vh - 2rem);
-  margin-left: 0.5rem;
+  .addBrodovi-dropdown-container{
+    padding-top: 3rem;
+  }
+
+  #addBrodovi-dropdown{
+    width: 45rem;
+    height: 5.5rem;
+    padding-left: 3rem;
+    font-size: 22px;
+    margin-left: 5rem;
+  }
+
+  .add-inputs-top{
+    padding-top: 3rem;
+  }
+
+  .add-radio-button-container{
+    padding-top: 3rem;
+  }
+
+  .add-time-input-container{
+    padding-top: 3rem;
+    font-size: 22px;
+  }
+
+  #addreserv-datum-od{
+    font-size: 22px;
+    margin-right: 3rem;
+    width: 13rem;
+    margin-left: 1rem;
+  }
+
+  #addreserv-datum-do{
+    font-size: 22px;
+    width: 13rem;
+    margin-left: 1rem;
+  }
+
+  .add-date-label{
+   font-size: 22px;
+   margin-left: 2rem;
+ }
+
+  .add-panel-left-content-bottom-right-side > div{
+    padding-bottom: 2rem;
+  }
+
+  .add-panel-left-content-bottom-left-side > div{
+    padding-bottom: 1.5rem;
+    padding-top: 1rem;
+  }
+
+  .add-time-input-container > label{
+    margin-left: 6rem;
+  }
+
+  #addreserv-vrijeme-od{
+    padding-right: 0;
+    margin-right: 5rem;
+  }
+
+  .add-panel-left-content-bottom{
+    font-size: 22px;
+  }
+
+  #addDjelatnici-dropdown{
+    margin: 0 2rem;
+    height: 3.25rem;
+    font-size: 22px;
+    border-width: 1.5px;
+    border-radius: 0.4rem;
+  }
+
+  #addDjelatnici-dropdown > option{
+    font-size: 22px;
+  }
+
+  #addInput-cijena{
+    width: 6rem;
+    margin: 0 4rem 0 auto;
+    border-width: 1.5px;
+  }
+
+  #addInput-akontacija{
+    width: 6rem;
+    margin: 0 4rem 0 auto;
+    border-width: 1.5px;
+  }
+
+  #addInput-razlika{
+    width: 6rem;
+    margin: 0 4rem 0 auto;
+    border-width: 1.5px;
+  }
+
+  .add-button-ocisti{
+    font-size: 1.5rem;
+    border-radius: 2.5rem;
+  }
+  
+  .add-button-rezerviraj{
+    font-size: 1.5rem;
+    border-radius: 2.5rem;
+  }
+
+  .add-button-container{
+    padding-top: 1rem;
+  }
+
+  .add-button-container > button{
+    width: 12rem;
+    height: 3.5rem;
+  }
+
+  .add-panel-left-content-bottom-left-side > div > input{
+    margin-right: 2rem;
+    margin-left: 1rem;
+  }
+
+  .add-panel-left-content-bottom-left-side > div > label{
+    margin-left: 2rem;
+  }
+
+  .add-input-bottomright-container > label{
+    margin-left: 4rem;
+   }
 }
 
-.left-panel-container{
-  max-width: 35%;
-  background: fixed;
-  background-color: white;
-  max-height: 66%;
-}
-
-.right-panel-container{
-  max-width: 35%;
-  background: fixed;
-  background-color: white;
-  max-height: 66%;
-}
-*/
