@@ -185,6 +185,7 @@ padding-top: 1rem;
 .add-panel-left-content-bottom-left-side > div{
   padding-bottom: 1.1rem;
   padding-top: 0.65rem;
+  margin-left: 1rem;
   display: flex;
 }
 
@@ -688,6 +689,10 @@ padding-top: 1rem;
 .add-panel-left-content-bottom-left-side > div{
   padding-bottom: 0.7rem;
   padding-top: 0.35rem;
+}
+
+.add-panel-left-content-bottom-left-side > div{
+  margin-left: 0rem;
 }
 
 }
