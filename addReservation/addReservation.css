@@ -669,34 +669,177 @@ padding-top: 1rem;
    font-size: 15px;
  }
 
-.add-panel-left-content-bottom{
-  font-size: 15px;
+  .add-panel-left-content-bottom{
+    font-size: 15px;
+  }
+
+  #addDjelatnici-dropdown{
+    font-size: 15px;
+  }
+
+  #addDjelatnici-dropdown > option{
+    font-size: 15px;
+  }
+
+  .add-panel-left-content-bottom-right-side > div{
+    padding-bottom: 0.7rem;
+    padding-top: 0.35rem;
+  }
+
+  .add-panel-left-content-bottom-left-side > div{
+    padding-bottom: 0.7rem;
+    padding-top: 0.35rem;
+  }
+
+  .add-panel-left-content-bottom-left-side > div{
+    margin-left: 0rem;
+  }
+
 }
 
-#addDjelatnici-dropdown{
-  font-size: 15px;
-}
 
-#addDjelatnici-dropdown > option{
-  font-size: 15px;
-}
+/* --------412x915--------- */
 
-.add-panel-left-content-bottom-right-side > div{
-  padding-bottom: 0.7rem;
-  padding-top: 0.35rem;
-}
+@media only screen and (max-width: 500px) {
 
-.add-panel-left-content-bottom-left-side > div{
-  padding-bottom: 0.7rem;
-  padding-top: 0.35rem;
-}
+  body {
+    background: url(../img/Bcg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+  }
 
-.add-panel-left-content-bottom-left-side > div{
-  margin-left: 0rem;
-}
+  .add-glass-container{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
 
-}
+  .spacer{
+    display: none;
+  }
 
+  .spacer-bottom{
+    display: grid;
+    height: 2rem;
+    }
+
+  .add-glass-left{
+    border-radius: 0;
+    border: none;
+    
+    background: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    width: 100%;
+    height: calc(100% - 8rem);
+    margin-bottom: 0rem;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+  }
+
+  .add-glass-right{
+    border-radius: 0;
+    border: none;
+    
+    background: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    width: 100%;
+    height: calc(100% - 8rem);
+    margin-bottom: 0rem;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+  }
+
+  .add-panel-left{
+    padding: 1rem;
+    height: 600px;
+  }
+
+  .add-panel-right{
+    padding: 1rem;
+    height: 80%;
+  }
+
+  .add-title-container{
+    height: 5rem;
+    padding: 1rem;
+  }
+
+  .addBrodovi-dropdown-container{
+    padding-top: 1rem;
+  }
+
+  .add-title{
+    color: white;
+    font-size: 1.75rem;
+    padding-top: 0.5rem;
+    padding-left: 2rem;
+  }
+
+  #addBrodovi-dropdown{
+    width: 16rem;
+    margin-left: 1.25rem;
+    font-size: 1rem;
+  }
+  
+  #addreserv-datum-od{
+    width: 1.5rem;
+    font-size: 1rem;
+  }
+
+  #addreserv-datum-do{
+    width: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .add-time-input-container{
+    padding-top: 1.3rem;
+    font-size: 1rem;
+  }
+
+  .add-date-label{
+   font-size: 1rem;
+ }
+
+  .add-time-label{
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  #addreserv-vrijeme-od{
+    width: 3.5rem;
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  #addreserv-vrijeme-do{
+    width: 3.5rem;
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .add-panel-left-content-bottom{
+    font-size: 1rem;
+  }
+
+  #addDjelatnici-dropdown{
+    font-size: 1rem;
+  }
+
+  #addDjelatnici-dropdown > option{
+    font-size: 1rem;
+  }
+}
 
 
 
