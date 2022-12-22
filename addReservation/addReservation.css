@@ -13,8 +13,7 @@ body{
   flex-direction: row;
 }
 
-.add-glass-left
-{
+.add-glass-left{
     border-radius: 1rem;
     border: 2px solid #F89B3E;
     
@@ -29,7 +28,7 @@ body{
     margin-right: 0.5rem;
 }
 
-.add-glass-right {
+.add-glass-right{
     border-radius: 1rem;
     border: 2px solid #F89B3E;
     
@@ -708,7 +707,6 @@ padding-top: 1rem;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    height: 100vh;
   }
 
   .add-glass-container{
@@ -762,12 +760,39 @@ padding-top: 1rem;
 
   .add-panel-left{
     padding: 1rem;
-    height: 600px;
+    padding-bottom: 2rem;
   }
 
   .add-panel-right{
     padding: 1rem;
-    height: 80%;
+    height: 85%;
+  }
+
+  .add-panel-left-content-top{
+    height: 22%;
+  }
+
+  .add-inputs-top{
+    padding-left: 1rem;
+  }
+
+  .add-panel-left-content-bottom{
+    height: 58%;
+    display: block;
+  }
+
+  .add-panel-left-content-bottom-left-side{
+    width: 100%;
+  }
+
+  .add-panel-left-content-bottom-left-side > div{
+    padding-bottom: 0.4rem;
+    padding-top: 0.8rem;
+    margin-left: 2rem;
+  }
+
+  .add-panel-left-content-bottom-left-side > div > input{
+    margin-right: 2rem;
   }
 
   .add-title-container{
@@ -777,6 +802,7 @@ padding-top: 1rem;
 
   .addBrodovi-dropdown-container{
     padding-top: 1rem;
+    max-height: 70px;
   }
 
   .add-title{
@@ -793,23 +819,24 @@ padding-top: 1rem;
   }
   
   #addreserv-datum-od{
-    width: 1.5rem;
+    width: 1.6rem;
     font-size: 1rem;
   }
 
   #addreserv-datum-do{
-    width: 1.5rem;
+    width: 1.6rem;
     font-size: 1rem;
   }
 
   .add-time-input-container{
     padding-top: 1.3rem;
+    padding-bottom: 0.5rem;
     font-size: 1rem;
   }
 
   .add-date-label{
    font-size: 1rem;
- }
+  }
 
   .add-time-label{
     font-size: 1rem;
@@ -839,6 +866,32 @@ padding-top: 1rem;
   #addDjelatnici-dropdown > option{
     font-size: 1rem;
   }
+
+  .add-panel-left-content-buttons{
+    display: flex;
+    max-height: 50px;
+  }
+
+  .add-panel-left-content-bottom-right-side{
+    width: 100%;
+
+  }
+
+  .add-panel-left-content-bottom-right-side > div{
+    padding-top: 1.25rem;
+    padding-bottom: 0px;
+  }
+
+  .add-button-container{
+    padding-top: 1rem;
+  }
+
+  .add-button-container > button{
+    width: 7rem;
+    height: 2.25rem;
+    margin-left: 1rem;
+  }
+  
 }
 
 
