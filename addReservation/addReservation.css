@@ -761,11 +761,16 @@ padding-top: 1rem;
   .add-panel-left{
     padding: 1rem;
     padding-bottom: 2rem;
+    border: none;
+    height: 90%;
+    width: 80%;
   }
 
   .add-panel-right{
     padding: 1rem;
-    height: 85%;
+    height: 90%;
+    width: 80%;
+    border: none;
   }
 
   .add-panel-left-content-top{
@@ -774,6 +779,7 @@ padding-top: 1rem;
 
   .add-inputs-top{
     padding-left: 1rem;
+    display: block;
   }
 
   .add-panel-left-content-bottom{
@@ -787,7 +793,7 @@ padding-top: 1rem;
 
   .add-panel-left-content-bottom-left-side > div{
     padding-bottom: 0.4rem;
-    padding-top: 0.8rem;
+    padding-top: 0.6rem;
     margin-left: 2rem;
   }
 
@@ -819,40 +825,47 @@ padding-top: 1rem;
   }
   
   #addreserv-datum-od{
-    width: 1.6rem;
+    width: 8rem;
     font-size: 1rem;
   }
 
   #addreserv-datum-do{
-    width: 1.6rem;
+    width: 8rem;
     font-size: 1rem;
+    margin-top: 0.75rem;
   }
 
+  .add-radio-button-container{
+    padding-top: 1rem;
+  }
   .add-time-input-container{
-    padding-top: 1.3rem;
+    padding-top: 1rem;
     padding-bottom: 0.5rem;
     font-size: 1rem;
+    display: block;
   }
 
   .add-date-label{
    font-size: 1rem;
+   margin-left: 1.25rem;
   }
 
-  .add-time-label{
+  .add-time-input-container > label{
+    margin-left: 4rem;
     font-size: 1rem;
-    margin: 0;
   }
 
   #addreserv-vrijeme-od{
-    width: 3.5rem;
+    width: 6.5rem;
     font-size: 1rem;
-    margin: 0;
+    margin-right: 4rem;
   }
 
   #addreserv-vrijeme-do{
-    width: 3.5rem;
+    width: 6.5rem;
     font-size: 1rem;
     margin: 0;
+    margin-top: 0.75rem;
   }
 
   .add-panel-left-content-bottom{
@@ -861,6 +874,7 @@ padding-top: 1rem;
 
   #addDjelatnici-dropdown{
     font-size: 1rem;
+    height: 2rem;
   }
 
   #addDjelatnici-dropdown > option{
@@ -874,7 +888,6 @@ padding-top: 1rem;
 
   .add-panel-left-content-bottom-right-side{
     width: 100%;
-
   }
 
   .add-panel-left-content-bottom-right-side > div{
@@ -891,7 +904,19 @@ padding-top: 1rem;
     height: 2.25rem;
     margin-left: 1rem;
   }
-  
+ 
+  #addInput-cijena{
+    width: 3.5rem;
+  }
+
+  #addInput-akontacija{
+    width: 3.5rem;
+  }
+
+  #addInput-razlika{
+    width: 3.5rem;
+  }
+
 }
 
 

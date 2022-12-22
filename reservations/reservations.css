@@ -308,8 +308,8 @@ a {
 }
 
 /* container za button */
-.popup-col-flex-buttons
-{display: flex;
+.popup-col-flex-buttons{
+    display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
