@@ -6,23 +6,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
         <!-- Bootstrap CSS -->
-        <link href="login.css" rel="stylesheet">
+        <link href="css/login.css" rel="stylesheet">
         <!-- <link href="../css/background.css" rel="stylesheet"> -->
-        <link rel="stylesheet" href="../css/watermark-remove.css">
+        <link rel="stylesheet" href="css/watermark-remove.css">
+
+        <!-- PWA - Web Aplication  -->
+        <link rel="manifest" href="manifest.json">
+        <meta name="theme-color" content="#F89B3E">
+        <link rel="apple-touch-icon" href="img/Logo-192.png">
 
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
         <!-- Navigacija ikone -->
     
         <title>Rent a boat Porat</title>
-        <link rel = "icon" href = "../img/Icon.ico" type = "image/x-icon">
+        <link rel = "icon" href = "img/Icon.ico" type = "image/x-icon">
     </head>
 
 <body>
     <main>
         <div class="container">
             <div class="logo">
-                <img src="../img/FullLogo.png" alt="Porat Logo" width="250px">
+                <img src="img/FullLogo.png" alt="Porat Logo" width="250px">
             </div>
             <div class="box">
             <form>
@@ -39,11 +44,13 @@
             </div>
             <div class="buttonFrame">
                 <!-- a element je privremen dok se ne poveze PHP i SQL -->
-                <a href="../index.php">
+                <a href="reservations/reservations.php">
                 <button type="button" class="button">Login</button>
                 </a>
             </div>
         </div>
     </main>
 </body>
+
+<script src="pwa.js"></script>
 </html>

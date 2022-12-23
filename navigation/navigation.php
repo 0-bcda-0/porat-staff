@@ -7,14 +7,14 @@ echo '
           <li class="logo">
             <a href="http://www.porat-boat.com/" class="nav-linkm nav-linkm-logo">
               <span class="link-text logo-text">Porat</span>
-              <img class="icon logo-icon" src="img/Logo.png" alt="">
+              <img class="icon logo-icon" src="../img/Logo.png" alt="">
             </a>
           </li>
          <!-- Raspored -->
           <li class="nav-item">
-            <a href="#" class="nav-linkm">
+            <a href="../reservations/reservations.php" class="nav-linkm">
               <lord-icon class="icon ico"
-                  src="icon/calendar.json"
+                  src="../icon/calendar.json"
                   target="a.nav-linkm"
                   trigger="loop-on-hover"
                   delay="500"
@@ -26,9 +26,9 @@ echo '
           </li>
           <!-- Novi Unos -->
           <li class="nav-item">
-            <a href="#" class="nav-linkm">
+            <a href="../addReservation/addReservation.php" class="nav-linkm">
               <lord-icon class="icon"
-                  src="icon/addReservation.json"
+                  src="../icon/addReservation.json"
                   target="a.nav-linkm"
                   trigger="loop-on-hover"
                   delay="500"
@@ -41,7 +41,7 @@ echo '
           <li class="nav-item bottom" id="themeButton">
             <a href="#" class="nav-linkm">
               <lord-icon class="icon"
-                  src="icon/settings.json"
+                  src="../icon/settings.json"
                   target="a.nav-linkm"
                   trigger="loop-on-hover"
                   delay="500"
@@ -52,9 +52,9 @@ echo '
           </li>
           <!-- Korisnik -->
           <li class="nav-item">
-            <a href="login/index.html" class="nav-linkm">
+            <a href="../index.html" class="nav-linkm">
               <lord-icon class="icon"
-                  src="icon/switchUser.json"
+                  src="../icon/switchUser.json"
                   target="a.nav-linkm"
                   trigger="loop-on-hover"
                   delay="500"
