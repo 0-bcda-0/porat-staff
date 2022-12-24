@@ -142,7 +142,9 @@ echo '
 
       <div class="add-panel-right">
         <div class="add-panel-right-content">
-
+        ';
+        
+        echo '
         </div>
       </div>
 
@@ -180,10 +182,12 @@ echo '
         </div>
     </div>
 </div>
+<div class="spacer"></div>
 
 </main>
 
 ';
+
 
 include ("../header-footer/footer-addReservation.php");
 include ("../header-footer/footer.php");

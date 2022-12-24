@@ -18,3 +18,6 @@ document.getElementById("reservationForm").addEventListener("keypress", function
     document.getElementById("submitButton").click();
   }
 });
+
+
+// |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||

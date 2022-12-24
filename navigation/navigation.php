@@ -52,7 +52,7 @@ echo '
           </li>
           <!-- Korisnik -->
           <li class="nav-item">
-            <a href="../index.html" class="nav-linkm">
+            <a href="../index.php" class="nav-linkm">
               <lord-icon class="icon"
                   src="../icon/switchUser.json"
                   target="a.nav-linkm"
