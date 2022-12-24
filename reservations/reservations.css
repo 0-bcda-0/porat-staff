@@ -1,95 +1,118 @@
-body{
-    font-size: 16px;
-    font-family: 'Montserrat';
-}   
+body {
+  font-size: 16px;
+  font-family: "Montserrat";
+}
 
 a {
-    color: inherit; /* blue colors for links too */
-    text-decoration: inherit; /* no underline */
-  }
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
 
 /* Daje mt i mb glass elementu jer standardno ne radi */
-.spacer
-{
-    height: 1rem;
+.spacer {
+  height: 1rem;
 }
 
 /* Stakleni container */
-.glass
-{
-    border-radius: 1rem;
-    border: 2px solid #F89B3E;
-    
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+.glass {
+  border-radius: 1rem;
+  border: 2px solid #f89b3e;
 
-    width: 1fr;
-    height: calc(100vh - 2rem);
-    margin-left: 1rem;
-    margin-right: 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  width: 1fr;
+  height: calc(100vh - 2rem);
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 /* Red u kojem stoje naslov(big-text) datum sa strelicama (data-wrapper), te dan u tjednu */
-.header
-{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 2.5rem;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2.5rem;
 }
 
-.big-text
-{
-    color: #dff7f7;
-    font-size: 2rem;
+.big-text {
+  color: #dff7f7;
+  font-size: 2rem;
 }
 
-.date-wrapper
-{
-    display: flex;
-    justify-content: space-between;
-    align-self: center;
+.submitButton {
+  align-items: normal;
+  background-color: transparent;
+  border: none;
+  box-sizing: border-box;
+  color: inherit;
+  cursor: default;
+  display: inline;
+  flex-shrink: 0;
+  font: inherit;
+  font-size: 100%;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: normal;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 0;
+  text-align: start;
+  text-decoration: none;
+  text-indent: 0;
+  text-overflow: clip;
+  text-shadow: none;
+  text-transform: none;
+  white-space: normal;
+  width: auto;
 }
 
-.arrow-icon{
-    width: 50px;
-    height: 50px;
-    margin-right: 5rem;
-    margin-left: 5rem;
+.date-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+}
+
+.arrow-icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 5rem;
+  margin-left: 5rem;
 }
 /* Janky rjesenje za rotaciju lijeve strelice */
-.rotate-arrow{
-    transform: rotate(180deg);
+.rotate-arrow {
+  transform: rotate(180deg);
 }
 
 /* Glavni grid za sadrzaj */
-.grid{
-    height: 80%;
-    margin: 2.5rem;
-    display: grid;
-    column-gap: 2rem;
-    row-gap: 8rem;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+.grid {
+  height: 80%;
+  margin: 2.5rem;
+  display: grid;
+  column-gap: 2rem;
+  row-gap: 8rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
 }
 
 /* Pojedina kartica */
-.card{
-    background-color: rgba(250, 250, 250, 0.70);
-    /*border: 2px solid #F89B3E;*/
+.card {
+  background-color: rgba(250, 250, 250, 0.7);
+  /*border: 2px solid #F89B3E;*/
 
-    
-    height: 100%;
-    width: 100%;
-    border-radius: 15px;
-    overflow: hidden;
-    justify-content: center;
-    font-size: 0.8rem;
+  height: 100%;
+  width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  justify-content: center;
+  font-size: 0.8rem;
 
-    /* Glass efekt */
-    /* From https://css.glass */
-    /*
+  /* Glass efekt */
+  /* From https://css.glass */
+  /*
     background: rgba(255, 255, 255, 0.59);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -100,457 +123,447 @@ a {
 }
 
 /* Svojstvo koje ce se primjenjivati kada je brod rezerviran na cijeli dan */
-.disabled{
-    background-color: rgb(142, 142, 142);
-    pointer-events: none;
-    border: 0;
+.disabled {
+  background-color: rgb(142, 142, 142);
+  pointer-events: none;
+  border: 0;
 }
 
 /* Grid unutar kartice koji razdvaja sadrzaj u 5 kolona */
-.card-grid
-{
-    margin: 0rem 0.8rem 0rem 0.8rem;
-    display: grid;
-    grid-template-columns: 25% auto auto auto auto;
-    gap: 1rem;
+.card-grid {
+  margin: 0rem 0.8rem 0rem 0.8rem;
+  display: grid;
+  grid-template-columns: 25% auto auto auto auto;
+  gap: 1rem;
 }
 
 /* Pojedina kolona u card-gridu */
-.col{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+.col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 /* Svojstvo primjenjeno jedino na eurima */
-.col-align{
-    align-items: flex-end;
+.col-align {
+  align-items: flex-end;
 }
 
 /* Skaliranje ikonice broda */
-.card-icon-size{
-    height: 100%;
-    width: 100px;
+.card-icon-size {
+  height: 100%;
+  width: 100px;
 }
 
- /* Naziv broda */
-.card-title{
-    font-weight: bold;
-    font-size: 1.2rem;
+/* Naziv broda */
+.card-title {
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 /* Odvajanje skupa podataka */
-.card-textrow
-{
-    margin-top: 0.5rem;
+.card-textrow {
+  margin-top: 0.5rem;
 }
 
 /* Janky rjesenja za odvajanje sadrzaja drugog i treceg stupca */
-.col-special
-{
-    margin-left: 2rem;
+.col-special {
+  margin-left: 2rem;
 }
 
 /* OBOJANI KRUG (ne znam kako radi :before) */
 .status:before {
-    content: '';
-    display: inline-block;
-    width: 0.6rem;
-    height: 0.6rem;
-    margin-right: 10px;
-    border: 1px solid #000;
-    border-radius: 7px;
-    margin-left: 0.5rem;
+  content: "";
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  margin-right: 10px;
+  border: 1px solid #000;
+  border-radius: 7px;
+  margin-left: 0.5rem;
 }
 
 .open:before {
-    background-color: #94E185;
-    border-color: #78D965;
-    box-shadow: 0px 0px 4px 1px #94E185;
+  background-color: #94e185;
+  border-color: #78d965;
+  box-shadow: 0px 0px 4px 1px #94e185;
 }
 
 .in-progress:before {
-    background-color: #FFC182;
-    border-color: #FFB161;
-    box-shadow: 0px 0px 4px 1px #FFC182;
+  background-color: #ffc182;
+  border-color: #ffb161;
+  box-shadow: 0px 0px 4px 1px #ffc182;
 }
 .dead:before {
-    background-color: #C9404D;
-    border-color: #C42C3B;
-    box-shadow: 0px 0px 4px 1px #C9404D;
+  background-color: #c9404d;
+  border-color: #c42c3b;
+  box-shadow: 0px 0px 4px 1px #c9404d;
 }
 
 /* Koristi se za "Status" sadrzaj */
-.flex{
-    display: flex;
+.flex {
+  display: flex;
 }
 
 /* POPUP */
 /* Gdje se stavi ovaj ID, to ce se zamaglit */
-#blur.active{
-    filter: blur(15px);
-    pointer-events: none;
-    user-select: none;
-    --webkit-user-select: none;
+#blur.active {
+  filter: blur(15px);
+  pointer-events: none;
+  user-select: none;
+  --webkit-user-select: none;
 }
 /* Popup div */
-#popup{
-    position: fixed;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px;
-    padding: 50px;
-    box-shadow: 0 5px 30px rgba(0,0,0,0.30);
-    background: #fff;
-    visibility: hidden;
-    opacity: 0;
-    transition: 0.5s;
+#popup {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  padding: 50px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+  background: #fff;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s;
 
-    /* Glass efekt */
-    /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.60);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+  /* Glass efekt */
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-#popup.active{
-    top: 50%;
-    visibility: visible;
-    opacity: 1;
-    transition: 0.5s;
+#popup.active {
+  top: 50%;
+  visibility: visible;
+  opacity: 1;
+  transition: 0.5s;
 }
 
 /* DELETE POPUP */
-#popupWindow.active{
-    filter: blur(15px);
-    pointer-events: none;
-    user-select: none;
-    --webkit-user-select: none;
+#popupWindow.active {
+  filter: blur(15px);
+  pointer-events: none;
+  user-select: none;
+  --webkit-user-select: none;
 }
 
-#deleteWindow{
-    position: fixed;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 550px;
-    padding: 50px;
-    box-shadow: 0 5px 30px rgba(0,0,0,0.30);
-    background: #fff;
-    visibility: hidden;
-    opacity: 0;
-    transition: 0.5s;
+#deleteWindow {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 550px;
+  padding: 50px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+  background: #fff;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s;
 
-    /* Glass efekt */
-    /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.60);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+  /* Glass efekt */
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-#deleteWindow.active{
-    top: 50%;
-    visibility: visible;
-    opacity: 1;
-    transition: 0.5s;
+#deleteWindow.active {
+  top: 50%;
+  visibility: visible;
+  opacity: 1;
+  transition: 0.5s;
 }
 
-.deleteWindow-rows{
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 1rem;
+.deleteWindow-rows {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 /* Pozicioniranje ikonice Close */
-.popup-icon-close-position
-{
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 1rem;
+.popup-icon-close-position {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
 }
 
 /* Velicina ikonice Close */
-.popup-icon-close-size
-{
-    width: 35px;
-    height: 35px;
+.popup-icon-close-size {
+  width: 35px;
+  height: 35px;
 }
 
 /* Velicina ikonice Boat */
-.popup-icon-size{
-    height: 100px;
-    width: 100px;
+.popup-icon-size {
+  height: 100px;
+  width: 100px;
 }
 
 /* div za redove podataka */
-.popup-flex{
-    display: flex;
-    justify-content: space-between;
-    gap: 0.5rem;
+.popup-flex {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
 }
 
 /* div za redove */
-.popup-col-flex{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 2rem;
+.popup-col-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 2rem;
 }
 
 /* container za button */
-.popup-col-flex-buttons{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+.popup-col-flex-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
-.popup-title{
-    text-align: center;
+.popup-title {
+  text-align: center;
 }
 
-.popup-text{
-    border-bottom: 2px solid #F89B3E;
-    padding: 1rem;
+.popup-text {
+  border-bottom: 2px solid #f89b3e;
+  padding: 1rem;
 }
 
-.button-delete{
-    padding: 0.5rem 1rem 0.5rem 1rem;
-    border-radius: 25px;
-    color: #DA1A20;
-    border: 1px solid #DA1A20;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.25rem;
+.button-delete {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 25px;
+  color: #da1a20;
+  border: 1px solid #da1a20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem;
 }
 
-.button-delete-deletePopup{
-    padding: 0.5rem 1rem 0.5rem 1rem;
-    border-radius: 20px;
-    color: #DA1A20;
-    border: 1px solid #DA1A20;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.25rem;
+.button-delete-deletePopup {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 20px;
+  color: #da1a20;
+  border: 1px solid #da1a20;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem;
 }
-.button-edit{
-    padding: 0.5rem 1rem 0.5rem 1rem;
-    border-radius: 20px;
-    color: #337895;
-    border: 2px solid #337895;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.25rem;
+.button-edit {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 20px;
+  color: #337895;
+  border: 2px solid #337895;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem;
 }
 
 /* BlueBook */
 /* Testirano na 13" plavom laptopu */
 @media only screen and (max-width: 1366px) {
-    .big-text{
-        font-size: 25px;
-    }
-    /* Smanjenje razmaka izmedu elemenata */
-    .grid{
-        gap: 1rem;
-    }
-    .card-title{
-        font-size: 1.1rem;
-    }
-    .card-icon-size{
-        height: 100%;
-        width: 80px;
-    }
-    /* Micanje sredisnja dva reda informacija */
-    .col-hidden{
-        display: none;
-    }
-    .card-grid{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-    }
+  .big-text {
+    font-size: 25px;
+  }
+  /* Smanjenje razmaka izmedu elemenata */
+  .grid {
+    gap: 1rem;
+  }
+  .card-title {
+    font-size: 1.1rem;
+  }
+  .card-icon-size {
+    height: 100%;
+    width: 80px;
+  }
+  /* Micanje sredisnja dva reda informacija */
+  .col-hidden {
+    display: none;
+  }
+  .card-grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
 }
 
 /* TABLET */
 /* Testirano na Crnom Win10 tabletu */
 @media only screen and (max-width: 1920px) {
-    .big-text{
-        font-size: 25px;
-    }
-    .grid{
-        gap: 1rem;
-    }
-    .card-title{
-        font-size: 1.1rem;
-    }
-    .card-icon-size{
-        height: 100%;
-        width: 80px;
-    }
-    .col-hidden{
-        display: none;
-    }
-    .card-grid{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-    }
+  .big-text {
+    font-size: 25px;
+  }
+  .grid {
+    gap: 1rem;
+  }
+  .card-title {
+    font-size: 1.1rem;
+  }
+  .card-icon-size {
+    height: 100%;
+    width: 80px;
+  }
+  .col-hidden {
+    display: none;
+  }
+  .card-grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
 }
 
 /* MOBILE */
 /* Testirano na Samsung S20+ */
 @media only screen and (max-width: 600px) {
-    body {
-        background: url(../img/Bcg.jpg);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        height: 100vh;
-      }
-    main {
-        background-image: none;
-    }
-    /* Micanje janky mt i mb za glass element */
-    .spacer{
-        display: none;
-    }
-    /* Janky rjesenje da se uvijek vidi zadnji sadrzaj (inade ode iza navigacije */
-    .spacer-bottom{
-        display: grid;
-        height: 2rem;
-    }
-    /* Resetiranje/nuliranje/micanje glass containera */
-    .glass{
-        border-radius: 0;
-        border: none;
-        
-        background: none;
-        box-shadow: none;
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
+  body {
+    background: url(../img/Bcg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+  }
+  main {
+    background-image: none;
+  }
+  /* Micanje janky mt i mb za glass element */
+  .spacer {
+    display: none;
+  }
+  /* Janky rjesenje da se uvijek vidi zadnji sadrzaj (inade ode iza navigacije */
+  .spacer-bottom {
+    display: grid;
+    height: 2rem;
+  }
+  /* Resetiranje/nuliranje/micanje glass containera */
+  .glass {
+    border-radius: 0;
+    border: none;
 
-        width: 100%;
-        height: calc(100% - 5rem);
-        margin-bottom: 4rem;
-        margin-left: 0;
-        margin-right: 0;
-        margin-top: 0;
-    }
-    .header{
-        flex-direction: column;
-        margin: 1rem;
-    }
-    .big-text{
-        font-size: 20px;
-        color: #e7f7f7;
-    }
-    .m-title{
-        font-size: 25px;
-    }
-    .date-wrapper
-    {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-    }
-    .arrow-icon{
-        width: 50px;
-        height: 50px;
-        margin-right: 3rem;
-        margin-left: 3rem;
-    }
-    .grid{
-        grid-template-columns: 1fr;
-        gap: 1rem;
+    background: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 
-        margin-left: 1rem;
-        margin-right: 1rem;
-    }
-    .card{
-        height: 100px;
-        width: 100%;
-        border: 0;
-    }
+    width: 100%;
+    height: calc(100% - 5rem);
+    margin-bottom: 4rem;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+  }
+  .header {
+    flex-direction: column;
+    margin: 1rem;
+  }
+  .big-text {
+    font-size: 20px;
+    color: #e7f7f7;
+  }
+  .m-title {
+    font-size: 25px;
+  }
+  .date-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .arrow-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 3rem;
+    margin-left: 3rem;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
 
-    .card-grid
-    {
-        margin: 0.5rem 1rem 0.5rem 1rem;
-    }
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .card {
+    height: 100px;
+    width: 100%;
+    border: 0;
+  }
 
-    .card-icon-size{
-        height: 70px;
-        width: 70px;
-    }
-    
-    .col-hidden{
-        display: none;
-    }
+  .card-grid {
+    margin: 0.5rem 1rem 0.5rem 1rem;
+  }
 
+  .card-icon-size {
+    height: 70px;
+    width: 70px;
+  }
 
-    #blur.active{
-        height: calc(100vh - 6rem);
-        overflow-y:hidden;
-    }
+  .col-hidden {
+    display: none;
+  }
 
-    #popup{
-        width: 95%;
-        padding: 30px;
-    }
+  #blur.active {
+    height: calc(100vh - 6rem);
+    overflow-y: hidden;
+  }
 
-    #deleteWindow{
-        width: 90%;
-        padding: 30px;
-    }
+  #popup {
+    width: 95%;
+    padding: 30px;
+  }
 
-    /* Janky nacin, moguce da ce se raspast  */
-    #popup.active{
-        top: calc(50% - 2rem);
-    }
+  #deleteWindow {
+    width: 90%;
+    padding: 30px;
+  }
 
-    .popup-col-flex-mobile{
-        flex-direction: column;
-    }
+  /* Janky nacin, moguce da ce se raspast  */
+  #popup.active {
+    top: calc(50% - 2rem);
+  }
 
-    .popup-icon-size
-    {
-        width: 58px;
-        height: 58px;
-    }
+  .popup-col-flex-mobile {
+    flex-direction: column;
+  }
 
-    .button-delete{
-        padding: 0.3rem 0.6rem 0.3rem 0.6rem;
-        border-radius: 25px;
-        color: #DA1A20;
-        border: 1px solid #DA1A20;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 0.5rem;
-        font-size: 0.9rem;
-    }
+  .popup-icon-size {
+    width: 58px;
+    height: 58px;
+  }
 
-    .popup-col-flex-mobile-icon
-    {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-    }
+  .button-delete {
+    padding: 0.3rem 0.6rem 0.3rem 0.6rem;
+    border-radius: 25px;
+    color: #da1a20;
+    border: 1px solid #da1a20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .popup-col-flex-mobile-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
 }

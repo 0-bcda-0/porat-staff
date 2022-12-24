@@ -27,6 +27,7 @@ echo '
     
         <title>Rent a boat Porat</title>
         <link rel = "icon" href = "../img/Icon.ico" type = "image/x-icon">
+
     </head>
 
 <body>

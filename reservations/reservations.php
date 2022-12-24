@@ -1,14 +1,33 @@
 <?php
 
+// Universal header
 include ("../header-footer/header.php");
+// Navigation
 include ("../navigation/navigation.php");
-
+// Konekcija na bazu
 include("../PHP/db_connection.php");
-
+// Konfiguracija
 include("../PHP/conf.php");
 
-$today = date("2022-12-23");
 
+// ||||||||||||||||||||||||||||||||||||||| HEADER VRIJME |||||||||||||||||||||||||||||||||||||||
+// vuce se trenutni datum
+$dayDisplayed = date("2022-12-23");
+
+// pretvara se u format po zelji
+$dayDisplayedMyFormat = date("d.m.Y", strtotime($dayDisplayed));
+
+// stvara se varijabla koja ce se koristiti za prikaz dana u engleskom formatu
+$dayOfWeekEnglish = date("l", strtotime($dayDisplayedMyFormat));
+// stvara se polje hrvatskih dana
+$CroatianDays = ['Nedjelja', 'Ponedjeljak', 'Utorak', 'Srijeda', 'Četvrtak', 'Petak', 'Subota'];
+// pretvaramo u timestamp, zatim sa "w" dobivamo broj dana u tjednu, a sa tim brojem dobivamo hrvatski naziv dana preko polja
+$dayOfWeekCroatian = $CroatianDays[date("w", strtotime($dayDisplayedMyFormat))];
+
+
+
+
+// ||||||||||||||||||||||||||||||||||||||| QUERY SELECT ||||||||||||||||||||||||||||||||||||||||
 $query = "SELECT 
             reservation.IDReservation,
             boat.Name AS BoatName,
@@ -29,16 +48,15 @@ $query = "SELECT
             LEFT JOIN boat ON (reservation.BoatID = boat.IDBoat)
             LEFT JOIN employee ON (reservation.EmployeeID = employee.IDEmployee)
             LEFT JOIN client ON (reservation.ClientID = client.IDClient)
-            WHERE '$today' BETWEEN DATE(reservation.StartDateTime) AND DATE(reservation.FinishDateTime)
+            WHERE '$dayDisplayed' BETWEEN DATE(reservation.StartDateTime) AND DATE(reservation.FinishDateTime)
             ORDER BY boat.IDBoat ASC";
 
 $result = mysqli_query($con, $query);
 
 $booked_slots = array();
 
-// |||||||||||||||||||||||||||||||||||| START LOGIKE ||||||||||||||||||||||||||||||||||||
 
-
+// ||||||||||||||||||||||||||||||||||||||| OBRADA PODATAKA |||||||||||||||||||||||||||||||||||||
 while($row = mysqli_fetch_assoc($result))
 {
     $BoatName = $row['BoatName'];
@@ -56,6 +74,7 @@ while($row = mysqli_fetch_assoc($result))
     $PriceDiffrence = $row['PriceDiffrence'];
     $Employee = $row['Employee'];
 
+    // spustamo sve podatke u polje
     $booked_slots[] = array(
         'BoatName' => $BoatName,
         'IDBoat' => $IDBoat,
@@ -75,11 +94,13 @@ while($row = mysqli_fetch_assoc($result))
 
 }
 
-// dodavanje reda u kojem se pise samo sat zavrsetka rezervacije
+
 for ($i=0; $i < count($booked_slots); $i++) { 
+    // cupamo samo sate iz vremena
     $booked_slots[$i]['StartTimeH'] = date("H", strtotime($booked_slots[$i]['StartTime']));
     $booked_slots[$i]['FinishTimeH'] = date("H", strtotime($booked_slots[$i]['FinishTime']));
 
+    // dodjeljujemo dodatna pomocna polja za lakse racunanje pozicije rezervacije
     if ($booked_slots[$i]['FinishTimeH'] < 16) {
         $booked_slots[$i]['TimeSlot'] = 1;
         $booked_slots[$i]['CardSlotPlace'] = 1;
@@ -94,7 +115,7 @@ for ($i=0; $i < count($booked_slots); $i++) {
     }
 
 
-
+    // RUCNO IZRADENO
 
     /*
     if($booked_slots[$i]['CardSlotPlace'] == 1 && $booked_slots[$i]['IDBoat'] == 1) {
@@ -152,24 +173,8 @@ for ($i=0; $i < count($booked_slots); $i++) {
     */
 }
 
-$lookup = [    1 => ['CardSlotPlace' => 1, 'IDBoat' => 1],
-    2 => ['CardSlotPlace' => 2, 'IDBoat' => 1],
-    3 => ['CardSlotPlace' => 1, 'IDBoat' => 2],
-    4 => ['CardSlotPlace' => 2, 'IDBoat' => 2],
-    5 => ['CardSlotPlace' => 1, 'IDBoat' => 3],
-    6 => ['CardSlotPlace' => 2, 'IDBoat' => 3],
-    7 => ['CardSlotPlace' => 1, 'IDBoat' => 4],
-    8 => ['CardSlotPlace' => 2, 'IDBoat' => 4],
-    9 => ['CardSlotPlace' => 1, 'IDBoat' => 5],
-    10 => ['CardSlotPlace' => 1, 'IDBoat' => 6],
-    11 => ['CardSlotPlace' => 1, 'IDBoat' => 7],
-    12 => ['CardSlotPlace' => 1, 'IDBoat' => 8],
-    13 => ['CardSlotPlace' => 1, 'IDBoat' => 9],
-    14 => ['CardSlotPlace' => 1, 'IDBoat' => 10],
-    15 => ['CardSlotPlace' => 1, 'IDBoat' => 11],
-    16 => ['CardSlotPlace' => 1, 'IDBoat' => 12],
-];
-
+// Optimizirani nacin za izracunavanje pozicije rezervacije na kartici
+// Tu se referencira sad na $lookup u config.php i iz njega uzima vrijednosti
 for ($i = 0; $i < count($booked_slots); $i++) {
     foreach ($lookup as $cardNumber => $values) {
         if ($booked_slots[$i]['CardSlotPlace'] == $values['CardSlotPlace'] && $booked_slots[$i]['IDBoat'] == $values['IDBoat']) {
@@ -186,51 +191,63 @@ for ($i = 0; $i < count($booked_slots); $i++) {
 // CARD SLOT PLACE 1 = Lijeva Kartica
 // CARD SLOT PLACE 2 = Desna Kartica
 
-// Sort $booked_slots by CardNumber
+// Sortiranje $booked_slots po CardNumberu
 usort($booked_slots, function($a, $b) {
     return $a['CardNumber'] <=> $b['CardNumber'];
 });
 
+// Milim da mi u krajnjoj linijij ovo ne sluzi nicem osim za provjeru
 $cardFlag = array();
 
-// |||||||||||||||||||||||||||||||||||| KRAJ LOGIKE ||||||||||||||||||||||||||||||||||||
-
+// ||||||||||||||||||||||||||||||||||||||| ISPIS KALENDARA |||||||||||||||||||||||||||||||||||||
 echo '
 <main  id="blur">
     <div class="spacer"></div>
     <div class="glass">
-        <div class="header">
+        <form action="#" method="POST" class="header">
             <div class="big-text m-title">Kalendar rezervacija</div>
             <div class="date-wrapper">
                 <div class="arrow">
-                    <lord-icon class="arrow-icon rotate-arrow"
-                        src="../icon/dateArrow.json"
-                        trigger="click"
-                        delay="500"
-                        colors="primary:#F89B3E">
-                    </lord-icon>
+                <button type="submit" name="DateNavButtonLeft" style="align-items: normal; background-color: transparent; border: none; box-sizing: border-box; color: inherit; cursor: default; display: inline; flex-shrink: 0; font: inherit; font-size: 100%; font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; margin: 0; outline: none; overflow: visible; padding: 0; text-align: start; text-decoration: none; text-indent: 0; text-overflow: clip; text-shadow: none; text-transform: none; white-space: normal; width: auto;">
+                <lord-icon class="arrow-icon rotate-arrow"
+                    src="../icon/dateArrow.json"
+                    trigger="click"
+                    delay="500"
+                    colors="primary:#F89B3E">
+                </lord-icon>
+                </button>
                 </div>
-                <div class="big-text">18.8.2022</div>
+                <div class="big-text" id="TitleDate">'.$dayDisplayedMyFormat.'</div>
                 <div class="arrow">
+                <button type="submit" name="DateNavButtonRight" style="align-items: normal; background-color: transparent; border: none; box-sizing: border-box; color: inherit; cursor: default; display: inline; flex-shrink: 0; font: inherit; font-size: 100%; font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; margin: 0; outline: none; overflow: visible; padding: 0; text-align: start; text-decoration: none; text-indent: 0; text-overflow: clip; text-shadow: none; text-transform: none; white-space: normal; width: auto;">
                     <lord-icon class="arrow-icon"
                         src="../icon/dateArrow.json"
                         trigger="click"
                         delay="500"
                         colors="primary:#F89B3E">
                     </lord-icon>
+                </button>
                 </div>
             </div>
-            <div class="big-text">Ponedeljak / Monday</div>
-        </div>
+            <div class="big-text">'.$dayOfWeekCroatian.' / '.$dayOfWeekEnglish.'</div>
+        </form>
         <div class="grid">
             ';
 
+            // Stavljamo sve u arrayu na false
             $cardFlag = array_fill(1, 16, false);
+            // Prolazimo kroz sve kartice
             for($cardIndex = 1; $cardIndex <=16; $cardIndex++){
                 $cardDisplayed = false;
+                // Prolazimo kroz sve rezervacije
                 foreach ($booked_slots as $key => $value) {
+                    // Ako je dodjeljen broj kartice jednak trenutnom broju kartice
                     if($value['CardNumber'] == $cardIndex){
                         $cardFlag[$cardIndex] = true;
+
+                        // make $value array in json format
+                        $json = json_encode($value);
+
                         echo '
                             <div class="card">
                             <div class="card-grid">
@@ -262,8 +279,11 @@ echo '
                                     <div class="card-textrow">€'.$value['AdvancePayment'].'</div>
                                     <div class="card-textrow">€'.$value['PriceDiffrence'].'</div>
                                 </div>
-                                <div class="col2">
-                                    <lord-icon class="card-icon-size"
+                                <div class="col2">';
+                                    echo <<<EOT
+                                            <lord-icon class="card-icon-size" onclick='popup(`$json`)'
+                                            EOT;
+                                    echo '
                                         src="../icon/boat.json"
                                         trigger="click"
                                         colors="primary:#121331,secondary:#f89b3e">
@@ -309,7 +329,7 @@ echo '
                                     <div class="card-textrow">€</div>
                                 </div>
                                 <div class="col2">
-                                    <lord-icon class="card-icon-size"
+                                    <lord-icon class="card-icon-size" onclick="popup()"
                                         src="../icon/boat.json"
                                         trigger="click"
                                         colors="primary:#121331,secondary:#f89b3e">
@@ -332,7 +352,7 @@ echo '
 <div id="popup">
 <div id="popupWindow">
     <div class="popup-icon-close-position">
-        <a href="#" onclick="popup()">
+        <a href="#" onclick="closepopup()">
         <lord-icon class="popup-icon-close"
             src="../icon/close.json"
             target="div#popup"
@@ -341,15 +361,11 @@ echo '
         </lord-icon>
         </a>
     </div>
-    <div class="popup-title h1">Orca</div>
+    <div class="popup-title h1" id="popupBoat">Orca</div>
     <div class="popup-col-flex">
         <div class="popup-col">
-            <div class="popup-text">Od: 08h do 13h</div>
-            <div class="flex popup-text">
-                <div>Status:</div>
-                <div class="status open"></div>
-                <div>Rezerviran</div>
-            </div>
+            <div class="popup-text" id="popupTime">Od: 08h do 13h</div>
+            <div class="popup-text"  id="popupDate">Od datuma: 20.08.2023 <br> Do datuma: 23.08.2023</div>
         </div>
         <div class="popup-col popup-col-flex-mobile-icon">
             <lord-icon class="popup-icon-size"
@@ -375,31 +391,35 @@ echo '
         <div class="popup-col">
             <div class="popup-flex popup-text">
                 <div><b>Ime i prezime:</b></div>
-                <div>Gorana Hadzivelkos</div>
+                <div id="popupNameSurname">Gorana Hadzivelkos</div>
             </div>
             <div class="popup-flex popup-text">
                 <div><b>Telefon:</b></div>
-                <div>+385 99 5921 212</div>
+                <div id="popupTelNum">+385 99 5921 212</div>
             </div>
             <div class="popup-flex popup-text">
-                <div><b>Rezervirao:</b></div>
-                <div>Jan</div>
+                <div><b>OIB:</b></div>
+                <div id="popupOib">25485698745</div>
             </div>
         </div>
         <div class="popup-col">
             <div class="popup-flex popup-text">
                 <div><b>Cijena:</b></div>
-                <div>€150</div>
+                <div id="popupPrice">€150</div>
             </div>
             <div class="popup-flex popup-text">
                 <div><b>Akontacije:</b></div>
-                <div>€50</div>
+                <div id="popupAdvancePayment">€50</div>
             </div>
             <div class="popup-flex popup-text">
                 <div><b>Razlika:</b></div>
-                <div>€100</div>
+                <div id="popupPriceDiffrence">€100</div>
             </div>
         </div>
+    </div>
+    <div class="popup-flex popup-text" style="padding: 0; margin-bottom: 30px;">
+        <div><b>Rezervirao:</b></div>
+        <div id="popupEmployee">Jan</div>
     </div>
     <div class="popup-col-flex-buttons">
         <div class="button-edit">
@@ -448,6 +468,8 @@ echo '
         </div>
     </div>
 </div>
+
+
 ';
 
 /*
