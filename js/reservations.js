@@ -38,11 +38,51 @@ function popup(json) {
     // Dodamo link u html
     document.getElementById('popupTelNum').innerHTML = '';
     document.getElementById('popupTelNum').appendChild(a);
+
+    document.getElementById('popup').insertAdjacentHTML('afterend', `
+    <div id="deleteWindow">
+    <div class="deleteWindow-rows">
+        <div class="popup-title h4">Potvrdi brisanje rezervacije br. `+ reservation.IDReservation +`</div>
+        <div class="row">
+            <div class="popup-col-flex-buttons">
+                <a href="#" onclick="" class="button-delete-deletePopup">
+                    <lord-icon
+                        src="../icon/delete.json"
+                        target=".button-delete-deletePopup"
+                        trigger="loop-on-hover"
+                        delay="500"
+                        colors="primary:#da1a20"
+                        style="width:20px;height:20px">
+                    </lord-icon>
+                    <div class="button-text">Obriši</div>
+                </a>  
+                <a href="#" onclick="delete_popup_in_popup()" class="button-edit">
+                    <lord-icon class="rotate-arrow"
+                        src="../icon/dateArrow.json"
+                        target=".button-edit"
+                        trigger="loop-on-hover"
+                        delay="500"
+                        colors="primary:#337895"
+                        style="width:20px;height:20px">
+                    </lord-icon>
+                    <div class="button-text">Odustani</div>
+                </a>   
+            </div>
+        </div>
+    </div>
+</div>
+    `);
+
 }
 
 function delete_popup() {
     document.getElementById('popupWindow').classList.toggle('active');
     document.getElementById('deleteWindow').classList.toggle('active');
+}
+
+function delete_popup_in_popup () {
+    document.getElementById('popupWindow').classList.toggle('active');
+    document.getElementById('deleteWindow').remove();
 }
 
 function closepopup() {
@@ -70,7 +110,7 @@ window.addEventListener('orientationchange', function() {
     }
     else {
       // Clear the message from the page
-      window.location.href = '../reservations/reservations.php.html';
+      window.location.href = '../reservations/reservations.php';
     }
 });
   

@@ -109,6 +109,7 @@ a {
   overflow: hidden;
   justify-content: center;
   font-size: 0.8rem;
+  border: none;
 
   /* Glass efekt */
   /* From https://css.glass */
@@ -124,9 +125,15 @@ a {
 
 /* Svojstvo koje ce se primjenjivati kada je brod rezerviran na cijeli dan */
 .disabled {
-  background-color: rgb(142, 142, 142);
+  background-color: rgba(164, 164, 164, 0.7);
   pointer-events: none;
-  border: 0;
+  border: none;
+}
+
+.extended{
+  background-color: #becad3;
+  width: calc(206%);
+  z-index: 1;
 }
 
 /* Grid unutar kartice koji razdvaja sadrzaj u 5 kolona */

@@ -59,6 +59,7 @@ $booked_slots = array();
 // ||||||||||||||||||||||||||||||||||||||| OBRADA PODATAKA |||||||||||||||||||||||||||||||||||||
 while($row = mysqli_fetch_assoc($result))
 {
+    $IDReservation = $row['IDReservation'];
     $BoatName = $row['BoatName'];
     $IDBoat = $row['IDBoat'];
     $StartDate = $row['StartDate'];
@@ -76,6 +77,7 @@ while($row = mysqli_fetch_assoc($result))
 
     // spustamo sve podatke u polje
     $booked_slots[] = array(
+        'IDReservation' => $IDReservation,
         'BoatName' => $BoatName,
         'IDBoat' => $IDBoat,
         'StartDate' => $StartDate,
@@ -248,8 +250,18 @@ echo '
                         // make $value array in json format
                         $json = json_encode($value);
 
-                        echo '
-                            <div class="card">
+                        // Ako je rezervacija na cijeli dan, onda je kartica extended
+                        if($value['TimeSlot'] == 3 && $value['CardNumber'] < 8){
+
+                            echo '
+                            <div class="card extended" id="card'.$cardIndex.'">';
+                        }
+                        else{
+                            echo '
+                            <div class="card" id="card'.$cardIndex.'">';
+                        }
+
+                            echo '
                             <div class="card-grid">
                                 <div class="col">
                                     <div class="card-title">'.$value['BoatName'].'</div>
@@ -298,7 +310,7 @@ echo '
                 }
                 if (!$cardDisplayed) {
                     echo '
-                            <div class="card">
+                            <div class="card disabled" id="card'.$cardIndex.'">
                             <div class="card-grid">
                                 <div class="col">
                                     <div class="card-title"></div>
@@ -437,6 +449,7 @@ echo '
 </div>
 </div>
 
+<!--
 <div id="deleteWindow">
     <div class="deleteWindow-rows">
         <div class="popup-title h4">Potvrdi brisanje rezervacije</div>
@@ -468,6 +481,7 @@ echo '
         </div>
     </div>
 </div>
+-->
 
 <button id="scrollToTop" class="scrollToTopArrow">
     <lord-icon
