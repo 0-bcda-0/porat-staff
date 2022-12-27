@@ -469,6 +469,15 @@ echo '
     </div>
 </div>
 
+<button id="scrollToTop" class="scrollToTopArrow">
+    <lord-icon
+        src="../icon/dateArrow.json"
+        trigger="loop"
+        delay="500"
+        colors="primary:#F89B3E">
+    </lord-icon>
+</button>
+
 
 ';
 

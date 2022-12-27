@@ -1,10 +1,10 @@
-// 1. Funkcionalnost: Resetiranje forme
-// 2. Funkcionalnost: Popup za potvrdu resetiranja forme
+// 1. Funkcionalnost: Popup za potvrdu resetiranja forme
 function delete_popup() {
     document.getElementById('blurForClearFormPopup').classList.toggle('active');
     document.getElementById('clearFormPopup').classList.toggle('active');
 }
 
+// 2. Funkcionalnost: Resetiranje forme
 function clearForm() {
     document.getElementById("reservationForm").reset();
     document.getElementById('blurForClearFormPopup').classList.toggle('active');
@@ -19,5 +19,3 @@ document.getElementById("reservationForm").addEventListener("keypress", function
   }
 });
 
-
-// |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||

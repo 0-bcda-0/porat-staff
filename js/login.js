@@ -1,3 +1,4 @@
+// 1. Funkcionalnost: Popup za prikaz poruke o gresci
 function popup() {
     console.log("uspješno");
     var blur = document.getElementById('blurForErrorFormPopup');

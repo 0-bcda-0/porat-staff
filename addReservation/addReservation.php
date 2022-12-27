@@ -39,7 +39,7 @@ echo '
 
             <div class="add-inputs-top">
               <label class="add-date-label" for="addreserv-datum-od">Od datuma:</label>
-              <input type="date" id="addreserv-datum-od" required>
+              <input type="datetime-local" id="addreserv-datum-od" required>
               <label class="add-date-label" for="addreserv-datum-do">Do datuma:</label>
               <input type="date" id="addreserv-datum-do">
             </div>
