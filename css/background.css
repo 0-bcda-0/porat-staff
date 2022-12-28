@@ -11,6 +11,9 @@
 
     /* za navigaciju */
     --transition-speed: 600ms;
+
+    /* tako da se ne prilagodava za dark mode */
+    color-scheme: light only;
 }
 
 body{

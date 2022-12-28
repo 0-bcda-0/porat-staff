@@ -6,8 +6,8 @@ echo '
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
-        <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="color-scheme" content="light only">
     
         <!-- CSS -->
         <link href="../css/bootstrap.min.css" rel="stylesheet">

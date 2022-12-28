@@ -19,3 +19,10 @@ document.getElementById("reservationForm").addEventListener("keypress", function
   }
 });
 
+// 7. Funkcionalnost: Izračun cijene
+function calculatePrice() {
+  // One liner za izračun cijene
+  document.getElementById("calcOutput").innerHTML = document.getElementById("calcPrice").value * document.getElementById("calcDays").value + " €";
+}
+
+

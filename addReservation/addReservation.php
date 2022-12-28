@@ -39,9 +39,9 @@ echo '
 
             <div class="add-inputs-top">
               <label class="add-date-label" for="addreserv-datum-od">Od datuma:</label>
-              <input type="datetime-local" id="addreserv-datum-od" required>
+              <input type="datetime-local" id="addreserv-datum-od" required class="inputField">
               <label class="add-date-label" for="addreserv-datum-do">Do datuma:</label>
-              <input type="date" id="addreserv-datum-do">
+              <input type="datetime-local" id="addreserv-datum-do" class="inputField">
             </div>
 
             <div class="add-radio-button-container">
@@ -49,12 +49,14 @@ echo '
               <input type="checkbox" id="ad-radio-button">
             </div>
 
+            <!--
             <div class="add-time-input-container">
               <label class="add-time-label" for="addreserv-vrijeme-od">Od sati:</label>
               <input type="time" id="addreserv-vrijeme-od" required>
               <label class="add-time-label" for="addreserv-vrijeme-do">Do sati:</label>
               <input type="time" id="addreserv-vrijeme-do" required>
             </div>
+            -->
 
           </div>
 
@@ -85,7 +87,7 @@ echo '
               <!-- desna strana bottom contenta -->
             <div class="add-panel-left-content-bottom-right-side">
               <div class="addDjelatnici-dropdown-container">
-                <select id="addDjelatnici-dropdown" required>
+                <select id="addDjelatnici-dropdown" required class="inputField">
                   <option value="">Rezervirao...</option>
                   <option value="orca">Jan Jurjec</option>
                   <option value="shark">Goran Bratoš</option>
@@ -95,15 +97,15 @@ echo '
               </div>
               <div class="add-input-bottomright-container">
                 <label for="addInput-cijena">Cijena: </label>
-                <input type="number" id="addInput-cijena"  required>
+                <input type="number" id="addInput-cijena"  required class="inputFieldNumbers">
               </div>
               <div class="add-input-bottomright-container">
                 <label for="addInput-akontacija">Akontacija: </label>
-                <input type="number" id="addInput-akontacija">
+                <input type="number" id="addInput-akontacija" class="inputFieldNumbers">
               </div>
               <div class="add-input-bottomright-container">
                 <label for="addInput-razlika">Razlika: </label>
-                <input type="number" id="addInput-razlika">
+                <input type="number" id="addInput-razlika" class="inputFieldNumbers">
               </div>
             </div>
 
@@ -136,15 +138,30 @@ echo '
 
       <div class="add-title-container">
         <div class="add-title">
+          Kalendar Cijene
+        </div>
+      </div>
+
+      <div class="add-panel-right calculator-container">
+      <div class="calcInputContainer">
+        <input type="number" id="calcPrice" name="calcPrice" placeholder="Cijena po danu" class="calcInput">
+        <div>x</div>
+        <input type="number" id="calcDays" name="calcDays" placeholder="Broj dana" class="calcInput">
+      </div>
+      <a href="#" onclick="calculatePrice()" class="button-edit">
+          <div class="button-text">Izračunaj</div>
+      </a>
+      <div class="calcResult" id="calcOutput">0</div>   
+      </div>
+
+      <div class="add-title-container">
+        <div class="add-title">
           Kalendar Rezervacija
         </div>
       </div>
 
       <div class="add-panel-right">
         <div class="add-panel-right-content">
-        ';
-        
-        echo '
         </div>
       </div>
 

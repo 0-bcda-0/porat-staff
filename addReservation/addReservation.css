@@ -69,7 +69,7 @@ input[type=number] {
 .add-panel-left{
   width: 80%;
   height: 75%;
-  background-color: white;
+  background-color: rgba(250, 250, 250, 0.7);;
   padding: 1.5rem;
   margin-left: auto;
   margin-right: auto;
@@ -80,14 +80,23 @@ input[type=number] {
 
 .add-panel-right{
   width: 80%;
-  height: 75%;
-  background-color: white;
+  height: 45%;
+  background-color: rgba(250, 250, 250, 0.7);;
   padding: 1.5rem;
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
   border-radius: 1rem;
   border: 2px solid #F89B3E;
+}
+
+.calculator-input-field{
+  width: 10rem;
+  height: 3rem;
+  font-size: 20px;
+  text-align: center;
+  border: 2px solid #F89B3E;
+  border-radius: 0.5rem;
 }
 
 
@@ -200,6 +209,7 @@ padding-top: 1rem;
   padding-top: 0.65rem;
   margin-left: 1rem;
   display: flex;
+  
 }
 
 
@@ -211,6 +221,8 @@ padding-top: 1rem;
   border-left: none;
   border-right:none;
   border-bottom: 1.5px solid black;
+  background-color: rgba(250, 250, 250, 0.70);
+    border-radius: 5px;
 }
 
 
@@ -229,6 +241,8 @@ padding-top: 1rem;
   width:100%;
   margin-right: 1rem;
   margin-left: 0.5rem;
+  background-color: rgba(250, 250, 250, 0.70);
+    border-radius: 5px;
 }
 
 /* mali dropdown */
@@ -336,7 +350,7 @@ padding-top: 1rem;
   margin-right: auto;
   padding: 0.3rem 1rem 0.3rem 1rem;
   border-radius: 20px;
-  font-weight: 700;
+  font-weight: 400;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -389,6 +403,57 @@ padding-top: 1rem;
   visibility: visible;
   opacity: 1;
   transition: 0.5s;
+}
+
+.calculator-container{
+  height: 10% !important;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.calcInputContainer{
+  display: flex;
+  justify-content: space-around;
+}
+
+.calcInput{
+  width: 40%;
+  margin-right: 1rem;
+  margin-left: 0.5rem;
+  border-top: none;
+  border-left: none;
+  border-right:none;
+  border-bottom: 1.5px solid black;
+  background-color: rgba(250, 250, 250, 0.70);
+  border-radius: 5px;
+}
+
+.calcResult{
+  width: 25%;
+  margin-right: 1rem;
+  margin-left: 0.5rem;
+  border-top: none;
+  border-left: none;
+  border-right:none;
+  border-bottom: 1.5px solid black;
+  text-align: center;
+  background-color: rgba(250, 250, 250, 0.70);
+  border-radius: 5px;
+}
+
+.inputField{
+  background-color: rgba(250, 250, 250, 0.70);
+  border-radius: 5px;
+  border: none;
+}
+
+.inputFieldNumbers{
+  background-color: rgba(250, 250, 250, 0.70);
+  border-radius: 5px;
+  border: none;
+  border-bottom: 1px solid black;
 }
 
 
@@ -1021,6 +1086,19 @@ padding-top: 1rem;
   .add-input-field{
     background-color: rgba(250, 250, 250, 0.70) ;
     border-radius: 5px;
+  }
+
+  .calcInput{
+    width: 100%;
+  }
+
+  .calculator-container{
+    gap: 1rem;
+  }
+
+  .calculator-container
+  {
+    flex-direction: column;
   }
 
 }
