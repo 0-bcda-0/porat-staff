@@ -242,6 +242,7 @@ a {
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
+  z-index: 2;
 }
 
 #popup.active {
@@ -271,6 +272,7 @@ a {
   visibility: hidden;
   opacity: 0;
   transition: 0.5s;
+  z-index: 3;
 
   /* Glass efekt */
   /* From https://css.glass */

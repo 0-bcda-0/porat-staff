@@ -268,7 +268,7 @@ echo '
                                     <div class="card-time">Od: '.$value['StartTimeH'].'h do '.$value['FinishTimeH'].'h</div>
                                     <div class="flex">
                                         <div>Status:</div>
-                                        <div class="status open"></div>
+                                        <div class="status dead"></div>
                                         <div>Rezerviran</div>
                                     </div>
                                 </div>
@@ -318,7 +318,7 @@ echo '
                                     <div class="flex">
                                         <div>Status:</div>
                                         <div class="status open"></div>
-                                        <div>Rezerviran</div>
+                                        <div>Slobodan</div>
                                     </div>
                                 </div>
                                 <div class="col col-hidden">
