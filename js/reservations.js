@@ -47,7 +47,7 @@ function popup(json) {
         <div class="popup-title h4">Potvrdi brisanje rezervacije br. `+ reservation.IDReservation +`</div>
         <div class="row">
             <div class="popup-col-flex-buttons">
-                <a href="reservations.php?IDr=`+ reservation.IDReservation +`&task=del"  class="button-delete-deletePopup">
+                <a href="reservations.php?IDr=`+ reservation.IDReservation +`&task=del&day=`+ reservation.StartDate +`"  class="button-delete-deletePopup">
                     <lord-icon
                         src="../icon/delete.json"
                         target=".button-delete-deletePopup"

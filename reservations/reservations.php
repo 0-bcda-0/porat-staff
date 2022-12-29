@@ -9,6 +9,17 @@ include("../PHP/db_connection.php");
 // Konfiguracija
 include("../PHP/conf.php");
 
+if (isset($_GET["move"]) && $_GET['move'] == "previous") {
+    $dayDisplayed = date("Y-m-d", strtotime("-1 day", strtotime($_GET["day"])));
+} elseif (isset($_GET["move"]) &&$_GET['move'] == "next") {
+    $dayDisplayed = date("Y-m-d", strtotime("+1 day", strtotime($_GET["day"])));
+} elseif (isset($_GET["day"])){
+    $dayDisplayed = $_GET["day"];
+} else {
+    $dayDisplayed = date("Y-m-d");
+}
+
+
 // ||||||||||||||||||||||||||||||||||||||| BRISANJE REZERVACIJE |||||||||||||||||||||||||||||||||||||||
 if(isset($_GET["task"]) && $_GET["task"] == "del")
 {
@@ -19,10 +30,13 @@ if(isset($_GET["task"]) && $_GET["task"] == "del")
 
     $result_del = mysqli_query($con, $query_del);
 
+    echo $_GET["day"];
+
     if($result_del)
     {
         // echo 'Podaci su uspjesno spremljeni';
-        header("Location: reservations.php");
+        // header('Location: reservations.php?day='.$_GET["day"].'');
+        header('Location: reservations.php');
         exit;
     }
     else
@@ -34,7 +48,7 @@ if(isset($_GET["task"]) && $_GET["task"] == "del")
 
 // ||||||||||||||||||||||||||||||||||||||| HEADER VRIJME |||||||||||||||||||||||||||||||||||||||
 // vuce se trenutni datum
-$dayDisplayed = date("2022-12-23");
+// $dayDisplayed = date("2022-12-29");
 
 // pretvara se u format po zelji
 $dayDisplayedMyFormat = date("d.m.Y", strtotime($dayDisplayed));
@@ -227,11 +241,14 @@ echo '
 <main  id="blur">
     <div class="spacer"></div>
     <div class="glass">
-        <form action="#" method="POST" class="header">
+        <div class="header">
+            <a href="reservations.php?day='.date("Y-m-d").'">
             <div class="big-text m-title">Kalendar rezervacija</div>
+            </a>
             <div class="date-wrapper">
                 <div class="arrow">
-                <button type="submit" name="DateNavButtonLeft" style="align-items: normal; background-color: transparent; border: none; box-sizing: border-box; color: inherit; cursor: default; display: inline; flex-shrink: 0; font: inherit; font-size: 100%; font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; margin: 0; outline: none; overflow: visible; padding: 0; text-align: start; text-decoration: none; text-indent: 0; text-overflow: clip; text-shadow: none; text-transform: none; white-space: normal; width: auto;">
+                <!--
+                <button type="submit" name="previous" style="align-items: normal; background-color: transparent; border: none; box-sizing: border-box; color: inherit; cursor: default; display: inline; flex-shrink: 0; font: inherit; font-size: 100%; font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; margin: 0; outline: none; overflow: visible; padding: 0; text-align: start; text-decoration: none; text-indent: 0; text-overflow: clip; text-shadow: none; text-transform: none; white-space: normal; width: auto;">
                 <lord-icon class="arrow-icon rotate-arrow"
                     src="../icon/dateArrow.json"
                     trigger="click"
@@ -239,10 +256,20 @@ echo '
                     colors="primary:#F89B3E">
                 </lord-icon>
                 </button>
+                -->
+                <a href="reservations.php?day='.$dayDisplayed.'&move=previous">
+                <lord-icon class="arrow-icon rotate-arrow"
+                    src="../icon/dateArrow.json"
+                    trigger="click"
+                    delay="500"
+                    colors="primary:#F89B3E">
+                </lord-icon>
+                </a>
                 </div>
                 <div class="big-text" id="TitleDate">'.$dayDisplayedMyFormat.'</div>
                 <div class="arrow">
-                <button type="submit" name="DateNavButtonRight" style="align-items: normal; background-color: transparent; border: none; box-sizing: border-box; color: inherit; cursor: default; display: inline; flex-shrink: 0; font: inherit; font-size: 100%; font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; margin: 0; outline: none; overflow: visible; padding: 0; text-align: start; text-decoration: none; text-indent: 0; text-overflow: clip; text-shadow: none; text-transform: none; white-space: normal; width: auto;">
+                <!--
+                <button type="submit" name="next" style="align-items: normal; background-color: transparent; border: none; box-sizing: border-box; color: inherit; cursor: default; display: inline; flex-shrink: 0; font: inherit; font-size: 100%; font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; margin: 0; outline: none; overflow: visible; padding: 0; text-align: start; text-decoration: none; text-indent: 0; text-overflow: clip; text-shadow: none; text-transform: none; white-space: normal; width: auto;">
                     <lord-icon class="arrow-icon"
                         src="../icon/dateArrow.json"
                         trigger="click"
@@ -250,10 +277,19 @@ echo '
                         colors="primary:#F89B3E">
                     </lord-icon>
                 </button>
+                -->
+                <a href="reservations.php?day='.$dayDisplayed.'&move=next">
+                <lord-icon class="arrow-icon"
+                    src="../icon/dateArrow.json"
+                    trigger="click"
+                    delay="500"
+                    colors="primary:#F89B3E">
+                </lord-icon>
+                </a>
                 </div>
             </div>
             <div class="big-text">'.$dayOfWeekCroatian.' / '.$dayOfWeekEnglish.'</div>
-        </form>
+        </div>
         <div class="grid">
             ';
 

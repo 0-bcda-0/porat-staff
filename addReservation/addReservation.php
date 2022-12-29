@@ -42,7 +42,8 @@ if(isset($_POST["btn_edit"]))
     if($result_upd)
     {
         // echo 'Podaci su uspjesno spremljeni';
-        header("Location: ../reservations/reservations.php");
+        header('Location: ../reservations/reservations.php?day='.date("Y-m-d", strtotime($StartDateTime)).'');
+        // header('Location: ../reservations/reservations.php');
         exit;
     }
     else
@@ -76,7 +77,8 @@ if(isset($_POST["btn_save"]))
   if($result_ins)
   {
     // echo 'Podaci su uspjesno spremljeni';
-    header("Location: ../reservations/reservations.php");
+    header('Location: ../reservations/reservations.php?day='.date("Y-m-d", strtotime($StartDateTime)).'');
+    // header("Location: ../reservations/reservations.php");
     exit;
   }
   else
