@@ -330,11 +330,15 @@ echo '
                     }
                 }
                 if (!$cardDisplayed) {
-                    echo '
+                    foreach($lookup as $key => $value)
+                    {
+                        if($value['Card'] == $cardIndex)
+                        {
+                            echo '
                             <div class="card disabled" id="card'.$cardIndex.'">
                             <div class="card-grid">
                                 <div class="col">
-                                    <div class="card-title"></div>
+                                    <div class="card-title">'.$value['BoatName'].'</div>
                                     <div class="card-time">Od: h do h</div>
                                     <div class="flex">
                                         <div>Status:</div>
@@ -371,6 +375,9 @@ echo '
                             </div>
                             </div>
                         ';
+                        }
+                    }
+                    
                 }
             }
             

@@ -411,36 +411,9 @@ a {
 }
 
 /* BlueBook */
-/* Testirano na 13" plavom laptopu */
-@media only screen and (max-width: 1366px) {
-  .big-text {
-    font-size: 25px;
-  }
-  /* Smanjenje razmaka izmedu elemenata */
-  .grid {
-    gap: 1rem;
-  }
-  .card-title {
-    font-size: 1.1rem;
-  }
-  .card-icon-size {
-    height: 100%;
-    width: 80px;
-  }
-  /* Micanje sredisnja dva reda informacija */
-  .col-hidden {
-    display: none;
-  }
-  .card-grid {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
-}
-
 /* TABLET */
 /* Testirano na Crnom Win10 tabletu */
-@media only screen and (max-width: 1920px) {
+@media only screen and (max-width: 2560px) {
   .big-text {
     font-size: 25px;
   }

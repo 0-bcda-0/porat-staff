@@ -174,7 +174,7 @@ echo '
 
           <!-- dropdown -->
           <div class="addBrodovi-dropdown-container">
-            <select id="addBrodovi-dropdown"  name="BoatID">
+            <select id="addBrodovi-dropdown"  name="BoatID" required>
               <option value="">Odaberite svoj brod...</option>';
 
               $query_boat = "SELECT * FROM boat ORDER BY IDBoat ASC";
@@ -208,7 +208,7 @@ echo '
 
             <div class="add-inputs-top">
               <label class="add-date-label" for="addreserv-datum-od">Od datuma:</label>
-              <input type="datetime-local" id="addreserv-datum-od"  class="inputField" name="StartDateTime" value="'.$StartDateTime.'">
+              <input type="datetime-local" id="addreserv-datum-od"  class="inputField" name="StartDateTime" value="'.$StartDateTime.'" required>
               <label class="add-date-label" for="addreserv-datum-do">Do datuma:</label>
               <input type="datetime-local" id="addreserv-datum-do" class="inputField" name="FinishDateTime" value="'.$FinishDateTime.'">
             </div>
@@ -237,15 +237,15 @@ echo '
             <div class="add-panel-left-content-bottom-left-side">
               <div>
                 <label for="add-input-ime">Ime: </label>
-                <input type="text" id="add-input-ime" class="add-input-field"  name="ClientName" value="'.$ClientName.'">
+                <input type="text" id="add-input-ime" class="add-input-field"  name="ClientName" value="'.$ClientName.'" required>
               </div>
               <div>
                 <label for="add-input-prezime">Prezime: </label>
-                <input type="text" id="add-input-prezime" class="add-input-field"  name="ClientSurname" value="'.$ClientSurname.'">
+                <input type="text" id="add-input-prezime" class="add-input-field"  name="ClientSurname" value="'.$ClientSurname.'" required>
               </div>
               <div>
                 <label for="add-input-mobitel">Mobitel: </label>
-                <input type="text" id="add-input-mobitel" class="add-input-field"  name="ClientTelNum" value="'.$ClientTelNum.'">
+                <input type="text" id="add-input-mobitel" class="add-input-field"  name="ClientTelNum" value="'.$ClientTelNum.'" required>
               </div>
               <div>
                 <label for="add-input-oib">OIB: </label>
@@ -256,7 +256,7 @@ echo '
               <!-- desna strana bottom contenta -->
             <div class="add-panel-left-content-bottom-right-side">
               <div class="addDjelatnici-dropdown-container">
-                <select id="addDjelatnici-dropdown"  class="inputField" name="EmployeeID">
+                <select id="addDjelatnici-dropdown"  class="inputField" name="EmployeeID" required>
                   <option value="">Rezervirao...</option>
                   ';
 
@@ -285,7 +285,7 @@ echo '
               </div>
               <div class="add-input-bottomright-container">
                 <label for="addInput-cijena">Cijena: </label>
-                <input type="number" id="addInput-cijena"   class="inputFieldNumbers" name="Price" value="'.$Price.'">
+                <input type="number" id="addInput-cijena"   class="inputFieldNumbers" name="Price" value="'.$Price.'" required>
               </div>
               <div class="add-input-bottomright-container">
                 <label for="addInput-akontacija">Akontacija: </label>
