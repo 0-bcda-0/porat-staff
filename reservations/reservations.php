@@ -138,18 +138,23 @@ for ($i=0; $i < count($booked_slots); $i++) {
     $booked_slots[$i]['FinishTimeH'] = date("H", strtotime($booked_slots[$i]['FinishTime']));
 
     // dodjeljujemo dodatna pomocna polja za lakse racunanje pozicije rezervacije
-    if ($booked_slots[$i]['FinishTimeH'] < 16) {
+    if ($booked_slots[$i]['FinishTimeH'] <= 16) {
         $booked_slots[$i]['TimeSlot'] = 1;
         $booked_slots[$i]['CardSlotPlace'] = 1;
     }
-    else if ($booked_slots[$i]['StartTimeH'] > 12 && $booked_slots[$i]['FinishTimeH'] < 22) {
+    else if ($booked_slots[$i]['StartTimeH'] > 12 && $booked_slots[$i]['FinishTimeH'] <= 23) {
         $booked_slots[$i]['TimeSlot'] = 2;
         $booked_slots[$i]['CardSlotPlace'] = 2;
     }
-    else if ($booked_slots[$i]['StartTimeH'] < 13 && $booked_slots[$i]['FinishTimeH'] < 22) {
+    else if ($booked_slots[$i]['FinishTimeH'] <= 23) {
         $booked_slots[$i]['TimeSlot'] = 3;
         $booked_slots[$i]['CardSlotPlace'] = 1;
     }
+    else {
+        $booked_slots[$i]['TimeSlot'] = 3;
+        $booked_slots[$i]['CardSlotPlace'] = 1;
+    }
+    
 
 
     // RUCNO IZRADENO
