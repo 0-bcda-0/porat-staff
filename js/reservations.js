@@ -9,7 +9,7 @@ function popup(json) {
     // Dohvacanje i toglanje popupa
     document.getElementById('popup').classList.toggle('active');
 
-    // convert the date to d.m.yyyy format
+    // Konvertiranje datuma u d.m.yyyy format
     var dateStart = new Date(reservation.StartDate);
     var dateStart = dateStart.getDate() + "." + (dateStart.getMonth() + 1) + "." + dateStart.getFullYear();
 
@@ -39,13 +39,15 @@ function popup(json) {
     document.getElementById('popupTelNum').innerHTML = '';
     document.getElementById('popupTelNum').appendChild(a);
 
+    //  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+    // Kreiranje Popupa za potvrdu brisanja rezervacije, te prosljedivanje ID-a rezervacije u reservations.php za brisanje
     document.getElementById('popup').insertAdjacentHTML('afterend', `
     <div id="deleteWindow">
     <div class="deleteWindow-rows">
         <div class="popup-title h4">Potvrdi brisanje rezervacije br. `+ reservation.IDReservation +`</div>
         <div class="row">
             <div class="popup-col-flex-buttons">
-                <a href="#" onclick="" class="button-delete-deletePopup">
+                <a href="reservations.php?IDr=`+ reservation.IDReservation +`&task=del"  class="button-delete-deletePopup">
                     <lord-icon
                         src="../icon/delete.json"
                         target=".button-delete-deletePopup"
@@ -70,8 +72,13 @@ function popup(json) {
             </div>
         </div>
     </div>
-</div>
+    </div>
     `);
+
+    //  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+    // Prosljedivanje ID-a rezervacije u addReservation.php za edit
+    document.querySelector('#editButton').href = `../addReservation/addReservation.php?IDr=`+ reservation.IDReservation +``;
+
 
 }
 

@@ -9,6 +9,28 @@ include("../PHP/db_connection.php");
 // Konfiguracija
 include("../PHP/conf.php");
 
+// ||||||||||||||||||||||||||||||||||||||| BRISANJE REZERVACIJE |||||||||||||||||||||||||||||||||||||||
+if(isset($_GET["task"]) && $_GET["task"] == "del")
+{
+    $IDr = (int)$_GET["IDr"];
+    $IDr = mysqli_real_escape_string($con, $IDr);
+
+    $query_del = "DELETE FROM reservation WHERE IDReservation = '$IDr'";
+
+    $result_del = mysqli_query($con, $query_del);
+
+    if($result_del)
+    {
+        // echo 'Podaci su uspjesno spremljeni';
+        header("Location: reservations.php");
+        exit;
+    }
+    else
+    {
+        echo 'Greska kod brisanja. Pokusajte ponovo';
+    }
+}
+
 
 // ||||||||||||||||||||||||||||||||||||||| HEADER VRIJME |||||||||||||||||||||||||||||||||||||||
 // vuce se trenutni datum
@@ -36,10 +58,10 @@ $query = "SELECT
             DATE(reservation.FinishDateTime) AS FinishDate,
             TIME(reservation.StartDateTime) AS StartTime,
             TIME(reservation.FinishDateTime) AS FinishTime,
-            client.Name AS ClientName,
-            client.Surname AS ClientSurname,
-            client.TelNum AS ClientTenNum,
-            client.OIB AS ClientOIB,
+            reservation.Name AS ClientName,
+            reservation.Surname AS ClientSurname,
+            reservation.TelNum AS ClientTenNum,
+            reservation.OIB AS ClientOIB,
             reservation.Price,
             reservation.AdvancePayment,
             reservation.PriceDiffrence,
@@ -47,7 +69,6 @@ $query = "SELECT
             FROM reservation 
             LEFT JOIN boat ON (reservation.BoatID = boat.IDBoat)
             LEFT JOIN employee ON (reservation.EmployeeID = employee.IDEmployee)
-            LEFT JOIN client ON (reservation.ClientID = client.IDClient)
             WHERE '$dayDisplayed' BETWEEN DATE(reservation.StartDateTime) AND DATE(reservation.FinishDateTime)
             ORDER BY boat.IDBoat ASC";
 
@@ -434,7 +455,7 @@ echo '
         <div id="popupEmployee">Jan</div>
     </div>
     <div class="popup-col-flex-buttons">
-        <div class="button-edit">
+        <a href="" class="button-edit" id="editButton">
             <lord-icon
                 src="../icon/editButton.json"
                 target=".button-edit"
@@ -444,7 +465,7 @@ echo '
                 style="width:20px;height:20px">
             </lord-icon>
             <div class="button-text">Uredi Rezervaciju</div>
-        </div>
+        </a>
     </div>
 </div>
 </div>
