@@ -126,7 +126,6 @@ a {
 /* Svojstvo koje ce se primjenjivati kada je brod rezerviran na cijeli dan */
 .disabled {
   background-color: rgba(164, 164, 164, 0.7);
-  pointer-events: none;
   border: none;
 }
 
@@ -359,6 +358,35 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 0.25rem;
+}
+
+.form-dateSubmit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-dateSubmit {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 25px;
+  color: #f89b3e;
+  border: 1px solid #f89b3e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-top: 10px;
+  background-color: transparent;
+}
+
+.input-dateSubmit{
+  background-color: transparent;
+  border: none;
+}
+
+::-webkit-calendar-picker-indicator {
+  filter: invert(.8);
 }
 
 .button-delete-deletePopup {

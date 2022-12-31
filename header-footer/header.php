@@ -2,7 +2,7 @@
 
 echo '
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">

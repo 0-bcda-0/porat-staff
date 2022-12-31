@@ -15,6 +15,8 @@ if (isset($_GET["move"]) && $_GET['move'] == "previous") {
     $dayDisplayed = date("Y-m-d", strtotime("+1 day", strtotime($_GET["day"])));
 } elseif (isset($_GET["day"])){
     $dayDisplayed = $_GET["day"];
+} elseif (isset($_POST["input-dateSubmit"])) {
+    $dayDisplayed = $_POST["input-dateSubmit"];
 } else {
     $dayDisplayed = date("Y-m-d");
 }
@@ -34,8 +36,6 @@ if(isset($_GET["task"]) && $_GET["task"] == "del")
 
     if($result_del)
     {
-        // echo 'Podaci su uspjesno spremljeni';
-        // header('Location: reservations.php?day='.$_GET["day"].'');
         header('Location: reservations.php');
         exit;
     }
@@ -47,8 +47,6 @@ if(isset($_GET["task"]) && $_GET["task"] == "del")
 
 
 // ||||||||||||||||||||||||||||||||||||||| HEADER VRIJME |||||||||||||||||||||||||||||||||||||||
-// vuce se trenutni datum
-// $dayDisplayed = date("2022-12-29");
 
 // pretvara se u format po zelji
 $dayDisplayedMyFormat = date("d.m.Y", strtotime($dayDisplayed));
@@ -59,8 +57,6 @@ $dayOfWeekEnglish = date("l", strtotime($dayDisplayedMyFormat));
 $CroatianDays = ['Nedjelja', 'Ponedjeljak', 'Utorak', 'Srijeda', 'Četvrtak', 'Petak', 'Subota'];
 // pretvaramo u timestamp, zatim sa "w" dobivamo broj dana u tjednu, a sa tim brojem dobivamo hrvatski naziv dana preko polja
 $dayOfWeekCroatian = $CroatianDays[date("w", strtotime($dayDisplayedMyFormat))];
-
-
 
 
 // ||||||||||||||||||||||||||||||||||||||| QUERY SELECT ||||||||||||||||||||||||||||||||||||||||
@@ -238,7 +234,6 @@ usort($booked_slots, function($a, $b) {
     return $a['CardNumber'] <=> $b['CardNumber'];
 });
 
-// Milim da mi u krajnjoj linijij ovo ne sluzi nicem osim za provjeru
 $cardFlag = array();
 
 // ||||||||||||||||||||||||||||||||||||||| ISPIS KALENDARA |||||||||||||||||||||||||||||||||||||
@@ -271,8 +266,11 @@ echo '
                 </lord-icon>
                 </a>
                 </div>
-                <div class="big-text" id="TitleDate">'.$dayDisplayedMyFormat.'</div>
-                <div class="arrow">
+                <form class="form-dateSubmit" method="POST" action="">
+                    <input type="date" id="input-dateSubmit" name="input-dateSubmit" value="'.$dayDisplayed.'" class="input-dateSubmit big-text">
+                    <input type="submit" name="input-buttonSubmit" value="Odaberi" class="button-dateSubmit">
+                </form>
+                    <div class="arrow">
                 <!--
                 <button type="submit" name="next" style="align-items: normal; background-color: transparent; border: none; box-sizing: border-box; color: inherit; cursor: default; display: inline; flex-shrink: 0; font: inherit; font-size: 100%; font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; margin: 0; outline: none; overflow: visible; padding: 0; text-align: start; text-decoration: none; text-indent: 0; text-overflow: clip; text-shadow: none; text-transform: none; white-space: normal; width: auto;">
                     <lord-icon class="arrow-icon"
@@ -407,11 +405,13 @@ echo '
                                     <div class="card-textrow">€</div>
                                 </div>
                                 <div class="col2">
+                                <a href="../addReservation/addReservation.php?BoatSelected='.$value['BoatName'].'&DateSelected='.$dayDisplayed.'">
                                     <lord-icon class="card-icon-size" onclick="popup()"
                                         src="../icon/boat.json"
                                         trigger="click"
                                         colors="primary:#121331,secondary:#f89b3e">
                                     </lord-icon>
+                                </a>
                                 </div>
                             </div>
                             </div>

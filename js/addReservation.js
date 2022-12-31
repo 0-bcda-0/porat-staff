@@ -25,4 +25,29 @@ function calculatePrice() {
   document.getElementById("calcOutput").innerHTML = document.getElementById("calcPrice").value * document.getElementById("calcDays").value + " €";
 }
 
+// 8. Funkcionalnost: Auto complete za unos Do datuma
+document.getElementById("addreserv-datum-od").addEventListener('change', function(event) {
+  // U dateObject spremamo vrijednost iz inputa
+  const dateObject = new Date(event.target.value);
+
+  // Dodajemo 19 sati i 00 minuta
+  dateObject.setHours(19);
+  dateObject.setMinutes(00);
+
+  // Pretvaramo u YYYY-MM-DDTHH:mm:ss.sssZ
+  const formattedDateTime = dateObject.toISOString();
+
+  const dateObject2 = new Date(formattedDateTime);
+
+  // Pretvaramo u YYYY-MM-DDTHH:mm
+  const formattedDateTime2 = `${dateObject.toISOString().split('T')[0]}T${dateObject2.toString().split(' ')[4]}`;
+
+
+  document.querySelector('#ad-radio-button').addEventListener('click', event => {
+    // One liner za provjeru da li je radio button checked i ako je, onda se vrijednost inputa Do postavlja na vrijednost inputa Od + 19 sati i 00 minuta
+    event.target.checked ? document.getElementById("addreserv-datum-do").value = formattedDateTime2 : null;
+  });
+
+});
+
 

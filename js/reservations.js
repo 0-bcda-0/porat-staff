@@ -110,13 +110,10 @@ window.addEventListener('scroll', function() {
 //  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 // 6. Funkcionalnost: Prikazivanje poruke za rotiranje uredjaja
 window.addEventListener('orientationchange', function() {
-    // Check the device orientation
     if (Math.abs(window.orientation) === 90) {
-      // Display "Orientation not supported" on the page
       window.location.href = '../rotated/rotated.html';
     }
     else {
-      // Clear the message from the page
       window.location.href = '../reservations/reservations.php';
     }
 });

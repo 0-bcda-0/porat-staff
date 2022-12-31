@@ -2,8 +2,8 @@
 
 include ("../header-footer/header.php");
 include ("../navigation/navigation.php");
-// Konekcija na bazu
 include("../PHP/db_connection.php");
+include("../PHP/conf.php");
 
 if(isset($_POST["btn_edit"]))
 {
@@ -41,9 +41,7 @@ if(isset($_POST["btn_edit"]))
 
     if($result_upd)
     {
-        // echo 'Podaci su uspjesno spremljeni';
         header('Location: ../reservations/reservations.php?day='.date("Y-m-d", strtotime($StartDateTime)).'');
-        // header('Location: ../reservations/reservations.php');
         exit;
     }
     else
@@ -76,9 +74,7 @@ if(isset($_POST["btn_save"]))
 
   if($result_ins)
   {
-    // echo 'Podaci su uspjesno spremljeni';
     header('Location: ../reservations/reservations.php?day='.date("Y-m-d", strtotime($StartDateTime)).'');
-    // header("Location: ../reservations/reservations.php");
     exit;
   }
   else
@@ -87,73 +83,103 @@ if(isset($_POST["btn_save"]))
   }
 }
 
-// ZA UREDIVANJE REZEZRVACIJE
+// Ako je stisnuta postojeca rezervacija
 if(isset($_GET["IDr"])){
-    $IDr = (int)$_GET["IDr"];
+  $IDr = (int)$_GET["IDr"];
 
-    // Ugradena funkcija da ne prolaze parametri koji nisu broj
-    // Security feature
-    $IDr = mysqli_real_escape_string($con, $IDr);
+  // Ugradena funkcija da ne prolaze parametri koji nisu broj
+  // Security feature
+  $IDr = mysqli_real_escape_string($con, $IDr);
 
-    $query = "SELECT 
-            reservation.IDReservation,
-            boat.Name AS BoatName,
-            boat.IDBoat AS IDBoat, 
-            reservation.StartDateTime,
-            reservation.FinishDateTime,
-            reservation.Name AS ClientName,
-            reservation.Surname AS ClientSurname,
-            reservation.TelNum AS ClientTenNum,
-            reservation.OIB AS ClientOIB,
-            reservation.Price,
-            reservation.AdvancePayment,
-            reservation.PriceDiffrence,
-            employee.Username AS Employee,
-            employee.IDEmployee AS IDEmployee
-            FROM reservation 
-            LEFT JOIN boat ON (reservation.BoatID = boat.IDBoat)
-            LEFT JOIN employee ON (reservation.EmployeeID = employee.IDEmployee)
-            WHERE IDReservation = '$IDr'";
+  $query = "SELECT 
+          reservation.IDReservation,
+          boat.Name AS BoatName,
+          boat.IDBoat AS IDBoat, 
+          reservation.StartDateTime,
+          reservation.FinishDateTime,
+          reservation.Name AS ClientName,
+          reservation.Surname AS ClientSurname,
+          reservation.TelNum AS ClientTenNum,
+          reservation.OIB AS ClientOIB,
+          reservation.Price,
+          reservation.AdvancePayment,
+          reservation.PriceDiffrence,
+          employee.Username AS Employee,
+          employee.IDEmployee AS IDEmployee
+          FROM reservation 
+          LEFT JOIN boat ON (reservation.BoatID = boat.IDBoat)
+          LEFT JOIN employee ON (reservation.EmployeeID = employee.IDEmployee)
+          WHERE IDReservation = '$IDr'";
 
-    $result = mysqli_query($con, $query);
+  $result = mysqli_query($con, $query);
 
-    $reservation = mysqli_fetch_assoc($result);
+  $reservation = mysqli_fetch_assoc($result);
 
-    $IDReservation = $reservation['IDReservation'];
-    $BoatName = $reservation['BoatName'];
-    $IDBoat = $reservation['IDBoat'];
-    $StartDateTime = $reservation['StartDateTime'];
-    $FinishDateTime = $reservation['FinishDateTime'];
-    $ClientName = $reservation['ClientName'];
-    $ClientSurname = $reservation['ClientSurname'];
-    $ClientTelNum = $reservation['ClientTenNum'];
-    $ClientOIB = $reservation['ClientOIB'];
-    $Price = $reservation['Price'];
-    $AdvancePayment = $reservation['AdvancePayment'];
-    $PriceDiffrence = $reservation['PriceDiffrence'];
-    $IDEmployee = $reservation['IDEmployee'];
-    $Employee = $reservation['Employee'];
+  $IDReservation = $reservation['IDReservation'];
+  $BoatName = $reservation['BoatName'];
+  $IDBoat = $reservation['IDBoat'];
+  $StartDateTime = $reservation['StartDateTime'];
+  $FinishDateTime = $reservation['FinishDateTime'];
+  $ClientName = $reservation['ClientName'];
+  $ClientSurname = $reservation['ClientSurname'];
+  $ClientTelNum = $reservation['ClientTenNum'];
+  $ClientOIB = $reservation['ClientOIB'];
+  $Price = $reservation['Price'];
+  $AdvancePayment = $reservation['AdvancePayment'];
+  $PriceDiffrence = $reservation['PriceDiffrence'];
+  $IDEmployee = $reservation['IDEmployee'];
+  $Employee = $reservation['Employee'];
 
-    $btn = 'btn_edit';
+  $btn = 'btn_edit';
 
 }
-else{
-    $IDReservation = "";
-    $BoatName = "";
-    $IDBoat = "";
-    $StartDateTime = "";
-    $FinishDateTime = "";
-    $ClientName = "";
-    $ClientSurname = "";
-    $ClientTelNum = "";
-    $ClientOIB = "";
-    $Price = "";
-    $AdvancePayment = "";
-    $PriceDiffrence = "";
-    $IDEmployee = "";
-    $Employee = "";
+// Ako je stisnuta prazna kartica
+elseif (isset($_GET["BoatSelected"]) && isset($_GET["DateSelected"])) {
+  $date = $_GET['DateSelected'];
+  $convertedDate = $date . "T08:00";
 
-    $btn = 'btn_save';
+  foreach($lookup as $item) {
+    if($item['BoatName'] == $_GET['BoatSelected']) {
+      $boatid = $item['IDBoat'];
+    }
+  }
+  
+
+  $IDReservation = "";
+  $BoatName = "";
+  $IDBoat = $boatid;
+  $StartDateTime = $convertedDate;
+  $FinishDateTime = "";
+  $ClientName = "";
+  $ClientSurname = "";
+  $ClientTelNum = "";
+  $ClientOIB = "";
+  $Price = "";
+  $AdvancePayment = "";
+  $PriceDiffrence = "";
+  $IDEmployee = "";
+  $Employee = "";
+
+  $btn = 'btn_save';
+}
+// Ako je samo otvorena addReservation.php
+else{
+  $IDReservation = "";
+  $BoatName = "";
+  $IDBoat = "";
+  $StartDateTime = "";
+  $FinishDateTime = "";
+  $ClientName = "";
+  $ClientSurname = "";
+  $ClientTelNum = "";
+  $ClientOIB = "";
+  $Price = "";
+  $AdvancePayment = "";
+  $PriceDiffrence = "";
+  $IDEmployee = "";
+  $Employee = "";
+
+  $btn = 'btn_save';
 }
 
 echo '
@@ -212,11 +238,11 @@ echo '
               <label class="add-date-label" for="addreserv-datum-od">Od datuma:</label>
               <input type="datetime-local" id="addreserv-datum-od"  class="inputField" name="StartDateTime" value="'.$StartDateTime.'" required>
               <label class="add-date-label" for="addreserv-datum-do">Do datuma:</label>
-              <input type="datetime-local" id="addreserv-datum-do" class="inputField" name="FinishDateTime" value="'.$FinishDateTime.'">
+              <input type="datetime-local" id="addreserv-datum-do" class="inputField" name="FinishDateTime" value="'.$FinishDateTime.'" required>
             </div>
 
             <div class="add-radio-button-container">
-              <label class="add-date-label" for="ad-radio-button">Vraćam brod isti dan </label>
+              <label class="add-date-label" for="ad-radio-button">Jednodnevno / Cijelodnevno </label>
               <input type="checkbox" id="ad-radio-button">
             </div>
 
