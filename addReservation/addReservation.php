@@ -288,7 +288,7 @@ echo '
                   <option value="">Rezervirao...</option>
                   ';
 
-                  $query_employee = "SELECT * FROM employee ORDER BY IDEmployee ASC";
+                  $query_employee = "SELECT * FROM employee WHERE Username != 'Admin' ORDER BY IDEmployee ASC";
                   $result_employee = mysqli_query($con, $query_employee);
 
                   while($row = mysqli_fetch_assoc($result_employee))

@@ -1,6 +1,9 @@
 <?php
 
-session_start();
+include("../header-footer/header.php");
+include("../navigation/navigation.php");
+
+include("../PHP/db_connection.php");
 
 
 if($_SESSION["Level"] === '0')
@@ -9,10 +12,23 @@ if($_SESSION["Level"] === '0')
 }
 else{
 
-    include("../header-footer/header.php");
-    include("../navigation/navigation.php");
-    
-    include("../PHP/db_connection.php");
+    // TODO
+    // napraviti isto ko i sa edit i delete za employee
+
+    if(isset($_POST["btnNWD"])){
+        if($_SESSION["NWD"] == "js"){
+            $_SESSION["NWD"] = "jquery";
+            $_SESSION["NWDScript-reservations"] = '<script src="../jquery/jquery-3.4.1.min.js"></script><script src="../jquery/Qreservations.js"></script>';
+            $_SESSION["NWDScript-addReservation"] = '<script src="../jquery/jquery-3.4.1.min.js"></script><script src="../jquery/QaddReservation.js"></script>';
+        }
+        else{
+            $_SESSION["NWD"] = "js";
+            $_SESSION["NWDScript-reservations"] = '<script src="../js/reservations.js"></script>';
+            $_SESSION["NWDScript-addReservation"] = '<script src="../js/addReservation.js"></script>';
+        }
+    }
+
+
 
 
     // Query
@@ -219,7 +235,7 @@ else{
                 <div class="set-title">Tablica "boat"</div>
                 <form method="POST" action="" class="set-formContainer">
                     <div class="set-inputFlex">
-                        <label for="boatName" class="col-white">Naziv broda:</label>
+                        <label for="boatName" class="col-black">Naziv broda:</label>
                         <input type="text" id="boatName" name="boatName" value="'.$Name.'" class="set-inputField">
                     </div>
                     <input type="submit" value="Spremi" class="add-button-rezerviraj" name="'.$btnBoatForm.'">
@@ -257,19 +273,19 @@ else{
             <div class="set-title">Tablica "employee"</div>
                 <form method="POST" action="" class="set-formContainer">
                     <div class="set-inputFlex">
-                        <label for="username" class="col-white">Username:</label>
+                        <label for="username" class="col-black">Username:</label>
                         <input type="text" id="username" name="username" value="'.$Username.'" class="set-inputField">
                     </div>
                     <div class="set-inputFlex">
-                        <label for="pin" class="col-white">Pin:</label>
+                        <label for="pin" class="col-black">Pin:</label>
                         <input type="text" id="pin" name="pin" value="'.$Pin.'" class="set-inputField ">
                     </div>
                     <div class="set-inputFlex">
-                        <label for="level" class="col-white">Level:</label>
+                        <label for="level" class="col-black">Level:</label>
                         <input type="text" id="level" name="level" value="'.$Level.'" class="set-inputField ">
                     </div>
                     <div class="set-inputFlex">
-                        <div class="col-white">Levels: 0 - Admin, 1 - User</div>
+                        <div class="col-black">Levels: 0 - Admin, 1 - User</div>
                     </div>
                     <input type="submit" value="Spremi" class="add-button-rezerviraj" name="'.$btnEmployeeForm.'">
                 </form>
@@ -312,18 +328,32 @@ else{
 
                 </div>
             </div>
+            <div class="set-flex">
+                <div class="set-container">
+                    <div class="set-title">WPT Script Switcher '.$_SESSION['NWD'].'</div>
+                    <form method="POST" action="">
+                        <div class="set-flex">
+                            <div class="set-switch-text">JavaScript</div>
+                            <label class="switch">';
+                            if($_SESSION['NWD'] === 'js'){
+                                echo '<input type="checkbox" id="toggle-input">';
+                            }
+                            else{
+                                echo '<input type="checkbox" id="toggle-input" checked>';
+                            }
+                            
+                                echo '
+                                <span class="slider round"></span>
+                            </label>
+                            <div class="set-switch-text">JQuery</div>
+                            <input type="submit" value="Spremi" class="add-button-rezerviraj" name="btnNWD">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
         </div>
-        <!--
-        <div class="set-title">WPT Script Switcher</div>
-        <div class="set-flex">
-            <div class="set-switch-text">JavaScript</div>
-            <label class="switch">
-                <input type="checkbox" id="toggle-input">
-                <span class="slider round"></span>
-            </label>
-            <div class="set-switch-text">JQuery</div>
-        </div>
-        -->
+        
         <div class="spacer spacer-bottom"></div>
     </main>
     ';

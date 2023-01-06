@@ -1,11 +1,14 @@
 <?php
 
+echo $_SESSION['NWDScript-reservations'];
+
 echo '
 <!-- Za potrebe testiranja JavaScripta, te JQueryja ukljucite jednu od navedenih skripti -->
 
+  <!--
   <script src="../jquery/jquery-3.4.1.min.js"></script>
   <script src="../jquery/Qreservations.js"></script>
-
+  -->
 
 <!--
   <script src="../js/reservations.js"></script>

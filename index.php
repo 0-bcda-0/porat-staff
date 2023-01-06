@@ -2,6 +2,10 @@
 
 session_start();
 
+$_SESSION['NWD'] = 'js';
+$_SESSION["NWDScript-reservations"] = '<script src="../js/reservations.js"></script>';
+$_SESSION["NWDScript-addReservation"] = '<script src="../js/addReservation.js"></script>';
+
 include("PHP/db_connection.php");
 
 // if(isset($_POST['username'])){
