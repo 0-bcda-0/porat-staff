@@ -244,7 +244,7 @@ else{
                 <table border="1">
                 <thead>
                     <tr>
-                        <th>IDBoat</th>
+                        <th>ID</th>
                         <th>Name</th>
                         <th>Akcija</th>
                     </tr>
@@ -269,68 +269,65 @@ else{
                 </tbody>
                 </table>
             </div>
-            <div class="set-container">
-            <div class="set-title">Tablica "employee"</div>
-                <form method="POST" action="" class="set-formContainer">
-                    <div class="set-inputFlex">
-                        <label for="username" class="col-black">Username:</label>
-                        <input type="text" id="username" name="username" value="'.$Username.'" class="set-inputField">
+            <div>
+                <div class="set-container fullWidth">
+                    <div class="set-title">Tablica "employee"</div>
+                        <form method="POST" action="" class="set-formContainer">
+                            <div class="set-inputFlex">
+                                <label for="username" class="col-black">Username:</label>
+                                <input type="text" id="username" name="username" value="'.$Username.'" class="set-inputField">
+                            </div>
+                            <div class="set-inputFlex">
+                                <label for="pin" class="col-black">Pin:</label>
+                                <input type="text" id="pin" name="pin" value="'.$Pin.'" class="set-inputField ">
+                            </div>
+                            <div class="set-inputFlex">
+                                <label for="level" class="col-black">Level:</label>
+                                <input type="text" id="level" name="level" value="'.$Level.'" class="set-inputField ">
+                            </div>
+                            <div class="set-inputFlex">
+                                <div class="col-black">Levels: 0 - Admin, 1 - User</div>
+                            </div>
+                            <input type="submit" value="Spremi" class="add-button-rezerviraj" name="'.$btnEmployeeForm.'">
+                        </form>
+
+                        <table border="1">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Username</th>
+                                <th>Pin</th>
+                                <th>Level</th>
+                                <th>Akcija</th>
+                            </tr>
+                        </thead>';
+                        while($rowEmployee = mysqli_fetch_array($resultEmployee)){
+
+                            $IDEmployee = $rowEmployee['IDEmployee'];
+                            $Username = $rowEmployee['Username'];
+                            $Pin = $rowEmployee['Pin'];
+                            $Level = $rowEmployee['Level'];
+
+                            echo '
+                            <tr>
+                                <td>'.$IDEmployee.'</td>
+                                <td>'.$Username.'</td>
+                                <td>'.$Pin.'</td>
+                                <td>'.$Level.'</td>
+                                <td>
+                                    <a href="settings.php?IDEmployee='.$IDEmployee.'">Uredi</a>
+                                    <a href="settings.php?IDEmployee='.$IDEmployee.'&task=delEmployee">Obriši</a>
+                                </td>
+                            </tr>
+                            ';
+                        }
+                        echo '
+                        <tbody>
+                        </tbody>
+                        </table>
                     </div>
-                    <div class="set-inputFlex">
-                        <label for="pin" class="col-black">Pin:</label>
-                        <input type="text" id="pin" name="pin" value="'.$Pin.'" class="set-inputField ">
-                    </div>
-                    <div class="set-inputFlex">
-                        <label for="level" class="col-black">Level:</label>
-                        <input type="text" id="level" name="level" value="'.$Level.'" class="set-inputField ">
-                    </div>
-                    <div class="set-inputFlex">
-                        <div class="col-black">Levels: 0 - Admin, 1 - User</div>
-                    </div>
-                    <input type="submit" value="Spremi" class="add-button-rezerviraj" name="'.$btnEmployeeForm.'">
-                </form>
-
-                <table border="1">
-                <thead>
-                    <tr>
-                        <th>IDEmployee</th>
-                        <th>Username</th>
-                        <th>Pin</th>
-                        <th>Level</th>
-                        <th>Akcija</th>
-                    </tr>
-                </thead>';
-                while($rowEmployee = mysqli_fetch_array($resultEmployee)){
-
-                    $IDEmployee = $rowEmployee['IDEmployee'];
-                    $Username = $rowEmployee['Username'];
-                    $Pin = $rowEmployee['Pin'];
-                    $Level = $rowEmployee['Level'];
-
-                    echo '
-                    <tr>
-                        <td>'.$IDEmployee.'</td>
-                        <td>'.$Username.'</td>
-                        <td>'.$Pin.'</td>
-                        <td>'.$Level.'</td>
-                        <td>
-                            <a href="settings.php?IDEmployee='.$IDEmployee.'">Uredi</a>
-                            <a href="settings.php?IDEmployee='.$IDEmployee.'&task=delEmployee">Obriši</a>
-                        </td>
-                    </tr>
-                    ';
-                }
-                echo '
-                <tbody>
-                </tbody>
-                </table>
-
-
-                </div>
-            </div>
-            <div class="set-flex">
-                <div class="set-container">
-                    <div class="set-title">WPT Script Switcher '.$_SESSION['NWD'].'</div>
+                    <div class="set-container fullWidth">
+                    <div class="set-title">WPT Script Switcher</div>
                     <form method="POST" action="">
                         <div class="set-flex">
                             <div class="set-switch-text">JavaScript</div>
@@ -350,6 +347,11 @@ else{
                         </div>
                     </form>
                 </div>
+                </div>
+                
+            </div>
+            <div class="set-flex">
+                
             </div>
 
         </div>
