@@ -26,7 +26,7 @@ function calculatePrice() {
 }
 
 // 8. Funkcionalnost: Auto complete za unos Do datuma
-document.getElementById("addreserv-datum-od").addEventListener('change', function(event) {
+document.getElementById("addreserv-datum-od").addEventListener('click', function(event) {
   // U dateObject spremamo vrijednost iz inputa
   const dateObject = new Date(event.target.value);
 

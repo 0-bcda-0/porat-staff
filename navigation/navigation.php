@@ -39,7 +39,7 @@ echo '
           </li>
           <!-- Setting -->
           <li class="nav-item bottom" id="themeButton">
-            <a href="#" class="nav-linkm">
+            <a href="../settings/settings.php" class="nav-linkm">
               <lord-icon class="icon"
                   src="../icon/settings.json"
                   target="a.nav-linkm"
@@ -47,7 +47,7 @@ echo '
                   delay="500"
                   colors="primary:#F89B3E">
               </lord-icon>
-              <span class="link-text">Tema</span>
+              <span class="link-text">Postavke</span>
             </a>
           </li>
           <!-- Korisnik -->
@@ -61,7 +61,7 @@ echo '
                   colors="primary:#F89B3E"
                   state="hover">
               </lord-icon>
-              <span class="link-text">Korisnik</span>
+              <span class="link-text">Odjava</span>
             </a>
           </li>
         </ul>

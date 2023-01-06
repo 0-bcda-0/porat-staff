@@ -99,19 +99,19 @@ echo'
 </html>
 ';
 
-$stmt = mysqli_prepare($con, "SELECT * FROM employee WHERE Username = ? AND Pin = ? LIMIT 1");
-mysqli_stmt_bind_param($stmt, "ss", $username, $pin);
-mysqli_stmt_execute($stmt);
-$result = mysqli_stmt_get_result($stmt);
-
 if (isset($_POST['username'])) {
     $username = $_POST['username'];
     $pin = $_POST['pin'];
 
-    $stmt = mysqli_prepare($con, "SELECT * FROM employee WHERE Username = ? AND Pin = ? LIMIT 1");
+    $query = "SELECT * FROM employee WHERE Username = ? AND Pin = ? LIMIT 1";
+    $stmt = mysqli_prepare($con, $query);
+
     mysqli_stmt_bind_param($stmt, "ss", $username, $pin);
+
     mysqli_stmt_execute($stmt);
+
     $result = mysqli_stmt_get_result($stmt);
+
 
     if ($result !== false && mysqli_num_rows($result) == 1) {
         header("Location: reservations/reservations.php");

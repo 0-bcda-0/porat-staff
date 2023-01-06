@@ -417,7 +417,7 @@ echo '
         </div>
     </div>
 </div>
-<div class="spacer"></div>
+<div class="spacer spacer-bottom"></div>
 
 </main>
 

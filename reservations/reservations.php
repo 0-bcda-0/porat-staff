@@ -242,25 +242,13 @@ echo '
     <div class="spacer"></div>
     <div class="glass">
         <div class="header">
-            <a href="reservations.php?day='.date("Y-m-d").'">
-            <div class="big-text m-title">Kalendar rezervacija</div>
-            </a>
+            <a href="reservations.php" class="big-text m-title">Kalendar Rezervacija</a>
             <div class="date-wrapper">
                 <div class="arrow">
-                <!--
-                <button type="submit" name="previous" style="align-items: normal; background-color: transparent; border: none; box-sizing: border-box; color: inherit; cursor: default; display: inline; flex-shrink: 0; font: inherit; font-size: 100%; font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; margin: 0; outline: none; overflow: visible; padding: 0; text-align: start; text-decoration: none; text-indent: 0; text-overflow: clip; text-shadow: none; text-transform: none; white-space: normal; width: auto;">
-                <lord-icon class="arrow-icon rotate-arrow"
-                    src="../icon/dateArrow.json"
-                    trigger="click"
-                    delay="500"
-                    colors="primary:#F89B3E">
-                </lord-icon>
-                </button>
-                -->
                 <a href="reservations.php?day='.$dayDisplayed.'&move=previous">
                 <lord-icon class="arrow-icon rotate-arrow"
                     src="../icon/dateArrow.json"
-                    trigger="click"
+                    trigger="loop-on-hover"
                     delay="500"
                     colors="primary:#F89B3E">
                 </lord-icon>
@@ -271,27 +259,17 @@ echo '
                     <input type="submit" name="input-buttonSubmit" value="Odaberi" class="button-dateSubmit">
                 </form>
                     <div class="arrow">
-                <!--
-                <button type="submit" name="next" style="align-items: normal; background-color: transparent; border: none; box-sizing: border-box; color: inherit; cursor: default; display: inline; flex-shrink: 0; font: inherit; font-size: 100%; font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; margin: 0; outline: none; overflow: visible; padding: 0; text-align: start; text-decoration: none; text-indent: 0; text-overflow: clip; text-shadow: none; text-transform: none; white-space: normal; width: auto;">
-                    <lord-icon class="arrow-icon"
-                        src="../icon/dateArrow.json"
-                        trigger="click"
-                        delay="500"
-                        colors="primary:#F89B3E">
-                    </lord-icon>
-                </button>
-                -->
                 <a href="reservations.php?day='.$dayDisplayed.'&move=next">
                 <lord-icon class="arrow-icon"
                     src="../icon/dateArrow.json"
-                    trigger="click"
+                    trigger="loop-on-hover"
                     delay="500"
                     colors="primary:#F89B3E">
                 </lord-icon>
                 </a>
                 </div>
             </div>
-            <div class="big-text">'.$dayOfWeekCroatian.' / '.$dayOfWeekEnglish.'</div>
+            <div class="big-text fix-width">'.$dayOfWeekCroatian.' / '.$dayOfWeekEnglish.'</div>
         </div>
         <div class="grid">
             ';
@@ -357,7 +335,7 @@ echo '
                                             EOT;
                                     echo '
                                         src="../icon/boat.json"
-                                        trigger="click"
+                                        trigger="loop-on-hover"
                                         colors="primary:#121331,secondary:#f89b3e">
                                     </lord-icon>
                                 </div>
@@ -408,7 +386,7 @@ echo '
                                 <a href="../addReservation/addReservation.php?BoatSelected='.$value['BoatName'].'&DateSelected='.$dayDisplayed.'">
                                     <lord-icon class="card-icon-size" onclick="popup()"
                                         src="../icon/boat.json"
-                                        trigger="click"
+                                        trigger="loop-on-hover"
                                         colors="primary:#121331,secondary:#f89b3e">
                                     </lord-icon>
                                 </a>

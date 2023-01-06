@@ -116,5 +116,5 @@ window.addEventListener('orientationchange', function() {
     else {
       window.location.href = '../reservations/reservations.php';
     }
-});
-  
+}); 
+

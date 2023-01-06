@@ -41,6 +41,17 @@ a {
   font-size: 2rem;
 }
 
+a:hover {
+  color:#f89b3e; 
+  text-decoration:none; 
+  cursor:pointer;  
+}
+
+.fix-width{
+  width: 350px;
+  text-align: end;
+}
+
 .submitButton {
   align-items: normal;
   background-color: transparent;
@@ -513,6 +524,9 @@ a {
     font-size: 20px;
     color: #e7f7f7;
   }
+  .fix-width {
+    text-align: center;
+  }
   .m-title {
     font-size: 25px;
   }
@@ -526,8 +540,8 @@ a {
   .arrow-icon {
     width: 50px;
     height: 50px;
-    margin-right: 3rem;
-    margin-left: 3rem;
+    margin-right: 1.7rem;
+    margin-left: 1.7rem;
   }
   .grid {
     grid-template-columns: 1fr;
