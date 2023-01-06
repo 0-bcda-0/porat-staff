@@ -1,8 +1,6 @@
 // 1. Funkcionalnost: Popup za prikaz svih podataka o rezervaciji
 // 4. Funkcionalnost: Otvaranje telefona na klik broja telefona
 function popup(json) {
-    // console.log("Povezao sam se sa popup.js");
-
     // Parsiranje jsona u varijablu
     var reservation = JSON.parse(json);
     
@@ -44,7 +42,7 @@ function popup(json) {
     document.getElementById('popup').insertAdjacentHTML('afterend', `
     <div id="deleteWindow">
     <div class="deleteWindow-rows">
-        <div class="popup-title h4">Potvrdi brisanje rezervacije br. `+ reservation.IDReservation +`</div>
+        <div class="popup-title h4">Potvrdi brisasssssnje rezervacije br. `+ reservation.IDReservation +`</div>
         <div class="row">
             <div class="popup-col-flex-buttons">
                 <a href="reservations.php?IDr=`+ reservation.IDReservation +`&task=del&day=`+ reservation.StartDate +`"  class="button-delete-deletePopup">
@@ -78,8 +76,6 @@ function popup(json) {
     //  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
     // Prosljedivanje ID-a rezervacije u addReservation.php za edit
     document.querySelector('#editButton').href = `../addReservation/addReservation.php?IDr=`+ reservation.IDReservation +``;
-
-
 }
 
 function delete_popup() {
@@ -117,4 +113,70 @@ window.addEventListener('orientationchange', function() {
       window.location.href = '../reservations/reservations.php';
     }
 }); 
+
+//  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+// 9. Funkcionalnost: Prikaz Countdown timera, te refresh stranice kada timer istekne
+(function refreshPage() {
+    // Admin mijenja vrijeme u minutama
+    var timeoutInMinutes = 5;
+
+    // Pretvaramo u milisekunde
+    var timeout = timeoutInMinutes * 60 * 1000;
+
+    // Refresh stranice
+    setTimeout(function() {
+        window.location.reload();
+    }, timeout);
+
+    // Pretvaranje u minute i sekunde (za ispis)
+    var minutes = Math.floor(timeout / 60000); // minutes
+    var seconds = Math.floor((timeout % 60000) / 1000); // seconds
+
+    // Dodavanje nule ako je broj manji od 10
+    if (seconds < 10) {
+        seconds = "0" + seconds;
+    }
+
+    // Ispis u html
+    document.getElementById('countdown').innerHTML = minutes + ":" + seconds;
+})();
+
+(function refreshCountdown() {
+    // Funkcija koja se poziva svakih 1000ms (1s)
+    setInterval(function() {
+        // Uzimanje vrijednosti iz html-a (namjesteno u prijasnjoj funkciji)
+        var countdown = document.getElementById('countdown');
+        var time = countdown.innerHTML;
+
+        // Odvajanje minuta i sekundi
+        var parts = time.split(":");
+        var minutes = parseInt(parts[0], 10);
+        var seconds = parseInt(parts[1], 10);
+
+        // Konvertiranje u sekunde
+        var totalSeconds = (minutes * 60) + seconds;
+
+        // Oduzimanje jedne sekunde
+        totalSeconds--;
+
+        // Od oduzetog vremena izvlacimo minute i sekunde
+        var minutesD = Math.floor(totalSeconds / 60);
+        var secondsD = totalSeconds % 60;
+
+        // Dodavanje nule ako je broj manji od 10
+        if (secondsD < 10) {
+            secondsD = "0" + secondsD;
+        }
+
+        // Formatiranje za ispis u HTML
+        var formattedTime = minutesD + ":" + secondsD;
+        countdown.innerHTML = formattedTime;
+
+        // Ako je vrijeme isteklo, ispisivanje poruke
+        if (totalSeconds == 0) {
+            countdown.innerHTML = "Refreshing...";
+        }
+    }, 1000);
+})();
+
 

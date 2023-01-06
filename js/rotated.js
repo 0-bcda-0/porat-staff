@@ -1,7 +1,7 @@
 window.addEventListener('orientationchange', function() {
-    // Check the device orientation
+    // Provjera orijentacije uredjaja
     if (Math.abs(window.orientation) === 0) {
-      // Redirect the user to a different website
+      // Preusmjeravanje korisnika na drugu stranicu
       window.location.href = '../reservations/reservations.php';
     }
 });

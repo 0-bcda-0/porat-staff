@@ -242,7 +242,10 @@ echo '
     <div class="spacer"></div>
     <div class="glass">
         <div class="header">
-            <a href="reservations.php" class="big-text m-title">Kalendar Rezervacija</a>
+            <div class="flex-column">
+                <a href="reservations.php" class="big-text m-title">Kalendar Rezervacija</a>
+                <div class="big-text m-title" id="countdown"></div>
+            </div>
             <div class="date-wrapper">
                 <div class="arrow">
                 <a href="reservations.php?day='.$dayDisplayed.'&move=previous">

@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 include("PHP/db_connection.php");
 
 // if(isset($_POST['username'])){
@@ -56,13 +58,13 @@ echo'
             <div class="box">
             <form method="POST" action="#">
                 <div class="field">
-                    <input type="text" name="username" class="input" placeholder=" " value="Pero" />
-                    <label for="username" class="label">Username</label>
+                    <input type="text" name="frm_u2" class="input" placeholder=" " value="Admin" />
+                    <label for="frm_u2" class="label">Username</label>
                 </div>
         
                 <div class="field">
-                    <input type="password" name="pin" class="input" placeholder=" "pattern="\d{6}" maxlength="6" inputmode="numeric" value="123456"/>
-                    <label for="pin" class="label">Pin</label>
+                    <input type="password" name="bgh_u1" class="input" placeholder=" "pattern="\d{6}" maxlength="6" inputmode="numeric" value="123456"/>
+                    <label for="bgh_u1" class="label">Pin</label>
                 </div>
                 <div class="buttonFrame">
                     <!-- a element je privremen dok se ne poveze PHP i SQL -->
@@ -99,26 +101,29 @@ echo'
 </html>
 ';
 
-if (isset($_POST['username'])) {
-    $username = $_POST['username'];
-    $pin = $_POST['pin'];
+if (isset($_POST['frm_u2'])) {
+    $username = $_POST['frm_u2'];
+    $pin = $_POST['bgh_u1'];
 
-    $query = "SELECT * FROM employee WHERE Username = ? AND Pin = ? LIMIT 1";
-    $stmt = mysqli_prepare($con, $query);
+    // $query = "SELECT * FROM employee WHERE Username = ? AND Pin = ? LIMIT 1";
+    $query = "SELECT * FROM employee WHERE Username = '".$username."' AND Pin = '".$pin."'";
+    $result = mysqli_query($con, $query);
 
-    mysqli_stmt_bind_param($stmt, "ss", $username, $pin);
+    $br_rows = mysqli_num_rows($result);
 
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
-
-
-    if ($result !== false && mysqli_num_rows($result) == 1) {
-        header("Location: reservations/reservations.php");
-    } else {
+    if($br_rows <= 0)
+    {
         echo '<script type="text/javascript">';
         echo 'popup();';
         echo '</script>';
+    }
+    else
+    {
+        $korisnik = mysqli_fetch_assoc($result);
+
+        $_SESSION['Level'] = $korisnik["Level"];
+        // print_r($_SERVER['Level']);
+        header("Location: reservations/reservations.php");
     }
 }
 

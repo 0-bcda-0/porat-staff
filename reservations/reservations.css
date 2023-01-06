@@ -13,6 +13,11 @@ a {
   height: 1rem;
 }
 
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
 /* Stakleni container */
 .glass {
   border-radius: 1rem;
