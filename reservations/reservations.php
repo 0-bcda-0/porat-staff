@@ -8,7 +8,11 @@ include ("../navigation/navigation.php");
 include("../PHP/db_connection.php");
 // Konfiguracija
 include("../PHP/conf.php");
+// Functions
+include("../PHP/functions.php");
 
+
+// ||||||||||||||||||||||||||||||||||||||| PRETHODNI I SLJEDECI DAN |||||||||||||||||||||||||||||||||||||||
 if (isset($_GET["move"]) && $_GET['move'] == "previous") {
     $dayDisplayed = date("Y-m-d", strtotime("-1 day", strtotime($_GET["day"])));
 } elseif (isset($_GET["move"]) &&$_GET['move'] == "next") {
@@ -49,14 +53,11 @@ if(isset($_GET["task"]) && $_GET["task"] == "del")
 // ||||||||||||||||||||||||||||||||||||||| HEADER VRIJME |||||||||||||||||||||||||||||||||||||||
 
 // pretvara se u format po zelji
-$dayDisplayedMyFormat = date("d.m.Y", strtotime($dayDisplayed));
+$dayDisplayedMyFormat = dateToCroatianFormat($dayDisplayed);
 
-// stvara se varijabla koja ce se koristiti za prikaz dana u engleskom formatu
-$dayOfWeekEnglish = date("l", strtotime($dayDisplayedMyFormat));
-// stvara se polje hrvatskih dana
-$CroatianDays = ['Nedjelja', 'Ponedjeljak', 'Utorak', 'Srijeda', 'Četvrtak', 'Petak', 'Subota'];
-// pretvaramo u timestamp, zatim sa "w" dobivamo broj dana u tjednu, a sa tim brojem dobivamo hrvatski naziv dana preko polja
-$dayOfWeekCroatian = $CroatianDays[date("w", strtotime($dayDisplayedMyFormat))];
+$dayOfWeekEnglish = dateToDaysOfWeekEnglish($dayDisplayedMyFormat);
+
+$dayOfWeekCroatian = dateToDaysOfWeekCroatian($dayDisplayedMyFormat);
 
 
 // ||||||||||||||||||||||||||||||||||||||| QUERY SELECT ||||||||||||||||||||||||||||||||||||||||
@@ -127,112 +128,8 @@ while($row = mysqli_fetch_assoc($result))
 
 }
 
-
-for ($i=0; $i < count($booked_slots); $i++) { 
-    // cupamo samo sate iz vremena
-    $booked_slots[$i]['StartTimeH'] = date("H", strtotime($booked_slots[$i]['StartTime']));
-    $booked_slots[$i]['FinishTimeH'] = date("H", strtotime($booked_slots[$i]['FinishTime']));
-
-    // dodjeljujemo dodatna pomocna polja za lakse racunanje pozicije rezervacije
-    if ($booked_slots[$i]['FinishTimeH'] <= 16) {
-        $booked_slots[$i]['TimeSlot'] = 1;
-        $booked_slots[$i]['CardSlotPlace'] = 1;
-    }
-    else if ($booked_slots[$i]['StartTimeH'] > 12 && $booked_slots[$i]['FinishTimeH'] <= 23) {
-        $booked_slots[$i]['TimeSlot'] = 2;
-        $booked_slots[$i]['CardSlotPlace'] = 2;
-    }
-    else if ($booked_slots[$i]['FinishTimeH'] <= 23) {
-        $booked_slots[$i]['TimeSlot'] = 3;
-        $booked_slots[$i]['CardSlotPlace'] = 1;
-    }
-    else {
-        $booked_slots[$i]['TimeSlot'] = 3;
-        $booked_slots[$i]['CardSlotPlace'] = 1;
-    }
-    
-
-
-    // RUCNO IZRADENO
-
-    /*
-    if($booked_slots[$i]['CardSlotPlace'] == 1 && $booked_slots[$i]['IDBoat'] == 1) {
-        $booked_slots[$i]['CardNumber'] = 1;
-    }
-    if($booked_slots[$i]['CardSlotPlace'] == 2 && $booked_slots[$i]['IDBoat'] == 1) {
-        $booked_slots[$i]['CardNumber'] = 2;
-    }
-
-    if($booked_slots[$i]['CardSlotPlace'] == 1 && $booked_slots[$i]['IDBoat'] == 2) {
-        $booked_slots[$i]['CardNumber'] = 3;
-    }
-    if($booked_slots[$i]['CardSlotPlace'] == 2 && $booked_slots[$i]['IDBoat'] == 2) {
-        $booked_slots[$i]['CardNumber'] = 4;
-    }
-
-    if($booked_slots[$i]['CardSlotPlace'] == 1 && $booked_slots[$i]['IDBoat'] == 3) {
-        $booked_slots[$i]['CardNumber'] = 5;
-    }
-    if($booked_slots[$i]['CardSlotPlace'] == 2 && $booked_slots[$i]['IDBoat'] == 3) {
-        $booked_slots[$i]['CardNumber'] = 6;
-    }
-
-    if($booked_slots[$i]['CardSlotPlace'] == 1 && $booked_slots[$i]['IDBoat'] == 4) {
-        $booked_slots[$i]['CardNumber'] = 7;
-    }
-    if($booked_slots[$i]['CardSlotPlace'] == 2 && $booked_slots[$i]['IDBoat'] == 4) {
-        $booked_slots[$i]['CardNumber'] = 8;
-    }
-
-    if($booked_slots[$i]['CardSlotPlace'] == 1 && $booked_slots[$i]['IDBoat'] == 5) {
-        $booked_slots[$i]['CardNumber'] = 9;
-    }
-    if($booked_slots[$i]['CardSlotPlace'] == 1 && $booked_slots[$i]['IDBoat'] == 6) {
-        $booked_slots[$i]['CardNumber'] = 10;
-    }
-    if($booked_slots[$i]['CardSlotPlace'] == 1 && $booked_slots[$i]['IDBoat'] == 7) {
-        $booked_slots[$i]['CardNumber'] = 11;
-    }
-    if($booked_slots[$i]['CardSlotPlace'] == 1 && $booked_slots[$i]['IDBoat'] == 8) {
-        $booked_slots[$i]['CardNumber'] = 12;
-    }
-    if($booked_slots[$i]['CardSlotPlace'] == 1 && $booked_slots[$i]['IDBoat'] == 9) {
-        $booked_slots[$i]['CardNumber'] = 13;
-    }
-    if($booked_slots[$i]['CardSlotPlace'] == 1 && $booked_slots[$i]['IDBoat'] == 10) {
-        $booked_slots[$i]['CardNumber'] = 14;
-    }
-    if($booked_slots[$i]['CardSlotPlace'] == 1 && $booked_slots[$i]['IDBoat'] == 11) {
-        $booked_slots[$i]['CardNumber'] = 15;
-    }
-    if($booked_slots[$i]['CardSlotPlace'] == 1 && $booked_slots[$i]['IDBoat'] == 12) {
-        $booked_slots[$i]['CardNumber'] = 16;
-    }
-    */
-}
-
-// Optimizirani nacin za izracunavanje pozicije rezervacije na kartici
-// Tu se referencira sad na $lookup u config.php i iz njega uzima vrijednosti
-for ($i = 0; $i < count($booked_slots); $i++) {
-    foreach ($lookup as $cardNumber => $values) {
-        if ($booked_slots[$i]['CardSlotPlace'] == $values['CardSlotPlace'] && $booked_slots[$i]['IDBoat'] == $values['IDBoat']) {
-            $booked_slots[$i]['CardNumber'] = $cardNumber;
-            break;
-        }
-    }
-}
-
-// TIMESLOT 1 = 1/2 dana prva poloovica
-// TIMESLOT 2 = 1/2 dana druga polovica
-// TIMESLOT 3 = cijeli dan
-
-// CARD SLOT PLACE 1 = Lijeva Kartica
-// CARD SLOT PLACE 2 = Desna Kartica
-
-// Sortiranje $booked_slots po CardNumberu
-usort($booked_slots, function($a, $b) {
-    return $a['CardNumber'] <=> $b['CardNumber'];
-});
+// Dodavanje polja CardSlotPlace, TimeSlot, CardNumber u polje $booked_slots, te sortiranje po CardNumberu
+$booked_slots = modifyArray($booked_slots, $lookup);
 
 $cardFlag = array();
 
@@ -243,8 +140,11 @@ echo '
     <div class="glass">
         <div class="header">
             <div class="flex-column">
-                <a href="reservations.php" class="big-text m-title">Kalendar Rezervacija</a>
-                <div class="big-text m-title" id="countdown"></div>
+                <div class="big-text m-title">Kalendar Rezervacija</div>
+                <div class="flexcol-row">
+                    <div class="big-text m-title" id="countdown"></div>
+                    <a href="reservations.php" class="button-dateSubmit">Danas '.date("d.m.").'</a>
+                </div>
             </div>
             <div class="date-wrapper">
                 <div class="arrow">
@@ -293,13 +193,15 @@ echo '
 
                         // Ako je rezervacija na cijeli dan, onda je kartica extended
                         if($value['TimeSlot'] == 3 && $value['CardNumber'] < 8){
-
-                            echo '
-                            <div class="card extended" id="card'.$cardIndex.'">';
+                            // Koristi se cudan echo zbog parsiranja jsona
+                            echo <<<EOT
+                                    <div class="card extended" id="card'.$cardIndex.'" onclick='popup(`$json`)'>
+                                    EOT;
                         }
                         else{
-                            echo '
-                            <div class="card" id="card'.$cardIndex.'">';
+                            echo <<<EOT
+                                    <div class="card" id="card'.$cardIndex.'" onclick='popup(`$json`)'>
+                                    EOT;
                         }
 
                             echo '
@@ -332,12 +234,10 @@ echo '
                                     <div class="card-textrow">€'.$value['AdvancePayment'].'</div>
                                     <div class="card-textrow">€'.$value['PriceDiffrence'].'</div>
                                 </div>
-                                <div class="col2">';
-                                    echo <<<EOT
-                                            <lord-icon class="card-icon-size" onclick='popup(`$json`)'
-                                            EOT;
-                                    echo '
+                                <div class="col2">
+                                    <lord-icon class="card-icon-size"
                                         src="../icon/boat.json"
+                                        target="div.card"
                                         trigger="loop-on-hover"
                                         colors="primary:#121331,secondary:#f89b3e">
                                     </lord-icon>
@@ -355,6 +255,7 @@ echo '
                         if($value['Card'] == $cardIndex)
                         {
                             echo '
+                            <a href="../addReservation/addReservation.php?BoatSelected='.$value['BoatName'].'&DateSelected='.$dayDisplayed.'">
                             <div class="card disabled" id="card'.$cardIndex.'">
                             <div class="card-grid">
                                 <div class="col">
@@ -386,16 +287,16 @@ echo '
                                     <div class="card-textrow">€</div>
                                 </div>
                                 <div class="col2">
-                                <a href="../addReservation/addReservation.php?BoatSelected='.$value['BoatName'].'&DateSelected='.$dayDisplayed.'">
                                     <lord-icon class="card-icon-size" onclick="popup()"
                                         src="../icon/boat.json"
+                                        target="div.card"
                                         trigger="loop-on-hover"
                                         colors="primary:#121331,secondary:#f89b3e">
                                     </lord-icon>
-                                </a>
                                 </div>
                             </div>
                             </div>
+                            </a>
                         ';
                         }
                     }

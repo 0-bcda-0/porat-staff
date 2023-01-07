@@ -52,7 +52,6 @@ if(isset($_POST["btn_edit"]))
 
 if(isset($_POST["btn_save"]))
 {
-  echo 'SAVE';
   $BoatID = mysqli_real_escape_string($con, $_POST["BoatID"]);
   $StartDateTime = mysqli_real_escape_string($con, $_POST["StartDateTime"]);
   $FinishDateTime = mysqli_real_escape_string($con, $_POST["FinishDateTime"]);
@@ -277,7 +276,7 @@ echo '
               </div>
               <div>
                 <label for="add-input-oib">OIB: </label>
-                <input type="number" id="add-input-oib" class="add-input-field" name="ClientOIB" value="'.$ClientOIB.'">
+                <input type="text" id="add-input-oib" class="add-input-field" name="ClientOIB" value="'.$ClientOIB.'">
               </div>
             </div>
 
@@ -313,7 +312,7 @@ echo '
               </div>
               <div class="add-input-bottomright-container">
                 <label for="addInput-cijena">Cijena: </label>
-                <input type="number" id="addInput-cijena"   class="inputFieldNumbers" name="Price" value="'.$Price.'" required>
+                <input type="number" id="addInput-cijena" step="0.01" class="inputFieldNumbers" name="Price" value="'.$Price.'" required>
               </div>
               <div class="add-input-bottomright-container">
                 <label for="addInput-akontacija">Akontacija: </label>

@@ -131,6 +131,27 @@ th {
     border: 2px solid #F89B3E;
 }
 
+.set-userFormContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.w90{
+    width: 90%;
+}
+
+.w45{
+    width: 45%;
+}
+
+.h{
+    height: 100px;
+}
+
 .fullWidth{
     width: 100%;
 }
@@ -144,6 +165,44 @@ th {
 .col-black{
     color: black;
 }
+
+/* POP UP */
+.blurForClearFormPopup.active{
+    filter: blur(15px);
+    pointer-events: none;
+    user-select: none;
+    --webkit-user-select: none;
+  }
+  
+  .clearFormPopup{
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 550px;
+    padding: 50px;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.30);
+    background: #fff;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+  
+    /* Glass efekt */
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.60);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .clearFormPopup.active{
+    top: 50%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+  }
 
 @media only screen and (max-width: 500px) {
     .set-flex{

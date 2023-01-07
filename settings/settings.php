@@ -8,7 +8,103 @@ include("../PHP/db_connection.php");
 
 if($_SESSION["Level"] === '0')
 {
-    header("Location: ../reservations/reservations.php");
+    // header("Location: ../reservations/reservations.php");
+
+    if(isset($_POST["btn-prijava"])){
+        $prijava = $_POST["prijava"];
+        // insert into Text and EmployeeID
+        $query = "INSERT INTO bugs (Text, EmployeeID) VALUES ('".$prijava."', '".$_SESSION["IDEmployee"]."')";
+        $result = mysqli_query($con, $query);
+        if($result){
+            echo '<script>alert("Uspješno ste podnijeli prijavu!")</script>';
+            header("Location: settings.php");
+        }
+        else{
+            echo '<script>alert("Greška prilikom podnošenja prijave!")</script>';
+        }
+    }
+
+    if(isset($_POST["btn-pin"])){
+        $cPin = $_POST["user-cPin"];
+        $nPin = $_POST["user-nPin"];
+
+        $query = "SELECT * FROM employee WHERE IDEmployee = '".$_SESSION["IDEmployee"]."' AND Pin = '".$cPin."'";
+        $result = mysqli_query($con, $query);
+        $br_rows = mysqli_num_rows($result);
+
+        if($br_rows <= 0){
+            echo '<script>alert("Krivi pin!")</script>';
+        }
+        else{
+            $query = "UPDATE employee SET Pin = '".$nPin."' WHERE IDEmployee = '".$_SESSION["IDEmployee"]."'";
+            $result = mysqli_query($con, $query);
+            if($result){
+                header("Location: settings.php");
+            }
+            else{
+                echo '<script>alert("Greška prilikom promjene pin-a!")</script>';
+            }
+        }
+    }
+
+    echo '
+    <main id="blurForErrorFormPopup" class="blurForClearFormPopup">
+        <div class="spacer"></div>
+            <div class="glass">
+                <div class="set-flex">
+                    <div class="set-container w45">
+                        <div class="set-title">Prijava problema</div>
+                        <form method="POST" action="" class="set-userFormContainer">
+                            
+                                <label for="prijava" class="col-black">Sto Vam se nije svidjelo?</label>
+                                <textarea id="prijava" name="prijava" value="" class="set-inputField w90 h"></textarea>
+                            
+                            <input type="submit" value="Podnesi prijavu" class="add-button-rezerviraj" name="btn-prijava">
+                        </form>
+                    </div>
+                    <div class="set-container w45">
+                        <div class="set-title">Promjena pina</div>
+                        <form method="POST" action="" class="set-formContainer">
+                            <div class="set-inputFlex">
+                                <label for="user-cPin" class="col-black">Stari pin:</label>
+                                <input type="password" id="user-cPin" name="user-cPin" value="" class="set-inputField" pattern="\d{4,6}" maxlength="6" inputmode="numeric">
+                            </div>
+                            <div class="set-inputFlex">
+                                <label for="user-nPin" class="col-black">Novi pin:</label>
+                                <input type="password" id="user-nPin" name="user-nPin" value="" class="set-inputField" pattern="\d{4,6}" maxlength="6" inputmode="numeric">
+                            </div>
+                            <input type="submit" value="Spremi promjene" class="add-button-rezerviraj" name="btn-pin">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="spacer spacer-bottom"></div>
+    </main>
+
+    <div id="errorPopup" class="clearFormPopup">
+        <div class="deleteWindow-rows">
+            <div class="popup-title h4">Greška prilikom promjene pina!</div>
+            <div class="row">
+                <div class="popup-col-flex-buttons">
+                    <a href="#" onclick="popup()" class="button-edit">
+                        <lord-icon class="rotate-arrow"
+                            src="../icon/dateArrow.json"
+                            target=".button-edit"
+                            trigger="loop-on-hover"
+                            delay="500"
+                            colors="primary:#337895"
+                            style="width:20px;height:20px">
+                        </lord-icon>
+                        <div class="button-text">Pokušaj ponovno</div>
+                    </a>   
+                </div>
+            </div>
+        </div>
+    </div>
+    ';
+
+    echo '<script src="../js/settings.js"></script>';
 }
 else{
 
@@ -37,6 +133,9 @@ else{
 
     $queryEmployee = "SELECT * FROM employee";
     $resultEmployee = mysqli_query($con, $queryEmployee);
+
+    $queryBugs = "SELECT * FROM bugs";
+    $resultBugs = mysqli_query($con, $queryBugs);
 
     // Auto fill form za uredjivanje broda
     if(isset($_GET["IDBoat"])){
@@ -226,6 +325,27 @@ else{
         }
     }
 
+    // Brisanje bugs-a
+    if(isset($_GET["task"]) && $_GET["task"] == "delBug")
+    {
+        $IDBugs = (int)$_GET["IDBugs"];
+
+        $IDBugs = mysqli_real_escape_string($con, $IDBugs);
+
+        $queryBugDelete = "DELETE FROM bugs WHERE IDBugs = '$IDBugs'";
+        $resultBugDelete = mysqli_query($con, $queryBugDelete);
+
+        if($resultBugDelete)
+        {
+            echo 'Podaci su uspjesno obrisani';
+            header("Location: settings.php");
+        }
+        else{
+            echo 'Podaci nisu uspjesno obrisani';
+        }
+    }
+
+
     echo '
     <main>
         <div class="spacer"></div>
@@ -269,6 +389,8 @@ else{
                 </tbody>
                 </table>
             </div>
+
+
             <div>
                 <div class="set-container fullWidth">
                     <div class="set-title">Tablica "employee"</div>
@@ -348,20 +470,46 @@ else{
                     </form>
                 </div>
                 </div>
+
+                <div class="set-container">
+                    <div class="set-title">Tablica "bugs"</div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Akcija</th>
+                            </tr>
+                        </thead>
+                        <tbody>';
+                            while($rowBugs = mysqli_fetch_array($resultBugs)){
+                                $IDBugs = $rowBugs["IDBugs"];
+                                $IDEmployeeBugs = $rowBugs["EmployeeID"];
+                                $Text = $rowBugs["Text"];
+                                
+                                echo '
+                                <tr>
+                                    <td>'.$IDEmployeeBugs.'</td>
+                                    <td>'.$Text.'</td>
+                                    <td>
+                                        <a href="settings.php?IDBugs='.$IDBugs.'&task=delBug">Obriši</a>
+                                    </td>
+                                </tr>
+                                ';
+                            }
+                            echo '
+                        </tbody>
+                    </table>
+                </div>
                 
             </div>
-            <div class="set-flex">
-                
-            </div>
+
 
         </div>
         
         <div class="spacer spacer-bottom"></div>
     </main>
     ';
-
-    include("../header-footer/footer.php");
-
 }
-
+    include("../header-footer/footer.php");
 ?>

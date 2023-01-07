@@ -454,6 +454,13 @@ a:hover {
   display: none;
 }
 
+.flexcol-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 /* BlueBook */
 /* TABLET */
 /* Testirano na Crnom Win10 tabletu */
@@ -524,6 +531,10 @@ a:hover {
   .header {
     flex-direction: column;
     margin: 1rem;
+  }
+  .flexcol-row {
+    flex-direction: column;
+    align-items: center;
   }
   .big-text {
     font-size: 20px;

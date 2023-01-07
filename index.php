@@ -62,12 +62,12 @@ echo'
             <div class="box">
             <form method="POST" action="#">
                 <div class="field">
-                    <input type="text" name="frm_u2" class="input" placeholder=" " value="Admin" />
+                    <input type="text" name="frm_u2" class="input" placeholder=" " value="" />
                     <label for="frm_u2" class="label">Username</label>
                 </div>
         
                 <div class="field">
-                    <input type="password" name="bgh_u1" class="input" placeholder=" "pattern="\d{6}" maxlength="6" inputmode="numeric" value="123456"/>
+                    <input type="password" name="bgh_u1" class="input" placeholder=" "pattern="\d{4,6}" maxlength="6" inputmode="numeric" value=""/>
                     <label for="bgh_u1" class="label">Pin</label>
                 </div>
                 <div class="buttonFrame">
@@ -126,6 +126,7 @@ if (isset($_POST['frm_u2'])) {
         $korisnik = mysqli_fetch_assoc($result);
 
         $_SESSION['Level'] = $korisnik["Level"];
+        $_SESSION['IDEmployee'] = $korisnik["IDEmployee"];
         // print_r($_SERVER['Level']);
         header("Location: reservations/reservations.php");
     }
