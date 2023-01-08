@@ -239,12 +239,14 @@ echo '
               <label class="add-date-label" for="addreserv-datum-do">Do datuma:</label>
               <input type="datetime-local" id="addreserv-datum-do" class="inputField" name="FinishDateTime" value="'.$FinishDateTime.'" required>
             </div>
-
-            <div class="add-radio-button-container">
-              <label class="add-date-label" for="ad-radio-button">Jednodnevno / Cijelodnevno </label>
-              <input type="checkbox" id="ad-radio-button">
-            </div>
-
+              <div class="add-radio-button-container">
+                <label class="add-day-label" for="ad-radio-button">1/2 dana</label>
+                <input type="checkbox" id="ad-radio-button">
+                <label class="add-day-label" for="ad-radio-button">2/2 dana</label>
+                <input type="checkbox" id="ad-radio-button">
+                <label class="add-day-label" for="ad-radio-button">Cijeli dan</label>
+                <input type="checkbox" id="ad-radio-button">
+              </div>
             <!--
             <div class="add-time-input-container">
               <label class="add-time-label" for="addreserv-vrijeme-od">Od sati:</label>
@@ -253,6 +255,35 @@ echo '
               <input type="time" id="addreserv-vrijeme-do" >
             </div>
             -->
+
+            <div class="addDjelatnici-dropdown-container">
+            <select id="addDjelatnici-dropdown" class="inputField" name="EmployeeID" required>
+              <option value="">Rezervirao...</option>
+              ';
+
+              $query_employee = "SELECT * FROM employee WHERE Username != 'Admin' ORDER BY IDEmployee ASC";
+              $result_employee = mysqli_query($con, $query_employee);
+
+              while($row = mysqli_fetch_assoc($result_employee))
+              {
+                  $EnployeeID = $row["IDEmployee"];
+                  $username = $row["Username"];
+
+                  if($EnployeeID == $IDEmployee)
+                  {
+                      $selected = 'selected = "selected"';
+                  }
+                  else
+                  {
+                      $selected = "";
+                  }
+
+                  echo '<option value="'.$EnployeeID.'" '.$selected.'>'.$username.'</option>';
+              }
+
+          echo '
+            </select>
+          </div>
 
           </div>
 
@@ -281,35 +312,10 @@ echo '
             </div>
 
               <!-- desna strana bottom contenta -->
+
             <div class="add-panel-left-content-bottom-right-side">
-              <div class="addDjelatnici-dropdown-container">
-                <select id="addDjelatnici-dropdown"  class="inputField" name="EmployeeID" required>
-                  <option value="">Rezervirao...</option>
-                  ';
 
-                  $query_employee = "SELECT * FROM employee WHERE Username != 'Admin' ORDER BY IDEmployee ASC";
-                  $result_employee = mysqli_query($con, $query_employee);
 
-                  while($row = mysqli_fetch_assoc($result_employee))
-                  {
-                      $EnployeeID = $row["IDEmployee"];
-                      $username = $row["Username"];
-
-                      if($EnployeeID == $IDEmployee)
-                      {
-                          $selected = 'selected = "selected"';
-                      }
-                      else
-                      {
-                          $selected = "";
-                      }
-
-                      echo '<option value="'.$EnployeeID.'" '.$selected.'>'.$username.'</option>';
-                  }
-
-              echo '
-                </select>
-              </div>
               <div class="add-input-bottomright-container">
                 <label for="addInput-cijena">Cijena: </label>
                 <input type="number" id="addInput-cijena" step="0.01" class="inputFieldNumbers" name="Price" value="'.$Price.'" required>
@@ -319,15 +325,22 @@ echo '
                 <input type="number" id="addInput-akontacija" class="inputFieldNumbers" name="AdvancePayment" value="'.$AdvancePayment.'">
               </div>
               <div class="add-input-bottomright-container">
-                <label for="addInput-razlika">Razlika: </label>
+                <label for="addInput-razlika">Razlika:</label>
                 <input type="number" id="addInput-razlika" class="inputFieldNumbers" name="PriceDiffrence" value="'.$PriceDiffrence.'">
               </div>
+              <div class="add-input-bottomright-container">
+              <label for="addInput-depozit">Depozit: </label>
+              <input type="number" id="addInput-razlika" class="inputFieldNumbers" name="PriceDiffrence" value="'.$Deposit.'">
+            </div>
             </div>
 
           </div>
 
+          <!-- text area -->
+          <div class="add-text-area-container">
+            <textarea class ="add-text-area" placeholder="Bilješka"></textarea>
+          </div>
           <!-- buttoni -->
-
           <div class="add-panel-left-content-buttons">
             <div class="add-button-half">
               <div class="add-button-container">
