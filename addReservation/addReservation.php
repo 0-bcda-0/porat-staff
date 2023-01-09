@@ -215,7 +215,7 @@ echo '
 
           <!-- dropdown -->
           <div class="addBrodovi-dropdown-container">
-            <select id="addBrodovi-dropdown"  name="BoatID" required>
+            <select class="addBrodovi-dropdown"  name="BoatID" required>
               <option value="">Odaberite svoj brod...</option>';
 
               $query_boat = "SELECT * FROM boat ORDER BY IDBoat ASC";
@@ -248,10 +248,10 @@ echo '
           <div class="add-panel-left-content-top">
 
             <div class="add-inputs-top">
-              <label class="add-date-label" for="addreserv-datum-od">Od datuma:</label>
-              <input type="datetime-local" id="addreserv-datum-od"  class="inputField" name="StartDateTime" value="'.$StartDateTime.'" required>
-              <label class="add-date-label" for="addreserv-datum-do">Do datuma:</label>
-              <input type="datetime-local" id="addreserv-datum-do" class="inputField" name="FinishDateTime" value="'.$FinishDateTime.'" required>
+              <label class="add-date-label" for="addreserv-datum-od-id">Od datuma:</label>
+              <input type="datetime-local" id="addreserv-datum-od-id"  class="inputField addreserv-datum-od" name="StartDateTime" value="'.$StartDateTime.'" required>
+              <label class="add-date-label" for="addreserv-datum-do-id">Do datuma:</label>
+              <input type="datetime-local" id="addreserv-datum-do-id" class="inputField addreserv-datum-do" name="FinishDateTime" value="'.$FinishDateTime.'" required>
             </div>
               <div class="add-radio-button-container">
                 <label class="add-day-label" for="ad-radio-button">1/2 dana</label>
@@ -263,10 +263,10 @@ echo '
               </div>
             <!--
             <div class="add-time-input-container">
-              <label class="add-time-label" for="addreserv-vrijeme-od">Od sati:</label>
-              <input type="time" id="addreserv-vrijeme-od" >
-              <label class="add-time-label" for="addreserv-vrijeme-do">Do sati:</label>
-              <input type="time" id="addreserv-vrijeme-do" >
+              <label class="add-time-label" for="addreserv-vrijeme-od-id">Od sati:</label>
+              <input type="time" id="addreserv-vrijeme-od-id" class="addreserv-vrijeme-od" >
+              <label class="add-time-label" for="addreserv-vrijeme-do-id">Do sati:</label>
+              <input type="time" id="addreserv-vrijeme-do-id" class="addreserv-vrijeme-do" >
             </div>
             -->
 
@@ -332,6 +332,7 @@ echo '
 
               <div class="add-input-bottomright-container">
                 <label for="addInput-cijena">Cijena: </label>
+<<<<<<< Updated upstream
                 <input type="number" id="addInput-cijena" step="0.01" class="inputFieldNumbers" name="Price" value="'.$Price.'" required class="addInput-numbers">
               </div>
               <div class="add-input-bottomright-container">
@@ -345,6 +346,21 @@ echo '
               <div class="add-input-bottomright-container">
               <label for="addInput-depozit">Depozit: </label>
               <input type="number" id="addInput-deposit" class="inputFieldNumbers" name="Deposit" value="'.$Deposit.'" class="addInput-numbers">
+=======
+                <input type="number" id="addInput-cijena" step="0.01" class="inputFieldNumbers add-input-cijena" name="Price" value="'.$Price.'" required>
+              </div>
+              <div class="add-input-bottomright-container">
+                <label for="addInput-akontacija">Akontacija: </label>
+                <input type="number" id="addInput-akontacija" class="inputFieldNumbers add-input-akontacija" name="AdvancePayment" value="'.$AdvancePayment.'">
+              </div>
+              <div class="add-input-bottomright-container">
+                <label for="addInput-razlika">Razlika:</label>
+                <input type="number" id="addInput-razlika" class="inputFieldNumbers add-input-razlika" name="PriceDiffrence" value="'.$PriceDiffrence.'">
+              </div>
+              <div class="add-input-bottomright-container">
+              <label for="addInput-depozit">Depozit: </label>
+              <input type="number" id="addInput-razlika" class="inputFieldNumbers add-input-depozit" name="PriceDiffrence" value="'.$Deposit.'">
+>>>>>>> Stashed changes
             </div>
             </div>
 
