@@ -255,11 +255,11 @@ echo '
             </div>
               <div class="add-radio-button-container">
                 <label class="add-day-label" for="ad-radio-button">1/2 dana</label>
-                <input type="checkbox" id="ad-radio-button">
+                <input type="radio" id="ad-radio-button1" name="TimeSlot" class="ad-radio-button">
                 <label class="add-day-label" for="ad-radio-button">2/2 dana</label>
-                <input type="checkbox" id="ad-radio-button">
+                <input type="radio" id="ad-radio-button2" name="TimeSlot" class="ad-radio-button">
                 <label class="add-day-label" for="ad-radio-button">Cijeli dan</label>
-                <input type="checkbox" id="ad-radio-button">
+                <input type="radio" id="ad-radio-button3" name="TimeSlot" class="ad-radio-button">
               </div>
             <!--
             <div class="add-time-input-container">

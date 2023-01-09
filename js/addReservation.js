@@ -26,6 +26,7 @@ function calculatePrice() {
 }
 
 // 8. Funkcionalnost: Auto complete za unos Do datuma
+/*
 document.getElementById("addreserv-datum-od").addEventListener('click', function(event) {
   // U dateObject spremamo vrijednost iz inputa
   const dateObject = new Date(event.target.value);
@@ -49,5 +50,33 @@ document.getElementById("addreserv-datum-od").addEventListener('click', function
   });
 
 });
+*/
+
+function TimeModify(input, hours){
+  var date = input.value;
+  date = new Date(date);
+  var offset = date.getTimezoneOffset();
+  date.setMinutes(0);
+  date.setHours(hours - offset / 60);
+  input.value = date.toISOString().slice(0, -1);
+}
+
+document.getElementById('ad-radio-button1').addEventListener('click', function() {
+  TimeModify(document.getElementById('addreserv-datum-od'), 8);
+  TimeModify(document.getElementById('addreserv-datum-do'), 14);
+});
+
+document.getElementById('ad-radio-button2').addEventListener('click', function() {
+  TimeModify(document.getElementById('addreserv-datum-od'), 15);
+  TimeModify(document.getElementById('addreserv-datum-do'), 19);
+});
+
+document.getElementById('ad-radio-button3').addEventListener('click', function() {
+  TimeModify(document.getElementById('addreserv-datum-od'), 8);
+  TimeModify(document.getElementById('addreserv-datum-do'), 19);
+});
+
+
+
 
 
