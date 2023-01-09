@@ -21,37 +21,14 @@ document.getElementById("reservationForm").addEventListener("keypress", function
 
 // 7. Funkcionalnost: Izračun cijene
 function calculatePrice() {
+  // Kada se ide izracunat, da se na mobilnom uredaju zadrzi trenutna scroll lokacija
+  var scrollPosition = window.pageYOffset;
+  window.scrollTo(0, scrollPosition);
   // One liner za izračun cijene
   document.getElementById("calcOutput").innerHTML = document.getElementById("calcPrice").value * document.getElementById("calcDays").value + " €";
 }
 
 // 8. Funkcionalnost: Auto complete za unos Do datuma
-/*
-document.getElementById("addreserv-datum-od").addEventListener('click', function(event) {
-  // U dateObject spremamo vrijednost iz inputa
-  const dateObject = new Date(event.target.value);
-
-  // Dodajemo 19 sati i 00 minuta
-  dateObject.setHours(19);
-  dateObject.setMinutes(00);
-
-  // Pretvaramo u YYYY-MM-DDTHH:mm:ss.sssZ
-  const formattedDateTime = dateObject.toISOString();
-
-  const dateObject2 = new Date(formattedDateTime);
-
-  // Pretvaramo u YYYY-MM-DDTHH:mm
-  const formattedDateTime2 = `${dateObject.toISOString().split('T')[0]}T${dateObject2.toString().split(' ')[4]}`;
-
-
-  document.querySelector('#ad-radio-button').addEventListener('click', event => {
-    // One liner za provjeru da li je radio button checked i ako je, onda se vrijednost inputa Do postavlja na vrijednost inputa Od + 19 sati i 00 minuta
-    event.target.checked ? document.getElementById("addreserv-datum-do").value = formattedDateTime2 : null;
-  });
-
-});
-*/
-
 function TimeModify(input, hours){
   var date = input.value;
   date = new Date(date);
@@ -76,6 +53,29 @@ document.getElementById('ad-radio-button3').addEventListener('click', function()
   TimeModify(document.getElementById('addreserv-datum-do'), 19);
 });
 
+// 9. Autocomplete za kalkulator
+document.getElementById('addInput-cijena').addEventListener('input', function() {
+  // Ako je cijena prazna, stavi na "Cijena", ako nije prazna stavi na value od cijene te dane
+  if (document.getElementById('addInput-cijena').value) {
+    var startDate = document.getElementById('addreserv-datum-od').value;
+    var endDate = document.getElementById('addreserv-datum-do').value;
+
+    var start = new Date(startDate);
+    var end = new Date(endDate);
+
+    var timeDiff = Math.abs(end.getTime() - start.getTime());
+    var numDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+
+    // Output cijene
+    document.getElementById('calcPrice').value = document.getElementById('addInput-cijena').value;
+    // Output dana
+    document.getElementById('calcDays').value = numDays;
+
+  } else {
+    document.getElementById('calcPrice').value = '';
+    document.getElementById('calcDays').value = '';
+  }
+});
 
 
 

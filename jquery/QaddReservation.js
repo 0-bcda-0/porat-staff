@@ -21,33 +21,62 @@ $('#reservationForm').on('keypress', function(event) {
 
 // 7. Funkcionalnost: Izračun cijene
 function calculatePrice() {
+    // Kada se ide izracunat, da se na mobilnom uredaju zadrzi trenutna scroll lokacija
+    var scrollPosition = $(window).scrollTop();
+    // skrola do vrha sto je kontradiktorno, ali kada stavim samo scroll, onda je error
+    $(window).scrollTop(scrollPosition);
     // One liner za izračun cijene
     $('#calcOutput').html($('#calcPrice').val() * $('#calcDays').val() + " €");
 }
 
 // 8. Funkcionalnost: Auto complete za unos Do datuma
-$('#addreserv-datum-od').on('click', function(event) {
-    // U dateObject spremamo vrijednost iz inputa
-    const dateObject = new Date(event.target.value);
+function TimeModify(input, hours){
+    var date = input.val();
+    date = new Date(date);
+    var offset = date.getTimezoneOffset();
+    date.setMinutes(0);
+    date.setHours(hours - offset / 60);
+    input.val(date.toISOString().slice(0, -1));
+}
+
+$('#ad-radio-button1').click(function() {
+    TimeModify($('#addreserv-datum-od'), 8);
+    TimeModify($('#addreserv-datum-do'), 14);
+});
+
+$('#ad-radio-button2').click(function() {
+    TimeModify($('#addreserv-datum-od'), 15);
+    TimeModify($('#addreserv-datum-do'), 19);
+});
+
+$('#ad-radio-button3').click(function() {
+    TimeModify($('#addreserv-datum-od'), 8);
+    TimeModify($('#addreserv-datum-do'), 19);
+});
+
+// 9. Autocomplete za kalkulator
+$('#addInput-cijena').on('input', function() {
+    // Ako je cijena prazna, stavi na "Cijena", ako nije prazna stavi na value od cijene te dane
+    if ($(this).val()) {
+        var startDate = $('#addreserv-datum-od').val();
+        var endDate = $('#addreserv-datum-do').val();
+
+        var start = new Date(startDate);
+        var end = new Date(endDate);
+
+        var timeDiff = Math.abs(end.getTime() - start.getTime());
+        var numDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+
+        // Output cijene
+        $('#calcPrice').val($(this).val());
+        // Output dana
+        $('#calcDays').val(numDays);
+
+    } else {
+        $('#calcPrice').val('');
+        $('#calcDays').val('');
+    }
+});
   
-    // Dodajemo 19 sati i 00 minuta
-    dateObject.setHours(19);
-    dateObject.setMinutes(00);
-  
-    // Pretvaramo u YYYY-MM-DDTHH:mm:ss.sssZ
-    const formattedDateTime = dateObject.toISOString();
-  
-    const dateObject2 = new Date(formattedDateTime);
-  
-    // Pretvaramo u YYYY-MM-DDTHH:mm
-    const formattedDateTime2 = `${dateObject.toISOString().split('T')[0]}T${dateObject2.toString().split(' ')[4]}`;
-  
-  
-    $('#ad-radio-button').on('click', event => {
-      // One liner za provjeru da li je radio button checked i ako je, onda se vrijednost inputa Do postavlja na vrijednost inputa Od + 19 sati i 00 minuta
-      event.target.checked ? $('#addreserv-datum-do').val(formattedDateTime2) : null;
-    });
-  
-  });
   
   

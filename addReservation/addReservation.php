@@ -332,19 +332,19 @@ echo '
 
               <div class="add-input-bottomright-container">
                 <label for="addInput-cijena">Cijena: </label>
-                <input type="number" id="addInput-cijena" step="0.01" class="inputFieldNumbers" name="Price" value="'.$Price.'" required>
+                <input type="number" id="addInput-cijena" step="0.01" class="inputFieldNumbers" name="Price" value="'.$Price.'" required class="addInput-numbers">
               </div>
               <div class="add-input-bottomright-container">
                 <label for="addInput-akontacija">Akontacija: </label>
-                <input type="number" id="addInput-akontacija" class="inputFieldNumbers" name="AdvancePayment" value="'.$AdvancePayment.'">
+                <input type="number" id="addInput-akontacija" class="inputFieldNumbers" name="AdvancePayment" value="'.$AdvancePayment.'" class="addInput-numbers">
               </div>
               <div class="add-input-bottomright-container">
                 <label for="addInput-razlika">Razlika:</label>
-                <input type="number" id="addInput-razlika" class="inputFieldNumbers" name="PriceDiffrence" value="'.$PriceDiffrence.'">
+                <input type="number" id="addInput-razlika" class="inputFieldNumbers" name="PriceDiffrence" value="'.$PriceDiffrence.'" class="addInput-numbers">
               </div>
               <div class="add-input-bottomright-container">
               <label for="addInput-depozit">Depozit: </label>
-              <input type="number" id="addInput-razlika" class="inputFieldNumbers" name="Deposit" value="'.$Deposit.'">
+              <input type="number" id="addInput-deposit" class="inputFieldNumbers" name="Deposit" value="'.$Deposit.'" class="addInput-numbers">
             </div>
             </div>
 
@@ -386,7 +386,7 @@ echo '
 
       <div class="add-panel-right calculator-container">
       <div class="calcInputContainer">
-        <input type="number" id="calcPrice" name="calcPrice" placeholder="Cijena po danu" class="calcInput">
+        <input type="number" id="calcPrice" name="calcPrice" placeholder="Cijena" class="calcInput">
         <div>x</div>
         <input type="number" id="calcDays" name="calcDays" placeholder="Broj dana" class="calcInput">
       </div>
