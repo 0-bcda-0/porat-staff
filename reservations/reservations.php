@@ -76,7 +76,9 @@ $query = "SELECT
             reservation.Price,
             reservation.AdvancePayment,
             reservation.PriceDiffrence,
-            employee.Username AS Employee
+            reservation.Deposit,
+            employee.Username AS Employee,
+            reservation.Note
             FROM reservation 
             LEFT JOIN boat ON (reservation.BoatID = boat.IDBoat)
             LEFT JOIN employee ON (reservation.EmployeeID = employee.IDEmployee)
@@ -105,7 +107,9 @@ while($row = mysqli_fetch_assoc($result))
     $Price = $row['Price'];
     $AdvancePayment = $row['AdvancePayment'];
     $PriceDiffrence = $row['PriceDiffrence'];
+    $Deposit = $row['Deposit'];
     $Employee = $row['Employee'];
+    $Note = $row['Note'];
 
     // spustamo sve podatke u polje
     $booked_slots[] = array(
@@ -123,7 +127,9 @@ while($row = mysqli_fetch_assoc($result))
         'Price' => $Price,
         'AdvancePayment' => $AdvancePayment,
         'PriceDiffrence' => $PriceDiffrence,
-        'Employee' => $Employee
+        'Deposit' => $Deposit,
+        'Employee' => $Employee,
+        'Note' => $Note
     );
 
 }
@@ -364,6 +370,10 @@ echo '
                 <div><b>OIB:</b></div>
                 <div id="popupOib">25485698745</div>
             </div>
+            <div class="popup-flex popup-text">
+                <div><b>Rezervirao:</b></div>
+                <div id="popupEmployee">25485698745</div>
+            </div>
         </div>
         <div class="popup-col">
             <div class="popup-flex popup-text">
@@ -378,11 +388,15 @@ echo '
                 <div><b>Razlika:</b></div>
                 <div id="popupPriceDiffrence">€100</div>
             </div>
+            <div class="popup-flex popup-text">
+                <div><b>Depozit:</b></div>
+                <div id="popupDeposit">€100</div>
+            </div>
         </div>
     </div>
     <div class="popup-flex popup-text" style="padding: 0; margin-bottom: 30px;">
-        <div><b>Rezervirao:</b></div>
-        <div id="popupEmployee">Jan</div>
+        <div><b>Bilješka:</b></div>
+        <div id="popupNote">Jan</div>
     </div>
     <div class="popup-col-flex-buttons">
         <a href="" class="button-edit" id="editButton">

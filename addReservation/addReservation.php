@@ -17,7 +17,9 @@ if(isset($_POST["btn_edit"]))
     $Price = mysqli_real_escape_string($con, $_POST["Price"]);
     $AdvancePayment = mysqli_real_escape_string($con, $_POST["AdvancePayment"]);
     $PriceDiffrence = mysqli_real_escape_string($con, $_POST["PriceDiffrence"]);
+    $Deposit = mysqli_real_escape_string($con, $_POST["Deposit"]);
     $EmployeeID = mysqli_real_escape_string($con, $_POST["EmployeeID"]);
+    $Note = mysqli_real_escape_string($con, $_POST["Note"]);
 
     $IDr = (int)$_GET["IDr"];
     $IDr = mysqli_real_escape_string($con, $IDr);
@@ -34,7 +36,9 @@ if(isset($_POST["btn_edit"]))
                   Price = '$Price',
                   AdvancePayment = '$AdvancePayment',
                   PriceDiffrence = '$PriceDiffrence',
-                  EmployeeID = '$EmployeeID'
+                  Deposit = '$Deposit',
+                  EmployeeID = '$EmployeeID',
+                  Note = '$Note'
                   WHERE IDReservation = '$IDr'";
     
     $result_upd = mysqli_query($con, $query_upd);
@@ -62,12 +66,14 @@ if(isset($_POST["btn_save"]))
   $Price = mysqli_real_escape_string($con, $_POST["Price"]);
   $AdvancePayment = mysqli_real_escape_string($con, $_POST["AdvancePayment"]);
   $PriceDiffrence = mysqli_real_escape_string($con, $_POST["PriceDiffrence"]);
+  $Deposit = mysqli_real_escape_string($con, $_POST["Deposit"]);
   $EmployeeID = mysqli_real_escape_string($con, $_POST["EmployeeID"]);
+  $Note = mysqli_real_escape_string($con, $_POST["Note"]);
 
   $query_ins = "INSERT INTO reservation
-                (BoatID, StartDateTime, FinishDateTime, Name, Surname, TelNum, OIB, Price, AdvancePayment, PriceDiffrence, EmployeeID)
+                (BoatID, StartDateTime, FinishDateTime, Name, Surname, TelNum, OIB, Price, AdvancePayment, PriceDiffrence, Deposit, EmployeeID, Note)
                 VALUES
-                ('$BoatID', '$StartDateTime', '$FinishDateTime', '$ClientName', '$ClientSurname', '$ClientTelNum', '$ClientOIB', '$Price', '$AdvancePayment', '$PriceDiffrence', '$EmployeeID')";
+                ('$BoatID', '$StartDateTime', '$FinishDateTime', '$ClientName', '$ClientSurname', '$ClientTelNum', '$ClientOIB', '$Price', '$AdvancePayment', '$PriceDiffrence', '$Deposit', '$EmployeeID', '$Note')";
   
   $result_ins = mysqli_query($con, $query_ins);
 
@@ -103,8 +109,10 @@ if(isset($_GET["IDr"])){
           reservation.Price,
           reservation.AdvancePayment,
           reservation.PriceDiffrence,
+          reservation.Deposit,
           employee.Username AS Employee,
-          employee.IDEmployee AS IDEmployee
+          employee.IDEmployee AS IDEmployee,
+          reservation.Note
           FROM reservation 
           LEFT JOIN boat ON (reservation.BoatID = boat.IDBoat)
           LEFT JOIN employee ON (reservation.EmployeeID = employee.IDEmployee)
@@ -126,8 +134,10 @@ if(isset($_GET["IDr"])){
   $Price = $reservation['Price'];
   $AdvancePayment = $reservation['AdvancePayment'];
   $PriceDiffrence = $reservation['PriceDiffrence'];
+  $Deposit = $reservation['Deposit'];
   $IDEmployee = $reservation['IDEmployee'];
   $Employee = $reservation['Employee'];
+  $Note = $reservation['Note'];
 
   $btn = 'btn_edit';
 
@@ -156,8 +166,10 @@ elseif (isset($_GET["BoatSelected"]) && isset($_GET["DateSelected"])) {
   $Price = "";
   $AdvancePayment = "";
   $PriceDiffrence = "";
+  $Deposit = "";
   $IDEmployee = "";
   $Employee = "";
+  $Note = "";
 
   $btn = 'btn_save';
 }
@@ -175,8 +187,10 @@ else{
   $Price = "";
   $AdvancePayment = "";
   $PriceDiffrence = "";
+  $Deposit = "";
   $IDEmployee = "";
   $Employee = "";
+  $Note = "";
 
   $btn = 'btn_save';
 }
@@ -330,7 +344,7 @@ echo '
               </div>
               <div class="add-input-bottomright-container">
               <label for="addInput-depozit">Depozit: </label>
-              <input type="number" id="addInput-razlika" class="inputFieldNumbers" name="PriceDiffrence" value="'.$Deposit.'">
+              <input type="number" id="addInput-razlika" class="inputFieldNumbers" name="Deposit" value="'.$Deposit.'">
             </div>
             </div>
 
@@ -338,7 +352,7 @@ echo '
 
           <!-- text area -->
           <div class="add-text-area-container">
-            <textarea class ="add-text-area" placeholder="Bilješka"></textarea>
+            <textarea class ="add-text-area" placeholder="Bilješka" name="Note">'.$Note.'</textarea>
           </div>
           <!-- buttoni -->
           <div class="add-panel-left-content-buttons">

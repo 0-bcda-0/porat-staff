@@ -24,7 +24,9 @@ function popup(json) {
     document.getElementById('popupPrice').innerHTML = reservation.Price;
     document.getElementById('popupAdvancePayment').innerHTML = reservation.AdvancePayment;
     document.getElementById('popupPriceDiffrence').innerHTML = reservation.PriceDiffrence;
+    document.getElementById('popupDeposit').innerHTML = reservation.Deposit;
     document.getElementById('popupEmployee').innerHTML = reservation.Employee;
+    document.getElementById('popupNote').innerHTML = reservation.Note;
 
     //  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
     // Kreiramo link za telefon
