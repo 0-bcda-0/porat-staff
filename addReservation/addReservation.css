@@ -499,7 +499,7 @@ align-items: center;
 /*---2K (2560x1440)---*/
 
 
-@media only screen and (min-width: 2256px) {
+@media only screen and (min-width: 2200px) {
 
   .add-panel-left{
     width: 75%;
