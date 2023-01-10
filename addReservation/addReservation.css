@@ -141,7 +141,7 @@ align-items: center;
 
 .add-inputs-top{
   width: 100%;
-  padding-top: 1rem;
+  padding-top: 1.5rem;
 }
 
 .add-date-label{
@@ -242,9 +242,6 @@ align-items: center;
 
 
 .add-panel-left-content-bottom-right-side > div > input{
-  width:100%;
-  margin-right: 1rem;
-  margin-left: 0.5rem;
   background-color: rgba(250, 250, 250, 0.70);
   border-radius: 5px;
 }
@@ -258,7 +255,7 @@ align-items: center;
   align-items: center;
   }
   
-#addDjelatnici-dropdown{
+.addDjelatnici-dropdown{
   width: 80%;
   height: 2.5rem;
   font-size: 1.125rem;
@@ -270,14 +267,14 @@ align-items: center;
   
 
 
-#addDjelatnici-dropdown > option{
+.addDjelatnici-dropdown > option{
   font-size: 18px;
 }
 
 /* cijena / akontacija / razlika inputi */
 .addInput-numbers{
   width: 4rem;
-  margin: 0 2rem 0 auto;
+  margin: 0 3.5rem 0 auto;
   border-radius:0.25rem;
   text-align: center;
   border-width: 1.25px;
@@ -285,7 +282,7 @@ align-items: center;
 
 .add-input-cijena{
   width: 4rem;
-  margin: 0 2rem 0 auto;
+  margin: 0 3.5rem 0 auto;
   border-radius:0.25rem;
   text-align: center;
   border-width: 1.25px;
@@ -293,7 +290,7 @@ align-items: center;
 
 .add-input-akontacija{
   width: 4rem;
-  margin: 0 2rem 0 auto;
+  margin: 0 3.5rem 0 auto;
   border-radius:0.25rem;
   text-align: center;
   border-width: 1.25px;
@@ -301,7 +298,7 @@ align-items: center;
 
 .add-input-razlika{
   width: 4rem;
-  margin: 0 2rem 0 auto;
+  margin: 0 3.5rem 0 auto;
   border-radius:0.25rem;
   text-align: center;
   border-width: 1.25px;
@@ -309,7 +306,7 @@ align-items: center;
 
 .add-input-depozit{
   width: 4rem;
-  margin: 0 2rem 0 auto;
+  margin: 0 3.5rem 0 auto;
   border-radius:0.25rem;
   text-align: center;
   border-width: 1.25px;
@@ -317,6 +314,7 @@ align-items: center;
 
 .add-input-bottomright-container > label{
  margin-left: 1rem;
+ float: left;
 }
 
 /* - BUTTONI ZA LIJEVI PANEL - */
@@ -547,13 +545,13 @@ align-items: center;
   .addreserv-datum-od{
     font-size: 22px;
     margin-right: 1rem;
-    width: 11rem;
+    width: 10rem;
     margin-left: 1rem;
   }
 
   .addreserv-datum-do{
     font-size: 22px;
-    width: 11rem;
+    width: 10rem;
     margin-left: 1rem;
   }
 
@@ -590,7 +588,7 @@ align-items: center;
     font-size: 22px;
   }
 
-  #addDjelatnici-dropdown{
+  .addDjelatnici-dropdown{
     margin: 1rem 2rem;
     height: 3.25rem;
     font-size: 22px;
@@ -598,7 +596,7 @@ align-items: center;
     border-radius: 0.4rem;
   }
 
-  #addDjelatnici-dropdown > option{
+  .addDjelatnici-dropdown > option{
     font-size: 20px;
   }
 
@@ -617,6 +615,13 @@ align-items: center;
   }
 
   .add-input-razlika{
+    width: 5rem;
+    margin: 0 4rem 0 auto;
+    border-width: 1.75px;
+    border-radius: 0.3rem;
+  }
+
+  .add-input-depozit{
     width: 5rem;
     margin: 0 4rem 0 auto;
     border-width: 1.75px;
@@ -670,6 +675,7 @@ align-items: center;
     margin-right: 1rem;
   }
 
+
   .add-time-input-container > label{
     margin-left: 2rem;
   }
@@ -685,27 +691,46 @@ align-items: center;
 
   .add-input-cijena{
     width: 3.5rem;
-    margin: 0 4rem 0 auto;
+    margin: 0 3rem 0 auto;
     border-width: 1.5px;
     border-radius: 0.2rem;
   }
 
   .add-input-akontacija{
     width: 3.5rem;
-    margin: 0 4rem 0 auto;
+    margin: 0 3rem 0 auto;
     border-width: 1.5px;
     border-radius: 0.2rem;
   }
 
   .add-input-razlika{
     width: 3.5rem;
-    margin: 0 4rem 0 auto;
+    margin: 0 3rem 0 auto;
+    border-width: 1.5px;
+    border-radius: 0.2rem;
+  }
+
+  .add-input-depozit{
+    width: 3.5rem;
+    margin: 0 3rem 0 auto;
     border-width: 1.5px;
     border-radius: 0.2rem;
   }
 
   .add-button-container{
     padding-top: 1.25rem;
+  }
+
+  .add-panel-left-content-bottom-left-side > div > label{
+    margin-left: 1.25rem;
+  }
+
+  .add-panel-left-content-bottom-left-side > div > input{
+    margin-right: 0.5rem;
+  }
+  
+  .add-panel-left-content-bottom-right-side > div > label{
+    margin-left: 1.5rem;
   }
 }
 
@@ -787,7 +812,7 @@ align-items: center;
     font-size: 16px;
   }
 
-  #addDjelatnici-dropdown{
+  .addDjelatnici-dropdown{
     margin: 0.5rem 0.75rem;
     height: 1.75rem;
     font-size: 16px;
@@ -795,23 +820,28 @@ align-items: center;
     border-radius: 0.2rem;
   }
 
-  #addDjelatnici-dropdown > option{
+  .addDjelatnici-dropdown > option{
     font-size: 16px;
   }
 
   .add-input-cijena{
     width: 3rem;
-    margin: 0 2rem 0 auto;
+    margin: 0 1rem 0 auto;
   }
 
   .add-input-akontacija{
     width: 3rem;
-    margin: 0 2rem 0 auto;
+    margin: 0 1rem 0 auto;
   }
 
   .add-input-razlika{
     width: 3rem;
-    margin: 0 2rem 0 auto;
+    margin: 0 1rem 0 auto;
+  }
+
+  .add-input-depozit{
+    width: 3rem;
+    margin: 0 1rem 0 auto;
   }
 
   .add-button-ocisti{
@@ -880,11 +910,11 @@ align-items: center;
     font-size: 15px;
   }
 
-  #addDjelatnici-dropdown{
+  .addDjelatnici-dropdown{
     font-size: 15px;
   }
 
-  #addDjelatnici-dropdown > option{
+  .addDjelatnici-dropdown > option{
     font-size: 15px;
   }
 
@@ -1111,7 +1141,7 @@ align-items: center;
     font-size: 1rem;
   }
 
-  #addDjelatnici-dropdown{
+  .addDjelatnici-dropdown{
     font-size: 1rem;
     height: 2rem;
     background-color: rgba(250, 250, 250, 0.70);
@@ -1119,7 +1149,7 @@ align-items: center;
     border-radius: 5px;
   }
 
-  #addDjelatnici-dropdown > option{
+  .addDjelatnici-dropdown > option{
     font-size: 1rem;
   }
 
@@ -1151,18 +1181,28 @@ align-items: center;
     width: 3.5rem;
     background-color: rgba(250, 250, 250, 0.70) ;
     border-radius: 5px;
+    margin-right: 2.25rem;
   }
 
   .add-input-akontacija{
     width: 3.5rem;
     background-color: rgba(250, 250, 250, 0.70) ;
     border-radius: 5px;
+    margin-right: 2.25rem;
   }
 
   .add-input-razlika{
     width: 3.5rem;
     background-color: rgba(250, 250, 250, 0.70) ;
     border-radius: 5px;
+    margin-right: 2.25rem;
+  }
+
+  .add-input-depozit{
+    width: 3.5rem;
+    background-color: rgba(250, 250, 250, 0.70) ;
+    border-radius: 5px;
+    margin-right: 2.25rem;
   }
 
   .add-input-field{
@@ -1195,6 +1235,10 @@ align-items: center;
   .add-text-area{
     width: 90%;
   }
+
+  .add-input-bottomright-container > label{
+    margin-left: 2rem;
+   }
 }
 
 
