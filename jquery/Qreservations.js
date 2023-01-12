@@ -111,7 +111,7 @@ if (Math.abs(window.orientation) === 90) {
 // 9. Funkcionalnost: Prikaz Countdown timera, te refresh stranice kada timer istekne
 (function refreshPage() {
     // Admin mijenja vrijeme u minutama
-    var timeoutInMinutes = 5;
+    var timeoutInMinutes = 3;
 
     // Pretvaramo u milisekunde
     var timeout = timeoutInMinutes * 60 * 1000;

@@ -1,0 +1,19 @@
+Tutorial za korištenje aplikacije
+
+1. Korak
+U phpMyAdmin kreirati bazu podataka "porat-staff"
+Importati bazu podataka u "porat-staff" iz foldera "sql-database"
+
+2. Korak
+Ulogirati se u program sa USERNAME "Admin", te PIN "0000"
+
+3. Korak
+Promjena iz JavaScripta u jQuery se primjenjuje preko "Postavke" u navigacijskom izborniku
+
+JavaScript se nalazi u folderu "js", te su skripte podjeljene po stranicama
+jQuery se nalazi u folderu "jquery", te su skripte podjeljene po stranicama
+
+P.S.
+Ako primjetite bilo koje bugove u radu programa ili imate neke savjete za poboljšanje korištenje,
+molim Vas mi javite. Zelio bih program prilagoditi i unaprijediti za zavrsni rad, te u buducnosti
+plasirati kao komercijalni program. :)
