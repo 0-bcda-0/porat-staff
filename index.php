@@ -102,6 +102,7 @@ echo'
 
 <script src="js/login.js"></script>
 <script src="pwa.js"></script>
+<script src="js/background.js"></script>
 </html>
 ';
 

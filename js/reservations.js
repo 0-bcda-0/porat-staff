@@ -44,7 +44,7 @@ function popup(json) {
     document.getElementById('popup').insertAdjacentHTML('afterend', `
     <div id="deleteWindow">
     <div class="deleteWindow-rows">
-        <div class="popup-title h4">Potvrdi brisasssssnje rezervacije br. `+ reservation.IDReservation +`</div>
+        <div class="popup-title h4">Potvrdi brisanje rezervacije br. `+ reservation.IDReservation +`</div>
         <div class="row">
             <div class="popup-col-flex-buttons">
                 <a href="reservations.php?IDr=`+ reservation.IDReservation +`&task=del&day=`+ reservation.StartDate +`"  class="button-delete-deletePopup">
@@ -120,7 +120,7 @@ window.addEventListener('orientationchange', function() {
 // 9. Funkcionalnost: Prikaz Countdown timera, te refresh stranice kada timer istekne
 (function refreshPage() {
     // Admin mijenja vrijeme u minutama
-    var timeoutInMinutes = 5;
+    var timeoutInMinutes = 3;
 
     // Pretvaramo u milisekunde
     var timeout = timeoutInMinutes * 60 * 1000;
