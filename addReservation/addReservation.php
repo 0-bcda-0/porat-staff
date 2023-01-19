@@ -390,7 +390,7 @@ echo '
         <div>x</div>
         <input type="number" id="calcDays" name="calcDays" placeholder="Broj dana" class="calcInput">
       </div>
-      <a href="#" onclick="calculatePrice()" class="button-edit">
+      <a href="#calcPrice" onclick="calculatePrice()" class="button-edit">
           <div class="button-text">Izračunaj</div>
       </a>
       <div class="calcResult" id="calcOutput">0</div>   

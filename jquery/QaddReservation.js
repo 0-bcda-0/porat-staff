@@ -22,9 +22,9 @@ $('#reservationForm').on('keypress', function(event) {
 // 7. Funkcionalnost: Izračun cijene
 function calculatePrice() {
     // Kada se ide izracunat, da se na mobilnom uredaju zadrzi trenutna scroll lokacija
-    var scrollPosition = $(window).scrollTop();
+    // var scrollPosition = $(window).scrollTop();
     // skrola do vrha sto je kontradiktorno, ali kada stavim samo scroll, onda je error
-    $(window).scrollTop(scrollPosition);
+    // $(window).scrollTop(scrollPosition);
     // One liner za izračun cijene
     $('#calcOutput').html($('#calcPrice').val() * $('#calcDays').val() + " €");
 }
