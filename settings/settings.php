@@ -108,9 +108,6 @@ if($_SESSION["Level"] === '0')
 }
 else{
 
-    // TODO
-    // napraviti isto ko i sa edit i delete za employee
-
     if(isset($_POST["btnNWD"])){
         if($_SESSION["NWD"] == "js"){
             $_SESSION["NWD"] = "jquery";
@@ -184,7 +181,6 @@ else{
     // Uredjivanje broda
     if(isset($_POST["btnBoatEdit"]))
     {
-        $IDBoat = mysqli_real_escape_string($con, $_POST["IDBoat"]);
         $Name = mysqli_real_escape_string($con, $_POST["boatName"]);
 
         $IDBoat = (int)$_GET["IDBoat"];

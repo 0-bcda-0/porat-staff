@@ -8,22 +8,6 @@ $_SESSION["NWDScript-addReservation"] = '<script src="../js/addReservation.js"><
 
 include("PHP/db_connection.php");
 
-// if(isset($_POST['username'])){
-//     $username = $_POST['username'];
-//     $pin = $_POST['pin'];
-
-//     $query = "SELECT * FROM employee WHERE Username = '".$username."' AND Pin = '".$pin."' limit 1";
-
-//     $result = mysqli_query($con, $query);
-
-//     if(mysqli_num_rows($result) == 1){
-//         header("Location: reservations/reservations.php");
-//     }else{
-//         echo "Wrong username or pin";
-//     }
-// }
-
-
 echo'
 <!DOCTYPE html>
 <html lang="en">
