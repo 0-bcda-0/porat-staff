@@ -46,13 +46,13 @@ echo'
             <div class="box">
             <form method="POST" action="#">
                 <div class="field">
-                    <input type="text" name="frm_u2" class="input" placeholder=" " value="" />
-                    <label for="frm_u2" class="label">Username</label>
+                    <input type="text" name="frm_u2" class="input input-top" placeholder="Username" value="" />
+                    <!-- <label for="frm_u2" class="label">Username</label> -->
                 </div>
         
                 <div class="field">
-                    <input type="password" name="bgh_u1" class="input" placeholder=" "pattern="\d{4,6}" maxlength="6" inputmode="numeric" value=""/>
-                    <label for="bgh_u1" class="label">Pin</label>
+                    <input type="password" name="bgh_u1" class="input input-bottom" placeholder="Pin"pattern="\d{4,6}" maxlength="6" inputmode="numeric" value=""/>
+                    <!-- <label for="bgh_u1" class="label">Pin</label> -->
                 </div>
                 <div class="buttonFrame">
                     <!-- a element je privremen dok se ne poveze PHP i SQL -->

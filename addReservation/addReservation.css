@@ -1,1246 +1,248 @@
+:root{
+    --element-background: rgba(255, 255, 255, .4);
+    --orange: rgb(248, 155, 62);
+}
 
 body{
-  font-size: 16px;
-  font-family: 'Montserrat';
+    font-size: 16px;
+    font-family: 'Montserrat';
 }
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
-/* Firefox */
+/* Firefox */ 
 input[type=number] {
-  appearance: textfield;
-  -moz-appearance: textfield;
+    appearance: textfield;
+    -moz-appearance: textfield;
 }
-
 
 .add-glass-container{
-  /* width: 1fr;
-  height: calc(100vh - 2rem);
-  margin-left: 1rem;
-  margin-right: 1rem; */
-  display: flex;
-  flex-direction: row;
-}
-
-.add-glass-left{
-    border-radius: 1rem;
-    border: 2px solid #F89B3E;
-    
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-
-    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     height: calc(100vh - 2rem);
-    margin-left: 1rem;
-    margin-right: 0.5rem;
 }
 
-.add-glass-right{
-    border-radius: 1rem;
-    border: 2px solid #F89B3E;
-    
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-
-    width: 50%;
-    height: calc(100vh - 2rem);
-    margin-left: 0.5rem;
-    margin-right: 1rem;
-}
-
-.add-title-container{
-  padding: 3rem;
+.add-glass{
+    width: 40%;
 }
 
 .add-title{
-  font-size: 40px;
-  color: #013358;
+    font-size: 40px;
+    color: white;
 }
 
-.add-panel-left{
-  width: 80%;
-  height: 75%;
-  background-color: rgba(250, 250, 250, 0.7);;
-  padding: 1.5rem;
-  margin-left: auto;
-  margin-right: auto;
-  justify-content: center;
-  border-radius: 1rem;
-  border: 2px solid #F89B3E;
+.add-panel{
+    padding: 20px;
+    background-color: var(--element-background);
+    border-radius: 20px;
 }
 
-.add-panel-right{
-  width: 80%;
-  height: 45%;
-  background-color: rgba(250, 250, 250, 0.7);;
-  padding: 1.5rem;
-  margin-left: auto;
-  margin-right: auto;
-  justify-content: center;
-  border-radius: 1rem;
-  border: 2px solid #F89B3E;
+.add-dropdown-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.calculator-input-field{
-  width: 10rem;
-  height: 3rem;
-  font-size: 20px;
-  text-align: center;
-  border: 2px solid #F89B3E;
-  border-radius: 0.5rem;
+.add-dropdown{
+    padding: 10px 5px 10px 5px;
+    border-radius: 15px;
+    background-color: var(--element-background);
+    width: 400px;
 }
 
-
-/* ---- CONTENT ZA LIJEVI PANEL ---- */
-
-.add-panel-left-content{
-  width: 100%;
-  height: 100%;
-}
-
-/* main dropdown */
-
-.addBrodovi-dropdown-container{
-width: 100%;
-height: 15%;
-padding-top: 1rem;
-display: flex;
-justify-content: center;
-align-items: center;
+.addDjelatnici-dropdown{
+    border: none;
 }
 
 .addBrodovi-dropdown{
-  width: 80%;
-  height: 4rem;
-  padding: 1rem;
-  font-size: 20px;
-  border-color: #F89B3E;
-  border-width: 2px;
-  border-radius: 0.5rem;
+    border: 1.5px solid var(--orange);
 }
 
-.addBrodovi-dropdown > option{
-  font-size: 20px;
-}
-
-/* - TOP CONTENT ZA LIJEVI PANEL - */
-
-.add-panel-left-content-top{
-  height: 27%;
-  width: 100%;
+.add-input-title{
+    font-size: 20px;
+    color: rgb(1, 51, 88);
+    margin: 20px 0px 10px 0px;
 }
 
 .add-inputs-top{
-  width: 100%;
-  padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
 }
 
-.add-date-label{
-  font-size: 18px;
-  margin-left: 1rem;
-}
-
-.add-day-label{
-  font-size: 18px;
-  margin-left: 1rem;
-}
-
-.addreserv-datum-od{
-  font-size: 18px;
-  width: 8rem;
-  margin-left: 0.5rem;
-  margin-right: 4rem; 
-  color: #013358;
-}
-
-.addreserv-datum-do{
-  margin-left: 0.5rem;
-  font-size: 18px;
-  width: 8rem;
-  color: #013358;
-}
-
-.add-radio-button-container{
-  padding-top: 1.5rem;
-  text-align: center;
-}
-
-.add-time-input-container{
-  padding-top: 2rem;
-  font-size: 18px;
-}
-
-.add-time-input-container > label{
-  margin-left: 4rem;
-}
-
-.addreserv-vrijeme-od{
-  padding-right: 0;
-  margin-right: 3rem;
-}
-
-.ad-radio-button{
-  width: 1.25rem;
-  height: 1.25rem;
-  vertical-align: text-bottom;
-}
-
-/* - BOTTOM CONTENT ZA LIJEVI PANEL - */
-
-.add-panel-left-content-bottom{
-  height: 35%;
-  display: inline-flex;
-  font-size: 18px;
-  width: 100%;
-}
-
-.add-panel-left-content-bottom-left-side{
-  width: 50%;
-  display: inline-block;
-}
-
-.add-panel-left-content-bottom-left-side > div{
-  padding-bottom: 1.1rem;
-  padding-top: 0.65rem;
-  margin-left: 1rem;
-  display: flex;
-  
-}
-
-
-.add-panel-left-content-bottom-left-side > div > input{
-  width:100%;
-  margin-right: 1rem;
-  margin-left: 0.5rem;
-  border-top: none;
-  border-left: none;
-  border-right:none;
-  border-bottom: 1.5px solid black;
-  background-color: rgba(250, 250, 250, 0.70);
-  border-radius: 5px;
-}
-
-
-.add-panel-left-content-bottom-right-side{
-  width: 50%;
-}
-
-.add-panel-left-content-bottom-right-side > div{
-  padding-bottom: 1rem;
-  padding-top: 0.75rem;
-  display: flex;
-}
-
-
-.add-panel-left-content-bottom-right-side > div > input{
-  background-color: rgba(250, 250, 250, 0.70);
-  border-radius: 5px;
-}
-
-/* mali dropdown */
-
-.addDjelatnici-dropdown-container{
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  }
-  
-.addDjelatnici-dropdown{
-  width: 80%;
-  height: 2.5rem;
-  font-size: 1.125rem;
-  border-color: #000000;
-  border-width: 1.5px;
-  border-radius: 0.3rem;
-  margin-top: 1.25rem;
-}
-  
-
-
-.addDjelatnici-dropdown > option{
-  font-size: 18px;
-}
-
-/* cijena / akontacija / razlika inputi */
-.addInput-numbers{
-  width: 4rem;
-  margin: 0 3.5rem 0 auto;
-  border-radius:0.25rem;
-  text-align: center;
-  border-width: 1.25px;
-}
-
-.add-input-cijena{
-  width: 4rem;
-  margin: 0 3.5rem 0 auto;
-  border-radius:0.25rem;
-  text-align: center;
-  border-width: 1.25px;
-}
-
-.add-input-akontacija{
-  width: 4rem;
-  margin: 0 3.5rem 0 auto;
-  border-radius:0.25rem;
-  text-align: center;
-  border-width: 1.25px;
-}
-
-.add-input-razlika{
-  width: 4rem;
-  margin: 0 3.5rem 0 auto;
-  border-radius:0.25rem;
-  text-align: center;
-  border-width: 1.25px;
-}
-
-.add-input-depozit{
-  width: 4rem;
-  margin: 0 3.5rem 0 auto;
-  border-radius:0.25rem;
-  text-align: center;
-  border-width: 1.25px;
-}
-
-.add-input-bottomright-container > label{
- margin-left: 1rem;
- float: left;
-}
-
-/* - BUTTONI ZA LIJEVI PANEL - */
-
-.add-panel-left-content-buttons{
-  height: 10%;
-  display: flex;
-}
-
-.add-button-half{
-  width: 50%;
-}
-
-.add-button-container{
-  width: 100%;
-  padding-top: 0.5rem;
-}
-
-.add-button-container > button{
-  width: 9rem;
-  height: 3rem;
-}
-
-/* .add-button-ocisti{
-  margin-left: 25%;
-  margin-right: auto;
-  font-size: 1.25rem;
-  color: red;
-  font-weight: bolder;
-  border-color: red;
-  border-radius: 1.5rem;
-} */
-
-.add-button-ocisti{
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0.3rem 1rem 0.3rem 1rem;
-  border-radius: 20px;
-  color: #DA1A20;
-  border: 1px solid #DA1A20;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.25rem;
-  font-size: 16px;
-}
-
-.add-button-rezerviraj{
-
-  background-color: #337895;
-  color: white;
-  border: none;
-
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0.3rem 1rem 0.3rem 1rem;
-  border-radius: 20px;
-  font-weight: 400;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.25rem;
-  font-size: 16px;
-}
-
-/* ---- KALENDAR ---- */
-
-.add-panel-right-content{
-  width: 100%;
-  height: 100%;
-}
-
-.show {display:block;}
-
-/* |||||||||||||||||||||||||JANOV DODATAL||||||||||||||||||||||||||| */
-.blurForClearFormPopup.active{
-  filter: blur(15px);
-  pointer-events: none;
-  user-select: none;
-  --webkit-user-select: none;
-}
-
-.clearFormPopup{
-  position: fixed;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 550px;
-  padding: 50px;
-  box-shadow: 0 5px 30px rgba(0,0,0,0.30);
-  background: #fff;
-  visibility: hidden;
-  opacity: 0;
-  transition: 0.5s;
-
-  /* Glass efekt */
-  /* From https://css.glass */
-  background: rgba(255, 255, 255, 0.60);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.clearFormPopup.active{
-  top: 50%;
-  visibility: visible;
-  opacity: 1;
-  transition: 0.5s;
-}
-
-.calculator-container{
-  height: 10% !important;
-  padding: 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.calcInputContainer{
-  display: flex;
-  justify-content: space-around;
-}
-
-.calcInput{
-  width: 40%;
-  margin-right: 1rem;
-  margin-left: 0.5rem;
-  border-top: none;
-  border-left: none;
-  border-right:none;
-  border-bottom: 1.5px solid black;
-  background-color: rgba(250, 250, 250, 0.70);
-  border-radius: 5px;
-}
-
-.calcResult{
-  width: 25%;
-  margin-right: 1rem;
-  margin-left: 0.5rem;
-  border-top: none;
-  border-left: none;
-  border-right:none;
-  border-bottom: 1.5px solid black;
-  text-align: center;
-  background-color: rgba(250, 250, 250, 0.70);
-  border-radius: 5px;
+.add-input-container-flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
 }
 
 .inputField{
-  background-color: rgba(250, 250, 250, 0.70);
-  border-radius: 5px;
-  border: none;
+    width: 130px;
+    border: none;
+    background-color: var(--element-background);
+    border-radius: 15px;
+    padding: 10px 5px 10px 5px;
 }
 
-.inputFieldNumbers{
-  background-color: rgba(250, 250, 250, 0.70);
-  border-radius: 5px;
-  border: none;
-  border-bottom: 1px solid black;
+.addDjelatnici-dropdown-container{
+    margin-top: 20px;
 }
 
-.add-text-area-container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 12%;
+.add-input-container-flex2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: start;
+    gap: 20px;
+}
+
+.add-small-container{
+    width: 100%;
+}
+
+.add-input-group-flex{
+    width: 100%;
+}
+
+.add-input{
+    width:100%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 10px 10px 10px 10px;
+}
+.add-input-first{
+    border-radius: 15px 15px 0px 0px;
+    border-bottom: 1.5px solid orange !important;
+}
+
+.add-input-middle{
+    border-radius: none;
+    border-bottom: 1.5px solid orange !important;
+}
+
+.add-input-last{
+    border-radius: 0px 0px 15px 15px;
+}
+
+.add-input-last-right{
+    border-radius: 0px 0px 15px 0px;
+}
+
+.add-input-last-left{
+    border-radius: 0px 0px 0px 15px;
+}
+
+.add-panel-flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-text-area-container {
+    display: flex;
+    justify-content: center;
+}
+
+.add-text-area {
+    width: 80%;
+    font-size: 18px;
+    padding-left: 15px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 15px;
+    border: none;
+}
+
+.add-panel-left-content-buttons{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.add-button-ocisti {
+    padding: 0.3rem 1rem 0.3rem 1rem;
+    border-radius: 20px;
+    color: #DA1A20;
+    border: 1px solid #DA1A20;
+    font-weight: 400;
+}
+
+.add-button-rezerviraj{
+    background-color: #337895;
+    padding: 0.3rem 1rem 0.3rem 1rem;
+    border-radius: 20px;
+    border: 1px solid #337895;
+    font-weight: 400;
+    color: white;
+}
+
+.add-panel-left-content-bottom-right-side{
+    width: 50%;
+}
+.add-input-group-flex-left-half {
+    border-right: 1.5px solid var(--orange);
+}
+
+/* CALCULATOR */
+
+.calculator-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+@media only screen and (max-width: 600px){
+.add-glass-container {
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+}
+
+.add-glass{
+    width: 85%;
+    margin: auto;
+}
+.add-title{
+    font-size: 28px;
+    margin: 20px 0px 30px 0px;
+}
+
+.add-dropdown{
+    width: 200px;
+}
+
+.add-inputs-top{
+    flex-direction: column;
+    gap: 20px;
+}
+
+.add-input-container-flex2{
+    flex-direction: column;
 }
 
 .add-text-area{
-  width: 80%;
-  height: 90%;
-  font-size: 18px;
-  border-top: none;
-  border-left: none;
-  border-right:none;
-  border-bottom: 1.5px solid black;
-  background-color: rgba(250, 250, 250, 0.70);
-  border-radius: 5px;
-}
-
-/* |||||||||||||||||||||||||RESPONZIVNOST||||||||||||||||||||||||||| */
-
-
-/*---2K (2560x1440)---*/
-
-
-@media only screen and (min-width: 2200px) {
-
-  .add-panel-left{
-    width: 75%;
-    height: 68%;
-    margin-top: 3rem;
-  }
-  
-  .add-panel-right{
-    width: 75%;
-    height: 68%;
-    margin-top: 3rem;
-  }
-
-  .addBrodovi-dropdown-container{
-    padding-top: 3rem;
-  }
-
-  .addBrodovi-dropdown{
-    height: 5.5rem;
-    padding-left: 3rem;
-    font-size: 22px;
-  }
-
-  .add-inputs-top{
-    padding-top: 3rem;
-  }
-
-  .add-radio-button-container{
-    padding-top: 1.75rem;
-    padding-bottom: 0.5rem;
-  }
-
-  .add-time-input-container{
-    padding-top: 3rem;
-    font-size: 22px;
-  }
-
-  .addreserv-datum-od{
-    font-size: 22px;
-    margin-right: 1rem;
-    width: 10rem;
-    margin-left: 1rem;
-  }
-
-  .addreserv-datum-do{
-    font-size: 22px;
-    width: 10rem;
-    margin-left: 1rem;
-  }
-
-  .add-date-label{
-   font-size: 22px;
-   margin-left: 2rem;
- }
-
- .add-day-label{
-  font-size: 22px;
-  margin-left: 2rem;
-}
-
-  .add-panel-left-content-bottom-right-side > div{
-    padding-bottom: 1.5rem;
-    padding-top: 1rem;
-  }
-
-  .add-panel-left-content-bottom-left-side > div{
-    padding-bottom: 1.5rem;
-    padding-top: 1rem;
-  }
-
-  .add-time-input-container > label{
-    margin-left: 6rem;
-  }
-
-  .addreserv-vrijeme-od{
-    padding-right: 0;
-    margin-right: 5rem;
-  }
-
-  .add-panel-left-content-bottom{
-    font-size: 22px;
-  }
-
-  .addDjelatnici-dropdown{
-    margin: 1rem 2rem;
-    height: 3.25rem;
-    font-size: 22px;
-    border-width: 1.5px;
-    border-radius: 0.4rem;
-  }
-
-  .addDjelatnici-dropdown > option{
-    font-size: 20px;
-  }
-
-  .add-input-cijena{
-    width: 5rem;
-    margin: 0 4rem 0 auto;
-    border-width: 1.75px;
-    border-radius: 0.3rem;
-  }
-
-  .add-input-akontacija{
-    width: 5rem;
-    margin: 0 4rem 0 auto;
-    border-width: 1.75px;
-    border-radius: 0.3rem;
-  }
-
-  .add-input-razlika{
-    width: 5rem;
-    margin: 0 4rem 0 auto;
-    border-width: 1.75px;
-    border-radius: 0.3rem;
-  }
-
-  .add-input-depozit{
-    width: 5rem;
-    margin: 0 4rem 0 auto;
-    border-width: 1.75px;
-    border-radius: 0.3rem;
-  }
-
-  .add-button-ocisti{
-    font-size: 1.5rem;
-    border-radius: 2.5rem;
-  }
-  
-  .add-button-rezerviraj{
-    font-size: 1.5rem;
-    border-radius: 2.5rem;
-  }
-
-  .add-button-container{
-    padding-top: 2rem;
-  }
-
-  .add-button-container > button{
-    width: 12rem;
-    height: 3.5rem;
-  }
-
-  .add-panel-left-content-bottom-left-side > div > input{
-    margin-right: 2rem;
-    margin-left: 1rem;
-  }
-
-  .add-panel-left-content-bottom-left-side > div > label{
-    margin-left: 2rem;
-  }
-
-  .add-input-bottomright-container > label{
-    margin-left: 4rem;
-   }
-
-   .add-text-area{
-    font-size: 20px;
-  }
-
-}
-
-
-/*---(1680x1050)---*/
-
-
-@media only screen and (max-width: 1680px) {
-  .addreserv-datum-od{
-    margin-right: 1rem;
-  }
-
-
-  .add-time-input-container > label{
-    margin-left: 2rem;
-  }
-
-  .addBrodovi-dropdown{
-    height: 4.5rem;
-    border-width: 1.75px;
-  }
-
-  .addBrodovi-dropdown-container{
-    padding-top: 1.25rem;
-  }
-
-  .add-input-cijena{
-    width: 3.5rem;
-    margin: 0 3rem 0 auto;
-    border-width: 1.5px;
-    border-radius: 0.2rem;
-  }
-
-  .add-input-akontacija{
-    width: 3.5rem;
-    margin: 0 3rem 0 auto;
-    border-width: 1.5px;
-    border-radius: 0.2rem;
-  }
-
-  .add-input-razlika{
-    width: 3.5rem;
-    margin: 0 3rem 0 auto;
-    border-width: 1.5px;
-    border-radius: 0.2rem;
-  }
-
-  .add-input-depozit{
-    width: 3.5rem;
-    margin: 0 3rem 0 auto;
-    border-width: 1.5px;
-    border-radius: 0.2rem;
-  }
-
-  .add-button-container{
-    padding-top: 1.25rem;
-  }
-
-  .add-panel-left-content-bottom-left-side > div > label{
-    margin-left: 1.25rem;
-  }
-
-  .add-panel-left-content-bottom-left-side > div > input{
-    margin-right: 0.5rem;
-  }
-  
-  .add-panel-left-content-bottom-right-side > div > label{
-    margin-left: 1.5rem;
-  }
-}
-
-
-/*---(1366x768)---*/
-
-@media only screen and (max-width: 1366px) {
-
-  .add-title-container{
-    padding-bottom: 30px;
-  }
-
-  .addBrodovi-dropdown-container{
-    padding-top: 0.5rem;
-    padding-bottom: 1rem;
-  }
-
-  .addBrodovi-dropdown{
-    height: 3rem;
-    padding: 0.75rem;
-    font-size: 16px;
-  }
-
-  .addreserv-datum-od{
-    font-size: 16px;
-    margin-right: 0.5rem;
-    width: 6rem;
-  }
-
-  .addreserv-datum-do{
-    font-size: 16px;
-    width: 6rem;
-  }
-
-  .add-date-label{
-   font-size: 16px;
-   margin-left: 0rem;
- }
-
- .add-day-label{
-  font-size: 16px;
-  margin-left: 0rem;
-  }
-
-  .add-panel-left-content-bottom-right-side > div{
-    padding-bottom: 0.5rem;
-    padding-top: 0.35rem;
-  }
-
-  .add-panel-left-content-bottom-left-side > div{
-    padding-bottom: 0.5rem;
-    padding-top: 0.35rem;
-  }
-
-  .add-inputs-top{
-    padding-top: 0;
-  }
-
-  .add-radio-button-container{
-    padding-top: 1.25rem;
-    padding-bottom: 0.5rem;
-  }
-
-  .add-time-input-container{
-    padding-top: 1.1rem;
-    font-size: 16px;
-  }
-
-  .add-time-input-container > label{
-    margin-left: 1rem;
-  }
- 
-  .addreserv-vrijeme-od{
-    padding-right: 0;
-    margin-right: 1rem;
-  }
-
-  .add-panel-left-content-bottom{
-    font-size: 16px;
-  }
-
-  .addDjelatnici-dropdown{
-    margin: 0.5rem 0.75rem;
-    height: 1.75rem;
-    font-size: 16px;
-    border-width: 1.25px;
-    border-radius: 0.2rem;
-  }
-
-  .addDjelatnici-dropdown > option{
-    font-size: 16px;
-  }
-
-  .add-input-cijena{
-    width: 3rem;
-    margin: 0 1rem 0 auto;
-  }
-
-  .add-input-akontacija{
-    width: 3rem;
-    margin: 0 1rem 0 auto;
-  }
-
-  .add-input-razlika{
-    width: 3rem;
-    margin: 0 1rem 0 auto;
-  }
-
-  .add-input-depozit{
-    width: 3rem;
-    margin: 0 1rem 0 auto;
-  }
-
-  .add-button-ocisti{
-    font-size: 1.1rem;
-    border-radius: 1.5rem;
-  }
-  
-  .add-button-rezerviraj{
-    font-size: 1.1rem;
-    border-radius: 1.5rem;
-  }
-
-  .add-button-container{
-    padding-top: 0.5rem;
-  }
-
-  .add-button-container > button{
-    width: 8rem;
-    height: 2.5rem;
-  }
-
-  .add-text-area{
-    font-size: 1rem;
-  }
-  
-}
-
-/* 1280x800 */
-
-
-@media only screen and (max-width: 1280px) {
-
-  .add-radio-button-container{
-    padding-top: 1.3rem;
-    padding-bottom: 0.75rem;
-  }
-
-  .add-time-input-container{
-    padding-top: 1.3rem;
-    font-size: 15px;
-  }
-
-  .addBrodovi-dropdown{
-    font-size: 15px;
-  }
-
-  .addreserv-datum-od{
-    font-size: 15px;
-    margin-left: 0px;
-  }
-
-  .addreserv-datum-do{
-    font-size: 15px;
-    margin-left: 0px;
-  }
-
-  .add-date-label{
-   font-size: 15px;
- }
- 
-  .add-day-label{
-    font-size: 15px;
-  }
-
-  .add-panel-left-content-bottom{
-    font-size: 15px;
-  }
-
-  .addDjelatnici-dropdown{
-    font-size: 15px;
-  }
-
-  .addDjelatnici-dropdown > option{
-    font-size: 15px;
-  }
-
-  .add-panel-left-content-bottom-right-side > div{
-    padding-bottom: 0.7rem;
-    padding-top: 0.35rem;
-  }
-
-  .add-panel-left-content-bottom-left-side > div{
-    padding-bottom: 0.7rem;
-    padding-top: 0.35rem;
-  }
-
-  .add-panel-left-content-bottom-left-side > div{
-    margin-left: 0rem;
-  }
-
-  .add-text-area{
-    font-size: 1rem;
-  }
-
-  .addBrodovi-dropdown-container{
-    padding-bottom: 1rem;
-  }
-
-  .add-button-container{
-    padding-top: 1.25rem;
-  }
-}
-
-
-/* --------412x915--------- */
-
-@media only screen and (max-width: 500px) {
-
-  body {
-    background: url(../img/Bcg.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-  }
-
-  .add-glass-container{
-    display: flex;
     width: 100%;
+}
+
+/* CALCULATOR */
+
+.calculator-container{
     flex-direction: column;
-  }
-
-  .spacer{
-    display: none;
-  }
-
-  .spacer-bottom{
-    display: grid;
-    height: 2rem;
-    }
-
-  .add-glass-left{
-    border-radius: 0;
-    border: none;
-    
-    background: none;
-    box-shadow: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-
-    width: 100%;
-    height: calc(100% - 8rem);
-    margin-bottom: 0rem;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-  }
-
-  .add-glass-right{
-    border-radius: 0;
-    border: none;
-    
-    background: none;
-    box-shadow: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-
-    width: 100%;
-    height: calc(100% - 8rem);
-    margin-bottom: 0rem;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-  }
-
-  .add-panel-left{
-    padding: 1rem;
-    padding-bottom: 2rem;
-    border: none;
-    height: 90%;
-    width: 85%;
-    background-color: rgba(250, 250, 250, 0.70);
-  }
-
-  .add-panel-right{
-    padding: 1rem;
-    height: 90%;
-    width: 85%;
-    border: none;
-  }
-
-  .add-panel-left-content-top{
-    height: 22%;
-  }
-
-  .add-inputs-top{
-    padding-left: 1rem;
-    display: block;
-  }
-
-  .add-panel-left-content-bottom{
-    height: 58%;
-    display: block;
-  }
-
-  .add-panel-left-content-bottom-left-side{
-    width: 100%;
-  }
-
-  .add-panel-left-content-bottom-left-side > div{
-    padding-bottom: 0.4rem;
-    padding-top: 0.6rem;
-    margin-left: 2rem;
-  }
-
-  .add-panel-left-content-bottom-left-side > div > input{
-    margin-right: 2rem;
-  }
-
-  .add-title-container{
-    height: 5rem;
-    padding: 1rem;
-  }
-
-  .addBrodovi-dropdown-container{
-    padding-top: 1rem;
-    max-height: 70px;
-    margin-bottom: 1rem;
-  }
-
-  .add-title{
-    color: white;
-    font-size: 1.75rem;
-    padding-top: 0.5rem;
-    padding-left: 2rem;
-  }
-
-  .addBrodovi-dropdown{
-    font-size: 1rem;
-    background-color: rgba(250, 250, 250, 0.70) ;
-  }
-  
-  .addreserv-datum-od{
-    width: 8rem;
-    font-size: 1rem;
-    background-color: rgba(250, 250, 250, 0.70) ;
-    border: none;
-    border-radius: 5px;
-    margin-left: 10px;
-  }
-
-  .addreserv-datum-do{
-    width: 8rem;
-    font-size: 1rem;
-    margin-top: 0.75rem;
-    background-color: rgba(250, 250, 250, 0.70) ;
-    border: none;
-    border-radius: 5px;
-    margin-left: 10px;
-  }
-
-  .add-radio-button-container{
-    padding-top: 1rem;
-  }
-
-  .add-time-input-container{
-    padding-top: 1rem;
-    padding-bottom: 0.5rem;
-    font-size: 1rem;
-    display: block;
-  }
-
-  .add-date-label{
-   font-size: 1rem;
-   margin-left: 1.3rem;
-  }
-
-  .add-day-label{
-    margin-left: 0.5rem;
-  }
-
-  .add-time-input-container > label{
-    margin-left: 4rem;
-    font-size: 1rem;
-  }
-
-  .addreserv-vrijeme-od{
-    width: 6.5rem;
-    font-size: 1rem;
-    margin-right: 4rem;
-    background-color: rgba(250, 250, 250, 0.70) ;
-    border: none;
-    border-radius: 5px;
-  }
-
-  .addreserv-vrijeme-do{
-    width: 6.5rem;
-    font-size: 1rem;
-    margin: 0;
-    margin-top: 0.75rem;
-    background-color: rgba(250, 250, 250, 0.70) ;
-    border: none;
-    border-radius: 5px;
-  }
-
-  .add-panel-left-content-bottom{
-    font-size: 1rem;
-  }
-
-  .addDjelatnici-dropdown{
-    font-size: 1rem;
-    height: 2rem;
-    background-color: rgba(250, 250, 250, 0.70);
-    border: none;
-    border-radius: 5px;
-  }
-
-  .addDjelatnici-dropdown > option{
-    font-size: 1rem;
-  }
-
-  .add-panel-left-content-buttons{
-    display: flex;
-    max-height: 50px;
-  }
-
-  .add-panel-left-content-bottom-right-side{
-    width: 100%;
-  }
-
-  .add-panel-left-content-bottom-right-side > div{
-    padding-top: 1.25rem;
-    padding-bottom: 0px;
-  }
-
-  .add-button-container{
-    padding-top: 1rem;
-  }
-
-  .add-button-container > button{
-    width: 7rem;
-    height: 2.25rem;
-    margin-left: 1rem;
-  }
- 
-  .add-input-cijena{
-    width: 3.5rem;
-    background-color: rgba(250, 250, 250, 0.70) ;
-    border-radius: 5px;
-    margin-right: 2.25rem;
-  }
-
-  .add-input-akontacija{
-    width: 3.5rem;
-    background-color: rgba(250, 250, 250, 0.70) ;
-    border-radius: 5px;
-    margin-right: 2.25rem;
-  }
-
-  .add-input-razlika{
-    width: 3.5rem;
-    background-color: rgba(250, 250, 250, 0.70) ;
-    border-radius: 5px;
-    margin-right: 2.25rem;
-  }
-
-  .add-input-depozit{
-    width: 3.5rem;
-    background-color: rgba(250, 250, 250, 0.70) ;
-    border-radius: 5px;
-    margin-right: 2.25rem;
-  }
-
-  .add-input-field{
-    background-color: rgba(250, 250, 250, 0.70) ;
-    border-radius: 5px;
-  }
-
-  .calcInput{
-    width: 100%;
-  }
-
-  .calculator-container{
-    gap: 1rem;
-  }
-
-  .calculator-container
-  {
-    flex-direction: column;
-  }
-
-  .add-panel-left-content-bottom-right-side > div{
-    padding-top: 0.75rem;
-  }
-
-  .add-text-area-container{
-    padding-top: 1rem;
-    height: 7rem;
-  }
-  
-  .add-text-area{
-    width: 90%;
-  }
-
-  .add-input-bottomright-container > label{
-    margin-left: 2rem;
-   }
+    gap: 10px;
 }
 
 
+.calculator-container-input{
+    flex-direction: row;
+}
 
-
+}

@@ -8,8 +8,10 @@ include("../PHP/conf.php");
 if(isset($_POST["btn_edit"]))
 {
     $BoatID = mysqli_real_escape_string($con, $_POST["BoatID"]);
-    $StartDateTime = mysqli_real_escape_string($con, $_POST["StartDateTime"]);
-    $FinishDateTime = mysqli_real_escape_string($con, $_POST["FinishDateTime"]);
+    $StartDate = mysqli_real_escape_string($con, $_POST["StartDate"]);
+    $FinishDate = mysqli_real_escape_string($con, $_POST["FinishDate"]);
+    $StartTime = mysqli_real_escape_string($con, $_POST["StartTime"]);
+    $FinishTime = mysqli_real_escape_string($con, $_POST["FinishTime"]);
     $ClientName = mysqli_real_escape_string($con, $_POST["ClientName"]);
     $ClientSurname = mysqli_real_escape_string($con, $_POST["ClientSurname"]);
     $ClientTelNum = mysqli_real_escape_string($con, $_POST["ClientTelNum"]);
@@ -27,8 +29,10 @@ if(isset($_POST["btn_edit"]))
     $query_upd = "UPDATE reservation
                   SET
                   BoatID = '$BoatID',
-                  StartDateTime = '$StartDateTime',
-                  FinishDateTime = '$FinishDateTime',
+                  StartDate = '$StartDate',
+                  FinishDate = '$FinishDate',
+                  StartTime = '$StartTime',
+                  FinishTime = '$FinishTime',
                   Name = '$ClientName',
                   Surname = '$ClientSurname',
                   TelNum = '$ClientTelNum',
@@ -45,7 +49,7 @@ if(isset($_POST["btn_edit"]))
 
     if($result_upd)
     {
-        header('Location: ../reservations/reservations.php?day='.date("Y-m-d", strtotime($StartDateTime)).'');
+        header('Location: ../reservations/reservations.php?day='.date("Y-m-d", strtotime($StartDate)).'');
         exit;
     }
     else
@@ -56,30 +60,32 @@ if(isset($_POST["btn_edit"]))
 
 if(isset($_POST["btn_save"]))
 {
-  $BoatID = mysqli_real_escape_string($con, $_POST["BoatID"]);
-  $StartDateTime = mysqli_real_escape_string($con, $_POST["StartDateTime"]);
-  $FinishDateTime = mysqli_real_escape_string($con, $_POST["FinishDateTime"]);
-  $ClientName = mysqli_real_escape_string($con, $_POST["ClientName"]);
-  $ClientSurname = mysqli_real_escape_string($con, $_POST["ClientSurname"]);
-  $ClientTelNum = mysqli_real_escape_string($con, $_POST["ClientTelNum"]);
-  $ClientOIB = mysqli_real_escape_string($con, $_POST["ClientOIB"]);
-  $Price = mysqli_real_escape_string($con, $_POST["Price"]);
-  $AdvancePayment = mysqli_real_escape_string($con, $_POST["AdvancePayment"]);
-  $PriceDiffrence = mysqli_real_escape_string($con, $_POST["PriceDiffrence"]);
-  $Deposit = mysqli_real_escape_string($con, $_POST["Deposit"]);
-  $EmployeeID = mysqli_real_escape_string($con, $_POST["EmployeeID"]);
-  $Note = mysqli_real_escape_string($con, $_POST["Note"]);
+    $BoatID = mysqli_real_escape_string($con, $_POST["BoatID"]);
+    $StartDate = mysqli_real_escape_string($con, $_POST["StartDate"]);
+    $FinishDate = mysqli_real_escape_string($con, $_POST["FinishDate"]);
+    $StartTime = mysqli_real_escape_string($con, $_POST["StartTime"]);
+    $FinishTime = mysqli_real_escape_string($con, $_POST["FinishTime"]);
+    $ClientName = mysqli_real_escape_string($con, $_POST["ClientName"]);
+    $ClientSurname = mysqli_real_escape_string($con, $_POST["ClientSurname"]);
+    $ClientTelNum = mysqli_real_escape_string($con, $_POST["ClientTelNum"]);
+    $ClientOIB = mysqli_real_escape_string($con, $_POST["ClientOIB"]);
+    $Price = mysqli_real_escape_string($con, $_POST["Price"]);
+    $AdvancePayment = mysqli_real_escape_string($con, $_POST["AdvancePayment"]);
+    $PriceDiffrence = mysqli_real_escape_string($con, $_POST["PriceDiffrence"]);
+    $Deposit = mysqli_real_escape_string($con, $_POST["Deposit"]);
+    $EmployeeID = mysqli_real_escape_string($con, $_POST["EmployeeID"]);
+    $Note = mysqli_real_escape_string($con, $_POST["Note"]);
 
   $query_ins = "INSERT INTO reservation
-                (BoatID, StartDateTime, FinishDateTime, Name, Surname, TelNum, OIB, Price, AdvancePayment, PriceDiffrence, Deposit, EmployeeID, Note)
+                (BoatID, StartDate, StartTime, FinishDate, FinishTime, Name, Surname, TelNum, OIB, Price, AdvancePayment, PriceDiffrence, Deposit, EmployeeID, Note)
                 VALUES
-                ('$BoatID', '$StartDateTime', '$FinishDateTime', '$ClientName', '$ClientSurname', '$ClientTelNum', '$ClientOIB', '$Price', '$AdvancePayment', '$PriceDiffrence', '$Deposit', '$EmployeeID', '$Note')";
+                ('$BoatID', '$StartDate', '$StartTime', '$FinishDate', '$FinishTime', '$ClientName', '$ClientSurname', '$ClientTelNum', '$ClientOIB', '$Price', '$AdvancePayment', '$PriceDiffrence', '$Deposit', '$EmployeeID', '$Note')";
   
   $result_ins = mysqli_query($con, $query_ins);
 
   if($result_ins)
   {
-    header('Location: ../reservations/reservations.php?day='.date("Y-m-d", strtotime($StartDateTime)).'');
+    header('Location: ../reservations/reservations.php?day='.date("Y-m-d", strtotime($StartDate)).'');
     exit;
   }
   else
@@ -100,8 +106,10 @@ if(isset($_GET["IDr"])){
           reservation.IDReservation,
           boat.Name AS BoatName,
           boat.IDBoat AS IDBoat, 
-          reservation.StartDateTime,
-          reservation.FinishDateTime,
+          reservation.StartDate,
+          reservation.FinishDate,
+          reservation.StartTime,
+          reservation.FinishTime,
           reservation.Name AS ClientName,
           reservation.Surname AS ClientSurname,
           reservation.TelNum AS ClientTenNum,
@@ -125,8 +133,10 @@ if(isset($_GET["IDr"])){
   $IDReservation = $reservation['IDReservation'];
   $BoatName = $reservation['BoatName'];
   $IDBoat = $reservation['IDBoat'];
-  $StartDateTime = $reservation['StartDateTime'];
-  $FinishDateTime = $reservation['FinishDateTime'];
+  $StartDate = $reservation['StartDate'];
+  $FinishDate = $reservation['FinishDate'];
+  $StartTime = $reservation['StartTime'];
+  $FinishTime = $reservation['FinishTime'];
   $ClientName = $reservation['ClientName'];
   $ClientSurname = $reservation['ClientSurname'];
   $ClientTelNum = $reservation['ClientTenNum'];
@@ -144,8 +154,7 @@ if(isset($_GET["IDr"])){
 }
 // Ako je stisnuta prazna kartica
 elseif (isset($_GET["BoatSelected"]) && isset($_GET["DateSelected"])) {
-  $date = $_GET['DateSelected'];
-  $convertedDate = $date . "T08:00";
+  $convertedDate = $_GET['DateSelected'];
 
   foreach($lookup as $item) {
     if($item['BoatName'] == $_GET['BoatSelected']) {
@@ -157,8 +166,10 @@ elseif (isset($_GET["BoatSelected"]) && isset($_GET["DateSelected"])) {
   $IDReservation = "";
   $BoatName = "";
   $IDBoat = $boatid;
-  $StartDateTime = $convertedDate;
-  $FinishDateTime = "";
+  $StartDate = $convertedDate;
+  $FinishDate = "";
+  $StartTime = "";
+  $FinishTime = "";
   $ClientName = "";
   $ClientSurname = "";
   $ClientTelNum = "";
@@ -178,8 +189,10 @@ else{
   $IDReservation = "";
   $BoatName = "";
   $IDBoat = "";
-  $StartDateTime = "";
-  $FinishDateTime = "";
+  $StartDate = "";
+  $FinishDate = "";
+  $StartTime = "";
+  $FinishTime = "";
   $ClientName = "";
   $ClientSurname = "";
   $ClientTelNum = "";
@@ -197,253 +210,245 @@ else{
 
 echo '
 <main id="blur">
-  <div class="spacer"></div>
-  <div class="add-glass-container blurForClearFormPopup" id="blurForClearFormPopup">
-    <!--LIJEVI DIO-->
-    <div class="add-glass-left">
+    <div class="spacer"></div>
+    <div class="add-glass-container blurForClearFormPopup" id="blurForClearFormPopup">
+        <!--LIJEVI DIO-->
+        <div class="add-glass">
 
-      <div class="add-title-container">
-        <div class="add-title">
-          Nova Rezervacija
-        </div>
-      </div>
+            <div class="add-title">Nova Rezervacija</div>
 
-      <div class="add-panel-left">
-        <div class="add-panel-left-content">
+            <div class="add-panel add-panel-left">
 
-        <form id="reservationForm" style="height:100%" method="POST" action="">
+                <form id="reservationForm" style="height:100%" method="POST" action="">
 
-          <!-- dropdown -->
-          <div class="addBrodovi-dropdown-container">
-            <select class="addBrodovi-dropdown"  name="BoatID" required>
-              <option value="">Odaberite svoj brod...</option>';
+                    <!-- dropdown -->
+                    <div class="add-dropdown-container">
+                        <select class="add-dropdown addBrodovi-dropdown" name="BoatID" required>
+                            <option value="">Odaberite svoj brod...</option>';
 
-              $query_boat = "SELECT * FROM boat ORDER BY IDBoat ASC";
-              $result_boat = mysqli_query($con, $query_boat);
+                            $query_boat = "SELECT * FROM boat ORDER BY IDBoat ASC";
+                            $result_boat = mysqli_query($con, $query_boat);
 
-              while($row = mysqli_fetch_assoc($result_boat))
-              {
-                  $BoatID = $row["IDBoat"];
-                  $name = $row["Name"];
+                            while($row = mysqli_fetch_assoc($result_boat))
+                            {
+                                $BoatID = $row["IDBoat"];
+                                $name = $row["Name"];
 
-                  if($BoatID == $IDBoat)
-                  {
-                      $selected = 'selected = "selected"';
-                  }
-                  else
-                  {
-                      $selected = "";
-                  }
+                                if($BoatID == $IDBoat)
+                                {
+                                    $selected = 'selected = "selected"';
+                                }
+                                else
+                                {
+                                    $selected = "";
+                                }
 
-                  echo '<option value="'.$BoatID.'" '.$selected.'>'.$name.'</option>';
-              }
+                                echo '<option value="'.$BoatID.'" '.$selected.'>'.$name.'</option>';
+                            }
 
-          echo '
-            </select>
-          </div>
+                            echo '
+                        </select>
+                    </div>
 
-        <!-- content-top -->
+                    <!-- Booking information -->
 
 
-          <div class="add-panel-left-content-top">
+                    <div class="add-input-title">Booking Information:</div>
 
-            <div class="add-inputs-top">
-              <label class="add-date-label" for="addreserv-datum-od">Od datuma:</label>
-              <input type="datetime-local" id="addreserv-datum-od"  class="inputField addreserv-datum-od" name="StartDateTime" value="'.$StartDateTime.'" required>
-              <label class="add-date-label" for="addreserv-datum-do">Do datuma:</label>
-              <input type="datetime-local" id="addreserv-datum-do" class="inputField addreserv-datum-do" name="FinishDateTime" value="'.$FinishDateTime.'" required>
+                    <div class="add-inputs-top">
+                        <div class="add-input-container-flex">
+                            <label class="add-input-label" for="addreserv-datum-od">Od datuma:</label>
+                            <input type="date" id="addreserv-datum-od" class="inputField"
+                                name="StartDate" value="'.$StartDate.'" required>
+                        </div>
+                        <div class="add-input-container-flex">
+                            <label class="add-input-label" for="addreserv-datum-do">Do datuma:</label>
+                            <input type="date" id="addreserv-datum-do" class="inputField"
+                                name="FinishDate" value="'.$FinishDate.'" required>
+                        </div>
+                    </div>
+
+                    <!-- Radio buttons za fiksno vrijeme -->
+                    <!--
+                    <div class="add-radio-button-container">
+                        <label class="add-input-label" for="ad-radio-button">1/2 dana</label>
+                        <input type="radio" id="ad-radio-button1" name="TimeSlot" class="ad-radio-button">
+                        <label class="add-input-label" for="ad-radio-button">2/2 dana</label>
+                        <input type="radio" id="ad-radio-button2" name="TimeSlot" class="ad-radio-button">
+                        <label class="add-input-label" for="ad-radio-button">Cijeli dan</label>
+                        <input type="radio" id="ad-radio-button3" name="TimeSlot" class="ad-radio-button">
+                    </div>
+                    -->
+
+                    <div class="add-inputs-top" style="margin-top:20px;">
+                        <div class="add-input-container-flex">
+                            <label class="add-time-label" for="addreserv-vrijeme-od">Od sati:</label>
+                            <input type="time" id="addreserv-vrijeme-od" name="StartTime" value="'.$StartTime.'" class="inputField" required>
+                        </div>
+                        <div class="add-input-container-flex">
+                            <label class="add-time-label" for="addreserv-vrijeme-do">Do sati:</label>
+                            <input type="time" id="addreserv-vrijeme-do" name="FinishTime" value="'.$FinishTime.'" class="inputField" required>
+                        </div>
+                    </div>
+
+
+                    <div class="add-dropdown-container addDjelatnici-dropdown-container">
+                        <select id="addDjelatnici-dropdown" class="add-dropdown addDjelatnici-dropdown" name="EmployeeID" required>
+                            <option value="">Rezervirao...</option>
+                            ';
+
+                            $query_employee = "SELECT * FROM employee WHERE Username != 'Admin' ORDER BY IDEmployee ASC";
+                            $result_employee = mysqli_query($con, $query_employee);
+
+                            while($row = mysqli_fetch_assoc($result_employee))
+                            {
+                                $EnployeeID = $row["IDEmployee"];
+                                $username = $row["Username"];
+
+                                if($EnployeeID == $IDEmployee)
+                                {
+                                    $selected = 'selected = "selected"';
+                                }
+                                else
+                                {
+                                    $selected = "";
+                                }
+
+                                echo '<option value="'.$EnployeeID.'" '.$selected.'>'.$username.'</option>';
+                            }
+
+                            echo '
+                        </select>
+                    </div>
+
+                    <!-- Client / Price Informatiom -->
+
+                    <div class="add-input-container-flex2">
+
+                        <!-- Lijeva strana (Client Information) -->
+                        <div class="add-small-container">
+
+                            <div class="add-input-title">Client Information:</div>
+
+                            <div class="add-input-group-flex">
+                                <input class="add-input add-input-first" type="text" id="add-input-ime" placeholder="Ime" name="ClientName" value="'.$ClientName.'" required>
+                            </div>
+                            <div class="add-input-group-flex">
+                                <input class="add-input add-input-middle" type="text" id="add-input-prezime"  placeholder="Prezime" name="ClientSurname" value="'.$ClientSurname.'" required>
+                            </div>
+                            <div class="add-input-group-flex">
+                                <input class="add-input add-input-middle" type="text" id="add-input-mobitel"  placeholder="Telefon" name="ClientTelNum" value="'.$ClientTelNum.'" required>
+                            </div>
+                            <div class="add-input-group-flex">
+                                <input class="add-input add-input-last" type="text" id="add-input-oib"  placeholder="OIB" name="ClientOIB" value="'.$ClientOIB.'">
+                            </div>
+                        </div>
+
+                        <!-- Desna strana (Price Information) -->
+
+                        <div class="add-small-container">
+
+                            <div class="add-input-title">Price Information:</div>
+
+                            <div class="add-input-group-flex-left">
+                                <input type="number" id="addInput-cijena" step="0.01" class="add-input add-input-first" placeholder="Cijena" name="Price" value="'.$Price.'" required>
+                            </div>
+
+                            <div class="add-panel-flex">
+
+                                <div class="add-panel-left-content-bottom-right-side">
+                                    <div class="add-input-group-flex-left-half">
+                                        <input type="number" id="addInput-akontacija" class="add-input add-input-middle" placeholder="Akontacija" name="AdvancePayment" value="'.$AdvancePayment.'">
+                                    </div>
+                                    <div class="add-input-group-flex-left-half">
+                                        <input type="number" id="addInput-razlika" class="add-input add-input-middle" placeholder="Razlika" name="PriceDiffrence" value="'.$PriceDiffrence.'">
+                                    </div>
+                                    <div class="add-input-group-flex-left-half">
+                                        <input type="number" id="addInput-deposit" class="add-input add-input-last-left" placeholder="Depozit" name="Deposit" value="'.$Deposit.'">
+                                    </div>
+                                </div>
+<!-- TU SMO STALI PA IZNAD -->
+                                <div class="add-panel-left-content-bottom-right-side">
+
+                                        <input type="date" id="" class="add-input add-input-middle" name="" value="" >
+
+                                        <input type="date" id="" class="add-input add-input-middle" name="" value="" >
+
+                                        <input type="date" id="" class="add-input add-input-last-right" name="" value="" >
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Biljeska -->
+                    <div class="add-input-title">Aditional Information:</div>
+                    <div class="add-text-area-container">
+                        <textarea class="add-text-area" placeholder="Bilješka" name="Note">'.$Note.'</textarea>
+                    </div>
+                    <!-- Tipke -->
+                    <div class="add-panel-left-content-buttons">
+                        <input type="button" value="Očisti" class="add-button-spacing add-button-ocisti" onclick="delete_popup()">
+                        <input type="submit" id="submitButton" value="Rezerviraj" class="add-button-spacing add-button-rezerviraj" name="'.$btn.'">
+                    </div>
             </div>
-              <div class="add-radio-button-container">
-                <label class="add-day-label" for="ad-radio-button">1/2 dana</label>
-                <input type="radio" id="ad-radio-button1" name="TimeSlot" class="ad-radio-button">
-                <label class="add-day-label" for="ad-radio-button">2/2 dana</label>
-                <input type="radio" id="ad-radio-button2" name="TimeSlot" class="ad-radio-button">
-                <label class="add-day-label" for="ad-radio-button">Cijeli dan</label>
-                <input type="radio" id="ad-radio-button3" name="TimeSlot" class="ad-radio-button">
-              </div>
+
+            </form>
+        </div>
+
+        <!--DESNI DIO-->
+
+        <div class="add-glass">
+
+            
+            <div class="add-title">Kalendar Cijene</div>
+
+            <div class="add-panel calculator-container">
+                <div class="calculator-container calculator-container-input">
+                    <input type="number" id="calcPrice" name="calcPrice" placeholder="Cijena" class="inputField">
+                    <div>x</div>
+                    <input type="number" id="calcDays" name="calcDays" placeholder="Broj dana" class="inputField">
+                </div>
+                <a href="#calcPrice" onclick="calculatePrice()" class="button-edit">
+                    <div class="button-text">Izračunaj</div>
+                </a>
+                <div class="inputField" id="calcOutput">0</div>
+            </div>
+
+            <div class="add-title">Kalendar Rezervacija</div>
+
             <!--
-            <div class="add-time-input-container">
-              <label class="add-time-label" for="addreserv-vrijeme-od">Od sati:</label>
-              <input type="time" id="addreserv-vrijeme-od" class="addreserv-vrijeme-od" >
-              <label class="add-time-label" for="addreserv-vrijeme-do">Do sati:</label>
-              <input type="time" id="addreserv-vrijeme-do" class="addreserv-vrijeme-do" >
+            <div class="add-panel">
+                <div class="add-panel-right-content">
+                </div>
             </div>
             -->
 
-            <div class="addDjelatnici-dropdown-container">
-            <select id="addDjelatnici-dropdown" class="inputField addDjelatnici-dropdown" name="EmployeeID" required>
-              <option value="">Rezervirao...</option>
-              ';
-
-              $query_employee = "SELECT * FROM employee WHERE Username != 'Admin' ORDER BY IDEmployee ASC";
-              $result_employee = mysqli_query($con, $query_employee);
-
-              while($row = mysqli_fetch_assoc($result_employee))
-              {
-                  $EnployeeID = $row["IDEmployee"];
-                  $username = $row["Username"];
-
-                  if($EnployeeID == $IDEmployee)
-                  {
-                      $selected = 'selected = "selected"';
-                  }
-                  else
-                  {
-                      $selected = "";
-                  }
-
-                  echo '<option value="'.$EnployeeID.'" '.$selected.'>'.$username.'</option>';
-              }
-
-          echo '
-            </select>
-          </div>
-
-          </div>
-
-          <!-- content-bottom -->
-
-          <div class="add-panel-left-content-bottom">
-
-            <!-- lijeva strana bottom contenta -->
-            <div class="add-panel-left-content-bottom-left-side">
-              <div>
-                <label for="add-input-ime">Ime: </label>
-                <input type="text" id="add-input-ime" class="add-input-field"  name="ClientName" value="'.$ClientName.'" required>
-              </div>
-              <div>
-                <label for="add-input-prezime">Prezime: </label>
-                <input type="text" id="add-input-prezime" class="add-input-field"  name="ClientSurname" value="'.$ClientSurname.'" required>
-              </div>
-              <div>
-                <label for="add-input-mobitel">Mobitel: </label>
-                <input type="text" id="add-input-mobitel" class="add-input-field"  name="ClientTelNum" value="'.$ClientTelNum.'" required>
-              </div>
-              <div>
-                <label for="add-input-oib">OIB: </label>
-                <input type="text" id="add-input-oib" class="add-input-field" name="ClientOIB" value="'.$ClientOIB.'">
-              </div>
-            </div>
-
-              <!-- desna strana bottom contenta -->
-
-            <div class="add-panel-left-content-bottom-right-side">
-
-
-              <div class="add-input-bottomright-container">
-                <label for="addInput-cijena">Cijena: </label>
-                <input type="number" id="addInput-cijena" step="0.01" class="inputFieldNumbers add-input-cijena" name="Price" value="'.$Price.'" required class="addInput-numbers">
-              </div>
-              <div class="add-input-bottomright-container">
-                <label for="addInput-akontacija">Akontacija: </label>
-                <input type="number" id="addInput-akontacija" class="inputFieldNumbers add-input-akontacija" name="AdvancePayment" value="'.$AdvancePayment.'" class="addInput-numbers">
-              </div>
-              <div class="add-input-bottomright-container">
-                <label for="addInput-razlika">Razlika:</label>
-                <input type="number" id="addInput-razlika" class="inputFieldNumbers add-input-razlika" name="PriceDiffrence" value="'.$PriceDiffrence.'" class="addInput-numbers">
-              </div>
-              <div class="add-input-bottomright-container">
-              <label for="addInput-depozit">Depozit: </label>
-              <input type="number" id="addInput-deposit" class="inputFieldNumbers add-input-depozit" name="Deposit" value="'.$Deposit.'" class="addInput-numbers">
-              </div>
-            </div>
-
-          </div>
-
-          <!-- text area -->
-          <div class="add-text-area-container">
-            <textarea class ="add-text-area" placeholder="Bilješka" name="Note">'.$Note.'</textarea>
-          </div>
-          <!-- buttoni -->
-          <div class="add-panel-left-content-buttons">
-            <div class="add-button-half">
-              <div class="add-button-container">
-                <input type="button" value="Očisti" class="add-button-ocisti" onclick="delete_popup()">
-              </div>
-            </div>
-            <div class="add-button-half">
-              <div class="add-button-container">
-                <input type="submit" id="submitButton" value="Rezerviraj" class="add-button-rezerviraj" name="'.$btn.'">
-              </div>
-            </div>
-          </div>
         </div>
-
-        </form> 
-        
-      </div>    
     </div>
 
-  <!--DESNI DIO-->
-
-    <div class="add-glass-right">
-
-      <div class="add-title-container">
-        <div class="add-title">
-          Kalendar Cijene
-        </div>
-      </div>
-
-      <div class="add-panel-right calculator-container">
-      <div class="calcInputContainer">
-        <input type="number" id="calcPrice" name="calcPrice" placeholder="Cijena" class="calcInput">
-        <div>x</div>
-        <input type="number" id="calcDays" name="calcDays" placeholder="Broj dana" class="calcInput">
-      </div>
-      <a href="#calcPrice" onclick="calculatePrice()" class="button-edit">
-          <div class="button-text">Izračunaj</div>
-      </a>
-      <div class="calcResult" id="calcOutput">0</div>   
-      </div>
-
-      <div class="add-title-container">
-        <div class="add-title">
-          Kalendar Rezervacija
-        </div>
-      </div>
-
-      <!--
-      <div class="add-panel-right">
-        <div class="add-panel-right-content">
-        </div>
-      </div>
-      -->
-
-    </div>
-</div>
-
-<div id="clearFormPopup" class="clearFormPopup">
-    <div class="deleteWindow-rows">
-        <div class="popup-title h4">Potvrdi čišćenje unosa</div>
-        <div class="row">
-            <div class="popup-col-flex-buttons">
-                <a href="#" onclick="clearForm()" class="button-delete-deletePopup">
-                    <lord-icon
-                        src="../icon/delete.json"
-                        target=".button-delete-deletePopup"
-                        trigger="loop-on-hover"
-                        delay="500"
-                        colors="primary:#da1a20"
-                        style="width:20px;height:20px">
-                    </lord-icon>
-                    <div class="button-text">Očisti</div>
-                </a> 
-                <a href="#" onclick="delete_popup()" class="button-edit">
-                    <lord-icon class="rotate-arrow"
-                        src="../icon/dateArrow.json"
-                        target=".button-edit"
-                        trigger="loop-on-hover"
-                        delay="500"
-                        colors="primary:#337895"
-                        style="width:20px;height:20px">
-                    </lord-icon>
-                    <div class="button-text">Odustani</div>
-                </a>   
+    <div id="clearFormPopup" class="clearFormPopup">
+        <div class="deleteWindow-rows">
+            <div class="popup-title h4">Potvrdi čišćenje unosa</div>
+            <div class="row">
+                <div class="popup-col-flex-buttons">
+                    <a href="#" onclick="clearForm()" class="button-delete-deletePopup">
+                        <lord-icon src="../icon/delete.json" target=".button-delete-deletePopup" trigger="loop-on-hover"
+                            delay="500" colors="primary:#da1a20" style="width:20px;height:20px">
+                        </lord-icon>
+                        <div class="button-text">Očisti</div>
+                    </a>
+                    <a href="#" onclick="delete_popup()" class="button-edit">
+                        <lord-icon class="rotate-arrow" src="../icon/dateArrow.json" target=".button-edit"
+                            trigger="loop-on-hover" delay="500" colors="primary:#337895" style="width:20px;height:20px">
+                        </lord-icon>
+                        <div class="button-text">Odustani</div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="spacer spacer-bottom"></div>
+    <div class="spacer spacer-bottom"></div>
 
 </main>
 

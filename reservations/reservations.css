@@ -20,13 +20,13 @@ a {
 
 /* Stakleni container */
 .glass {
-  border-radius: 1rem;
+  /*border-radius: 1rem;
   border: 2px solid #f89b3e;
 
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);*/
 
   width: 1fr;
   height: calc(100vh - 2rem);
@@ -116,7 +116,7 @@ a:hover {
 
 /* Pojedina kartica */
 .card {
-  background-color: rgba(250, 250, 250, 0.7);
+  background-color: rgba(255, 255, 255, 0.4);
   /*border: 2px solid #F89B3E;*/
 
   height: 100%;
@@ -141,12 +141,12 @@ a:hover {
 
 /* Svojstvo koje ce se primjenjivati kada je brod rezerviran na cijeli dan */
 .disabled {
-  background-color: rgba(164, 164, 164, 0.7);
+  background-color: rgba(164, 164, 164, 0.4);
   border: none;
 }
 
 .extended{
-  background-color: #becad3;
+  background-color: #d1ecef;
   width: calc(206%);
   z-index: 1;
 }
@@ -393,7 +393,7 @@ a:hover {
   justify-content: center;
   gap: 0.25rem;
   margin-top: 10px;
-  background-color: transparent;
+  background-color: white;
 }
 
 .input-dateSubmit{
@@ -492,7 +492,7 @@ a:hover {
 /* Testirano na Samsung S20+ */
 @media only screen and (max-width: 600px) {
   body {
-    background: url(../img/Bcg.jpg);
+    background: url(../img/Bcg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

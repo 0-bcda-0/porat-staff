@@ -18,7 +18,7 @@ echo '
                   target="a.nav-linkm"
                   trigger="loop-on-hover"
                   delay="500"
-                  colors="primary:#F89B3E"
+                  colors="primary:#ffffff"
                   state="hover">
               </lord-icon>
               <span class="link-text">Raspored</span>
@@ -32,7 +32,7 @@ echo '
                   target="a.nav-linkm"
                   trigger="loop-on-hover"
                   delay="500"
-                  colors="primary:#F89B3E"">
+                  colors="primary:#ffffff"">
               </lord-icon>
               <span class="link-text">Novi unos</span>
             </a>
@@ -45,7 +45,7 @@ echo '
                   target="a.nav-linkm"
                   trigger="loop-on-hover"
                   delay="500"
-                  colors="primary:#F89B3E">
+                  colors="primary:#ffffff">
               </lord-icon>
               <span class="link-text">Postavke</span>
             </a>
@@ -58,7 +58,7 @@ echo '
                   target="a.nav-linkm"
                   trigger="loop-on-hover"
                   delay="500"
-                  colors="primary:#F89B3E"
+                  colors="primary:#ffffff"
                   state="hover">
               </lord-icon>
               <span class="link-text">Odjava</span>

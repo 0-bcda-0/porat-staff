@@ -19,7 +19,7 @@
 body{
     margin: 0;
     padding: 0;
-    background-image: url('../img/Bcg.jpg');
+    background-image: url('../img/Bcg.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -28,15 +28,14 @@ body{
 .container{
     width: 15%;
     height: 500px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.4);
     border-radius: 30px;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 15%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid lightslategrey;
 }
 
 .logo{
@@ -85,6 +84,30 @@ form {
     --text-color: rgb(94, 94, 94);
 }
 
+.input
+{
+    width: 100%;
+    padding: 15px 5px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.4);
+    font-size: 1.2rem;
+}
+
+.input-top
+{
+    border-bottom: 2px solid var(--bg-secundary);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.input-bottom
+{
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+/*
 .field {
     width: 100%;
     margin: 0 auto;
@@ -109,12 +132,13 @@ form {
     background: none;
     color: black;
     font-size: 1.2em;
-    font-weight: bold;
+    
     transition: border 500ms;
 }
 
 /* Border animation */
 
+/*
 .field::after {
     content: "";
     position: relative;
@@ -140,13 +164,14 @@ form {
 
 /* Label animation */
 
+/*
 .label {
     pointer-events: none; 
     position: absolute;
     transform: translateY(-2rem);
     transform-origin: 0%;
     transition: transform 400ms;
-}
+} */
 
 /* POP UP */
 .blurForClearFormPopup.active{
@@ -186,11 +211,14 @@ form {
   transition: 0.5s;
 }
 
+/*
 .field:focus-within .label,
 .input:not(:placeholder-shown) + .label {
     transform: scale(0.8) translateY(-5rem);
     opacity: 1;
 }
+*/
+
 /* TABLET */
 @media only screen and (max-width: 1920px) {
     .container{
