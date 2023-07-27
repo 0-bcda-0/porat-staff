@@ -14,6 +14,20 @@ function popup(json) {
     var dateFinish = new Date(reservation.FinishDate);
     var dateFinish = dateFinish.getDate() + "." + (dateFinish.getMonth() + 1) + "." + dateFinish.getFullYear();
 
+    var dateAdvancePayment = new Date(reservation.AdvancePaymentDate);
+    var dateAdvancePayment = dateAdvancePayment.getDate() + "." + (dateAdvancePayment.getMonth() + 1) + ".";
+
+    var dateDeposit = new Date(reservation.DepositDate);
+    var dateDeposit = dateDeposit.getDate() + "." + (dateDeposit.getMonth() + 1) + ".";
+
+    var datePriceDiffrence = new Date(reservation.PriceDiffrenceDate);
+    var datePriceDiffrence = datePriceDiffrence.getDate() + "." + (datePriceDiffrence.getMonth() + 1) + ".";
+
+    var dateCreatedDate = new Date(reservation.CreatedDate);
+    var dateCreatedDate = dateCreatedDate.getDate() + "." + (dateCreatedDate.getMonth() + 1) + ".";
+
+    console.log(reservation.PriceDiffrenceDate);
+
     // Inner html na popupu
     document.getElementById('popupBoat').innerHTML = reservation.BoatName;
     document.getElementById('popupTime').innerHTML = "Od: " + reservation.StartTimeH + " Do: " + reservation.FinishTimeH;
@@ -21,11 +35,11 @@ function popup(json) {
     document.getElementById('popupNameSurname').innerHTML = reservation.ClientName + " " + reservation.ClientSurname;
     document.getElementById('popupTelNum').innerHTML = reservation.ClientTelNum;
     document.getElementById('popupOib').innerHTML = reservation.ClientOIB;
-    document.getElementById('popupPrice').innerHTML = reservation.Price;
-    document.getElementById('popupAdvancePayment').innerHTML = reservation.AdvancePayment;
-    document.getElementById('popupPriceDiffrence').innerHTML = reservation.PriceDiffrence;
-    document.getElementById('popupDeposit').innerHTML = reservation.Deposit;
-    document.getElementById('popupEmployee').innerHTML = reservation.Employee;
+    document.getElementById('popupPrice').innerHTML = reservation.Price + "€";
+    document.getElementById('popupAdvancePayment').innerHTML = reservation.AdvancePayment + "€ / " + dateAdvancePayment;
+    document.getElementById('popupPriceDiffrence').innerHTML = reservation.PriceDiffrence + "€ / " + datePriceDiffrence;
+    document.getElementById('popupDeposit').innerHTML = reservation.Deposit + "€ / " + dateDeposit;
+    document.getElementById('popupEmployee').innerHTML = reservation.Employee + " / " + dateCreatedDate;
     document.getElementById('popupNote').innerHTML = reservation.Note;
 
     //  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -87,7 +101,7 @@ function delete_popup() {
 
 function delete_popup_in_popup () {
     document.getElementById('popupWindow').classList.toggle('active');
-    document.getElementById('deleteWindow').remove();
+    document.getElementById('deleteWindow').classList.toggle('active');
 }
 
 function closepopup() {

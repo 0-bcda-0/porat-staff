@@ -7,7 +7,7 @@ include ("../navigation/navigation.php");
 // Konekcija na bazu
 include("../PHP/db_connection.php");
 // Konfiguracija
-include("../PHP/conf.php");
+include("../PHP/conf2.php");
 // Functions
 include("../PHP/functions.php");
 
@@ -65,10 +65,10 @@ $query = "SELECT
             reservation.IDReservation,
             boat.Name AS BoatName,
             boat.IDBoat AS IDBoat,
-            DATE(reservation.StartDateTime) AS StartDate,
-            DATE(reservation.FinishDateTime) AS FinishDate,
-            TIME(reservation.StartDateTime) AS StartTime,
-            TIME(reservation.FinishDateTime) AS FinishTime,
+            reservation.StartDate AS StartDate,
+            reservation.FinishDate AS FinishDate,
+            reservation.StartTime AS StartTime,
+            reservation.FinishTime AS FinishTime,
             reservation.Name AS ClientName,
             reservation.Surname AS ClientSurname,
             reservation.TelNum AS ClientTenNum,
@@ -77,12 +77,16 @@ $query = "SELECT
             reservation.AdvancePayment,
             reservation.PriceDiffrence,
             reservation.Deposit,
+            reservation.CreatedDate,
+            reservation.AdvancePaymentDate,
+            reservation.PriceDiffrenceDate,
+            reservation.DepositDate,
             employee.Username AS Employee,
             reservation.Note
             FROM reservation 
             LEFT JOIN boat ON (reservation.BoatID = boat.IDBoat)
             LEFT JOIN employee ON (reservation.EmployeeID = employee.IDEmployee)
-            WHERE '$dayDisplayed' BETWEEN DATE(reservation.StartDateTime) AND DATE(reservation.FinishDateTime)
+            WHERE '$dayDisplayed' BETWEEN DATE(reservation.StartDate) AND DATE(reservation.FinishDate)
             ORDER BY boat.IDBoat ASC";
 
 $result = mysqli_query($con, $query);
@@ -108,6 +112,10 @@ while($row = mysqli_fetch_assoc($result))
     $AdvancePayment = $row['AdvancePayment'];
     $PriceDiffrence = $row['PriceDiffrence'];
     $Deposit = $row['Deposit'];
+    $CreatedDate = $row['CreatedDate'];
+    $AdvancePaymentDate = $row['AdvancePaymentDate'];
+    $PriceDiffrenceDate = $row['PriceDiffrenceDate'];
+    $DepositDate = $row['DepositDate'];
     $Employee = $row['Employee'];
     $Note = $row['Note'];
 
@@ -128,6 +136,10 @@ while($row = mysqli_fetch_assoc($result))
         'AdvancePayment' => $AdvancePayment,
         'PriceDiffrence' => $PriceDiffrence,
         'Deposit' => $Deposit,
+        'CreatedDate' => $CreatedDate,
+        'AdvancePaymentDate' => $AdvancePaymentDate,
+        'PriceDiffrenceDate' => $PriceDiffrenceDate,
+        'DepositDate' => $DepositDate,
         'Employee' => $Employee,
         'Note' => $Note
     );
@@ -231,7 +243,7 @@ echo '
                                 <div class="col col-hidden col-special">
                                     <div> </div>
                                     <div class="card-textrow"><b>Cijena:</b></div>
-                                    <div class="card-textrow"><b>Akontacije:</b></div>
+                                    <div class="card-textrow"><b>Akontacija:</b></div>
                                     <div class="card-textrow"><b>Razlika:</b></div>
                                 </div>
                                 <div class="col col-hidden col-align">
@@ -261,7 +273,7 @@ echo '
                         if($value['Card'] == $cardIndex)
                         {
                             echo '
-                            <a href="../addReservation/addReservation.php?BoatSelected='.$value['BoatName'].'&DateSelected='.$dayDisplayed.'">
+                            <a href="../addReservation/addReservation.php?BoatSelected='.$value['Card'].'&DateSelected='.$dayDisplayed.'">
                             <div class="card disabled" id="card'.$cardIndex.'">
                             <div class="card-grid">
                                 <div class="col">
@@ -333,8 +345,8 @@ echo '
     <div class="popup-title h1" id="popupBoat">Orca</div>
     <div class="popup-col-flex">
         <div class="popup-col">
-            <div class="popup-text" id="popupTime">Od: 08h do 13h</div>
-            <div class="popup-text"  id="popupDate">Od datuma: 20.08.2023 <br> Do datuma: 23.08.2023</div>
+            <div class="popup-text" id="popupTime">Od: 00h do 00h</div>
+            <div class="popup-text"  id="popupDate">Od datuma: 00.00.0000 <br> Do datuma: 00.00.0000</div>
         </div>
         <div class="popup-col popup-col-flex-mobile-icon">
             <lord-icon class="popup-icon-size"
@@ -364,33 +376,33 @@ echo '
             </div>
             <div class="popup-flex popup-text">
                 <div><b>Telefon:</b></div>
-                <div id="popupTelNum">+385 99 5921 212</div>
+                <div id="popupTelNum">TEST</div>
             </div>
             <div class="popup-flex popup-text">
                 <div><b>OIB:</b></div>
-                <div id="popupOib">25485698745</div>
+                <div id="popupOib">00000000000</div>
             </div>
             <div class="popup-flex popup-text">
                 <div><b>Rezervirao:</b></div>
-                <div id="popupEmployee">25485698745</div>
+                <div id="popupEmployee">TEST</div>
             </div>
         </div>
         <div class="popup-col">
             <div class="popup-flex popup-text">
                 <div><b>Cijena:</b></div>
-                <div id="popupPrice">€150</div>
+                <div id="popupPrice">€000</div>
             </div>
             <div class="popup-flex popup-text">
                 <div><b>Akontacije:</b></div>
-                <div id="popupAdvancePayment">€50</div>
+                <div id="popupAdvancePayment">€00</div>
             </div>
             <div class="popup-flex popup-text">
                 <div><b>Razlika:</b></div>
-                <div id="popupPriceDiffrence">€100</div>
+                <div id="popupPriceDiffrence">€00</div>
             </div>
             <div class="popup-flex popup-text">
                 <div><b>Depozit:</b></div>
-                <div id="popupDeposit">€100</div>
+                <div id="popupDeposit">€000</div>
             </div>
         </div>
     </div>
@@ -453,7 +465,7 @@ echo '
         src="../icon/dateArrow.json"
         trigger="loop"
         delay="500"
-        colors="primary:#F89B3E">
+        colors="primary:#ffffff">
     </lord-icon>
 </button>
 

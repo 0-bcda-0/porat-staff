@@ -257,7 +257,7 @@ a:hover {
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  z-index: 2;
+  z-index: 3;
 }
 
 #popup.active {
@@ -287,7 +287,7 @@ a:hover {
   visibility: hidden;
   opacity: 0;
   transition: 0.5s;
-  z-index: 3;
+  z-index: 4;
 
   /* Glass efekt */
   /* From https://css.glass */
@@ -444,7 +444,7 @@ a:hover {
   height: 50px;
   transform: rotate(-90deg);
 
-  background-color: #337895;
+  background-color: #d88f8c;
   border-radius: 50%;
 
   display: flex;
@@ -452,6 +452,7 @@ a:hover {
   align-items: center;
   
   display: none;
+  z-index: 2;
 }
 
 .flexcol-row {
@@ -602,7 +603,7 @@ a:hover {
 
   /* Janky nacin, moguce da ce se raspast  */
   #popup.active {
-    top: calc(50% - 2rem);
+    top: 50%;
   }
 
   .popup-col-flex-mobile {

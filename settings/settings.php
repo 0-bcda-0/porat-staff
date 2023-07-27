@@ -5,8 +5,8 @@ include("../navigation/navigation.php");
 
 include("../PHP/db_connection.php");
 
-
-if($_SESSION["Level"] === '0')
+//1 - Obicni korisnik
+if($_SESSION["Level"] === '1')
 {
     // header("Location: ../reservations/reservations.php");
 
@@ -106,6 +106,182 @@ if($_SESSION["Level"] === '0')
 
     echo '<script src="../js/settings.js"></script>';
 }
+//2 - Voditelj
+else if($_SESSION["Level"] === '2')
+{
+    if(isset($_POST["btnNWD"])){
+        if($_SESSION["NWD"] == "js"){
+            $_SESSION["NWD"] = "jquery";
+            $_SESSION["NWDScript-reservations"] = '<script src="../jquery/jquery-3.4.1.min.js"></script><script src="../jquery/Qreservations.js"></script>';
+            $_SESSION["NWDScript-addReservation"] = '<script src="../jquery/jquery-3.4.1.min.js"></script><script src="../jquery/QaddReservation.js"></script>';
+        }
+        else{
+            $_SESSION["NWD"] = "js";
+            $_SESSION["NWDScript-reservations"] = '<script src="../js/reservations.js"></script>';
+            $_SESSION["NWDScript-addReservation"] = '<script src="../js/addReservation.js"></script>';
+        }
+    }
+
+    $queryLookup = "SELECT * FROM lookup";
+    $resultLookup = mysqli_query($con, $queryLookup);
+
+    
+    // Auto fill form za uredjivanje lookup-a
+    if(isset($_GET["Card"])){
+        $Card = (int)$_GET["Card"];
+
+        $Card = mysqli_real_escape_string($con, $Card);
+
+        $queryLookup = "SELECT * FROM lookup WHERE Card = '$Card'";
+        $resultLookup = mysqli_query($con, $queryLookup);
+
+        $lookup = mysqli_fetch_assoc($resultLookup);
+
+        $lookupCard = $lookup["Card"];
+        $lookupName = $lookup["BoatName"];
+        $lookupPrice = $lookup["BoatPrice"];
+
+        $btnLookupForm = 'btnLookupEdit';
+    }
+    else{
+        $Card = "";
+        $lookupName = "";
+        $lookupPrice = "";
+
+        $btnLookupForm = 'btnLookupSave';
+    }
+
+    // Spremanje novog lookup-a
+    if(isset($_POST["btnLookupSave"]))
+    {
+        $Card = mysqli_real_escape_string($con, $_POST["Card"]);
+        $lookupName = mysqli_real_escape_string($con, $_POST["BoatName"]);
+        $lookupPrice = mysqli_real_escape_string($con, $_POST["BoatPrice"]);
+
+        $queryLookupSave = "INSERT INTO lookup (Card, BoatName, BoatPrice)
+                        VALUES ('$Card', '$lookupName', '$lookupPrice')";
+        
+        $resultLookupSave = mysqli_query($con, $queryLookupSave);
+
+        if($resultLookupSave)
+        {
+            echo 'Podaci su uspjesno spremljeni';
+            header("Location: settings.php");
+        }
+        else{
+            echo 'Podaci nisu uspjesno spremljeni';
+        }
+    }
+
+    // Uredjivanje lookup-a
+    if(isset($_POST["btnLookupEdit"]))
+    {
+        $lookupName = mysqli_real_escape_string($con, $_POST["lookupName"]);
+        $lookupPrice = mysqli_real_escape_string($con, $_POST["lookupPrice"]);
+
+        $Card = (int)$_GET["Card"];
+        $Card = mysqli_real_escape_string($con, $Card);
+
+        $queryLookupEdit = "UPDATE lookup
+                        SET
+                        BoatPrice = '$lookupPrice'
+                        WHERE Card = '$Card'";
+        
+        $resultLookupEdit = mysqli_query($con, $queryLookupEdit);
+
+        if($resultLookupEdit)
+        {
+            echo 'Podaci su uspjesno spremljeni';
+            header("Location: settings.php");
+        }
+        else{
+            echo 'Podaci nisu uspjesno spremljeni';
+        }
+    }
+
+    // Brisanje broda
+    /*
+    if(isset($_GET["task"]) && $_GET["task"] == "delLookup")
+    {
+        $Card = (int)$_GET["Card"];
+        $Card = mysqli_real_escape_string($con, $Card);
+
+        $queryLookupDelete = "DELETE FROM lookup WHERE Card = '$Card'";
+        $resultLookupDelete = mysqli_query($con, $queryLookupDelete);
+
+        if($resultLookupDelete)
+        {
+            echo 'Podaci su uspjesno obrisani';
+            header("Location: settings.php");
+        }
+        else{
+            echo 'Podaci nisu uspjesno obrisani';
+        }
+    }
+    */
+
+
+    echo '
+    <main>
+        <div class="spacer"></div>
+            <div class="glass">
+            <div class="set-flex">
+            <div class="set-container">
+                <div class="set-title">Tablica "lookup"</div>
+                <form method="POST" action="" class="set-formContainer">
+                    <div class="set-inputFlex">
+                        <label for="lookupName" class="col-black">Naziv broda:</label>
+                        <div id="lookupName" name="lookupName" value="'.$lookupName.'" class="set-inputField inputField">'.$lookupName.'</div>
+                    </div>
+                    <div class="set-inputFlex">
+                        <label for="lookupPrice" class="col-black">Cijena broda:</label>
+                        <input type="number" id="lookupPrice" name="lookupPrice" value="'.$lookupPrice.'" class="set-inputField inputField">
+                    </div>
+                    <input type="submit" value="Spremi" class="add-button-rezerviraj" name="'.$btnLookupForm.'">
+                </form>
+
+                <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Cijena</th>
+                        <th>Akcija</th>
+                    </tr>
+                </thead>';
+                while($rowLookup = mysqli_fetch_array($resultLookup)){
+                    $Card = $rowLookup["Card"];
+                    $lookupName = $rowLookup["BoatName"];
+                    $lookupPrice = $rowLookup["BoatPrice"];
+                    
+                    echo '
+                    <tr>
+                        <td>'.$Card.'</td>
+                        <td>'.$lookupName.'</td>
+                        <td>'.$lookupPrice.'</td>
+                        <td>
+                            <a href="settings.php?Card='.$Card.'">Uredi</a>
+                            <!--
+                            <a href="settings.php?Card='.$Card.'&task=delBoat">Obriši</a>
+                            -->
+                        </td>
+                    </tr>
+                    ';
+                }
+                echo '
+                <tbody>
+                </tbody>
+                </table>
+            </div>
+
+
+        </div>
+        
+        <div class="spacer spacer-bottom"></div>
+    </main>
+    ';
+}
+//0 - Admin
 else{
 
     if(isset($_POST["btnNWD"])){
@@ -133,6 +309,9 @@ else{
 
     $queryBugs = "SELECT * FROM bugs";
     $resultBugs = mysqli_query($con, $queryBugs);
+
+    $queryLookup = "SELECT * FROM lookup";
+    $resultLookup = mysqli_query($con, $queryLookup);
 
     // Auto fill form za uredjivanje broda
     if(isset($_GET["IDBoat"])){
@@ -341,6 +520,101 @@ else{
         }
     }
 
+    // Auto fill form za uredjivanje lookup-a
+    if(isset($_GET["Card"])){
+        $Card = (int)$_GET["Card"];
+
+        $Card = mysqli_real_escape_string($con, $Card);
+
+        $queryLookup = "SELECT * FROM lookup WHERE Card = '$Card'";
+        $resultLookup = mysqli_query($con, $queryLookup);
+
+        $lookup = mysqli_fetch_assoc($resultLookup);
+
+        $lookupCard = $lookup["Card"];
+        $lookupName = $lookup["BoatName"];
+        $lookupPrice = $lookup["BoatPrice"];
+
+        $btnLookupForm = 'btnLookupEdit';
+    }
+    else{
+        $Card = "";
+        $lookupName = "";
+        $lookupPrice = "";
+
+        $btnLookupForm = 'btnLookupSave';
+    }
+
+    // Spremanje novog lookup-a
+    if(isset($_POST["btnLookupSave"]))
+    {
+        $Card = mysqli_real_escape_string($con, $_POST["Card"]);
+        $lookupName = mysqli_real_escape_string($con, $_POST["BoatName"]);
+        $lookupPrice = mysqli_real_escape_string($con, $_POST["BoatPrice"]);
+
+        $queryLookupSave = "INSERT INTO lookup (Card, BoatName, BoatPrice)
+                        VALUES ('$Card', '$lookupName', '$lookupPrice')";
+        
+        $resultLookupSave = mysqli_query($con, $queryLookupSave);
+
+        if($resultLookupSave)
+        {
+            echo 'Podaci su uspjesno spremljeni';
+            header("Location: settings.php");
+        }
+        else{
+            echo 'Podaci nisu uspjesno spremljeni';
+        }
+    }
+
+    // Uredjivanje lookup-a
+    if(isset($_POST["btnLookupEdit"]))
+    {
+        $lookupName = mysqli_real_escape_string($con, $_POST["lookupName"]);
+        $lookupPrice = mysqli_real_escape_string($con, $_POST["lookupPrice"]);
+
+        $Card = (int)$_GET["Card"];
+        $Card = mysqli_real_escape_string($con, $Card);
+
+        $queryLookupEdit = "UPDATE lookup
+                        SET
+                        BoatPrice = '$lookupPrice'
+                        WHERE Card = '$Card'";
+        
+        $resultLookupEdit = mysqli_query($con, $queryLookupEdit);
+
+        if($resultLookupEdit)
+        {
+            echo 'Podaci su uspjesno spremljeni';
+            header("Location: settings.php");
+        }
+        else{
+            echo 'Podaci nisu uspjesno spremljeni';
+        }
+    }
+
+    // Brisanje broda
+    
+    if(isset($_GET["task"]) && $_GET["task"] == "delLookup")
+    {
+        $Card = (int)$_GET["Card"];
+        $Card = mysqli_real_escape_string($con, $Card);
+
+        $queryLookupDelete = "DELETE FROM lookup WHERE Card = '$Card'";
+        $resultLookupDelete = mysqli_query($con, $queryLookupDelete);
+
+        if($resultLookupDelete)
+        {
+            echo 'Podaci su uspjesno obrisani';
+            header("Location: settings.php");
+        }
+        else{
+            echo 'Podaci nisu uspjesno obrisani';
+        }
+    }
+    
+
+
 
     echo '
     <main>
@@ -404,7 +678,7 @@ else{
                                 <input type="text" id="level" name="level" value="'.$Level.'" class="set-inputField ">
                             </div>
                             <div class="set-inputFlex">
-                                <div class="col-black">Levels: 0 - Admin, 1 - User</div>
+                                <div class="col-black">Levels: 0 - Admin, 1 - User, 2 - Manager</div>
                             </div>
                             <input type="submit" value="Spremi" class="add-button-rezerviraj" name="'.$btnEmployeeForm.'">
                         </form>
@@ -444,7 +718,9 @@ else{
                         </tbody>
                         </table>
                     </div>
+                    
                     <div class="set-container fullWidth">
+                    
                     <div class="set-title">WPT Script Switcher</div>
                     <form method="POST" action="">
                         <div class="set-flex">
@@ -465,8 +741,9 @@ else{
                         </div>
                     </form>
                 </div>
+                
                 </div>
-
+                
                 <div class="set-container">
                     <div class="set-title">Tablica "bugs"</div>
                     <table>

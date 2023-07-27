@@ -90,6 +90,11 @@ input[type=number] {
     background-color: var(--element-background);
     border-radius: 15px;
     padding: 10px 5px 10px 5px;
+    color: #757575;
+}
+
+.color-grey{
+    color: #757575;
 }
 
 .addDjelatnici-dropdown-container{
@@ -138,6 +143,20 @@ input[type=number] {
 
 .add-input-last-left{
     border-radius: 0px 0px 0px 15px;
+}
+
+.add-razlika-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-razlika-left{
+    width: 70%;
+}
+
+.add-razlika-right{
+    width: 30%;
+    padding: none;
 }
 
 .add-panel-flex{

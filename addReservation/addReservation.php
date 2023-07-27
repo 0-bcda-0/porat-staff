@@ -3,7 +3,7 @@
 include ("../header-footer/header.php");
 include ("../navigation/navigation.php");
 include("../PHP/db_connection.php");
-include("../PHP/conf.php");
+include("../PHP/conf2.php");
 
 if(isset($_POST["btn_edit"]))
 {
@@ -20,6 +20,9 @@ if(isset($_POST["btn_edit"]))
     $AdvancePayment = mysqli_real_escape_string($con, $_POST["AdvancePayment"]);
     $PriceDiffrence = mysqli_real_escape_string($con, $_POST["PriceDiffrence"]);
     $Deposit = mysqli_real_escape_string($con, $_POST["Deposit"]);
+    $AdvancePaymentDate = mysqli_real_escape_string($con, $_POST["AdvancePaymentDate"]);
+    $PriceDiffrenceDate = mysqli_real_escape_string($con, $_POST["PriceDiffrenceDate"]);
+    $DepositDate = mysqli_real_escape_string($con, $_POST["DepositDate"]);
     $EmployeeID = mysqli_real_escape_string($con, $_POST["EmployeeID"]);
     $Note = mysqli_real_escape_string($con, $_POST["Note"]);
 
@@ -27,23 +30,26 @@ if(isset($_POST["btn_edit"]))
     $IDr = mysqli_real_escape_string($con, $IDr);
 
     $query_upd = "UPDATE reservation
-                  SET
-                  BoatID = '$BoatID',
-                  StartDate = '$StartDate',
-                  FinishDate = '$FinishDate',
-                  StartTime = '$StartTime',
-                  FinishTime = '$FinishTime',
-                  Name = '$ClientName',
-                  Surname = '$ClientSurname',
-                  TelNum = '$ClientTelNum',
-                  OIB = '$ClientOIB',
-                  Price = '$Price',
-                  AdvancePayment = '$AdvancePayment',
-                  PriceDiffrence = '$PriceDiffrence',
-                  Deposit = '$Deposit',
-                  EmployeeID = '$EmployeeID',
-                  Note = '$Note'
-                  WHERE IDReservation = '$IDr'";
+                    SET
+                    BoatID = '$BoatID',
+                    StartDate = '$StartDate',
+                    FinishDate = '$FinishDate',
+                    StartTime = '$StartTime',
+                    FinishTime = '$FinishTime',
+                    Name = '$ClientName',
+                    Surname = '$ClientSurname',
+                    TelNum = '$ClientTelNum',
+                    OIB = '$ClientOIB',
+                    Price = '$Price',
+                    AdvancePayment = '$AdvancePayment',
+                    PriceDiffrence = '$PriceDiffrence',
+                    Deposit = '$Deposit',
+                    AdvancePaymentDate = '$AdvancePaymentDate',
+                    PriceDiffrenceDate = '$PriceDiffrenceDate',
+                    DepositDate = '$DepositDate',
+                    EmployeeID = '$EmployeeID',
+                    Note = '$Note'
+                    WHERE IDReservation = '$IDr'";
     
     $result_upd = mysqli_query($con, $query_upd);
 
@@ -73,13 +79,17 @@ if(isset($_POST["btn_save"]))
     $AdvancePayment = mysqli_real_escape_string($con, $_POST["AdvancePayment"]);
     $PriceDiffrence = mysqli_real_escape_string($con, $_POST["PriceDiffrence"]);
     $Deposit = mysqli_real_escape_string($con, $_POST["Deposit"]);
+    $CreatedDate = date("Y-m-d");
+    $AdvancePaymentDate = mysqli_real_escape_string($con, $_POST["AdvancePaymentDate"]);
+    $PriceDiffrenceDate = mysqli_real_escape_string($con, $_POST["PriceDiffrenceDate"]);
+    $DepositDate = mysqli_real_escape_string($con, $_POST["DepositDate"]);
     $EmployeeID = mysqli_real_escape_string($con, $_POST["EmployeeID"]);
     $Note = mysqli_real_escape_string($con, $_POST["Note"]);
 
   $query_ins = "INSERT INTO reservation
-                (BoatID, StartDate, StartTime, FinishDate, FinishTime, Name, Surname, TelNum, OIB, Price, AdvancePayment, PriceDiffrence, Deposit, EmployeeID, Note)
+                (BoatID, StartDate, StartTime, FinishDate, FinishTime, Name, Surname, TelNum, OIB, Price, AdvancePayment, PriceDiffrence, Deposit, CreatedDate, AdvancePaymentDate, PriceDiffrenceDate, DepositDate, EmployeeID, Note)
                 VALUES
-                ('$BoatID', '$StartDate', '$StartTime', '$FinishDate', '$FinishTime', '$ClientName', '$ClientSurname', '$ClientTelNum', '$ClientOIB', '$Price', '$AdvancePayment', '$PriceDiffrence', '$Deposit', '$EmployeeID', '$Note')";
+                ('$BoatID', '$StartDate', '$StartTime', '$FinishDate', '$FinishTime', '$ClientName', '$ClientSurname', '$ClientTelNum', '$ClientOIB', '$Price', '$AdvancePayment', '$PriceDiffrence', '$Deposit', '$CreatedDate', '$AdvancePaymentDate', '$PriceDiffrenceDate', '$DepositDate', '$EmployeeID', '$Note')";
   
   $result_ins = mysqli_query($con, $query_ins);
 
@@ -96,116 +106,136 @@ if(isset($_POST["btn_save"]))
 
 // Ako je stisnuta postojeca rezervacija
 if(isset($_GET["IDr"])){
-  $IDr = (int)$_GET["IDr"];
+    $IDr = (int)$_GET["IDr"];
 
-  // Ugradena funkcija da ne prolaze parametri koji nisu broj
-  // Security feature
-  $IDr = mysqli_real_escape_string($con, $IDr);
+    // Ugradena funkcija da ne prolaze parametri koji nisu broj
+    // Security feature
+    $IDr = mysqli_real_escape_string($con, $IDr);
 
-  $query = "SELECT 
-          reservation.IDReservation,
-          boat.Name AS BoatName,
-          boat.IDBoat AS IDBoat, 
-          reservation.StartDate,
-          reservation.FinishDate,
-          reservation.StartTime,
-          reservation.FinishTime,
-          reservation.Name AS ClientName,
-          reservation.Surname AS ClientSurname,
-          reservation.TelNum AS ClientTenNum,
-          reservation.OIB AS ClientOIB,
-          reservation.Price,
-          reservation.AdvancePayment,
-          reservation.PriceDiffrence,
-          reservation.Deposit,
-          employee.Username AS Employee,
-          employee.IDEmployee AS IDEmployee,
-          reservation.Note
-          FROM reservation 
-          LEFT JOIN boat ON (reservation.BoatID = boat.IDBoat)
-          LEFT JOIN employee ON (reservation.EmployeeID = employee.IDEmployee)
-          WHERE IDReservation = '$IDr'";
+    $query = "SELECT 
+            reservation.IDReservation,
+            boat.Name AS BoatName,
+            boat.IDBoat AS IDBoat, 
+            reservation.StartDate,
+            reservation.FinishDate,
+            reservation.StartTime,
+            reservation.FinishTime,
+            reservation.Name AS ClientName,
+            reservation.Surname AS ClientSurname,
+            reservation.TelNum AS ClientTenNum,
+            reservation.OIB AS ClientOIB,
+            reservation.Price,
+            reservation.AdvancePayment,
+            reservation.PriceDiffrence,
+            reservation.Deposit,
+            reservation.AdvancePaymentDate,
+            reservation.PriceDiffrenceDate,
+            reservation.DepositDate,
+            employee.Username AS Employee,
+            employee.IDEmployee AS IDEmployee,
+            reservation.Note
+            FROM reservation 
+            LEFT JOIN boat ON (reservation.BoatID = boat.IDBoat)
+            LEFT JOIN employee ON (reservation.EmployeeID = employee.IDEmployee)
+            WHERE IDReservation = '$IDr'";
 
-  $result = mysqli_query($con, $query);
+    $result = mysqli_query($con, $query);
 
-  $reservation = mysqli_fetch_assoc($result);
+    $reservation = mysqli_fetch_assoc($result);
 
-  $IDReservation = $reservation['IDReservation'];
-  $BoatName = $reservation['BoatName'];
-  $IDBoat = $reservation['IDBoat'];
-  $StartDate = $reservation['StartDate'];
-  $FinishDate = $reservation['FinishDate'];
-  $StartTime = $reservation['StartTime'];
-  $FinishTime = $reservation['FinishTime'];
-  $ClientName = $reservation['ClientName'];
-  $ClientSurname = $reservation['ClientSurname'];
-  $ClientTelNum = $reservation['ClientTenNum'];
-  $ClientOIB = $reservation['ClientOIB'];
-  $Price = $reservation['Price'];
-  $AdvancePayment = $reservation['AdvancePayment'];
-  $PriceDiffrence = $reservation['PriceDiffrence'];
-  $Deposit = $reservation['Deposit'];
-  $IDEmployee = $reservation['IDEmployee'];
-  $Employee = $reservation['Employee'];
-  $Note = $reservation['Note'];
+    $IDReservation = $reservation['IDReservation'];
+    $BoatName = $reservation['BoatName'];
+    $IDBoat = $reservation['IDBoat'];
+    $StartDate = $reservation['StartDate'];
+    $FinishDate = $reservation['FinishDate'];
+    $StartTime = $reservation['StartTime'];
+    $FinishTime = $reservation['FinishTime'];
+    $ClientName = $reservation['ClientName'];
+    $ClientSurname = $reservation['ClientSurname'];
+    $ClientTelNum = $reservation['ClientTenNum'];
+    $ClientOIB = $reservation['ClientOIB'];
+    $Price = $reservation['Price'];
+    $AdvancePayment = $reservation['AdvancePayment'];
+    $PriceDiffrence = $reservation['PriceDiffrence'];
+    $Deposit = $reservation['Deposit'];
+    $AdvancePaymentDate = $reservation['AdvancePaymentDate'];
+    $PriceDiffrenceDate = $reservation['PriceDiffrenceDate'];
+    $DepositDate = $reservation['DepositDate'];
+    $IDEmployee = $reservation['IDEmployee'];
+    $Employee = $reservation['Employee'];
+    $Note = $reservation['Note'];
 
-  $btn = 'btn_edit';
+    $btn = 'btn_edit';
 
 }
 // Ako je stisnuta prazna kartica
 elseif (isset($_GET["BoatSelected"]) && isset($_GET["DateSelected"])) {
-  $convertedDate = $_GET['DateSelected'];
+    $convertedDate = $_GET['DateSelected'];
 
-  foreach($lookup as $item) {
-    if($item['BoatName'] == $_GET['BoatSelected']) {
-      $boatid = $item['IDBoat'];
+    foreach($lookup as $item) {
+    if($item['Card'] == $_GET['BoatSelected']) {
+        $boatid = $item['IDBoat'];
+        $boatprice = $item['BoatPrice'];
+        if($item['CardSlotPlace'] == 1){
+            $finishtime = "19:00";
+        }
+        else{
+            $finishtime = "13:00";
+        }
     }
-  }
-  
+    }
 
-  $IDReservation = "";
-  $BoatName = "";
-  $IDBoat = $boatid;
-  $StartDate = $convertedDate;
-  $FinishDate = "";
-  $StartTime = "";
-  $FinishTime = "";
-  $ClientName = "";
-  $ClientSurname = "";
-  $ClientTelNum = "";
-  $ClientOIB = "";
-  $Price = "";
-  $AdvancePayment = "";
-  $PriceDiffrence = "";
-  $Deposit = "";
-  $IDEmployee = "";
-  $Employee = "";
-  $Note = "";
+    $IDReservation = "";
+    $BoatName = "";
+    $IDBoat = $boatid;
+    $BoatPrice = $boatprice;
+    $StartDate = $convertedDate;
+    $FinishDate = "";
+    $StartTime = "08:00";
+    $FinishTime = $finishtime;
+    $ClientName = "";
+    $ClientSurname = "";
+    $ClientTelNum = "";
+    $ClientOIB = "";
+    $Price = "";
+    $AdvancePayment = "";
+    $PriceDiffrence = "";
+    $Deposit = "";
+    $AdvancePaymentDate = "";
+    $PriceDiffrenceDate = "";
+    $DepositDate = "";
+    $IDEmployee = "";
+    $Employee = "";
+    $Note = "";
 
-  $btn = 'btn_save';
+    $btn = 'btn_save';
 }
 // Ako je samo otvorena addReservation.php
 else{
-  $IDReservation = "";
-  $BoatName = "";
-  $IDBoat = "";
-  $StartDate = "";
-  $FinishDate = "";
-  $StartTime = "";
-  $FinishTime = "";
-  $ClientName = "";
-  $ClientSurname = "";
-  $ClientTelNum = "";
-  $ClientOIB = "";
-  $Price = "";
-  $AdvancePayment = "";
-  $PriceDiffrence = "";
-  $Deposit = "";
-  $IDEmployee = "";
-  $Employee = "";
-  $Note = "";
+    $IDReservation = "";
+    $BoatName = "";
+    $IDBoat = "";
+    $BoatPrice = "";
+    $StartDate = "";
+    $FinishDate = "";
+    $StartTime = "08:00";
+    $FinishTime = "19:00";
+    $ClientName = "";
+    $ClientSurname = "";
+    $ClientTelNum = "";
+    $ClientOIB = "";
+    $Price = "";
+    $AdvancePayment = "";
+    $PriceDiffrence = "";
+    $Deposit = "";
+    $AdvancePaymentDate = "";
+    $PriceDiffrenceDate = "";
+    $DepositDate = "";
+    $IDEmployee = "";
+    $Employee = "";
+    $Note = "";
 
-  $btn = 'btn_save';
+    $btn = 'btn_save';
 }
 
 echo '
@@ -293,7 +323,7 @@ echo '
 
 
                     <div class="add-dropdown-container addDjelatnici-dropdown-container">
-                        <select id="addDjelatnici-dropdown" class="add-dropdown addDjelatnici-dropdown" name="EmployeeID" required>
+                        <select id="addDjelatnici-dropdown" class="add-dropdown addDjelatnici-dropdown color-grey" name="EmployeeID" required>
                             <option value="">Rezervirao...</option>
                             ';
 
@@ -334,7 +364,7 @@ echo '
                                 <input class="add-input add-input-first" type="text" id="add-input-ime" placeholder="Ime" name="ClientName" value="'.$ClientName.'" required>
                             </div>
                             <div class="add-input-group-flex">
-                                <input class="add-input add-input-middle" type="text" id="add-input-prezime"  placeholder="Prezime" name="ClientSurname" value="'.$ClientSurname.'" required>
+                                <input class="add-input add-input-middle" type="text" id="add-input-prezime"  placeholder="Prezime" name="ClientSurname" value="'.$ClientSurname.'">
                             </div>
                             <div class="add-input-group-flex">
                                 <input class="add-input add-input-middle" type="text" id="add-input-mobitel"  placeholder="Telefon" name="ClientTelNum" value="'.$ClientTelNum.'" required>
@@ -351,30 +381,44 @@ echo '
                             <div class="add-input-title">Price Information:</div>
 
                             <div class="add-input-group-flex-left">
-                                <input type="number" id="addInput-cijena" step="0.01" class="add-input add-input-first" placeholder="Cijena" name="Price" value="'.$Price.'" required>
+                                <input type="number" id="addInput-cijena" step="0.01" class="add-input add-input-first" placeholder="Cijena (€'.$BoatPrice.')" name="Price" value="'.$Price.'" required>
                             </div>
 
                             <div class="add-panel-flex">
 
                                 <div class="add-panel-left-content-bottom-right-side">
                                     <div class="add-input-group-flex-left-half">
-                                        <input type="number" id="addInput-akontacija" class="add-input add-input-middle" placeholder="Akontacija" name="AdvancePayment" value="'.$AdvancePayment.'">
+                                        <input type="number" id="addInput-akontacija" class="add-input add-input-middle" placeholder="Akontacija" name="AdvancePayment" value="'.$AdvancePayment.'" oninput="
+                                            ';echo <<<EOT
+                                            checkDateRequired('addInput-akontacija', 'AdvancePaymentDate')
+                                            EOT;
+                                            echo '">
+                                    </div>
+                                    <div class="add-input-group-flex-left-half add-razlika-container">
+                                        <input type="number" id="addInput-razlika" class="add-input add-input-middle add-razlika-left" placeholder="Razlika" name="PriceDiffrence" value="'.$PriceDiffrence.'" oninput="
+                                        ';echo <<<EOT
+                                        checkDateRequired('addInput-razlika', 'PriceDiffrenceDate')
+                                        EOT;
+                                        echo '">
+                                        
+                                        <div class="add-input add-input-middle add-razlika-right" id="addInput-Razlika-Span"></div> 
                                     </div>
                                     <div class="add-input-group-flex-left-half">
-                                        <input type="number" id="addInput-razlika" class="add-input add-input-middle" placeholder="Razlika" name="PriceDiffrence" value="'.$PriceDiffrence.'">
-                                    </div>
-                                    <div class="add-input-group-flex-left-half">
-                                        <input type="number" id="addInput-deposit" class="add-input add-input-last-left" placeholder="Depozit" name="Deposit" value="'.$Deposit.'">
+                                        <input type="number" id="addInput-deposit" class="add-input add-input-last-left" placeholder="Depozit" name="Deposit" value="'.$Deposit.'" oninput="
+                                        ';echo <<<EOT
+                                        checkDateRequired('addInput-deposit', 'DepositDate')
+                                        EOT;
+                                        echo '">
                                     </div>
                                 </div>
 <!-- TU SMO STALI PA IZNAD -->
                                 <div class="add-panel-left-content-bottom-right-side">
 
-                                        <input type="date" id="" class="add-input add-input-middle" name="" value="" >
+                                        <input type="date" id="AdvancePaymentDate" class="add-input add-input-middle color-grey" name="AdvancePaymentDate" value="'.$AdvancePaymentDate.'">
 
-                                        <input type="date" id="" class="add-input add-input-middle" name="" value="" >
+                                        <input type="date" id="PriceDiffrenceDate" class="add-input add-input-middle color-grey" name="PriceDiffrenceDate" value="'.$PriceDiffrenceDate.'" >
 
-                                        <input type="date" id="" class="add-input add-input-last-right" name="" value="" >
+                                        <input type="date" id="DepositDate" class="add-input add-input-last-right color-grey" name="DepositDate" value="'.$DepositDate.'">
                                 </div>
 
                             </div>
