@@ -310,7 +310,7 @@ echo '
                     <!-- dropdown -->
                     <div class="add-dropdown-container">
                         <select class="add-dropdown addBrodovi-dropdown" name="BoatID" required>
-                            <option value="">Odaberitee svoj brod...</option>';
+                            <option value="">Odaberite svoj brod...</option>';
 
                             $query_boat = "SELECT * FROM boat ORDER BY IDBoat ASC";
                             $result_boat = mysqli_query($con, $query_boat);
