@@ -593,7 +593,7 @@ else{
         }
     }
 
-    // Brisanje broda
+    // Brisanje lookup-a
     
     if(isset($_GET["task"]) && $_GET["task"] == "delLookup")
     {
@@ -618,9 +618,9 @@ else{
 
     echo '
     <main>
-        <div class="spacer"></div>
-            <div class="glass">
-            <div class="set-flex">
+    <div class="spacer"></div>
+    <div class="glass">
+        <div class="set-flex">
             <div class="set-container">
                 <div class="set-title">Tablica "boat"</div>
                 <form method="POST" action="" class="set-formContainer">
@@ -632,17 +632,17 @@ else{
                 </form>
 
                 <table border="1">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Akcija</th>
-                    </tr>
-                </thead>';
-                while($rowBoat = mysqli_fetch_array($resultBoat)){
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Akcija</th>
+                        </tr>
+                    </thead>';
+                    while($rowBoat = mysqli_fetch_array($resultBoat)){
                     $IDBoat = $rowBoat["IDBoat"];
                     $Name = $rowBoat["Name"];
-                    
+
                     echo '
                     <tr>
                         <td>'.$IDBoat.'</td>
@@ -653,37 +653,38 @@ else{
                         </td>
                     </tr>
                     ';
-                }
-                echo '
-                <tbody>
-                </tbody>
+                    }
+                    echo '
+                    <tbody>
+                    </tbody>
                 </table>
             </div>
 
 
             <div>
-                <div class="set-container fullWidth">
+                <div class="set-container ww-100">
                     <div class="set-title">Tablica "employee"</div>
-                        <form method="POST" action="" class="set-formContainer">
-                            <div class="set-inputFlex">
-                                <label for="username" class="col-black">Username:</label>
-                                <input type="text" id="username" name="username" value="'.$Username.'" class="set-inputField">
-                            </div>
-                            <div class="set-inputFlex">
-                                <label for="pin" class="col-black">Pin:</label>
-                                <input type="text" id="pin" name="pin" value="'.$Pin.'" class="set-inputField ">
-                            </div>
-                            <div class="set-inputFlex">
-                                <label for="level" class="col-black">Level:</label>
-                                <input type="text" id="level" name="level" value="'.$Level.'" class="set-inputField ">
-                            </div>
-                            <div class="set-inputFlex">
-                                <div class="col-black">Levels: 0 - Admin, 1 - User, 2 - Manager</div>
-                            </div>
-                            <input type="submit" value="Spremi" class="add-button-rezerviraj" name="'.$btnEmployeeForm.'">
-                        </form>
+                    <form method="POST" action="" class="set-formContainer">
+                        <div class="set-inputFlex">
+                            <label for="username" class="col-black">Username:</label>
+                            <input type="text" id="username" name="username" value="'.$Username.'"
+                                class="set-inputField">
+                        </div>
+                        <div class="set-inputFlex">
+                            <label for="pin" class="col-black">Pin:</label>
+                            <input type="text" id="pin" name="pin" value="'.$Pin.'" class="set-inputField ">
+                        </div>
+                        <div class="set-inputFlex">
+                            <label for="level" class="col-black">Level:</label>
+                            <input type="text" id="level" name="level" value="'.$Level.'" class="set-inputField ">
+                        </div>
+                        <div class="set-inputFlex">
+                            <div class="col-black">Levels: 0 - Admin, 1 - User, 2 - Manager</div>
+                        </div>
+                        <input type="submit" value="Spremi" class="add-button-rezerviraj" name="'.$btnEmployeeForm.'">
+                    </form>
 
-                        <table border="1">
+                    <table border="1">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -695,44 +696,44 @@ else{
                         </thead>';
                         while($rowEmployee = mysqli_fetch_array($resultEmployee)){
 
-                            $IDEmployee = $rowEmployee['IDEmployee'];
-                            $Username = $rowEmployee['Username'];
-                            $Pin = $rowEmployee['Pin'];
-                            $Level = $rowEmployee['Level'];
+                        $IDEmployee = $rowEmployee['IDEmployee'];
+                        $Username = $rowEmployee['Username'];
+                        $Pin = $rowEmployee['Pin'];
+                        $Level = $rowEmployee['Level'];
 
-                            echo '
-                            <tr>
-                                <td>'.$IDEmployee.'</td>
-                                <td>'.$Username.'</td>
-                                <td>'.$Pin.'</td>
-                                <td>'.$Level.'</td>
-                                <td>
-                                    <a href="settings.php?IDEmployee='.$IDEmployee.'">Uredi</a>
-                                    <a href="settings.php?IDEmployee='.$IDEmployee.'&task=delEmployee">Obriši</a>
-                                </td>
-                            </tr>
-                            ';
+                        echo '
+                        <tr>
+                            <td>'.$IDEmployee.'</td>
+                            <td>'.$Username.'</td>
+                            <td>'.$Pin.'</td>
+                            <td>'.$Level.'</td>
+                            <td>
+                                <a href="settings.php?IDEmployee='.$IDEmployee.'">Uredi</a>
+                                <a href="settings.php?IDEmployee='.$IDEmployee.'&task=delEmployee">Obriši</a>
+                            </td>
+                        </tr>
+                        ';
                         }
                         echo '
                         <tbody>
                         </tbody>
-                        </table>
-                    </div>
-                    
-                    <div class="set-container fullWidth">
-                    
+                    </table>
+                </div>
+                <!--
+                <div class="set-container ww-100">
+
                     <div class="set-title">WPT Script Switcher</div>
                     <form method="POST" action="">
                         <div class="set-flex">
                             <div class="set-switch-text">JavaScript</div>
                             <label class="switch">';
-                            if($_SESSION['NWD'] === 'js'){
+                                if($_SESSION['NWD'] === 'js'){
                                 echo '<input type="checkbox" id="toggle-input">';
-                            }
-                            else{
+                                }
+                                else{
                                 echo '<input type="checkbox" id="toggle-input" checked>';
-                            }
-                            
+                                }
+
                                 echo '
                                 <span class="slider round"></span>
                             </label>
@@ -741,47 +742,96 @@ else{
                         </div>
                     </form>
                 </div>
-                
-                </div>
-                
-                <div class="set-container">
-                    <div class="set-title">Tablica "bugs"</div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Akcija</th>
-                            </tr>
-                        </thead>
-                        <tbody>';
-                            while($rowBugs = mysqli_fetch_array($resultBugs)){
-                                $IDBugs = $rowBugs["IDBugs"];
-                                $IDEmployeeBugs = $rowBugs["EmployeeID"];
-                                $Text = $rowBugs["Text"];
-                                
-                                echo '
-                                <tr>
-                                    <td>'.$IDEmployeeBugs.'</td>
-                                    <td>'.$Text.'</td>
-                                    <td>
-                                        <a href="settings.php?IDBugs='.$IDBugs.'&task=delBug">Obriši</a>
-                                    </td>
-                                </tr>
-                                ';
-                            }
-                            echo '
-                        </tbody>
-                    </table>
-                </div>
-                
-            </div>
+                -->
 
+            </div>
+        <div class="">
+            <div class="set-container ww-100">
+                <div class="set-title">Tablica "bugs"</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Akcija</th>
+                        </tr>
+                    </thead>
+                    <tbody>';
+                        while($rowBugs = mysqli_fetch_array($resultBugs)){
+                        $IDBugs = $rowBugs["IDBugs"];
+                        $IDEmployeeBugs = $rowBugs["EmployeeID"];
+                        $Text = $rowBugs["Text"];
+
+                        echo '
+                        <tr>
+                            <td>'.$IDEmployeeBugs.'</td>
+                            <td>'.$Text.'</td>
+                            <td>
+                                <a href="settings.php?IDBugs='.$IDBugs.'&task=delBug">Obriši</a>
+                            </td>
+                        </tr>
+                        ';
+                        }
+                        echo '
+                    </tbody>
+                </table>
+            </div>
+            <div class="set-container ww-100">
+                <div class="set-title">Tablica "lookup"</div>
+                <form method="POST" action="" class="set-formContainer">
+                    <div class="set-inputFlex">
+                        <label for="lookupName" class="col-black">Naziv broda:</label>
+                        <div id="lookupName" name="lookupName" value="'.$lookupName.'" class="set-inputField inputField">'.$lookupName.'</div>
+                    </div>
+                    <div class="set-inputFlex">
+                        <label for="lookupPrice" class="col-black">Cijena broda:</label>
+                        <input type="number" id="lookupPrice" name="lookupPrice" value="'.$lookupPrice.'" class="set-inputField inputField">
+                    </div>
+                    <input type="submit" value="Spremi" class="add-button-rezerviraj" name="'.$btnLookupForm.'">
+                </form>
+
+                <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Cijena</th>
+                        <th>Akcija</th>
+                    </tr>
+                </thead>';
+                while($rowLookup = mysqli_fetch_array($resultLookup)){
+                    $Card = $rowLookup["Card"];
+                    $lookupName = $rowLookup["BoatName"];
+                    $lookupPrice = $rowLookup["BoatPrice"];
+                    
+                    echo '
+                    <tr>
+                        <td>'.$Card.'</td>
+                        <td>'.$lookupName.'</td>
+                        <td>'.$lookupPrice.'</td>
+                        <td>
+                            <a href="settings.php?Card='.$Card.'">Uredi</a>
+                            <!--
+                            <a href="settings.php?Card='.$Card.'&task=delBoat">Obriši</a>
+                            -->
+                        </td>
+                    </tr>
+                    ';
+                }
+                echo '
+                <tbody>
+                </tbody>
+                </table>
+            </div>
+        </div>
 
         </div>
-        
-        <div class="spacer spacer-bottom"></div>
-    </main>
+
+
+    </div>
+
+    <div class="spacer spacer-bottom"></div>
+</main>
     ';
 }
     include("../header-footer/footer.php");

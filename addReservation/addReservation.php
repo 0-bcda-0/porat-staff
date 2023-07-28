@@ -5,6 +5,7 @@ include ("../navigation/navigation.php");
 include("../PHP/db_connection.php");
 include("../PHP/conf2.php");
 
+
 if(isset($_POST["btn_edit"]))
 {
     $BoatID = mysqli_real_escape_string($con, $_POST["BoatID"]);
@@ -63,7 +64,7 @@ if(isset($_POST["btn_edit"]))
         echo 'Greska kod edita. Pokusajte ponovo';
     }
 }
-
+/*
 if(isset($_POST["btn_save"]))
 {
     $BoatID = mysqli_real_escape_string($con, $_POST["BoatID"]);
@@ -103,6 +104,61 @@ if(isset($_POST["btn_save"]))
     echo 'Greska kod unosa. Pokusajte ponovo';
   }
 }
+*/
+if (isset($_POST["btn_save"])) {
+    $BoatID = mysqli_real_escape_string($con, $_POST["BoatID"]);
+    $StartDate = mysqli_real_escape_string($con, $_POST["StartDate"]);
+    $FinishDate = mysqli_real_escape_string($con, $_POST["FinishDate"]);
+    $StartTime = mysqli_real_escape_string($con, $_POST["StartTime"]);
+    $FinishTime = mysqli_real_escape_string($con, $_POST["FinishTime"]);
+    $ClientName = mysqli_real_escape_string($con, $_POST["ClientName"]);
+    $ClientSurname = mysqli_real_escape_string($con, $_POST["ClientSurname"]);
+    $ClientTelNum = mysqli_real_escape_string($con, $_POST["ClientTelNum"]);
+    $ClientOIB = mysqli_real_escape_string($con, $_POST["ClientOIB"]);
+    $Price = mysqli_real_escape_string($con, $_POST["Price"]);
+    $AdvancePayment = mysqli_real_escape_string($con, $_POST["AdvancePayment"]);
+    $PriceDiffrence = mysqli_real_escape_string($con, $_POST["PriceDiffrence"]);
+    $Deposit = mysqli_real_escape_string($con, $_POST["Deposit"]);
+    $CreatedDate = date("Y-m-d");
+    $AdvancePaymentDate = mysqli_real_escape_string($con, $_POST["AdvancePaymentDate"]);
+    $PriceDiffrenceDate = mysqli_real_escape_string($con, $_POST["PriceDiffrenceDate"]);
+    $DepositDate = mysqli_real_escape_string($con, $_POST["DepositDate"]);
+    $EmployeeID = mysqli_real_escape_string($con, $_POST["EmployeeID"]);
+    $Note = mysqli_real_escape_string($con, $_POST["Note"]);
+
+    // Check for overlapping reservations
+    $query_check_overlap = "SELECT * FROM reservation 
+                            WHERE BoatID = '$BoatID' 
+                            AND StartDate <= '$FinishDate' 
+                            AND FinishDate >= '$StartDate' 
+                            AND StartTime <= '$FinishTime' 
+                            AND FinishTime >= '$StartTime'";
+    
+    $result_check_overlap = mysqli_query($con, $query_check_overlap);
+
+    if (mysqli_num_rows($result_check_overlap) > 0) {
+        // There is an overlap with existing reservation(s)
+        echo '<script type="text/javascript">';
+        echo 'popup();';
+        echo '</script>';
+    } else {
+        // No overlap, proceed with insertion
+        $query_ins = "INSERT INTO reservation
+                        (BoatID, StartDate, StartTime, FinishDate, FinishTime, Name, Surname, TelNum, OIB, Price, AdvancePayment, PriceDiffrence, Deposit, CreatedDate, AdvancePaymentDate, PriceDiffrenceDate, DepositDate, EmployeeID, Note)
+                        VALUES
+                        ('$BoatID', '$StartDate', '$StartTime', '$FinishDate', '$FinishTime', '$ClientName', '$ClientSurname', '$ClientTelNum', '$ClientOIB', '$Price', '$AdvancePayment', '$PriceDiffrence', '$Deposit', '$CreatedDate', '$AdvancePaymentDate', '$PriceDiffrenceDate', '$DepositDate', '$EmployeeID', '$Note')";
+    
+        $result_ins = mysqli_query($con, $query_ins);
+    
+        if ($result_ins) {
+            header('Location: ../reservations/reservations.php?day=' . date("Y-m-d", strtotime($StartDate)));
+            exit;
+        } else {
+            echo 'Error during insertion. Please try again.';
+        }
+    }
+}
+
 
 // Ako je stisnuta postojeca rezervacija
 if(isset($_GET["IDr"])){
@@ -492,6 +548,26 @@ echo '
             </div>
         </div>
     </div>
+        <div id="errorPopup" class="clearFormPopup">
+        <div class="deleteWindow-rows">
+            <div class="popup-title h4">Krivi username ili pin.</div>
+            <div class="row">
+                <div class="popup-col-flex-buttons">
+                    <a href="#" onclick="popup()" class="button-edit">
+                        <lord-icon class="rotate-arrow"
+                            src="../icon/dateArrow.json"
+                            target=".button-edit"
+                            trigger="loop-on-hover"
+                            delay="500"
+                            colors="primary:#337895"
+                            style="width:20px;height:20px">
+                        </lord-icon>
+                        <div class="button-text">Pokušaj ponovno</div>
+                    </a>   
+                </div>
+            </div>
+            </div>
+        </div>
     <div class="spacer spacer-bottom"></div>
 
 </main>

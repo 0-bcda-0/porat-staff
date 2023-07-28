@@ -20,16 +20,16 @@ body{
     margin: 0;
     padding: 0;
     background-color: #7bbddf;
+    background-image: url('../img/Bcg.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 /* Tako da se sadrzaj ne sakrije iza navigacije */
 main {
     margin-left: 5rem;
     margin-top: 0;
-    background-image: url('../img/Bcg.png');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
 }
 
 /* Za scrollbar */

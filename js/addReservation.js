@@ -4,6 +4,11 @@ function delete_popup() {
     document.getElementById('clearFormPopup').classList.toggle('active');
 }
 
+function popup() {
+  document.getElementById('blurForClearFormPopup').classList.toggle('active');
+  document.getElementById('errorPopup').classList.toggle('active');
+} 
+
 // 2. Funkcionalnost: Resetiranje forme
 function clearForm() {
     document.getElementById("reservationForm").reset();
