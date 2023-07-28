@@ -14,3 +14,5 @@ jobs:
         server: ftp.bcda.com.hr
         username: admin@porat-staff.com.hr
         password: UJGspX76
+        exclude: |
+          PHP/db_connection.php
