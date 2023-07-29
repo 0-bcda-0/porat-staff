@@ -46,7 +46,7 @@ echo'
             <div class="box">
             <form method="POST" action="#">
                 <div class="field">
-                    <input type="text" name="frm_u2" class="input input-top" placeholder="'.$_SESSION['NWD'].'" value="" />
+                    <input type="text" name="frm_u2" class="input input-top" placeholder="Username" value="" />
                     <!-- <label for="frm_u2" class="label">Username</label> -->
                 </div>
         
