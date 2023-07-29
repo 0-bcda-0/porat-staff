@@ -46,7 +46,7 @@ echo'
             <div class="box">
             <form method="POST" action="#">
                 <div class="field">
-                    <input type="text" name="frm_u2" class="input input-top" placeholder="Username 17:22" value="" />
+                    <input type="text" name="frm_u2" class="input input-top" placeholder="Username" value="" />
                     <!-- <label for="frm_u2" class="label">Username</label> -->
                 </div>
         
@@ -113,7 +113,7 @@ if (isset($_POST['frm_u2'])) {
         $_SESSION['Level'] = $korisnik["Level"];
         $_SESSION['IDEmployee'] = $korisnik["IDEmployee"];
         // print_r($_SERVER['Level']);
-        header('Location: ../reservations/reservations.php');
+        header("Location: reservations/reservations.php");
     }
 }
 
