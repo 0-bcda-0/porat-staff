@@ -113,7 +113,9 @@ if (isset($_POST['frm_u2'])) {
         $_SESSION['Level'] = $korisnik["Level"];
         $_SESSION['IDEmployee'] = $korisnik["IDEmployee"];
         // print_r($_SERVER['Level']);
-        header("Location: reservations/reservations.php");
+        // header("Location: reservations/reservations.php");
+        header('Location: https://porat-staff.com.hr/reservations/reservations.php');
+
     }
 }
 
