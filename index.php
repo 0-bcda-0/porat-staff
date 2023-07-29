@@ -46,8 +46,8 @@ echo'
             <div class="box">
             <form method="POST" action="#">
                 <div class="field">
-                    <input type="text" name="frm_u2" class="input input-top" placeholder="Username" value="" />
-                    <!-- <label for="frm_u2" class="label">Usernameee</label> -->
+                    <input type="text" name="frm_u2" class="input input-top" placeholder="Usernameee" value="" />
+                    <!-- <label for="frm_u2" class="label">Username</label> -->
                 </div>
         
                 <div class="field">
