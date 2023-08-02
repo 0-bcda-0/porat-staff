@@ -56,8 +56,9 @@ if(isset($_POST["btn_edit"]))
 
     if($result_upd)
     {
-        header('Location: ../reservations/reservations.php?day='.date("Y-m-d", strtotime($StartDate)).'');
-        exit;
+        echo ' USPJELO JEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE';
+        //header('Location: ../reservations/reservations.php?day='.date("Y-m-d", strtotime($StartDate)).'');
+        //exit;
     }
     else
     {
@@ -151,8 +152,9 @@ if (isset($_POST["btn_save"])) {
         $result_ins = mysqli_query($con, $query_ins);
     
         if ($result_ins) {
-            header('Location: ../reservations/reservations.php?day=' . date("Y-m-d", strtotime($StartDate)));
-            exit;
+            echo ' USPJELO JEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE';
+            //header('Location: ../reservations/reservations.php?day=' . date("Y-m-d", strtotime($StartDate)));
+            //exit;
         } else {
             echo 'Error in the SQL query (nova): ' . mysqli_error($con);
         }
