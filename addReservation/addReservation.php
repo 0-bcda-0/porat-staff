@@ -54,11 +54,6 @@ if(isset($_POST["btn_edit"]))
     
     $result_upd = mysqli_query($con, $query_upd);
 
-    if (!$result_upd) {
-        echo 'Error in the SQL query (postojeca): ' . mysqli_error($con);
-        exit;
-    }
-
     if($result_upd)
     {
         header('Location: ../reservations/reservations.php?day='.date("Y-m-d", strtotime($StartDate)).'');
@@ -66,7 +61,8 @@ if(isset($_POST["btn_edit"]))
     }
     else
     {
-        echo 'Greska kod edita. Pokusajte ponovo';
+        echo 'Error in the SQL query (postojeca): ' . mysqli_error($con);
+        exit;
     }
 }
 /*
@@ -141,11 +137,6 @@ if (isset($_POST["btn_save"])) {
     
     $result_check_overlap = mysqli_query($con, $query_check_overlap);
 
-    if (!$result_upd) {
-        echo 'Error in the SQL query (nova): ' . mysqli_error($con);
-        exit;
-    }
-
     if (mysqli_num_rows($result_check_overlap) > 0) {
         // There is an overlap with existing reservation(s)
         echo '<script type="text/javascript">';
@@ -164,7 +155,8 @@ if (isset($_POST["btn_save"])) {
             header('Location: ../reservations/reservations.php?day=' . date("Y-m-d", strtotime($StartDate)));
             exit;
         } else {
-            echo 'Error during insertion. Please try again.';
+            echo 'Error in the SQL query (nova): ' . mysqli_error($con);
+            exit;
         }
     }
 }
