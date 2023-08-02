@@ -62,7 +62,6 @@ if(isset($_POST["btn_edit"]))
     else
     {
         echo 'Error in the SQL query (postojeca): ' . mysqli_error($con);
-        exit;
     }
 }
 /*
@@ -156,7 +155,6 @@ if (isset($_POST["btn_save"])) {
             exit;
         } else {
             echo 'Error in the SQL query (nova): ' . mysqli_error($con);
-            exit;
         }
     }
 }
