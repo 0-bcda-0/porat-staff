@@ -120,7 +120,7 @@ if (isset($_POST['frm_u2'])) {
         echo '
         <script>
         function redirectToReservations() {
-            var reservationsURL = "reservations/reservations.php;
+            var reservationsURL = "reservations/reservations.php";
             window.location.href = reservationsURL;
         }
         redirectToReservations();
