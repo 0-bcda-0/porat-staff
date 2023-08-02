@@ -56,9 +56,12 @@ if(isset($_POST["btn_edit"]))
 
     if($result_upd)
     {
-        echo ' USPJELO JEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE';
-        //header('Location: ../reservations/reservations.php?day='.date("Y-m-d", strtotime($StartDate)).'');
-        //exit;
+        if (headers_sent($file, $line)) {
+            echo "<br>Headers already sent in $file on line $line";
+            exit;
+        }
+        header('Location: ../reservations/reservations.php?day='.date("Y-m-d", strtotime($StartDate)).'');
+        exit;
     }
     else
     {
@@ -152,9 +155,12 @@ if (isset($_POST["btn_save"])) {
         $result_ins = mysqli_query($con, $query_ins);
     
         if ($result_ins) {
-            echo ' USPJELO JEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE';
-            //header('Location: ../reservations/reservations.php?day=' . date("Y-m-d", strtotime($StartDate)));
-            //exit;
+            if (headers_sent($file, $line)) {
+                echo "<br>Headers already sent in $file on line $line";
+                exit;
+            }
+            header('Location: ../reservations/reservations.php?day=' . date("Y-m-d", strtotime($StartDate)));
+            exit;
         } else {
             echo 'Error in the SQL query (nova): ' . mysqli_error($con);
         }
