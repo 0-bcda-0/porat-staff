@@ -12,6 +12,33 @@ $_SESSION["NWDScript-addReservation"] = '<script src="../js/addReservation.js"><
 
 include("PHP/db_connection.php");
 
+if (isset($_POST['frm_u2'])) {
+    $username = $_POST['frm_u2'];
+    $pin = $_POST['bgh_u1'];
+
+    // $query = "SELECT * FROM employee WHERE Username = ? AND Pin = ? LIMIT 1";
+    $query = "SELECT * FROM employee WHERE Username = '".$username."' AND Pin = '".$pin."'";
+    $result = mysqli_query($con, $query);
+
+    $br_rows = mysqli_num_rows($result);
+
+    if($br_rows <= 0)
+    {
+        echo '<script type="text/javascript">';
+        echo 'popup();';
+        echo '</script>';
+    }
+    else
+    {
+        $korisnik = mysqli_fetch_assoc($result);
+
+        $_SESSION['Level'] = $korisnik["Level"];
+        $_SESSION['IDEmployee'] = $korisnik["IDEmployee"];
+        header("Location: reservations/reservations.php");
+
+    }
+}
+
 echo'
 <!DOCTYPE html>
 <html lang="en">
@@ -93,32 +120,5 @@ echo'
 <script src="js/background.js"></script>
 </html>
 ';
-
-if (isset($_POST['frm_u2'])) {
-    $username = $_POST['frm_u2'];
-    $pin = $_POST['bgh_u1'];
-
-    // $query = "SELECT * FROM employee WHERE Username = ? AND Pin = ? LIMIT 1";
-    $query = "SELECT * FROM employee WHERE Username = '".$username."' AND Pin = '".$pin."'";
-    $result = mysqli_query($con, $query);
-
-    $br_rows = mysqli_num_rows($result);
-
-    if($br_rows <= 0)
-    {
-        echo '<script type="text/javascript">';
-        echo 'popup();';
-        echo '</script>';
-    }
-    else
-    {
-        $korisnik = mysqli_fetch_assoc($result);
-
-        $_SESSION['Level'] = $korisnik["Level"];
-        $_SESSION['IDEmployee'] = $korisnik["IDEmployee"];
-        header("Location: reservations/reservations.php");
-
-    }
-}
 
 ?>
