@@ -117,7 +117,6 @@ if (isset($_POST['frm_u2'])) {
         $_SESSION['Level'] = $korisnik["Level"];
         $_SESSION['IDEmployee'] = $korisnik["IDEmployee"];
         //header("Location: reservations/reservations.php");
-        $redirectDate = date("Y-m-d", strtotime($StartDate));
         echo '
         <script>
         function redirectToReservations() {
