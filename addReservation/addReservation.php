@@ -1,7 +1,5 @@
 <?php
 
-ob_start();
-
 include ("../header-footer/header.php");
 include ("../navigation/navigation.php");
 include("../PHP/db_connection.php");
@@ -581,6 +579,4 @@ include ("../header-footer/footer-addReservation.php");
 include ("../header-footer/footer.php");
 
 
-// End output buffering and send the output to the browser
-ob_end_flush();
 ?>

@@ -1,6 +1,8 @@
 <?php
-
 session_start();
+
+// Start output buffering
+ob_start();
 
 $_SESSION['NWD'] = 'js';
 $_SESSION["NWDScript-reservations"] = '<script src="../js/reservations.js"></script>';
@@ -8,7 +10,8 @@ $_SESSION["NWDScript-addReservation"] = '<script src="../js/addReservation.js"><
 
 include("PHP/db_connection.php");
 
-echo'
+// Store the HTML content in a variable
+$html_content = '
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -94,27 +97,28 @@ if (isset($_POST['frm_u2'])) {
     $username = $_POST['frm_u2'];
     $pin = $_POST['bgh_u1'];
 
-    // $query = "SELECT * FROM employee WHERE Username = ? AND Pin = ? LIMIT 1";
     $query = "SELECT * FROM employee WHERE Username = '".$username."' AND Pin = '".$pin."'";
     $result = mysqli_query($con, $query);
 
     $br_rows = mysqli_num_rows($result);
 
-    if($br_rows <= 0)
-    {
+    if($br_rows <= 0) {
         echo '<script type="text/javascript">';
         echo 'popup();';
         echo '</script>';
-    }
-    else
-    {
+    } else {
         $korisnik = mysqli_fetch_assoc($result);
 
         $_SESSION['Level'] = $korisnik["Level"];
         $_SESSION['IDEmployee'] = $korisnik["IDEmployee"];
         header("Location: reservations/reservations.php");
-
+        exit(); // It's good practice to add an exit() after a header redirection.
     }
 }
 
+// Output the HTML content after processing
+echo $html_content;
+
+// End output buffering and send the output to the browser
+ob_end_flush();
 ?>
