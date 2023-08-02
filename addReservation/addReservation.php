@@ -54,26 +54,22 @@ if(isset($_POST["btn_edit"]))
     
     $result_upd = mysqli_query($con, $query_upd);
 
-    if($result_upd)
-    {
+    if ($result_upd) {
         //header('Location: ../reservations/reservations.php?day='.date("Y-m-d", strtotime($StartDate)).'');
-        // Assuming $StartDate is already defined or calculated
         $redirectDate = date("Y-m-d", strtotime($StartDate));
-        echo'
-        <!-- Add this JavaScript code inside your HTML page or template -->
+        echo '
         <script>
         // Function to redirect the user to the reservations page with the specified date
-        function redirectToReservations() {
-            var redirectDate = '.$redirectDate.';
+        function redirectToReservations(redirectDate) {
             var reservationsURL = "../reservations/reservations.php?day=" + redirectDate;
             window.location.href = reservationsURL;
         }
-
+    
         // Automatically redirect the user to the reservations page on page load
-        redirectToReservations();
+        redirectToReservations("' . $redirectDate . '"); // Enclose $redirectDate in quotes
         </script>
         ';
-    }
+    }    
     else
     {
         echo 'Error in the SQL query (postojeca): ' . mysqli_error($con);
@@ -166,12 +162,24 @@ if (isset($_POST["btn_save"])) {
         $result_ins = mysqli_query($con, $query_ins);
     
         if ($result_ins) {
-            if (headers_sent($file, $line)) {
-                echo "<br>Headers already sent in $file on line $line";
-                exit;
+            //STARA VERZIJA
+            //header('Location: ../reservations/reservations.php?day=' . date("Y-m-d", strtotime($StartDate)));
+            //exit;
+
+            $redirectDate = date("Y-m-d", strtotime($StartDate));
+            echo '
+            <script>
+            // Function to redirect the user to the reservations page with the specified date
+            function redirectToReservations(redirectDate) {
+                var reservationsURL = "../reservations/reservations.php?day=" + redirectDate;
+                window.location.href = reservationsURL;
             }
-            header('Location: ../reservations/reservations.php?day=' . date("Y-m-d", strtotime($StartDate)));
-            exit;
+        
+            // Automatically redirect the user to the reservations page on page load
+            redirectToReservations("' . $redirectDate . '"); // Enclose $redirectDate in quotes
+            </script>
+            ';
+            
         } else {
             echo 'Error in the SQL query (nova): ' . mysqli_error($con);
         }
