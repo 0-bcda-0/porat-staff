@@ -56,10 +56,6 @@ if(isset($_POST["btn_edit"]))
 
     if($result_upd)
     {
-        if (headers_sent($file, $line)) {
-            echo "<br>Headers already sent in $file on line $line";
-            exit;
-        }
         //header('Location: ../reservations/reservations.php?day='.date("Y-m-d", strtotime($StartDate)).'');
         // Assuming $StartDate is already defined or calculated
         $redirectDate = date("Y-m-d", strtotime($StartDate));
