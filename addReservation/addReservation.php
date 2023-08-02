@@ -60,8 +60,23 @@ if(isset($_POST["btn_edit"]))
             echo "<br>Headers already sent in $file on line $line";
             exit;
         }
-        header('Location: ../reservations/reservations.php?day='.date("Y-m-d", strtotime($StartDate)).'');
-        exit;
+        //header('Location: ../reservations/reservations.php?day='.date("Y-m-d", strtotime($StartDate)).'');
+        // Assuming $StartDate is already defined or calculated
+        $redirectDate = date("Y-m-d", strtotime($StartDate));
+        echo'
+        <!-- Add this JavaScript code inside your HTML page or template -->
+        <script>
+        // Function to redirect the user to the reservations page with the specified date
+        function redirectToReservations() {
+            var redirectDate = '.$redirectDate.';
+            var reservationsURL = "../reservations/reservations.php?day=" + redirectDate;
+            window.location.href = reservationsURL;
+        }
+
+        // Automatically redirect the user to the reservations page on page load
+        redirectToReservations();
+        </script>
+        ';
     }
     else
     {
