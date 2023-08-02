@@ -17,7 +17,16 @@ if($_SESSION["Level"] === '1')
         $result = mysqli_query($con, $query);
         if($result){
             echo '<script>alert("Uspješno ste podnijeli prijavu!")</script>';
-            header("Location: settings.php");
+            echo '
+            <script>
+            function redirectToReservations() {
+                var reservationsURL = "settings.php;
+                window.location.href = reservationsURL;
+            }
+            redirectToReservations();
+            </script>
+            ';
+            //header("Location: settings.php");
         }
         else{
             echo '<script>alert("Greška prilikom podnošenja prijave!")</script>';
@@ -39,7 +48,16 @@ if($_SESSION["Level"] === '1')
             $query = "UPDATE employee SET Pin = '".$nPin."' WHERE IDEmployee = '".$_SESSION["IDEmployee"]."'";
             $result = mysqli_query($con, $query);
             if($result){
-                header("Location: settings.php");
+                echo '
+                <script>
+                function redirectToReservations() {
+                    var reservationsURL = "rsettings.php;
+                    window.location.href = reservationsURL;
+                }
+                redirectToReservations();
+                </script>
+                ';
+                //header("Location: settings.php");
             }
             else{
                 echo '<script>alert("Greška prilikom promjene pin-a!")</script>';
@@ -166,7 +184,16 @@ else if($_SESSION["Level"] === '2')
         if($resultLookupSave)
         {
             echo 'Podaci su uspjesno spremljeni';
-            header("Location: settings.php");
+            echo '
+            <script>
+            function redirectToReservations() {
+                var reservationsURL = "rsettings.php;
+                window.location.href = reservationsURL;
+            }
+            redirectToReservations();
+            </script>
+            ';
+            //header("Location: settings.php");
         }
         else{
             echo 'Podaci nisu uspjesno spremljeni';
@@ -192,7 +219,16 @@ else if($_SESSION["Level"] === '2')
         if($resultLookupEdit)
         {
             echo 'Podaci su uspjesno spremljeni';
-            header("Location: settings.php");
+            echo '
+            <script>
+            function redirectToReservations() {
+                var reservationsURL = "rsettings.php;
+                window.location.href = reservationsURL;
+            }
+            redirectToReservations();
+            </script>
+            ';
+            //header("Location: settings.php");
         }
         else{
             echo 'Podaci nisu uspjesno spremljeni';
@@ -350,7 +386,16 @@ else{
         if($resultBoatSave)
         {
             echo 'Podaci su uspjesno spremljeni';
-            header("Location: settings.php");
+            echo '
+            <script>
+            function redirectToReservations() {
+                var reservationsURL = "rsettings.php;
+                window.location.href = reservationsURL;
+            }
+            redirectToReservations();
+            </script>
+            ';
+            //header("Location: settings.php");
         }
         else{
             echo 'Podaci nisu uspjesno spremljeni';
@@ -375,7 +420,16 @@ else{
         if($resultBoatEdit)
         {
             echo 'Podaci su uspjesno spremljeni';
-            header("Location: settings.php");
+            echo '
+            <script>
+            function redirectToReservations() {
+                var reservationsURL = "rsettings.php;
+                window.location.href = reservationsURL;
+            }
+            redirectToReservations();
+            </script>
+            ';
+            //header("Location: settings.php");
         }
         else{
             echo 'Podaci nisu uspjesno spremljeni';
@@ -394,7 +448,16 @@ else{
         if($resultBoatDelete)
         {
             echo 'Podaci su uspjesno obrisani';
-            header("Location: settings.php");
+            echo '
+            <script>
+            function redirectToReservations() {
+                var reservationsURL = "rsettings.php;
+                window.location.href = reservationsURL;
+            }
+            redirectToReservations();
+            </script>
+            ';
+            //header("Location: settings.php");
         }
         else{
             echo 'Podaci nisu uspjesno obrisani';
@@ -443,7 +506,16 @@ else{
         if($resultEmployeeSave)
         {
             echo 'Podaci su uspjesno spremljeni';
-            header("Location: settings.php");
+            echo '
+            <script>
+            function redirectToReservations() {
+                var reservationsURL = "rsettings.php;
+                window.location.href = reservationsURL;
+            }
+            redirectToReservations();
+            </script>
+            ';
+            //header("Location: settings.php");
         }
         else{
             echo 'Podaci nisu uspjesno spremljeni';
@@ -473,7 +545,16 @@ else{
         if($resultEmployeeEdit)
         {
             echo 'Podaci su uspjesno spremljeni';
-            header("Location: settings.php");
+            echo '
+            <script>
+            function redirectToReservations() {
+                var reservationsURL = "rsettings.php;
+                window.location.href = reservationsURL;
+            }
+            redirectToReservations();
+            </script>
+            ';
+            //header("Location: settings.php");
         }
         else{
             echo 'Podaci nisu uspjesno spremljeni';
@@ -493,7 +574,16 @@ else{
         if($resultEmployeeDelete)
         {
             echo 'Podaci su uspjesno obrisani';
-            header("Location: settings.php");
+            echo '
+            <script>
+            function redirectToReservations() {
+                var reservationsURL = "rsettings.php;
+                window.location.href = reservationsURL;
+            }
+            redirectToReservations();
+            </script>
+            ';
+            //header("Location: settings.php");
         }
         else{
             echo 'Podaci nisu uspjesno obrisani';
@@ -513,7 +603,16 @@ else{
         if($resultBugDelete)
         {
             echo 'Podaci su uspjesno obrisani';
-            header("Location: settings.php");
+            echo '
+            <script>
+            function redirectToReservations() {
+                var reservationsURL = "rsettings.php;
+                window.location.href = reservationsURL;
+            }
+            redirectToReservations();
+            </script>
+            ';
+            //header("Location: settings.php");
         }
         else{
             echo 'Podaci nisu uspjesno obrisani';
@@ -560,7 +659,16 @@ else{
         if($resultLookupSave)
         {
             echo 'Podaci su uspjesno spremljeni';
-            header("Location: settings.php");
+            echo '
+            <script>
+            function redirectToReservations() {
+                var reservationsURL = "rsettings.php;
+                window.location.href = reservationsURL;
+            }
+            redirectToReservations();
+            </script>
+            ';
+            //header("Location: settings.php");
         }
         else{
             echo 'Podaci nisu uspjesno spremljeni';
@@ -586,7 +694,16 @@ else{
         if($resultLookupEdit)
         {
             echo 'Podaci su uspjesno spremljeni';
-            header("Location: settings.php");
+            echo '
+            <script>
+            function redirectToReservations() {
+                var reservationsURL = "rsettings.php;
+                window.location.href = reservationsURL;
+            }
+            redirectToReservations();
+            </script>
+            ';
+            //header("Location: settings.php");
         }
         else{
             echo 'Podaci nisu uspjesno spremljeni';
@@ -606,7 +723,16 @@ else{
         if($resultLookupDelete)
         {
             echo 'Podaci su uspjesno obrisani';
-            header("Location: settings.php");
+            echo '
+            <script>
+            function redirectToReservations() {
+                var reservationsURL = "rsettings.php;
+                window.location.href = reservationsURL;
+            }
+            redirectToReservations();
+            </script>
+            ';
+            //header("Location: settings.php");
         }
         else{
             echo 'Podaci nisu uspjesno obrisani';
