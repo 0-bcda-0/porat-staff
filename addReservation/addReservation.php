@@ -131,12 +131,12 @@ if (isset($_POST["btn_save"])) {
     $PriceDiffrence = isset($_POST["PriceDiffrence"]) && !empty($_POST["PriceDiffrence"]) ? mysqli_real_escape_string($con, $_POST["PriceDiffrence"]) : 0;
     $Deposit = isset($_POST["Deposit"]) && !empty($_POST["Deposit"]) ? mysqli_real_escape_string($con, $_POST["Deposit"]) : 0;
     $CreatedDate = date("Y-m-d");
-    $AdvancePaymentDate = isset($_POST["AdvancePaymentDate"]) && !empty($_POST["AdvancePaymentDate"]) ? mysqli_real_escape_string($con, $_POST["AdvancePaymentDate"]) : NULL;
-    $PriceDiffrenceDate = isset($_POST["PriceDiffrenceDate"]) && !empty($_POST["PriceDiffrenceDate"]) ? mysqli_real_escape_string($con, $_POST["PriceDiffrenceDate"]) : NULL;
-    $DepositDate = isset($_POST["DepositDate"]) && !empty($_POST["DepositDate"]) ? mysqli_real_escape_string($con, $_POST["DepositDate"]) : NULL;
-    //$AdvancePaymentDate = mysqli_real_escape_string($con, $_POST["AdvancePaymentDate"]);
-    //$PriceDiffrenceDate = mysqli_real_escape_string($con, $_POST["PriceDiffrenceDate"]);
-    //$DepositDate = mysqli_real_escape_string($con, $_POST["DepositDate"]);
+    //$AdvancePaymentDate = isset($_POST["AdvancePaymentDate"]) && !empty($_POST["AdvancePaymentDate"]) ? mysqli_real_escape_string($con, $_POST["AdvancePaymentDate"]) : NULL;
+    //$PriceDiffrenceDate = isset($_POST["PriceDiffrenceDate"]) && !empty($_POST["PriceDiffrenceDate"]) ? mysqli_real_escape_string($con, $_POST["PriceDiffrenceDate"]) : NULL;
+    //$DepositDate = isset($_POST["DepositDate"]) && !empty($_POST["DepositDate"]) ? mysqli_real_escape_string($con, $_POST["DepositDate"]) : NULL;
+    $AdvancePaymentDate = mysqli_real_escape_string($con, $_POST["AdvancePaymentDate"]);
+    $PriceDiffrenceDate = mysqli_real_escape_string($con, $_POST["PriceDiffrenceDate"]);
+    $DepositDate = mysqli_real_escape_string($con, $_POST["DepositDate"]);
     $EmployeeID = mysqli_real_escape_string($con, $_POST["EmployeeID"]);
     $Note = mysqli_real_escape_string($con, $_POST["Note"]);
 
@@ -160,7 +160,7 @@ if (isset($_POST["btn_save"])) {
         $query_ins = "INSERT INTO reservation
                         (BoatID, StartDate, StartTime, FinishDate, FinishTime, Name, Surname, TelNum, OIB, Price, AdvancePayment, PriceDiffrence, Deposit, CreatedDate, AdvancePaymentDate, PriceDiffrenceDate, DepositDate, EmployeeID, Note)
                         VALUES
-                        ('$BoatID', '$StartDate', '$StartTime', '$FinishDate', '$FinishTime', '$ClientName', '$ClientSurname', '$ClientTelNum', '$ClientOIB', '$Price', '$AdvancePayment', '$PriceDiffrence', '$Deposit', '$CreatedDate', $AdvancePaymentDate, $PriceDiffrenceDate, $DepositDate, '$EmployeeID', '$Note')";
+                        ('$BoatID', '$StartDate', '$StartTime', '$FinishDate', '$FinishTime', '$ClientName', '$ClientSurname', '$ClientTelNum', '$ClientOIB', '$Price', '$AdvancePayment', '$PriceDiffrence', '$Deposit', '$CreatedDate', $AdvancePaymentDate', '$PriceDiffrenceDate', '$DepositDate', '$EmployeeID', '$Note')";
     
         $result_ins = mysqli_query($con, $query_ins);
     
