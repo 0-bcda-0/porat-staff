@@ -1,5 +1,15 @@
 <?php
 
+function formatData($data) {
+    global $con; // Access the $con variable inside the function
+
+    if (!empty($data)) {
+        return "'" . mysqli_real_escape_string($con, $data) . "'";
+    } else {
+        return 'NULL';
+    }
+}
+
 function dateToCroatianFormat($date) {
     // pretvara se u format po zelji
     $dayDisplayedMyFormat = date("d.m.Y", strtotime($date));
