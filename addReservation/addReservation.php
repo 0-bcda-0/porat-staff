@@ -131,9 +131,9 @@ if (isset($_POST["btn_save"])) {
     $PriceDiffrence = isset($_POST["PriceDiffrence"]) && !empty($_POST["PriceDiffrence"]) ? mysqli_real_escape_string($con, $_POST["PriceDiffrence"]) : 0;
     $Deposit = isset($_POST["Deposit"]) && !empty($_POST["Deposit"]) ? mysqli_real_escape_string($con, $_POST["Deposit"]) : 0;
     $CreatedDate = date("Y-m-d");
-    $AdvancePaymentDate = isset($_POST["AdvancePaymentDate"]) && !empty($_POST["AdvancePaymentDate"]) ? mysqli_real_escape_string($con, $_POST["AdvancePaymentDate"]) : 0000-00-00;
-    $PriceDiffrenceDate = isset($_POST["PriceDiffrenceDate"]) && !empty($_POST["PriceDiffrenceDate"]) ? mysqli_real_escape_string($con, $_POST["PriceDiffrenceDate"]) : 0000-00-00;
-    $DepositDate = isset($_POST["DepositDate"]) && !empty($_POST["DepositDate"]) ? mysqli_real_escape_string($con, $_POST["DepositDate"]) : 0000-00-00;
+    $AdvancePaymentDate = isset($_POST["AdvancePaymentDate"]) && !empty($_POST["AdvancePaymentDate"]) ? mysqli_real_escape_string($con, $_POST["AdvancePaymentDate"]) : '0000-00-00';
+    $PriceDiffrenceDate = isset($_POST["PriceDiffrenceDate"]) && !empty($_POST["PriceDiffrenceDate"]) ? mysqli_real_escape_string($con, $_POST["PriceDiffrenceDate"]) : '0000-00-00';
+    $DepositDate = isset($_POST["DepositDate"]) && !empty($_POST["DepositDate"]) ? mysqli_real_escape_string($con, $_POST["DepositDate"]) : '0000-00-00';
     //$AdvancePaymentDate = mysqli_real_escape_string($con, $_POST["AdvancePaymentDate"]);
     //$PriceDiffrenceDate = mysqli_real_escape_string($con, $_POST["PriceDiffrenceDate"]);
     //$DepositDate = mysqli_real_escape_string($con, $_POST["DepositDate"]);
