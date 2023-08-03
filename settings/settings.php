@@ -20,7 +20,7 @@ if($_SESSION["Level"] === '1')
             echo '
             <script>
             function redirectToReservations() {
-                var reservationsURL = "settings.php;
+                var reservationsURL = "settings.php";
                 window.location.href = reservationsURL;
             }
             redirectToReservations();
@@ -51,7 +51,7 @@ if($_SESSION["Level"] === '1')
                 echo '
                 <script>
                 function redirectToReservations() {
-                    var reservationsURL = "settings.php;
+                    var reservationsURL = "settings.php";
                     window.location.href = reservationsURL;
                 }
                 redirectToReservations();
@@ -187,7 +187,7 @@ else if($_SESSION["Level"] === '2')
             echo '
             <script>
             function redirectToReservations() {
-                var reservationsURL = "settings.php;
+                var reservationsURL = "settings.php";
                 window.location.href = reservationsURL;
             }
             redirectToReservations();
@@ -222,7 +222,7 @@ else if($_SESSION["Level"] === '2')
             echo '
             <script>
             function redirectToReservations() {
-                var reservationsURL = "settings.php;
+                var reservationsURL = "settings.php";
                 window.location.href = reservationsURL;
             }
             redirectToReservations();
@@ -389,7 +389,7 @@ else{
             echo '
             <script>
             function redirectToReservations() {
-                var reservationsURL = "settings.php;
+                var reservationsURL = "settings.php";
                 window.location.href = reservationsURL;
             }
             redirectToReservations();
@@ -423,7 +423,7 @@ else{
             echo '
             <script>
             function redirectToReservations() {
-                var reservationsURL = "settings.php;
+                var reservationsURL = "settings.php";
                 window.location.href = reservationsURL;
             }
             redirectToReservations();
@@ -451,7 +451,7 @@ else{
             echo '
             <script>
             function redirectToReservations() {
-                var reservationsURL = "settings.php;
+                var reservationsURL = "settings.php";
                 window.location.href = reservationsURL;
             }
             redirectToReservations();
@@ -509,7 +509,7 @@ else{
             echo '
             <script>
             function redirectToReservations() {
-                var reservationsURL = "settings.php;
+                var reservationsURL = "settings.php";
                 window.location.href = reservationsURL;
             }
             redirectToReservations();
@@ -548,7 +548,7 @@ else{
             echo '
             <script>
             function redirectToReservations() {
-                var reservationsURL = "settings.php;
+                var reservationsURL = "settings.php";
                 window.location.href = reservationsURL;
             }
             redirectToReservations();
@@ -577,7 +577,7 @@ else{
             echo '
             <script>
             function redirectToReservations() {
-                var reservationsURL = "settings.php;
+                var reservationsURL = "settings.php";
                 window.location.href = reservationsURL;
             }
             redirectToReservations();
@@ -606,7 +606,7 @@ else{
             echo '
             <script>
             function redirectToReservations() {
-                var reservationsURL = "settings.php;
+                var reservationsURL = "settings.php";
                 window.location.href = reservationsURL;
             }
             redirectToReservations();
@@ -662,7 +662,7 @@ else{
             echo '
             <script>
             function redirectToReservations() {
-                var reservationsURL = "settings.php;
+                var reservationsURL = "settings.php";
                 window.location.href = reservationsURL;
             }
             redirectToReservations();
@@ -697,7 +697,7 @@ else{
             echo '
             <script>
             function redirectToReservations() {
-                var reservationsURL = "settings.php;
+                var reservationsURL = "settings.php";
                 window.location.href = reservationsURL;
             }
             redirectToReservations();
@@ -726,7 +726,7 @@ else{
             echo '
             <script>
             function redirectToReservations() {
-                var reservationsURL = "settings.php;
+                var reservationsURL = "settings.php";
                 window.location.href = reservationsURL;
             }
             redirectToReservations();
