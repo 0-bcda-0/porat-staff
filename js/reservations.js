@@ -26,6 +26,7 @@ function popup(json) {
     var dateAdvancePayment = formatDate(reservation.AdvancePaymentDate);
     var datePriceDiffrence = formatDate(reservation.PriceDiffrenceDate);
     var dateDeposit = formatDate(reservation.DepositDate);
+    var dateCreatedDate = formatDate(reservation.CreatedDate);
 
     console.log(reservation.PriceDiffrenceDate);
 
