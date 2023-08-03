@@ -117,6 +117,15 @@ function closepopup() {
     document.getElementById('popup').classList.toggle('active');
 }
 
+//tooltip
+
+const tooltipContainer = document.querySelector(".tooltip-container");
+
+tooltipContainer.addEventListener("click", () => {
+    tooltipContainer.classList.toggle("active");
+});
+
+
 //  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 // 5. Funkcionalnost: Tipka za povratak na vrh stranice
 document.getElementById('scrollToTop').addEventListener('click', function() {

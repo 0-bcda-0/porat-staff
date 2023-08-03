@@ -395,7 +395,21 @@ echo '
             </div>
             <div class="popup-flex popup-text">
                 <div><b>Telefon:</b></div>
-                <div id="popupTelNum">TEST</div>
+                <div class="popup-flex">
+                    <div id="popupTelNum">TEST</div>
+                    <div></div>
+                    <div class="tooltip-container">
+                        <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+                        <lord-icon
+                            src="https://cdn.lordicon.com/enzmygww.json"
+                            trigger="click"
+                            colors="primary:#f89b3e"
+                            state="hover-2"
+                            style="width:24px;height:24px">
+                        </lord-icon>
+                        <span class="tooltip-text">Stisnite broj za direktan poziv.</span>
+                    </div>
+                </div>
             </div>
             <div class="popup-flex popup-text">
                 <div><b>OIB:</b></div>

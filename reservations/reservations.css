@@ -466,6 +466,31 @@ a:hover {
   align-items: center;
 }
 
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-text {
+  display: none;
+  width: 120px;
+  background-color: #f89b3e;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip-container.active .tooltip-text {
+  display: block;
+}
+
+
 /* BlueBook */
 /* TABLET */
 /* Testirano na Crnom Win10 tabletu */
