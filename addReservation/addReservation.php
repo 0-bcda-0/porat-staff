@@ -118,7 +118,12 @@ if (isset($_POST["btn_save"])) {
     if (mysqli_num_rows($result_check_overlap) > 0) {
         // There is an overlap with existing reservation(s)
         echo '<script type="text/javascript">';
-        echo 'popup();';
+        echo '// Wrap the code inside a DOMContentLoaded event listener
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("blurForClearFormPopup").classList.toggle("active");
+            document.getElementById("errorPopup").classList.toggle("active");
+        });
+        ';
         echo '</script>';
     } else {
         // No overlap, proceed with insertion
@@ -545,7 +550,7 @@ echo '
     </div>
         <div id="errorPopup" class="clearFormPopup">
         <div class="deleteWindow-rows">
-            <div class="popup-title h4">Krivi username ili pin.</div>
+            <div class="popup-title h4">Rezervacija u tom terminu već postoji.</div>
             <div class="row">
                 <div class="popup-col-flex-buttons">
                     <a href="#" onclick="popup()" class="button-edit">
