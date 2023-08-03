@@ -36,12 +36,20 @@ if(isset($_GET["task"]) && $_GET["task"] == "del")
 
     $result_del = mysqli_query($con, $query_del);
 
-    echo $_GET["day"];
 
     if($result_del)
     {
-        header('Location: reservations.php');
-        exit;
+        // header('Location: reservations.php');
+        // exit;
+        echo '
+        <script>
+        function redirectToReservations() {
+            var reservationsURL = "reservations.php/day='.$_GET["day"].'";
+            window.location.href = reservationsURL;
+        }
+        redirectToReservations();
+        </script>
+        ';
     }
     else
     {
