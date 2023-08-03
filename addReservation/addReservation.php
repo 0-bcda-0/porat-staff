@@ -25,9 +25,12 @@ if(isset($_POST["btn_edit"]))
     $AdvancePayment = formatData($_POST["AdvancePayment"]);
     $PriceDiffrence = formatData($_POST["PriceDiffrence"]);
     $Deposit = formatData($_POST["Deposit"]);
-    $AdvancePaymentDate = mysqli_real_escape_string($con, $_POST["AdvancePaymentDate"]);
-    $PriceDiffrenceDate = mysqli_real_escape_string($con, $_POST["PriceDiffrenceDate"]);
-    $DepositDate = mysqli_real_escape_string($con, $_POST["DepositDate"]);
+    $AdvancePaymentDate = formatData($_POST["AdvancePaymentDate"]);
+    $PriceDiffrenceDate = formatData($_POST["PriceDiffrenceDate"]);
+    $DepositDate = formatData($_POST["DepositDate"]);
+    // $AdvancePaymentDate = mysqli_real_escape_string($con, $_POST["AdvancePaymentDate"]);
+    // $PriceDiffrenceDate = mysqli_real_escape_string($con, $_POST["PriceDiffrenceDate"]);
+    // $DepositDate = mysqli_real_escape_string($con, $_POST["DepositDate"]);
     $EmployeeID = mysqli_real_escape_string($con, $_POST["EmployeeID"]);
     $Note = mysqli_real_escape_string($con, $_POST["Note"]);
 
@@ -49,9 +52,9 @@ if(isset($_POST["btn_edit"]))
                     AdvancePayment = $AdvancePayment,
                     PriceDiffrence = $PriceDiffrence,
                     Deposit = $Deposit,
-                    AdvancePaymentDate = '$AdvancePaymentDate',
-                    PriceDiffrenceDate = '$PriceDiffrenceDate',
-                    DepositDate = '$DepositDate',
+                    AdvancePaymentDate = $AdvancePaymentDate,
+                    PriceDiffrenceDate = $PriceDiffrenceDate,
+                    DepositDate = $DepositDate,
                     EmployeeID = '$EmployeeID',
                     Note = '$Note'
                     WHERE IDReservation = '$IDr'";
