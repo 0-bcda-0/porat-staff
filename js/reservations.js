@@ -1,5 +1,6 @@
 // 1. Funkcionalnost: Popup za prikaz svih podataka o rezervaciji
 // 4. Funkcionalnost: Otvaranje telefona na klik broja telefona
+document.addEventListener("DOMContentLoaded", function() {
 function popup(json) {
     // Parsiranje jsona u varijablu
     var reservation = JSON.parse(json);
@@ -28,7 +29,7 @@ function popup(json) {
     var dateDeposit = formatDate(reservation.DepositDate);
     var dateCreatedDate = formatDate(reservation.CreatedDate);
 
-    console.log(reservation.PriceDiffrenceDate);
+    console.log(reservation.Employee, dateCreatedDate, reservation.CreatedDate);
 
     // Inner html na popupu
     document.getElementById('popupBoat').innerHTML = reservation.BoatName;
@@ -95,6 +96,7 @@ function popup(json) {
     // Prosljedivanje ID-a rezervacije u addReservation.php za edit
     document.querySelector('#editButton').href = `../addReservation/addReservation.php?IDr=`+ reservation.IDReservation +``;
 }
+});
 
 function delete_popup() {
     document.getElementById('popupWindow').classList.toggle('active');
