@@ -44,7 +44,7 @@ if(isset($_GET["task"]) && $_GET["task"] == "del")
         echo '
         <script>
         function redirectToReservations() {
-            var reservationsURL = "reservations.php/day='.$_GET["day"].'";
+            var reservationsURL = "reservations.php?day='.$_GET["day"].'";
             window.location.href = reservationsURL;
         }
         redirectToReservations();
