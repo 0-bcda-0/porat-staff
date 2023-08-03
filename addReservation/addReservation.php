@@ -127,9 +127,9 @@ if (isset($_POST["btn_save"])) {
     $ClientTelNum = mysqli_real_escape_string($con, $_POST["ClientTelNum"]);
     $ClientOIB = mysqli_real_escape_string($con, $_POST["ClientOIB"]);
     $Price = mysqli_real_escape_string($con, $_POST["Price"]);
-    $AdvancePayment = isset($_POST["AdvancePayment"]) ? mysqli_real_escape_string($con, $_POST["AdvancePayment"]) : '0';
-    $PriceDiffrence = isset($_POST["PriceDiffrence"]) ? mysqli_real_escape_string($con, $_POST["PriceDiffrence"]) : '0';
-    $Deposit = isset($_POST["Deposit"]) ? mysqli_real_escape_string($con, $_POST["Deposit"]) : '0';
+    $AdvancePayment = isset($_POST["AdvancePayment"]) && !empty($_POST["AdvancePayment"]) ? mysqli_real_escape_string($con, $_POST["AdvancePayment"]) : 0;
+    $PriceDiffrence = isset($_POST["PriceDiffrence"]) && !empty($_POST["PriceDiffrence"]) ? mysqli_real_escape_string($con, $_POST["PriceDiffrence"]) : 0;
+    $Deposit = isset($_POST["Deposit"]) && !empty($_POST["Deposit"]) ? mysqli_real_escape_string($con, $_POST["Deposit"]) : 0;
     $CreatedDate = date("Y-m-d");
     $AdvancePaymentDate = mysqli_real_escape_string($con, $_POST["AdvancePaymentDate"]);
     $PriceDiffrenceDate = mysqli_real_escape_string($con, $_POST["PriceDiffrenceDate"]);
@@ -157,7 +157,7 @@ if (isset($_POST["btn_save"])) {
         $query_ins = "INSERT INTO reservation
                         (BoatID, StartDate, StartTime, FinishDate, FinishTime, Name, Surname, TelNum, OIB, Price, AdvancePayment, PriceDiffrence, Deposit, CreatedDate, AdvancePaymentDate, PriceDiffrenceDate, DepositDate, EmployeeID, Note)
                         VALUES
-                        ('$BoatID', '$StartDate', '$StartTime', '$FinishDate', '$FinishTime', '$ClientName', '$ClientSurname', '$ClientTelNum', '$ClientOIB', '$Price', $AdvancePayment, $PriceDiffrence, $Deposit, '$CreatedDate', '$AdvancePaymentDate', '$PriceDiffrenceDate', '$DepositDate', '$EmployeeID', '$Note')";
+                        ('$BoatID', '$StartDate', '$StartTime', '$FinishDate', '$FinishTime', '$ClientName', '$ClientSurname', '$ClientTelNum', '$ClientOIB', '$Price', '$AdvancePayment', '$PriceDiffrence', '$Deposit', '$CreatedDate', '$AdvancePaymentDate', '$PriceDiffrenceDate', '$DepositDate', '$EmployeeID', '$Note')";
     
         $result_ins = mysqli_query($con, $query_ins);
     
@@ -281,9 +281,9 @@ elseif (isset($_GET["BoatSelected"]) && isset($_GET["DateSelected"])) {
     $ClientTelNum = "";
     $ClientOIB = "";
     $Price = "";
-    //$AdvancePayment = "";
-    //$PriceDiffrence = "";
-    //$Deposit = "";
+    $AdvancePayment = "";
+    $PriceDiffrence = "";
+    $Deposit = "";
     $AdvancePaymentDate = "";
     $PriceDiffrenceDate = "";
     $DepositDate = "";
@@ -308,9 +308,9 @@ else{
     $ClientTelNum = "";
     $ClientOIB = "";
     $Price = "";
-    //$AdvancePayment = "";
-    //$PriceDiffrence = "";
-    //$Deposit = "";
+    $AdvancePayment = "";
+    $PriceDiffrence = "";
+    $Deposit = "";
     $AdvancePaymentDate = "";
     $PriceDiffrenceDate = "";
     $DepositDate = "";
