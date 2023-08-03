@@ -579,7 +579,7 @@ echo '
         </div>
     <div id="datumPopup" class="clearFormPopup">
         <div class="deleteWindow-rows">
-            <div class="popup-title h4">Datum zavrsetka je prije datuma pocetka.</div>
+            <div class="popup-title h4">Datum završetka je prije datuma početka.</div>
             <div class="row">
                 <div class="popup-col-flex-buttons">
                     <a href="#" onclick="datumpopup()" class="button-edit">
