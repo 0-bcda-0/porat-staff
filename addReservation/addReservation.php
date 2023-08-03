@@ -432,7 +432,7 @@ echo '
                                 <input class="add-input add-input-middle" type="text" id="add-input-prezime"  placeholder="Prezime" name="ClientSurname" value="'.$ClientSurname.'">
                             </div>
                             <div class="add-input-group-flex">
-                                <input class="add-input add-input-middle" type="text" id="add-input-mobitel"  placeholder="Telefon" name="ClientTelNum" value="'.$ClientTelNum.'" required>
+                                <input class="add-input add-input-middle" type="tel" id="add-input-mobitel"  placeholder="Telefon" name="ClientTelNum" value="'.$ClientTelNum.'" required>
                             </div>
                             <div class="add-input-group-flex">
                                 <input class="add-input add-input-last" type="text" id="add-input-oib"  placeholder="OIB" name="ClientOIB" value="'.$ClientOIB.'">
