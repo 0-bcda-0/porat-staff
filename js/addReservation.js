@@ -38,31 +38,6 @@ function calculatePrice() {
   document.getElementById("calcOutput").innerHTML = document.getElementById("calcPrice").value * document.getElementById("calcDays").value + " €";
 }
 
-// 8. Funkcionalnost: Auto complete za unos Do datuma
-/*function TimeModify(input, hours){
-  var date = input.value;
-  date = new Date(date);
-  var offset = date.getTimezoneOffset();
-  date.setMinutes(0);
-  date.setHours(hours - offset / 60);
-  input.value = date.toISOString().slice(0, -1);
-}
-
-document.getElementById('ad-radio-button1').addEventListener('click', function() {
-  TimeModify(document.getElementById('addreserv-datum-od'), 8);
-  TimeModify(document.getElementById('addreserv-datum-do'), 14);
-});
-
-document.getElementById('ad-radio-button2').addEventListener('click', function() {
-  TimeModify(document.getElementById('addreserv-datum-od'), 15);
-  TimeModify(document.getElementById('addreserv-datum-do'), 19);
-});
-
-document.getElementById('ad-radio-button3').addEventListener('click', function() {
-  TimeModify(document.getElementById('addreserv-datum-od'), 8);
-  TimeModify(document.getElementById('addreserv-datum-do'), 19);
-});*/
-
 // 9. Funkcionalnost: Autocomplete addInput-razlika (razlika u cijeni) na temelju addInput-cijena i addInput-akontacija
 document.getElementById('addInput-akontacija').addEventListener('input', function() {
   if (document.getElementById('addInput-cijena').value && document.getElementById('addInput-akontacija').value) {
@@ -131,8 +106,6 @@ function checkDateRequired(input, date) {
     advancePaymentDate.removeAttribute("required");
   }
 }
-
-// 11. Funkcionalnost: Autocomplete placeholder of id="addInput-cijena" when 
 
 
 

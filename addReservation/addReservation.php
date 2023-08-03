@@ -476,7 +476,6 @@ echo '
                                         echo '">
                                     </div>
                                 </div>
-<!-- TU SMO STALI PA IZNAD -->
                                 <div class="add-panel-left-content-bottom-right-side">
 
                                         <input type="date" id="AdvancePaymentDate" class="add-input add-input-middle color-grey" name="AdvancePaymentDate" value="'.$AdvancePaymentDate.'">

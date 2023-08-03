@@ -107,7 +107,7 @@ table {
     width: 100%;
     border: none;
 }
-  
+
 th, td {
     text-align: left;
     padding: 3px;
@@ -172,9 +172,9 @@ th {
     pointer-events: none;
     user-select: none;
     --webkit-user-select: none;
-  }
-  
-  .clearFormPopup{
+}
+
+.clearFormPopup{
     position: fixed;
     top: 40%;
     left: 50%;
@@ -186,7 +186,7 @@ th {
     visibility: hidden;
     opacity: 0;
     transition: 0.5s;
-  
+
     /* Glass efekt */
     /* From https://css.glass */
     background: rgba(255, 255, 255, 0.60);
@@ -195,14 +195,14 @@ th {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
-  }
-  
-  .clearFormPopup.active{
+}
+
+.clearFormPopup.active{
     top: 50%;
     visibility: visible;
     opacity: 1;
     transition: 0.5s;
-  }
+}
 
 .inputField{
     width: 130px;
@@ -227,4 +227,3 @@ th {
         text-align: center;
     }
 }
-  

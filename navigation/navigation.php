@@ -10,7 +10,7 @@ echo '
               <img class="icon logo-icon" src="../img/Logo.png" alt="">
             </a>
           </li>
-         <!-- Raspored -->
+          <!-- Raspored -->
           <li class="nav-item">
             <a href="../reservations/reservations.php" class="nav-linkm">
               <lord-icon class="icon ico"

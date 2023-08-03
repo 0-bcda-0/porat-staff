@@ -141,10 +141,10 @@ window.addEventListener('scroll', function() {
 // 6. Funkcionalnost: Prikazivanje poruke za rotiranje uredjaja
 window.addEventListener('orientationchange', function() {
     if (Math.abs(window.orientation) === 90) {
-      window.location.href = '../rotated/rotated.html';
+        window.location.href = '../rotated/rotated.html';
     }
     else {
-      window.location.href = '../reservations/reservations.php';
+        window.location.href = '../reservations/reservations.php';
     }
 }); 
 
