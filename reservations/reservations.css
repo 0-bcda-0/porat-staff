@@ -142,7 +142,11 @@ a:hover {
 /* Svojstvo koje ce se primjenjivati kada je brod rezerviran na cijeli dan */
 .disabled {
   background-color: rgba(164, 164, 164, 0.4);
-  border: none;
+}
+
+.noclick {
+  pointer-events: none !important;
+  visibility: none;
 }
 
 .extended{
@@ -583,6 +587,10 @@ a:hover {
   }
 
   .col-hidden {
+    display: none;
+  }
+
+  .noclick{
     display: none;
   }
 

@@ -183,7 +183,7 @@ else if($_SESSION["Level"] === '2')
 
         if($resultLookupSave)
         {
-            echo 'Podaci su uspjesno spremljeni';
+            
             echo '
             <script>
             function redirectToReservations() {
@@ -218,7 +218,7 @@ else if($_SESSION["Level"] === '2')
 
         if($resultLookupEdit)
         {
-            echo 'Podaci su uspjesno spremljeni';
+            
             echo '
             <script>
             function redirectToReservations() {
@@ -385,7 +385,7 @@ else{
 
         if($resultBoatSave)
         {
-            echo 'Podaci su uspjesno spremljeni';
+            
             echo '
             <script>
             function redirectToReservations() {
@@ -419,7 +419,7 @@ else{
 
         if($resultBoatEdit)
         {
-            echo 'Podaci su uspjesno spremljeni';
+            
             echo '
             <script>
             function redirectToReservations() {
@@ -447,7 +447,7 @@ else{
 
         if($resultBoatDelete)
         {
-            echo 'Podaci su uspjesno obrisani';
+            
             echo '
             <script>
             function redirectToReservations() {
@@ -505,7 +505,7 @@ else{
 
         if($resultEmployeeSave)
         {
-            echo 'Podaci su uspjesno spremljeni';
+            
             echo '
             <script>
             function redirectToReservations() {
@@ -544,7 +544,7 @@ else{
 
         if($resultEmployeeEdit)
         {
-            echo 'Podaci su uspjesno spremljeni';
+            
             echo '
             <script>
             function redirectToReservations() {
@@ -573,7 +573,7 @@ else{
 
         if($resultEmployeeDelete)
         {
-            echo 'Podaci su uspjesno obrisani';
+            
             echo '
             <script>
             function redirectToReservations() {
@@ -602,7 +602,7 @@ else{
 
         if($resultBugDelete)
         {
-            echo 'Podaci su uspjesno obrisani';
+            
             echo '
             <script>
             function redirectToReservations() {
@@ -658,7 +658,7 @@ else{
 
         if($resultLookupSave)
         {
-            echo 'Podaci su uspjesno spremljeni';
+            
             echo '
             <script>
             function redirectToReservations() {
@@ -693,7 +693,7 @@ else{
 
         if($resultLookupEdit)
         {
-            echo 'Podaci su uspjesno spremljeni';
+            
             echo '
             <script>
             function redirectToReservations() {
@@ -722,7 +722,7 @@ else{
 
         if($resultLookupDelete)
         {
-            echo 'Podaci su uspjesno obrisani';
+            
             echo '
             <script>
             function redirectToReservations() {

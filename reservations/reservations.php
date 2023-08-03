@@ -197,6 +197,9 @@ echo '
 
             // Stavljamo sve u arrayu na false
             $cardFlag = array_fill(1, 16, false);
+
+            $previousCardClass = '';
+
             // Prolazimo kroz sve kartice
             for($cardIndex = 1; $cardIndex <=16; $cardIndex++){
                 $cardDisplayed = false;
@@ -208,7 +211,7 @@ echo '
 
                         // make $value array in json format
                         $json = json_encode($value);
-
+                        
                         // Ako je rezervacija na cijeli dan, onda je kartica extended
                         if($value['TimeSlot'] == 3 && $value['CardNumber'] < 8){
                             // Koristi se cudan echo zbog parsiranja jsona
@@ -272,9 +275,15 @@ echo '
                     {
                         if($value['Card'] == $cardIndex)
                         {
+                            // Check if the previous card had the class "extended"
+                            if ($previousCardClass === 'extended') {
+                                $currentCardClass = 'noclick'; // Replace "disabled" with "noclick"
+                            } else {
+                                $currentCardClass = ''; // No additional class for the current card
+                            }
                             echo '
-                            <a href="../addReservation/addReservation.php?BoatSelected='.$value['Card'].'&DateSelected='.$dayDisplayed.'">
-                            <div class="card disabled" id="card'.$cardIndex.'">
+                            <a href="../addReservation/addReservation.php?BoatSelected='.$value['Card'].'&DateSelected='.$dayDisplayed.'" class="'.$currentCardClass.'">
+                            <div class="card disabled " id="card'.$cardIndex.'">
                             <div class="card-grid">
                                 <div class="col">
                                     <div class="card-title">'.$value['BoatName'].'</div>
@@ -320,9 +329,11 @@ echo '
                     }
                     
                 }
+                // Store the current card's class for the next iteration
+                $previousCardClass = (isset($value['TimeSlot']) && $value['TimeSlot'] == 3 && $value['CardNumber'] < 8) ? 'extended' : '';
             }
-            
 
+            
             echo '
         </div>
     </div>
