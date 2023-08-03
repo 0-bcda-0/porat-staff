@@ -96,6 +96,7 @@ function popup2(json) {
     // Prosljedivanje ID-a rezervacije u addReservation.php za edit
     document.querySelector('#editButton').href = `../addReservation/addReservation.php?IDr=`+ reservation.IDReservation +``;
 }
+window.popup2 = popup2;
 });
 
 function popup(json){
