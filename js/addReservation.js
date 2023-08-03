@@ -9,6 +9,11 @@ function popup() {
   document.getElementById('errorPopup').classList.toggle('active');
 } 
 
+function datumpopup() {
+  document.getElementById('blurForClearFormPopup').classList.toggle('active');
+  document.getElementById('datumPopup').classList.toggle('active');
+} 
+
 // 2. Funkcionalnost: Resetiranje forme
 function clearForm() {
     document.getElementById("reservationForm").reset();

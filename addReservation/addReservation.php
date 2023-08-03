@@ -19,18 +19,12 @@ if(isset($_POST["btn_edit"]))
     $ClientTelNum = mysqli_real_escape_string($con, $_POST["ClientTelNum"]);
     $ClientOIB = mysqli_real_escape_string($con, $_POST["ClientOIB"]);
     $Price = mysqli_real_escape_string($con, $_POST["Price"]);
-    // $AdvancePayment = mysqli_real_escape_string($con, $_POST["AdvancePayment"]);
-    // $PriceDiffrence = mysqli_real_escape_string($con, $_POST["PriceDiffrence"]);
-    // $Deposit = mysqli_real_escape_string($con, $_POST["Deposit"]);
     $AdvancePayment = formatData($_POST["AdvancePayment"]);
     $PriceDiffrence = formatData($_POST["PriceDiffrence"]);
     $Deposit = formatData($_POST["Deposit"]);
     $AdvancePaymentDate = formatData($_POST["AdvancePaymentDate"]);
     $PriceDiffrenceDate = formatData($_POST["PriceDiffrenceDate"]);
     $DepositDate = formatData($_POST["DepositDate"]);
-    // $AdvancePaymentDate = mysqli_real_escape_string($con, $_POST["AdvancePaymentDate"]);
-    // $PriceDiffrenceDate = mysqli_real_escape_string($con, $_POST["PriceDiffrenceDate"]);
-    // $DepositDate = mysqli_real_escape_string($con, $_POST["DepositDate"]);
     $EmployeeID = mysqli_real_escape_string($con, $_POST["EmployeeID"]);
     $Note = mysqli_real_escape_string($con, $_POST["Note"]);
 
@@ -105,58 +99,73 @@ if (isset($_POST["btn_save"])) {
     $EmployeeID = mysqli_real_escape_string($con, $_POST["EmployeeID"]);
     $Note = mysqli_real_escape_string($con, $_POST["Note"]);
 
-    // Check for overlapping reservations
-    $query_check_overlap = "SELECT * FROM reservation 
-                            WHERE BoatID = '$BoatID' 
-                            AND StartDate <= '$FinishDate' 
-                            AND FinishDate >= '$StartDate' 
-                            AND StartTime <= '$FinishTime' 
-                            AND FinishTime >= '$StartTime'";
-    
-    $result_check_overlap = mysqli_query($con, $query_check_overlap);
-
-    if (mysqli_num_rows($result_check_overlap) > 0) {
-        // There is an overlap with existing reservation(s)
+    // Provjera dal je $Finish time prije $StartTime
+    if (strtotime($FinishDate) < strtotime($StartDate)) {
         echo '<script type="text/javascript">';
         echo '// Wrap the code inside a DOMContentLoaded event listener
         document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("blurForClearFormPopup").classList.toggle("active");
-            document.getElementById("errorPopup").classList.toggle("active");
+            document.getElementById("datumPopup").classList.toggle("active");
         });
         ';
         echo '</script>';
-    } else {
-        // No overlap, proceed with insertion
-        $query_ins = "INSERT INTO reservation
-                        (BoatID, StartDate, StartTime, FinishDate, FinishTime, Name, Surname, TelNum, OIB, Price, AdvancePayment, PriceDiffrence, Deposit, CreatedDate, AdvancePaymentDate, PriceDiffrenceDate, DepositDate, EmployeeID, Note)
-                        VALUES
-                        ('$BoatID', '$StartDate', '$StartTime', '$FinishDate', '$FinishTime', '$ClientName', '$ClientSurname', '$ClientTelNum', '$ClientOIB', '$Price', $AdvancePayment, $PriceDiffrence, $Deposit, '$CreatedDate', $AdvancePaymentDate, $PriceDiffrenceDate, $DepositDate, '$EmployeeID', '$Note')";
-    
-        $result_ins = mysqli_query($con, $query_ins);
-    
-        if ($result_ins) {
-            //STARA VERZIJA
-            //header('Location: ../reservations/reservations.php?day=' . date("Y-m-d", strtotime($StartDate)));
-            //exit;
+    } 
+    else {
 
-            $redirectDate = date("Y-m-d", strtotime($StartDate));
-            echo '
-            <script>
-            // Function to redirect the user to the reservations page with the specified date
-            function redirectToReservations(redirectDate) {
-                var reservationsURL = "../reservations/reservations.php?day=" + redirectDate;
-                window.location.href = reservationsURL;
-            }
+        // Provjera overbookinga
+        $query_check_overlap = "SELECT * FROM reservation 
+                                WHERE BoatID = '$BoatID' 
+                                AND StartDate <= '$FinishDate' 
+                                AND FinishDate >= '$StartDate' 
+                                AND StartTime <= '$FinishTime' 
+                                AND FinishTime >= '$StartTime'";
         
-            // Automatically redirect the user to the reservations page on page load
-            redirectToReservations("' . $redirectDate . '"); // Enclose $redirectDate in quotes
-            </script>
+        $result_check_overlap = mysqli_query($con, $query_check_overlap);
+
+        //Ako je overbook: prikazi popup
+        if (mysqli_num_rows($result_check_overlap) > 0) {
+            echo '<script type="text/javascript">';
+            echo '// Wrap the code inside a DOMContentLoaded event listener
+            document.addEventListener("DOMContentLoaded", function() {
+                document.getElementById("blurForClearFormPopup").classList.toggle("active");
+                document.getElementById("errorPopup").classList.toggle("active");
+            });
             ';
-            
-        } else {
-            echo 'Error in the SQL query (nova): ' . mysqli_error($con);
+            echo '</script>';
         }
-    }
+        //Ako nije overbook: nastavi s insertom 
+        else {
+            $query_ins = "INSERT INTO reservation
+                            (BoatID, StartDate, StartTime, FinishDate, FinishTime, Name, Surname, TelNum, OIB, Price, AdvancePayment, PriceDiffrence, Deposit, CreatedDate, AdvancePaymentDate, PriceDiffrenceDate, DepositDate, EmployeeID, Note)
+                            VALUES
+                            ('$BoatID', '$StartDate', '$StartTime', '$FinishDate', '$FinishTime', '$ClientName', '$ClientSurname', '$ClientTelNum', '$ClientOIB', '$Price', $AdvancePayment, $PriceDiffrence, $Deposit, '$CreatedDate', $AdvancePaymentDate, $PriceDiffrenceDate, $DepositDate, '$EmployeeID', '$Note')";
+        
+            $result_ins = mysqli_query($con, $query_ins);
+        
+            if ($result_ins) {
+                //STARA VERZIJA
+                //header('Location: ../reservations/reservations.php?day=' . date("Y-m-d", strtotime($StartDate)));
+                //exit;
+
+                $redirectDate = date("Y-m-d", strtotime($StartDate));
+                echo '
+                <script>
+                // Function to redirect the user to the reservations page with the specified date
+                function redirectToReservations(redirectDate) {
+                    var reservationsURL = "../reservations/reservations.php?day=" + redirectDate;
+                    window.location.href = reservationsURL;
+                }
+            
+                // Automatically redirect the user to the reservations page on page load
+                redirectToReservations("' . $redirectDate . '"); // Enclose $redirectDate in quotes
+                </script>
+                ';
+                
+            } else {
+                echo 'Error in the SQL query (nova): ' . mysqli_error($con);
+            }
+        }
+        }
 }
 
 
@@ -548,7 +557,7 @@ echo '
             </div>
         </div>
     </div>
-        <div id="errorPopup" class="clearFormPopup">
+    <div id="errorPopup" class="clearFormPopup">
         <div class="deleteWindow-rows">
             <div class="popup-title h4">Rezervacija u tom terminu već postoji.</div>
             <div class="row">
@@ -568,6 +577,26 @@ echo '
             </div>
             </div>
         </div>
+    <div id="datumPopup" class="clearFormPopup">
+        <div class="deleteWindow-rows">
+            <div class="popup-title h4">Datum zavrsetka je prije datuma pocetka.</div>
+            <div class="row">
+                <div class="popup-col-flex-buttons">
+                    <a href="#" onclick="datumpopup()" class="button-edit">
+                        <lord-icon class="rotate-arrow"
+                            src="../icon/dateArrow.json"
+                            target=".button-edit"
+                            trigger="loop-on-hover"
+                            delay="500"
+                            colors="primary:#337895"
+                            style="width:20px;height:20px">
+                        </lord-icon>
+                        <div class="button-text">Pokušaj ponovno</div>
+                    </a>   
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="spacer spacer-bottom"></div>
 
 </main>
