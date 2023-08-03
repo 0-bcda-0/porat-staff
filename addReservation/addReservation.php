@@ -160,7 +160,7 @@ if (isset($_POST["btn_save"])) {
         $query_ins = "INSERT INTO reservation
                         (BoatID, StartDate, StartTime, FinishDate, FinishTime, Name, Surname, TelNum, OIB, Price, AdvancePayment, PriceDiffrence, Deposit, CreatedDate, AdvancePaymentDate, PriceDiffrenceDate, DepositDate, EmployeeID, Note)
                         VALUES
-                        ('$BoatID', '$StartDate', '$StartTime', '$FinishDate', '$FinishTime', '$ClientName', '$ClientSurname', '$ClientTelNum', '$ClientOIB', '$Price', '$AdvancePayment', '$PriceDiffrence', '$Deposit', '$CreatedDate', $AdvancePaymentDate', '$PriceDiffrenceDate', '$DepositDate', '$EmployeeID', '$Note')";
+                        ('$BoatID', '$StartDate', '$StartTime', '$FinishDate', '$FinishTime', '$ClientName', '$ClientSurname', '$ClientTelNum', '$ClientOIB', '$Price', '$AdvancePayment', '$PriceDiffrence', '$Deposit', '$CreatedDate', '$AdvancePaymentDate', '$PriceDiffrenceDate', '$DepositDate', '$EmployeeID', '$Note')";
     
         $result_ins = mysqli_query($con, $query_ins);
     
