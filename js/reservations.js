@@ -1,7 +1,7 @@
 // 1. Funkcionalnost: Popup za prikaz svih podataka o rezervaciji
 // 4. Funkcionalnost: Otvaranje telefona na klik broja telefona
 document.addEventListener("DOMContentLoaded", function() {
-function popup(json) {
+function popup2(json) {
     // Parsiranje jsona u varijablu
     var reservation = JSON.parse(json);
     
@@ -97,6 +97,10 @@ function popup(json) {
     document.querySelector('#editButton').href = `../addReservation/addReservation.php?IDr=`+ reservation.IDReservation +``;
 }
 });
+
+function popup(json){
+    popup2(json);
+}
 
 function delete_popup() {
     document.getElementById('popupWindow').classList.toggle('active');
