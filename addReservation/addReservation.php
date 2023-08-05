@@ -478,11 +478,11 @@ echo '
                                 </div>
                                 <div class="add-panel-left-content-bottom-right-side">
 
-                                        <input type="date" id="AdvancePaymentDate" class="add-input add-input-middle color-grey" name="AdvancePaymentDate" value="'.$AdvancePaymentDate.'">
+                                        <input type="date" id="AdvancePaymentDate" class="add-input add-input-middle color-grey" name="AdvancePaymentDate" placeholder="mm/dd/yy" value="'.$AdvancePaymentDate.'">
 
-                                        <input type="date" id="PriceDiffrenceDate" class="add-input add-input-middle color-grey" name="PriceDiffrenceDate" value="'.$PriceDiffrenceDate.'" >
+                                        <input type="date" id="PriceDiffrenceDate" class="add-input add-input-middle color-grey" name="PriceDiffrenceDate" placeholder="mm/dd/yy" value="'.$PriceDiffrenceDate.'" >
 
-                                        <input type="date" id="DepositDate" class="add-input add-input-last-right color-grey" name="DepositDate" value="'.$DepositDate.'">
+                                        <input type="date" id="DepositDate" class="add-input add-input-last-right color-grey" name="DepositDate" placeholder="mm/dd/yy" value="'.$DepositDate.'">
                                 </div>
 
                             </div>

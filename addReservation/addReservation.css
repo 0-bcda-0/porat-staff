@@ -129,7 +129,7 @@ input[type=number] {
 }
 
 .add-input-middle{
-    border-radius: none;
+    border-radius: 0px 0px 0px 0px;
     border-bottom: 1.5px solid orange !important;
 }
 
@@ -156,7 +156,7 @@ input[type=number] {
 
 .add-razlika-right{
     width: 30%;
-    padding: none;
+    padding: 0;
 }
 
 .add-panel-flex{

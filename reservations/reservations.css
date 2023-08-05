@@ -510,7 +510,9 @@ a:hover {
     background-position: center;
     background-attachment: fixed;
     height: 100vh;
+    -webkit-background-size: cover; /* Add this line for Safari */
   }
+  
   main {
     background-image: none;
   }
