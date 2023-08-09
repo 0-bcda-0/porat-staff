@@ -3,8 +3,8 @@
     "short_name": "Rent a boat Porat",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#F89B3E",
-    "theme_color": "#F89B3E",
+    "background_color": "#d1ecef",
+    "theme_color": "#d1ecef",
     "icons": [
         {
             "src": "img/Logo-192.png",
