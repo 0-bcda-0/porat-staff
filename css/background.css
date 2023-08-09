@@ -22,7 +22,7 @@ body{
     background-color: #7bbddf;
     background-image: url('../img/back.svg');
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
     background-size: cover;
 }
 

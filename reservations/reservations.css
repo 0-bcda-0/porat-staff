@@ -35,7 +35,7 @@ a {
 }
 
 .big-text {
-  color: #dff7f7;
+  color: white;
   font-size: 2rem;
 }
 
@@ -110,7 +110,7 @@ a:hover {
 /* Pojedina kartica */
 .card {
   background-color: rgba(255, 255, 255, 0.4);
-  /*border: 2px solid #F89B3E;*/
+  border: 2px solid rgba(255, 255, 255, 0.4);
 
   height: 100%;
   width: 100%;
@@ -119,6 +119,18 @@ a:hover {
   justify-content: center;
   font-size: 0.8rem;
   border: none;
+}
+
+/* SamBoat */
+.platform1{
+  /* border: rgba(129, 209, 219, 0.4) !important; */
+  border: 2px solid rgb(24, 195, 218) !important;
+}
+
+/* ClickAndBoat */
+.platform2{
+  /* background-color: rgba(222, 143, 181, 0.4) !important; */
+  border: 2px solid rgba(222, 143, 181, 1) !important;
 }
 
 /* Svojstvo koje ce se primjenjivati kada je brod rezerviran na cijeli dan */
@@ -349,7 +361,7 @@ a:hover {
 
 .popup-text {
   border-bottom: 2px solid #f89b3e;
-  padding: 1rem;
+  padding: 0.6rem;
 }
 
 .button-delete {
@@ -543,7 +555,7 @@ a:hover {
   }
   .big-text {
     font-size: 20px;
-    color: #e7f7f7;
+    color: white;
   }
   .fix-width {
     text-align: center;

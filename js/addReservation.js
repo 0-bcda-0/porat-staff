@@ -135,6 +135,33 @@ function checkDateRequired(input, date) {
     updateDropdownState();
   });*/
 
+  const samBoatCheckbox = document.getElementById("samBoatCheckbox");
+  const clickAndBoatCheckbox = document.getElementById("clickAndBoatCheckbox");
+  const addDjelatniciDropdown = document.getElementById("addDjelatnici-dropdown");
+  
+  samBoatCheckbox.addEventListener("change", function() {
+      if (samBoatCheckbox.checked) {
+          clickAndBoatCheckbox.checked = false;
+          
+          addDjelatniciDropdown.removeAttribute("required");
+      } else {
+          
+          addDjelatniciDropdown.setAttribute("required", "true");
+      }
+  });
+  
+  clickAndBoatCheckbox.addEventListener("change", function() {
+      if (clickAndBoatCheckbox.checked) {
+          samBoatCheckbox.checked = false;
+          
+          addDjelatniciDropdown.removeAttribute("required");
+      } else {
+          
+          addDjelatniciDropdown.setAttribute("required", "true");
+      }
+  });
+  
+
 
 
 

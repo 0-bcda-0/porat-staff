@@ -16,7 +16,6 @@ echo '
         <link href="../css/background.css" rel="stylesheet">
         <link href="../reservations/reservations.css" rel="stylesheet">
         <link href="../addReservation/addReservation.css" rel="stylesheet">
-        <link rel="stylesheet" href="../css/watermark-remove.css">
         <link rel="stylesheet" href="../settings/settings.css">
 
         <!-- Navigacija -->

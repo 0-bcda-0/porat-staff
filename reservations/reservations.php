@@ -101,7 +101,8 @@ $query = "SELECT
             reservation.PriceDiffrenceDate,
             reservation.DepositDate,
             employee.Username AS Employee,
-            reservation.Note
+            reservation.Note,
+            reservation.platform AS Platform
             FROM reservation 
             LEFT JOIN boat ON (reservation.BoatID = boat.IDBoat)
             LEFT JOIN employee ON (reservation.EmployeeID = employee.IDEmployee)
@@ -137,6 +138,7 @@ while($row = mysqli_fetch_assoc($result))
     $DepositDate = $row['DepositDate'];
     $Employee = $row['Employee'];
     $Note = $row['Note'];
+    $Platform = $row['Platform'];
 
     // spustamo sve podatke u polje
     $booked_slots[] = array(
@@ -160,7 +162,8 @@ while($row = mysqli_fetch_assoc($result))
         'PriceDiffrenceDate' => $PriceDiffrenceDate,
         'DepositDate' => $DepositDate,
         'Employee' => $Employee,
-        'Note' => $Note
+        'Note' => $Note,
+        'Platform' => $Platform
     );
 
 }
@@ -230,17 +233,27 @@ echo '
 
                         // make $value array in json format
                         $json = json_encode($value);
+
+                        if($value['Platform'] == 1){
+                            $platformClass = 'platform1';
+                        }
+                        elseif($value['Platform'] == 2){
+                            $platformClass = 'platform2';
+                        }
+                        else{
+                            $platformClass = '';
+                        }
                         
                         // Ako je rezervacija na cijeli dan, onda je kartica extended
                         if($value['TimeSlot'] == 3 && $value['CardNumber'] < 8){
                             // Koristi se cudan echo zbog parsiranja jsona
                             echo <<<EOT
-                                    <div class="card extended" id="card'.$cardIndex.'" onclick='popup(`$json`)'>
+                                    <div class="card extended $platformClass" id="card'.$cardIndex.'" onclick='popup(`$json`)'>
                                     EOT;
                         }
                         else{
                             echo <<<EOT
-                                    <div class="card" id="card'.$cardIndex.'" onclick='popup(`$json`)'>
+                                    <div class="card $platformClass" id="card'.$cardIndex.'" onclick='popup(`$json`)'>
                                     EOT;
                         }
 
