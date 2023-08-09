@@ -107,6 +107,44 @@ function checkDateRequired(input, date) {
   }
 }
 
+/*
+  document.addEventListener('DOMContentLoaded', function () {
+    const checkboxes = document.querySelectorAll('.ad-checkbox');
+    const dropdown = document.getElementById('addDjelatnici-dropdown');
+
+    function updateDropdownState() {
+      const isAnyCheckboxChecked = [...checkboxes].some((checkbox) => checkbox.checked);
+      dropdown.disabled = isAnyCheckboxChecked;
+      if (!isAnyCheckboxChecked) {
+        dropdown.value = ''; // Reset the dropdown selection when no checkbox is checked.
+      }
+    }
+
+    checkboxes.forEach((checkbox) => {
+      checkbox.addEventListener('click', () => {
+        updateDropdownState();
+      });
+    });
+
+    dropdown.addEventListener('change', () => {
+      if (dropdown.disabled) {
+        dropdown.selectedIndex = 0; // Reset the dropdown selection to the default option.
+      }
+    });
+
+    updateDropdownState();
+  });*/
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -26,6 +26,7 @@ if(isset($_POST["btn_edit"]))
     $PriceDiffrenceDate = formatData($_POST["PriceDiffrenceDate"]);
     $DepositDate = formatData($_POST["DepositDate"]);
     $EmployeeID = mysqli_real_escape_string($con, $_POST["EmployeeID"]);
+    $SessionEmployeeID = $_SESSION['IDEmployee'];
     $Note = mysqli_real_escape_string($con, $_POST["Note"]);
 
     $IDr = (int)$_GET["IDr"];
@@ -50,6 +51,7 @@ if(isset($_POST["btn_edit"]))
                     PriceDiffrenceDate = $PriceDiffrenceDate,
                     DepositDate = $DepositDate,
                     EmployeeID = '$EmployeeID',
+                    SessionEmployeeID = '$SessionEmployeeID',
                     Note = '$Note'
                     WHERE IDReservation = '$IDr'";
     
@@ -97,6 +99,7 @@ if (isset($_POST["btn_save"])) {
     $PriceDiffrenceDate = formatData($_POST["PriceDiffrenceDate"]);
     $DepositDate = formatData($_POST["DepositDate"]);
     $EmployeeID = mysqli_real_escape_string($con, $_POST["EmployeeID"]);
+    $SessionEmployeeID = $_SESSION['IDEmployee'];
     $Note = mysqli_real_escape_string($con, $_POST["Note"]);
 
     // Provjera dal je $Finish time prije $StartTime
@@ -136,9 +139,9 @@ if (isset($_POST["btn_save"])) {
         //Ako nije overbook: nastavi s insertom 
         else {
             $query_ins = "INSERT INTO reservation
-                            (BoatID, StartDate, StartTime, FinishDate, FinishTime, Name, Surname, TelNum, OIB, Price, AdvancePayment, PriceDiffrence, Deposit, CreatedDate, AdvancePaymentDate, PriceDiffrenceDate, DepositDate, EmployeeID, Note)
+                            (BoatID, StartDate, StartTime, FinishDate, FinishTime, Name, Surname, TelNum, OIB, Price, AdvancePayment, PriceDiffrence, Deposit, CreatedDate, AdvancePaymentDate, PriceDiffrenceDate, DepositDate, EmployeeID, SessionEmployeeID, Note)
                             VALUES
-                            ('$BoatID', '$StartDate', '$StartTime', '$FinishDate', '$FinishTime', '$ClientName', '$ClientSurname', '$ClientTelNum', '$ClientOIB', '$Price', $AdvancePayment, $PriceDiffrence, $Deposit, '$CreatedDate', $AdvancePaymentDate, $PriceDiffrenceDate, $DepositDate, '$EmployeeID', '$Note')";
+                            ('$BoatID', '$StartDate', '$StartTime', '$FinishDate', '$FinishTime', '$ClientName', '$ClientSurname', '$ClientTelNum', '$ClientOIB', '$Price', $AdvancePayment, $PriceDiffrence, $Deposit, '$CreatedDate', $AdvancePaymentDate, $PriceDiffrenceDate, $DepositDate, '$EmployeeID', '$SessionEmployeeID', '$Note')";
         
             $result_ins = mysqli_query($con, $query_ins);
         
@@ -198,6 +201,7 @@ if(isset($_GET["IDr"])){
             reservation.DepositDate,
             employee.Username AS Employee,
             employee.IDEmployee AS IDEmployee,
+            reservation.SessionEmployeeID,
             reservation.Note
             FROM reservation 
             LEFT JOIN boat ON (reservation.BoatID = boat.IDBoat)
@@ -227,9 +231,9 @@ if(isset($_GET["IDr"])){
     $PriceDiffrenceDate = $reservation['PriceDiffrenceDate'];
     $DepositDate = $reservation['DepositDate'];
     $IDEmployee = $reservation['IDEmployee'];
+    $SessionEmployeeID = $reservation['SessionEmployeeID'];
     $Employee = $reservation['Employee'];
     $Note = $reservation['Note'];
-
     $btn = 'btn_edit';
 
 }
@@ -388,6 +392,18 @@ echo '
 
 
                     <div class="add-dropdown-container addDjelatnici-dropdown-container">
+                        <!--
+                        <div class="add-radio-button-container">
+                            <div class="add-radio-button-div-container">
+                                <label class="add-input-label" for="ad-checkbox1">C&B</label>
+                                <input type="checkbox" id="ad-checkbox1" class="ad-radio-button" value="1">
+                            </div>
+                            <div class="add-radio-button-div-container">
+                                <label class="add-input-label" for="ad-checkbox2">SB</label>
+                                <input type="checkbox" id="ad-checkbox2" class="ad-radio-button" value="0">
+                            </div>
+                        </div>
+                        -->
                         <select id="addDjelatnici-dropdown" class="add-dropdown addDjelatnici-dropdown color-grey" name="EmployeeID" required>
                             <option value="">Rezervirao...</option>
                             ';

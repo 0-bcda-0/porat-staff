@@ -47,7 +47,43 @@ input[type=number] {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 20px;
 }
+
+.add-radio-button-container{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.add-radio-button-div-container{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-direction: row;
+    gap: 5px;
+}
+
+/* Default style for the radio button */
+.ad-radio-button {
+    /* Set the default background color to gray */
+    background-color: gray;
+  }
+
+  /* Style the radio button when it is selected */
+  .ad-radio-button:checked {
+    /* Set the selected background color to orange */
+    background-color: orange;
+  }
+
+  /* Optional: Style the label associated with the radio button */
+  .add-input-label {
+    /* Add some padding to the label to make it more clickable */
+    padding: 5px;
+  }
 
 .add-dropdown{
     padding: 10px 5px 10px 5px;
@@ -237,6 +273,11 @@ input[type=number] {
 
 .add-dropdown{
     width: 200px;
+}
+
+.add-radio-button-container{
+    flex-direction: column;
+    gap: 0px;
 }
 
 .add-inputs-top{
