@@ -270,7 +270,7 @@ elseif (isset($_GET["BoatSelected"]) && isset($_GET["DateSelected"])) {
     $AdvancePayment = "";
     $PriceDiffrence = "";
     $Deposit = "";
-    $AdvancePaymentDate = "";
+    $AdvancePaymentDate = "mm-dd-yyyy";
     $PriceDiffrenceDate = "";
     $DepositDate = "";
     $IDEmployee = "";
@@ -297,7 +297,7 @@ else{
     $AdvancePayment = "";
     $PriceDiffrence = "";
     $Deposit = "";
-    $AdvancePaymentDate = "";
+    $AdvancePaymentDate = "mm-dd-yyyy";
     $PriceDiffrenceDate = "";
     $DepositDate = "";
     $IDEmployee = "";
@@ -493,12 +493,15 @@ echo '
                                     </div>
                                 </div>
                                 <div class="add-panel-left-content-bottom-right-side">
-
-                                        <input type="date" id="AdvancePaymentDate" class="add-input add-input-middle color-grey" name="AdvancePaymentDate" placeholder="mm/dd/yy" value="'.$AdvancePaymentDate.'">
-
-                                        <input type="date" id="PriceDiffrenceDate" class="add-input add-input-middle color-grey" name="PriceDiffrenceDate" placeholder="mm/dd/yy" value="'.$PriceDiffrenceDate.'" >
-
-                                        <input type="date" id="DepositDate" class="add-input add-input-last-right color-grey" name="DepositDate" placeholder="mm/dd/yy" value="'.$DepositDate.'">
+                                    <div>
+                                        <input type="date" id="AdvancePaymentDate" class="add-input add-input-middle color-grey" name="AdvancePaymentDate" value="'.$AdvancePaymentDate.'">
+                                    </div>
+                                    <div>
+                                        <input type="date" id="PriceDiffrenceDate" class="add-input add-input-middle color-grey" name="PriceDiffrenceDate" value="'.$PriceDiffrenceDate.'" >
+                                    </div>
+                                    <div>
+                                        <input type="date" id="DepositDate" class="add-input add-input-last-right color-grey" name="DepositDate" value="'.$DepositDate.'">
+                                    </div>
                                 </div>
 
                             </div>
