@@ -67,6 +67,17 @@ $dayOfWeekEnglish = dateToDaysOfWeekEnglish($dayDisplayedMyFormat);
 
 $dayOfWeekCroatian = dateToDaysOfWeekCroatian($dayDisplayedMyFormat);
 
+// ||||||||||||||||||||||||||||||||||||||| BROD IKONA PROMJENA BOJE |||||||||||||||||||||||||||||||||||||||
+$day = (int)explode("-", $dayDisplayed)[2];
+
+if ($day % 2 == 1) {
+    // If the day is odd
+    $boatColor = "#f89b3e";
+} else {
+    // If the day is even
+    $boatColor = "#107ec9";
+}
+
 
 // ||||||||||||||||||||||||||||||||||||||| QUERY SELECT ||||||||||||||||||||||||||||||||||||||||
 $query = "SELECT 
@@ -268,7 +279,7 @@ echo '
                                         src="../icon/boat.json"
                                         target="div.card"
                                         trigger="loop-on-hover"
-                                        colors="primary:#121331,secondary:#f89b3e">
+                                        colors="primary:#121331,secondary:'.$boatColor.'">
                                     </lord-icon>
                                 </div>
                             </div>
@@ -326,7 +337,7 @@ echo '
                                         src="../icon/boat.json"
                                         target="div.card"
                                         trigger="loop-on-hover"
-                                        colors="primary:#121331,secondary:#f89b3e">
+                                        colors="primary:#121331,secondary:'.$boatColor.'">
                                     </lord-icon>
                                 </div>
                             </div>
