@@ -24,7 +24,6 @@ echo'
         <!-- Bootstrap CSS -->
         <link href="css/login.css" rel="stylesheet">
         <!-- <link href="../css/background.css" rel="stylesheet"> -->
-        <link rel="stylesheet" href="css/watermark-remove.css">
         <link href="reservations/reservations.css" rel="stylesheet">
 
         <!-- PWA - Web Aplication  -->

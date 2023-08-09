@@ -20,7 +20,7 @@ body{
     margin: 0;
     padding: 0;
     background-color: #7bbddf;
-    background-image: url('../img/Bcg.png');
+    background-image: url('../img/back.svg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -43,4 +43,11 @@ body::-webkit-scrollbar-track {
 
 body::-webkit-scrollbar-thumb {
     background: var(--bg-secundary);
+}
+/* MOBILE */
+/* Testirano na Samsung S20+ */
+@media only screen and (max-width: 600px) {
+    body{
+        background-image: url('../img/back-moba.svg');
+    }
 }

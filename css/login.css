@@ -19,7 +19,7 @@
 body{
     margin: 0;
     padding: 0;
-    background-image: url('../img/Bcg.png');
+    background-image: url('../img/back.svg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -154,6 +154,10 @@ form {
 }
 
 @media only screen and (max-width: 768px) {
+    body{
+        background-image: url('../img/back-moba.svg');
+    }
+    
     .container{
         width: 90%;
     }

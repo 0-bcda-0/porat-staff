@@ -503,16 +503,6 @@ a:hover {
 /* MOBILE */
 /* Testirano na Samsung S20+ */
 @media only screen and (max-width: 600px) {
-  body {
-    background: url(../img/Bcg.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 100vh;
-    -webkit-background-size: cover; /* Add this line for Safari */
-  }
-  
   main {
     background-image: none;
   }
