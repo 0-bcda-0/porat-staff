@@ -33,7 +33,7 @@ function popup2(json) {
 
     // Inner html na popupu
     document.getElementById('popupBoat').innerHTML = reservation.BoatName;
-    document.getElementById('popupTime').innerHTML = "Od: " + reservation.StartTimeH + " Do: " + reservation.FinishTimeH;
+    document.getElementById('popupTime').innerHTML = "Od: " + reservation.StartTimeH + ":" + reservation.StartTimeM + " Do: " + reservation.FinishTimeH + ":" + reservation.FinishTimeM ;
     document.getElementById('popupDate').innerHTML = "Od datuma: " + dateStart + " <br> Do datuma: " + dateFinish;
     document.getElementById('popupNameSurname').innerHTML = reservation.ClientName + " " + reservation.ClientSurname;
     document.getElementById('popupTelNum').innerHTML = reservation.ClientTelNum;

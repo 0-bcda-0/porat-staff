@@ -261,7 +261,7 @@ echo '
                             <div class="card-grid">
                                 <div class="col">
                                     <div class="card-title">'.$value['BoatName'].'</div>
-                                    <div class="card-time">Od: '.$value['StartTimeH'].'h do '.$value['FinishTimeH'].'h</div>
+                                    <div class="card-time">Od: '.$value['StartTimeH'].':'.$value['StartTimeM'].'h do '.$value['FinishTimeH'].':'.$value['FinishTimeM'].'h</div>
                                     <div class="flex">
                                         <div>Status:</div>
                                         <div class="status dead"></div>

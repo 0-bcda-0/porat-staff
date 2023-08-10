@@ -32,6 +32,30 @@ function dateToDaysOfWeekCroatian($date) {
 
 function modifyArray($array, $lookup) {
     for ($i=0; $i < count($array); $i++) { 
+        $array[$i]['StartTimeH'] = date("H", strtotime($array[$i]['StartTime']));
+        $array[$i]['StartTimeM'] = date("i", strtotime($array[$i]['StartTime']));
+        $array[$i]['FinishTimeH'] = date("H", strtotime($array[$i]['FinishTime']));
+        $array[$i]['FinishTimeM'] = date("i", strtotime($array[$i]['FinishTime']));
+    
+        if ($array[$i]['FinishTimeH'] <= 16) {
+            $array[$i]['TimeSlot'] = 1;
+            $array[$i]['CardSlotPlace'] = 1;
+        }
+        else if ($array[$i]['StartTimeH'] > 12 && $array[$i]['FinishTimeH'] <= 23) {
+            $array[$i]['TimeSlot'] = 2;
+            $array[$i]['CardSlotPlace'] = 2;
+        }
+        else if ($array[$i]['FinishTimeH'] <= 23) {
+            $array[$i]['TimeSlot'] = 3;
+            $array[$i]['CardSlotPlace'] = 1;
+        }
+        else {
+            $array[$i]['TimeSlot'] = 3;
+            $array[$i]['CardSlotPlace'] = 1;
+        }
+    
+    /*
+    for ($i=0; $i < count($array); $i++) { 
         // cupamo samo sate iz vremena
         $array[$i]['StartTimeH'] = date("H", strtotime($array[$i]['StartTime']));
         $array[$i]['FinishTimeH'] = date("H", strtotime($array[$i]['FinishTime']));
@@ -53,6 +77,7 @@ function modifyArray($array, $lookup) {
             $array[$i]['TimeSlot'] = 3;
             $array[$i]['CardSlotPlace'] = 1;
         }
+        */
 
         // TIMESLOT 1 = 1/2 dana prva poloovica
         // TIMESLOT 2 = 1/2 dana druga polovica
