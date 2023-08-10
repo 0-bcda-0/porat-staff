@@ -29,7 +29,8 @@ if(isset($_POST["btn_edit"]))
     $SessionEmployeeID = $_SESSION['IDEmployee'];
     $Note = mysqli_real_escape_string($con, $_POST["Note"]);
 
-    $Platform = mysqli_real_escape_string($con, $_POST["Platform"]);
+    $Platform = (int)$_POST["Platform"];
+    $Platform = mysqli_real_escape_string($con, $Platform);
 
     $IDr = (int)$_GET["IDr"];
     $IDr = mysqli_real_escape_string($con, $IDr);
@@ -285,7 +286,7 @@ elseif (isset($_GET["BoatSelected"]) && isset($_GET["DateSelected"])) {
     $IDEmployee = "";
     $Employee = "";
     $Note = "";
-    $Platform = "0";
+    $Platform = 0;
 
 
     $btn = 'btn_save';
@@ -314,7 +315,7 @@ else{
     $IDEmployee = "";
     $Employee = "";
     $Note = "";
-    $Platform = "0";
+    $Platform = 0;
 
 
     $btn = 'btn_save';
