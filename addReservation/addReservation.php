@@ -6,6 +6,8 @@ include("../PHP/db_connection.php");
 include("../PHP/conf2.php");
 include("../PHP/functions.php");
 
+$Platform = 0;
+
 
 if(isset($_POST["btn_edit"]))
 {
