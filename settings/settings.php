@@ -748,7 +748,7 @@ else{
     <div class="glass">
         <div class="set-flex">
             <div class="set-container">
-                <div class="set-title">Tablicaa "boat"</div>
+                <div class="set-title">Tablica "boat"</div>
                 <form method="POST" action="" class="set-formContainer">
                     <div class="set-inputFlex">
                         <label for="boatName" class="col-black">Naziv broda:</label>
