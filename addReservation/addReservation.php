@@ -6,8 +6,6 @@ include("../PHP/db_connection.php");
 include("../PHP/conf2.php");
 include("../PHP/functions.php");
 
-$Platform = 0;
-
 
 if(isset($_POST["btn_edit"]))
 {
@@ -108,7 +106,13 @@ if (isset($_POST["btn_save"])) {
     $SessionEmployeeID = $_SESSION['IDEmployee'];
     $Note = mysqli_real_escape_string($con, $_POST["Note"]);
 
-    $Platform = mysqli_real_escape_string($con, $_POST["Platform"]);
+    if (isset($_POST["Platform"])) {
+        $Platform = (int)$_POST["Platform"];
+        $Platform = mysqli_real_escape_string($con, $Platform);
+    }
+    else{
+        $Platform = 0;
+    }
 
     // Provjera dal je $Finish time prije $StartTime
     if (strtotime($FinishDate) < strtotime($StartDate)) {

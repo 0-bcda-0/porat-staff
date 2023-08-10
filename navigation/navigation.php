@@ -5,7 +5,7 @@ echo '
         <ul class="navbar-navm">
           <!-- Logotip -->
           <li class="logo">
-            <a href="http://www.porat-boat.com/" class="nav-linkm nav-linkm-logo">
+            <a href="../reservations/reservations.php" class="nav-linkm nav-linkm-logo">
               <span class="link-text logo-text">Porat</span>
               <img class="icon logo-icon" src="../img/Logo.png" alt="">
             </a>
