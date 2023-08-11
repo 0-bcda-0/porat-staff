@@ -16,6 +16,12 @@ function dateToCroatianFormat($date) {
     return $dayDisplayedMyFormat;
 }
 
+function dateToCroatianFormatNoYear($date) {
+    // pretvara se u format po zelji
+    $dayDisplayedMyFormat = date("d.m.", strtotime($date));
+    return $dayDisplayedMyFormat;
+}
+
 function dateToDaysOfWeekEnglish($date) {
     $dayOfWeek = date("l", strtotime($date));
     return $dayOfWeek;
@@ -37,8 +43,6 @@ function modifyArray($array, $lookup) {
         $array[$i]['FinishTimeH'] = date("H", strtotime($array[$i]['FinishTime']));
         $array[$i]['FinishTimeM'] = date("i", strtotime($array[$i]['FinishTime']));
         
-        $array[$i]['StartDateD'] = date("j.n.", strtotime($array[$i]['StartTime'])); // Add StartDateD
-        $array[$i]['FinishDateD'] = date("j.n.", strtotime($array[$i]['FinishTime'])); // Add FinishDateD
         
         if ($array[$i]['FinishTimeH'] <= 16) {
             $array[$i]['TimeSlot'] = 1;

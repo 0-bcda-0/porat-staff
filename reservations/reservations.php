@@ -265,7 +265,7 @@ echo '
                                 <div class="col">
                                     <div class="card-title">'.$value['BoatName'].'</div>
                                     <div class="card-time">Od: '.$value['StartTimeH'].':'.$value['StartTimeM'].'h do '.$value['FinishTimeH'].':'.$value['FinishTimeM'].'h</div>
-                                    <div class="card-time">Od: '.$value['StartDateD'].' do '.$value['FinishDateD'].'</div>
+                                    <div class="card-time">Od: '.dateToCroatianFormatNoYear($value['StartDate']).' do '.dateToCroatianFormatNoYear($value['FinishDate']).'</div>
                                     <div class="flex">
                                         <div>Status:</div>
                                         ';
