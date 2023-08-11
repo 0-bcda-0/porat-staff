@@ -265,6 +265,7 @@ echo '
                                 <div class="col">
                                     <div class="card-title">'.$value['BoatName'].'</div>
                                     <div class="card-time">Od: '.$value['StartTimeH'].':'.$value['StartTimeM'].'h do '.$value['FinishTimeH'].':'.$value['FinishTimeM'].'h</div>
+                                    <div class="card-time">Od: '.$value['StartDateD'].' do '.$value['FinishDateD'].'</div>
                                     <div class="flex">
                                         <div>Status:</div>
                                         ';
@@ -331,6 +332,7 @@ echo '
                                 <div class="col">
                                     <div class="card-title">'.$value['BoatName'].'</div>
                                     <div class="card-time">Od: h do h</div>
+                                    <div class="card-time">Od:</div>
                                     <div class="flex">
                                         <div>Status:</div>
                                         <div class="status open"></div>

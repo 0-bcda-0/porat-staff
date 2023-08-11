@@ -31,12 +31,15 @@ function dateToDaysOfWeekCroatian($date) {
 }
 
 function modifyArray($array, $lookup) {
-    for ($i=0; $i < count($array); $i++) { 
+    for ($i = 0; $i < count($array); $i++) {
         $array[$i]['StartTimeH'] = date("H", strtotime($array[$i]['StartTime']));
         $array[$i]['StartTimeM'] = date("i", strtotime($array[$i]['StartTime']));
         $array[$i]['FinishTimeH'] = date("H", strtotime($array[$i]['FinishTime']));
         $array[$i]['FinishTimeM'] = date("i", strtotime($array[$i]['FinishTime']));
-    
+        
+        $array[$i]['StartDateD'] = date("j.n.", strtotime($array[$i]['StartTime'])); // Add StartDateD
+        $array[$i]['FinishDateD'] = date("j.n.", strtotime($array[$i]['FinishTime'])); // Add FinishDateD
+        
         if ($array[$i]['FinishTimeH'] <= 16) {
             $array[$i]['TimeSlot'] = 1;
             $array[$i]['CardSlotPlace'] = 1;
