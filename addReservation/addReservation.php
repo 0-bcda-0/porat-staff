@@ -569,7 +569,7 @@ echo '
                     <!-- Isplovio je -->
                     <div class="add-input-title">Departed status:</div>
                         <div class="add-radio-button-div-container-2">
-                            Isplovio je: 
+                            Isplovio / Uplovio: 
                             <input type="checkbox" name="Departure" value="1" id="Departure"
                             ';
                             if($Departure == "1")
