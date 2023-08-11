@@ -102,7 +102,8 @@ $query = "SELECT
             reservation.DepositDate,
             employee.Username AS Employee,
             reservation.Note,
-            reservation.platform AS Platform
+            reservation.Platform AS Platform,
+            reservation.Departure AS Departure
             FROM reservation 
             LEFT JOIN boat ON (reservation.BoatID = boat.IDBoat)
             LEFT JOIN employee ON (reservation.EmployeeID = employee.IDEmployee)
@@ -139,6 +140,7 @@ while($row = mysqli_fetch_assoc($result))
     $Employee = $row['Employee'];
     $Note = $row['Note'];
     $Platform = $row['Platform'];
+    $Departure = $row['Departure'];
 
     // spustamo sve podatke u polje
     $booked_slots[] = array(
@@ -163,7 +165,8 @@ while($row = mysqli_fetch_assoc($result))
         'DepositDate' => $DepositDate,
         'Employee' => $Employee,
         'Note' => $Note,
-        'Platform' => $Platform
+        'Platform' => $Platform,
+        'Departure' => $Departure
     );
 
 }
@@ -264,8 +267,16 @@ echo '
                                     <div class="card-time">Od: '.$value['StartTimeH'].':'.$value['StartTimeM'].'h do '.$value['FinishTimeH'].':'.$value['FinishTimeM'].'h</div>
                                     <div class="flex">
                                         <div>Status:</div>
-                                        <div class="status dead"></div>
-                                        <div>Rezerviran</div>
+                                        ';
+                                        if($value['Departure'] == 1){
+                                            echo '<div class="status in-progress"></div>';
+                                            echo '<div>Isplovio</div>';
+                                        }
+                                        else{
+                                            echo '<div class="status dead"></div>';
+                                            echo '<div>Rezerviran</div>';
+                                        }
+                                        echo'
                                     </div>
                                 </div>
                                 <div class="col col-hidden">

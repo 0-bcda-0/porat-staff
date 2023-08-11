@@ -32,6 +32,9 @@ if(isset($_POST["btn_edit"]))
     $Platform = (int)$_POST["Platform"];
     $Platform = mysqli_real_escape_string($con, $Platform);
 
+    $Departure = (int)$_POST["Departure"];
+    $Departure = mysqli_real_escape_string($con, $Departure);
+
     $IDr = (int)$_GET["IDr"];
     $IDr = mysqli_real_escape_string($con, $IDr);
 
@@ -56,7 +59,8 @@ if(isset($_POST["btn_edit"]))
                     EmployeeID = '$EmployeeID',
                     SessionEmployeeID = '$SessionEmployeeID',
                     Note = '$Note',
-                    Platform = '$Platform'
+                    Platform = '$Platform',
+                    Departure = '$Departure'
                     WHERE IDReservation = '$IDr'";
     
     $result_upd = mysqli_query($con, $query_upd);
@@ -114,6 +118,14 @@ if (isset($_POST["btn_save"])) {
         $Platform = 0;
     }
 
+    if (isset($_POST["Departure"])) {
+        $Departure = (int)$_POST["Departure"];
+        $Departure = mysqli_real_escape_string($con, $Departure);
+    }
+    else{
+        $Departure = 0;
+    }
+
     // Provjera dal je $Finish time prije $StartTime
     if (strtotime($FinishDate) < strtotime($StartDate)) {
         echo '<script type="text/javascript">';
@@ -151,9 +163,9 @@ if (isset($_POST["btn_save"])) {
         //Ako nije overbook: nastavi s insertom 
         else {
             $query_ins = "INSERT INTO reservation
-                            (BoatID, StartDate, StartTime, FinishDate, FinishTime, Name, Surname, TelNum, OIB, Price, AdvancePayment, PriceDiffrence, Deposit, CreatedDate, AdvancePaymentDate, PriceDiffrenceDate, DepositDate, EmployeeID, SessionEmployeeID, Note, Platform)
+                            (BoatID, StartDate, StartTime, FinishDate, FinishTime, Name, Surname, TelNum, OIB, Price, AdvancePayment, PriceDiffrence, Deposit, CreatedDate, AdvancePaymentDate, PriceDiffrenceDate, DepositDate, EmployeeID, SessionEmployeeID, Note, Platform, Departure)
                             VALUES
-                            ('$BoatID', '$StartDate', '$StartTime', '$FinishDate', '$FinishTime', '$ClientName', '$ClientSurname', '$ClientTelNum', '$ClientOIB', '$Price', $AdvancePayment, $PriceDiffrence, $Deposit, '$CreatedDate', $AdvancePaymentDate, $PriceDiffrenceDate, $DepositDate, '$EmployeeID', '$SessionEmployeeID', '$Note', '$Platform')";
+                            ('$BoatID', '$StartDate', '$StartTime', '$FinishDate', '$FinishTime', '$ClientName', '$ClientSurname', '$ClientTelNum', '$ClientOIB', '$Price', $AdvancePayment, $PriceDiffrence, $Deposit, '$CreatedDate', $AdvancePaymentDate, $PriceDiffrenceDate, $DepositDate, '$EmployeeID', '$SessionEmployeeID', '$Note', '$Platform', '$Departure')";
         
             $result_ins = mysqli_query($con, $query_ins);
         
@@ -215,7 +227,8 @@ if(isset($_GET["IDr"])){
             employee.IDEmployee AS IDEmployee,
             reservation.SessionEmployeeID,
             reservation.Note,
-            reservation.Platform
+            reservation.Platform,
+            reservation.Departure
             FROM reservation 
             LEFT JOIN boat ON (reservation.BoatID = boat.IDBoat)
             LEFT JOIN employee ON (reservation.EmployeeID = employee.IDEmployee)
@@ -248,6 +261,7 @@ if(isset($_GET["IDr"])){
     $Employee = $reservation['Employee'];
     $Note = $reservation['Note'];
     $Platform = $reservation['Platform'];
+    $Departure = $reservation['Departure'];
     $BoatPrice = "";
 
     $btn = 'btn_edit';
@@ -293,6 +307,7 @@ elseif (isset($_GET["BoatSelected"]) && isset($_GET["DateSelected"])) {
     $Employee = "";
     $Note = "";
     $Platform = 0;
+    $Departure = 0;
 
 
     $btn = 'btn_save';
@@ -322,6 +337,7 @@ else{
     $Employee = "";
     $Note = "";
     $Platform = 0;
+    $Departure = 0;
 
 
     $btn = 'btn_save';
@@ -550,6 +566,19 @@ echo '
                     <div class="add-text-area-container">
                         <textarea class="add-text-area" placeholder="Bilješka" name="Note">'.$Note.'</textarea>
                     </div>
+                    <!-- Isplovio je -->
+                    <div class="add-input-title">Departed status:</div>
+                        <div class="add-radio-button-div-container-2">
+                            Isplovio je: 
+                            <input type="checkbox" name="Departure" value="1" id="Departure"
+                            ';
+                            if($Departure == "1")
+                            {
+                                echo 'checked';
+                            }
+                            echo '
+                            >
+                        </div>
                     <!-- Tipke -->
                     <div class="add-panel-left-content-buttons">
                         <input type="button" value="Očisti" class="add-button-spacing add-button-ocisti" onclick="delete_popup()">
