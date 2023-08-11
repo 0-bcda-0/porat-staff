@@ -519,6 +519,7 @@ else{
         }
         else{
             echo 'Podaci nisu uspjesno spremljeni';
+            echo '---------------------GRESKA:' . mysqli_error($con);
         }
     }
 

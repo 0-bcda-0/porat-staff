@@ -262,7 +262,7 @@ elseif (isset($_GET["BoatSelected"]) && isset($_GET["DateSelected"])) {
         $boatid = $item['IDBoat'];
         $boatprice = $item['BoatPrice'];
         if($item['CardSlotPlace'] == 1){
-            $finishtime = "19:00";
+            $finishtime = "18:00";
         }
         else{
             $finishtime = "13:00";
@@ -306,7 +306,7 @@ else{
     $StartDate = "";
     $FinishDate = "";
     $StartTime = "08:00";
-    $FinishTime = "19:00";
+    $FinishTime = "18:00";
     $ClientName = "";
     $ClientSurname = "";
     $ClientTelNum = "";
