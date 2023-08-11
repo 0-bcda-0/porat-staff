@@ -494,12 +494,12 @@ else{
     // Spremanje novog zaposlenika
     if(isset($_POST["btnEmployeeSave"]))
     {
-        $IDEmployee = mysqli_real_escape_string($con, $_POST["IDEmployee"]);
         $Username = mysqli_real_escape_string($con, $_POST["username"]);
         $Pin = mysqli_real_escape_string($con, $_POST["pin"]);
+        $Level = mysqli_real_escape_string($con, $_POST["level"]);
 
-        $queryEmployeeSave = "INSERT INTO employee (IDEmployee, Username, Pin, Level)
-                        VALUES ('$IDEmployee', '$Username', '$Pin', '$Level')";
+        $queryEmployeeSave = "INSERT INTO employee (Username, Pin, Level)
+                        VALUES ('$Username', '$Pin', '$Level')";
 
         $resultEmployeeSave = mysqli_query($con, $queryEmployeeSave);
 
