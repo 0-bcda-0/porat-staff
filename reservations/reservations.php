@@ -110,6 +110,8 @@ $query = "SELECT
             WHERE '$dayDisplayed' BETWEEN DATE(reservation.StartDate) AND DATE(reservation.FinishDate)
             ORDER BY boat.IDBoat ASC";
 
+//LEFT JOIN employee ON (reservation.DepartureEmployeeID = employee.IDEmployee)
+
 $result = mysqli_query($con, $query);
 
 $booked_slots = array();
@@ -141,6 +143,7 @@ while($row = mysqli_fetch_assoc($result))
     $Note = $row['Note'];
     $Platform = $row['Platform'];
     $Departure = $row['Departure'];
+    // $DepartureEmployeeID = $row['DepartureEmployeeID'];
 
     // spustamo sve podatke u polje
     $booked_slots[] = array(
@@ -168,7 +171,7 @@ while($row = mysqli_fetch_assoc($result))
         'Platform' => $Platform,
         'Departure' => $Departure
     );
-
+    // 'DepartureEmployeeID' => $DepartureEmployeeID
 }
 
 // Dodavanje polja CardSlotPlace, TimeSlot, CardNumber u polje $booked_slots, te sortiranje po CardNumberu
@@ -271,6 +274,7 @@ echo '
                                         ';
                                         if($value['Departure'] == 1){
                                             echo '<div class="status in-progress"></div>';
+                                            // echo '<div>Isplovio by: '.$DepartureEmployeeID.'</div>';
                                             echo '<div>Isplovio</div>';
                                         }
                                         else{
@@ -389,7 +393,7 @@ echo '
 <div id="popup">
 <div id="popupWindow">
     <div class="popup-icon-close-position">
-        <a href="#" onclick="closepopup()">
+        <a href="#" onclick="preventDefaultAndClose(event)">
         <lord-icon class="popup-icon-close"
             src="../icon/close.json"
             target="div#popup"

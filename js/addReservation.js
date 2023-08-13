@@ -47,7 +47,8 @@ document.getElementById('addInput-akontacija').addEventListener('input', functio
   }
 });
 
-if(document.getElementById('addInput-razlika').value) {
+// 9. Funkcionalnost: Autocomplete addInput-razlika (razlika u cijeni) na temelju addInput-cijena i addInput-akontacija kada je addInput-razlika prazan
+if(document.getElementById('addInput-razlika').value == "") {
   razlika2 = parseFloat(document.getElementById('addInput-razlika').value)
   console.log(razlika2);
 
@@ -62,7 +63,6 @@ if(document.getElementById('addInput-razlika').value) {
 
   // Set the updated value to the element
   document.getElementById('addInput-Razlika-Span').innerHTML = "(" + razlika + ")";
-
 }
 
 // 10.Funkcionalnost
@@ -93,11 +93,9 @@ document.getElementById('addInput-cijena').addEventListener('input', function() 
 
 function checkDateRequired(input, date) {
   // Get the input elements
-  console.log(input);
   const addInputAkontacija = document.getElementById(input);
   const advancePaymentDate = document.getElementById(date);
 
-  console.log(addInputAkontacija, advancePaymentDate);
   // If the value in "addInput-akontacija" is not empty, set "required" on "AdvancePaymentDate" input
   if (addInputAkontacija.value.trim() !== "") {
     advancePaymentDate.setAttribute("required", "required");
@@ -135,32 +133,43 @@ function checkDateRequired(input, date) {
     updateDropdownState();
   });*/
 
-  const samBoatCheckbox = document.getElementById("samBoatCheckbox");
-  const clickAndBoatCheckbox = document.getElementById("clickAndBoatCheckbox");
-  const addDjelatniciDropdown = document.getElementById("addDjelatnici-dropdown");
+
+//Toglanje required atributa na dropdownu i na razlici
+const samBoatCheckbox = document.getElementById("samBoatCheckbox");
+const clickAndBoatCheckbox = document.getElementById("clickAndBoatCheckbox");
+const addDjelatniciDropdown = document.getElementById("addDjelatnici-dropdown");
+const Departure = document.getElementById("Departure");
+const addInputRazlika = document.getElementById("addInput-razlika");
   
-  samBoatCheckbox.addEventListener("change", function() {
-      if (samBoatCheckbox.checked) {
-          clickAndBoatCheckbox.checked = false;
-          
-          addDjelatniciDropdown.removeAttribute("required");
-      } else {
-          
-          addDjelatniciDropdown.setAttribute("required", "true");
-      }
-  });
+samBoatCheckbox.addEventListener("change", function() {
+    if (samBoatCheckbox.checked) {
+        clickAndBoatCheckbox.checked = false;
+        
+        addDjelatniciDropdown.removeAttribute("required");
+    } else {
+        
+        addDjelatniciDropdown.setAttribute("required", "true");
+    }
+});
   
-  clickAndBoatCheckbox.addEventListener("change", function() {
-      if (clickAndBoatCheckbox.checked) {
-          samBoatCheckbox.checked = false;
-          
-          addDjelatniciDropdown.removeAttribute("required");
-      } else {
-          
-          addDjelatniciDropdown.setAttribute("required", "true");
-      }
-  });
-  
+clickAndBoatCheckbox.addEventListener("change", function() {
+    if (clickAndBoatCheckbox.checked) {
+      samBoatCheckbox.checked = false;
+      addDjelatniciDropdown.removeAttribute("required");
+    } else {  
+      addDjelatniciDropdown.setAttribute("required", "true");
+    }
+});
+
+Departure.addEventListener("change", function() {
+  if (Departure.checked) {
+    addInputRazlika.setAttribute("required", "true");
+    console.log("Departure checked");
+  } else {  
+    addInputRazlika.removeAttribute("required");
+    console.log("Departure unchecked");
+  }
+});
 
 
 

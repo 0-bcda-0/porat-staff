@@ -6,6 +6,12 @@ include("../PHP/db_connection.php");
 include("../PHP/conf2.php");
 include("../PHP/functions.php");
 
+if(!isset($_SESSION['IDEmployee']))
+{
+    header("Location: ../index.php");
+    exit;
+}
+
 
 if(isset($_POST["btn_edit"]))
 {
@@ -35,6 +41,16 @@ if(isset($_POST["btn_edit"]))
     $Departure = (int)$_POST["Departure"];
     $Departure = mysqli_real_escape_string($con, $Departure);
 
+    // //if Departed is checked, then store _SessionEmployeeID in employeeID
+    // if($_POST["Departed"] == 1)
+    // {
+    //     $DepartureEmployeeID = $_SESSION['IDEmployee'];
+    // }
+    // else
+    // {
+    //     $DepartureEmployeeID = 0;
+    // }
+
     $IDr = (int)$_GET["IDr"];
     $IDr = mysqli_real_escape_string($con, $IDr);
 
@@ -62,6 +78,8 @@ if(isset($_POST["btn_edit"]))
                     Platform = '$Platform',
                     Departure = '$Departure'
                     WHERE IDReservation = '$IDr'";
+
+                    // DepartureEmployeeID = '$DepartureEmployeeID',
     
     $result_upd = mysqli_query($con, $query_upd);
 
@@ -515,7 +533,7 @@ echo '
                             <div class="add-input-title">Price Information:</div>
 
                             <div class="add-input-group-flex-left">
-                                <input type="number" id="addInput-cijena" step="0.01" class="add-input add-input-first" placeholder="Cijena (€'.$BoatPrice.')" name="Price" value="'.$Price.'" required>
+                                <input type="number" id="addInput-cijena" class="add-input add-input-first" placeholder="Cijena (€'.$BoatPrice.')" name="Price" value="'.$Price.'" required>
                             </div>
 
                             <div class="add-panel-flex">
@@ -569,7 +587,8 @@ echo '
                     <!-- Isplovio je -->
                     <div class="add-input-title">Departed status:</div>
                         <div class="add-radio-button-div-container-2">
-                            Isplovio / Uplovio: 
+                        U bazi
+                        <label class="switch">
                             <input type="checkbox" name="Departure" value="1" id="Departure"
                             ';
                             if($Departure == "1")
@@ -578,6 +597,9 @@ echo '
                             }
                             echo '
                             >
+                            <span class="slider round"></span>
+                        </label>
+                        Vani
                         </div>
                     <!-- Tipke -->
                     <div class="add-panel-left-content-buttons">

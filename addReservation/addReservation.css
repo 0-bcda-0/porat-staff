@@ -184,6 +184,9 @@ input[type=number] {
 .add-razlika-right{
     width: 30%;
     padding: 0;
+    text-align: center;
+    line-height: 2.5;
+    color: #757575;
 }
 
 .add-panel-flex{

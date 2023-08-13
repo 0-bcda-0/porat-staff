@@ -114,7 +114,13 @@ function delete_popup_in_popup () {
 }
 
 function closepopup() {
-    document.getElementById('popup').classList.toggle('active');
+    document.getElementById('popup').classList.remove('active');
+}
+
+// Add this function to prevent the default link behavior
+function preventDefaultAndClose(event) {
+    event.preventDefault();
+    closepopup();
 }
 
 //tooltip

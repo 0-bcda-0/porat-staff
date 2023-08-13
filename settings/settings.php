@@ -94,6 +94,18 @@ if($_SESSION["Level"] === '1')
                             <input type="submit" value="Spremi promjene" class="add-button-rezerviraj" name="btn-pin">
                         </form>
                     </div>
+                    <div class="set-container w45">
+                        <div class="set-title">Promjene</div>
+                        <div>
+                            <div class="change-title">13.8.</div>
+                            <div class="change-text">-Pri zatvaranju detalja rezervacije, aplikacija se ne vrati na vrh.</div>
+                            <div class="change-text">-Smanjena velicina slova naslova rezervacije (zbog manjih ekrana)</div>
+                            <div class="change-text">-Pri oznacavanju isplovdbe, razlika postaje obvezno polje</div>
+                            <div class="change-text">-Ako istekne vrijeme lokalne memorije, aplikacija Vas vrati na Login zaslon (inace bi isli reervirati te bi Vam se pokazala greska i izbrisala rezervaciju)</div>
+                            <div class="change-text">-Unos cijene ce sada na IPhonu uvijek otvarati brojcanu tipkovnicu, medutim od sada se mogu upisivati samo puni brojevi (bez decimala)</div>
+                            <div class="change-text">-Automacko racunanje razlike se sada pravilno prikazuje</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

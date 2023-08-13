@@ -213,6 +213,15 @@ th {
     color: #757575;
 }
 
+.change-title{
+    font-weight: 600;
+}
+
+.change-text{
+    font-weight: 400;
+    margin-left: 10px;
+}
+
 @media only screen and (max-width: 500px) {
     .set-flex{
         flex-direction: column;

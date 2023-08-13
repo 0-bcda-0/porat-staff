@@ -6,30 +6,6 @@
 
 session_start();
 
-// Set session timeout to a very high value
-$sessionTimeout = 60 * 60 * 24 * 365 * 10; // 10 years in seconds
-
-// Check if the session is still active
-if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $sessionTimeout)) {
-    // Session has expired due to inactivity, so destroy it
-    session_unset();     // Unset $_SESSION variable for the run-time 
-    session_destroy();   // Destroy session data in storage
-}
-
-// Update the last activity timestamp
-$_SESSION['LAST_ACTIVITY'] = time();
-
-// Regenerate session ID periodically to enhance security
-$sessionRegenerateTime = 60 * 60 * 24 * 30; // 30 days in seconds
-
-if (!isset($_SESSION['CREATED'])) {
-    $_SESSION['CREATED'] = time();
-} else if (time() - $_SESSION['CREATED'] > $sessionRegenerateTime) {
-    // Regenerate session ID
-    session_regenerate_id(true);    // Change session ID for the current session and invalidate old session ID
-    $_SESSION['CREATED'] = time();  // Update creation time
-}
-
 
 $_SESSION['NWD'] = 'js';
 $_SESSION["NWDScript-reservations"] = '<script src="../js/reservations.js"></script>';
