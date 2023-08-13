@@ -100,17 +100,18 @@ $query = "SELECT
             reservation.AdvancePaymentDate,
             reservation.PriceDiffrenceDate,
             reservation.DepositDate,
-            employee.Username AS Employee,
+            emp1.Username AS Employee,
+            emp2.Username AS DepartureEmployee,
             reservation.Note,
             reservation.Platform AS Platform,
-            reservation.Departure AS Departure
+            reservation.Departure AS Departure,
+            reservation.DepartureEmployeeID AS DepartureEmployeeID
             FROM reservation 
             LEFT JOIN boat ON (reservation.BoatID = boat.IDBoat)
-            LEFT JOIN employee ON (reservation.EmployeeID = employee.IDEmployee)
+            LEFT JOIN employee emp1 ON (reservation.EmployeeID = emp1.IDEmployee)
+            LEFT JOIN employee emp2 ON (reservation.DepartureEmployeeID = emp2.IDEmployee)
             WHERE '$dayDisplayed' BETWEEN DATE(reservation.StartDate) AND DATE(reservation.FinishDate)
             ORDER BY boat.IDBoat ASC";
-
-//LEFT JOIN employee ON (reservation.DepartureEmployeeID = employee.IDEmployee)
 
 $result = mysqli_query($con, $query);
 
@@ -143,7 +144,8 @@ while($row = mysqli_fetch_assoc($result))
     $Note = $row['Note'];
     $Platform = $row['Platform'];
     $Departure = $row['Departure'];
-    // $DepartureEmployeeID = $row['DepartureEmployeeID'];
+    $DepartureEmployeeID = $row['DepartureEmployeeID'];
+    $DepartureEmployee = $row['DepartureEmployee'];
 
     // spustamo sve podatke u polje
     $booked_slots[] = array(
@@ -169,9 +171,10 @@ while($row = mysqli_fetch_assoc($result))
         'Employee' => $Employee,
         'Note' => $Note,
         'Platform' => $Platform,
-        'Departure' => $Departure
+        'Departure' => $Departure,
+        'DepartureEmployeeID' => $DepartureEmployeeID,
+        'DepartureEmployee' => $DepartureEmployee
     );
-    // 'DepartureEmployeeID' => $DepartureEmployeeID
 }
 
 // Dodavanje polja CardSlotPlace, TimeSlot, CardNumber u polje $booked_slots, te sortiranje po CardNumberu
@@ -274,8 +277,8 @@ echo '
                                         ';
                                         if($value['Departure'] == 1){
                                             echo '<div class="status in-progress"></div>';
-                                            // echo '<div>Isplovio by: '.$DepartureEmployeeID.'</div>';
-                                            echo '<div>Isplovio</div>';
+                                            echo '<div>Isplovio by: '.$value['DepartureEmployee'].'</div>';
+                                            // echo '<div>Isplovio</div>';
                                         }
                                         else{
                                             echo '<div class="status dead"></div>';
@@ -393,7 +396,7 @@ echo '
 <div id="popup">
 <div id="popupWindow">
     <div class="popup-icon-close-position">
-        <a href="#" onclick="closepopup()">
+        <a href="#" onclick="closepopup(event)">
         <lord-icon class="popup-icon-close"
             src="../icon/close.json"
             target="div#popup"

@@ -29,7 +29,7 @@ function popup2(json) {
     var dateDeposit = formatDate(reservation.DepositDate);
     var dateCreatedDate = formatDate(reservation.CreatedDate);
 
-    console.log(reservation.Employee, dateCreatedDate, reservation.CreatedDate);
+    // console.log(reservation.Employee, dateCreatedDate, reservation.CreatedDate);
 
     // Inner html na popupu
     document.getElementById('popupBoat').innerHTML = reservation.BoatName + " (N." + reservation.IDReservation + ")";
@@ -113,15 +113,15 @@ function delete_popup_in_popup () {
     document.getElementById('deleteWindow').classList.toggle('active');
 }
 
-function closepopup() {
+// Add this function to prevent the default link behavior
+function closepopuphelp() {
     document.getElementById('popup').classList.remove('active');
 }
 
-// // Add this function to prevent the default link behavior
-// function preventDefaultAndClose(event) {
-//     event.preventDefault();
-//     closepopup();
-// }
+function closepopup(event) {
+    event.preventDefault();
+    closepopuphelp();
+}
 
 //tooltip
 

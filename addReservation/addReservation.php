@@ -35,21 +35,30 @@ if(isset($_POST["btn_edit"]))
     $SessionEmployeeID = $_SESSION['IDEmployee'];
     $Note = mysqli_real_escape_string($con, $_POST["Note"]);
 
-    $Platform = (int)$_POST["Platform"];
-    $Platform = mysqli_real_escape_string($con, $Platform);
+    if (isset($_POST["Platform"])) {
+        $Platform = (int)$_POST["Platform"];
+        $Platform = mysqli_real_escape_string($con, $Platform);
+    }
+    else{
+        $Platform = 0;
+    }
 
-    $Departure = (int)$_POST["Departure"];
-    $Departure = mysqli_real_escape_string($con, $Departure);
-
-    // //if Departed is checked, then store _SessionEmployeeID in employeeID
-    // if($_POST["Departed"] == 1)
-    // {
-    //     $DepartureEmployeeID = $_SESSION['IDEmployee'];
-    // }
-    // else
-    // {
-    //     $DepartureEmployeeID = 0;
-    // }
+    if (isset($_POST["Departure"])) {
+        $Departure = (int)$_POST["Departure"];
+        $Departure = mysqli_real_escape_string($con, $Departure);
+        if($Departure == 1)
+        {
+            $DepartureEmployeeID = $_SESSION['IDEmployee'];
+        }
+        else
+        {
+            $DepartureEmployeeID = 0;
+        }
+    }
+    else{
+        $Departure = 0;
+        $DepartureEmployeeID = 0;
+    }
 
     $IDr = (int)$_GET["IDr"];
     $IDr = mysqli_real_escape_string($con, $IDr);
@@ -76,10 +85,9 @@ if(isset($_POST["btn_edit"]))
                     SessionEmployeeID = '$SessionEmployeeID',
                     Note = '$Note',
                     Platform = '$Platform',
-                    Departure = '$Departure'
+                    Departure = '$Departure',
+                    DepartureEmployeeID = '$DepartureEmployeeID'
                     WHERE IDReservation = '$IDr'";
-
-                    // DepartureEmployeeID = '$DepartureEmployeeID',
     
     $result_upd = mysqli_query($con, $query_upd);
 
