@@ -331,7 +331,7 @@ else if($_SESSION["Level"] === '2')
     ';
 }
 //0 - Admin
-else{
+else if($_SESSION["UserType"] == 0){
 
     if(isset($_POST["btnNWD"])){
         if($_SESSION["NWD"] == "js"){
