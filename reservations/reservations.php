@@ -393,7 +393,7 @@ echo '
 <div id="popup">
 <div id="popupWindow">
     <div class="popup-icon-close-position">
-        <a href="#" onclick="preventDefaultAndClose(event)">
+        <a href="#" onclick="closepopup()">
         <lord-icon class="popup-icon-close"
             src="../icon/close.json"
             target="div#popup"

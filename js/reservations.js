@@ -117,11 +117,11 @@ function closepopup() {
     document.getElementById('popup').classList.remove('active');
 }
 
-// Add this function to prevent the default link behavior
-function preventDefaultAndClose(event) {
-    event.preventDefault();
-    closepopup();
-}
+// // Add this function to prevent the default link behavior
+// function preventDefaultAndClose(event) {
+//     event.preventDefault();
+//     closepopup();
+// }
 
 //tooltip
 
