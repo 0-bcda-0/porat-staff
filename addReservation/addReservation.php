@@ -10,6 +10,18 @@ if(!isset($_SESSION['IDEmployee']))
 {
     header("Location: ../index.php");
     exit;
+    echo '
+    <script>
+    // Function to redirect the user to the reservations page with the specified date
+    function redirectToReservations() {
+        var reservationsURL = "../index.php";
+        window.location.href = reservationsURL;
+    }
+
+    // Automatically redirect the user to the reservations page on page load
+    redirectToReservations(); // Enclose $redirectDate in quotes
+    </script>
+    ';
 }
 
 
