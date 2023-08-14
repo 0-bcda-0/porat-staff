@@ -140,4 +140,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AdvancePaymentSubmitBu
             </div>
         </div>
     </div>
+
+    <div class="spacer spacer-bottom"></div>
 </main>
