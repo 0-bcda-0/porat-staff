@@ -70,6 +70,18 @@ if($_SESSION["Level"] === '1')
         <div class="spacer"></div>
             <div class="glass">
                 <div class="set-flex">
+                    <a href="../logout.php" class="">
+                        <div class="add-button-rezerviraj" style="display:flex; align-items:center; gap:10px; margin-top:2rem;">LOGOUT
+                            <lord-icon class="icon"
+                            src="../icon/switchUser.json"
+                            target="a.nav-linkm"
+                            trigger="loop-on-hover"
+                            delay="500"
+                            colors="primary:#ffffff"
+                            state="hover">
+                            </lord-icon>
+                        </div>
+                    </a>
                     <div class="set-container w45">
                         <div class="set-title">Prijava problema</div>
                         <form method="POST" action="" class="set-userFormContainer">
@@ -97,6 +109,11 @@ if($_SESSION["Level"] === '1')
                     <div class="set-container w45">
                         <div class="set-title">Promjene</div>
                         <div>
+                            <div class="change-title">14.8. (zahtjeva ciscenje cache-a)</div>
+                            <div class="change-text">-Vremenske informacije na karticama su podebljane</div>
+                            <div class="change-text">-Dodana stranica "Blagajna" koja vodi biljesku o stanju u kuvertama.</div>
+                            <div class="change-text">-Premjestaj tipke Logout na stranicu "Postavke"</div>
+
                             <div class="change-title">13.8. (zahtjeva ciscenje cache-a)</div>
                             <div class="change-text">-Pri zatvaranju detalja rezervacije, aplikacija se ne vrati na vrh.</div>
                             <div class="change-text">-Smanjena velicina slova naslova rezervacije (zbog manjih ekrana)</div>
@@ -275,6 +292,18 @@ else if($_SESSION["Level"] === '2')
         <div class="spacer"></div>
             <div class="glass">
             <div class="set-flex">
+            <a href="../logout.php" class="">
+                <div class="add-button-rezerviraj" style="display:flex; align-items:center; gap:10px; margin-top:2rem;">LOGOUT
+                    <lord-icon class="icon"
+                    src="../icon/switchUser.json"
+                    target="a.nav-linkm"
+                    trigger="loop-on-hover"
+                    delay="500"
+                    colors="primary:#ffffff"
+                    state="hover">
+                    </lord-icon>
+                </div>
+            </a>
             <div class="set-container">
                 <div class="set-title">Tablica "lookup"</div>
                 <form method="POST" action="" class="set-formContainer">
@@ -331,7 +360,7 @@ else if($_SESSION["Level"] === '2')
     ';
 }
 //0 - Admin
-else if($_SESSION["UserType"] == 0){
+else if($_SESSION["Level"] == '0'){
 
     if(isset($_POST["btnNWD"])){
         if($_SESSION["NWD"] == "js"){
@@ -761,6 +790,18 @@ else if($_SESSION["UserType"] == 0){
     <div class="spacer"></div>
     <div class="glass">
         <div class="set-flex">
+        <a href="../logout.php" class="">
+            <div class="add-button-rezerviraj" style="display:flex; align-items:center; gap:10px; margin-top:2rem;">LOGOUT
+                <lord-icon class="icon"
+                src="../icon/switchUser.json"
+                target="a.nav-linkm"
+                trigger="loop-on-hover"
+                delay="500"
+                colors="primary:#ffffff"
+                state="hover">
+                </lord-icon>
+            </div>
+        </a>
             <div class="set-container">
                 <div class="set-title">Tablica "boat"</div>
                 <form method="POST" action="" class="set-formContainer">

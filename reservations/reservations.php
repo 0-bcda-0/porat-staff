@@ -100,6 +100,7 @@ $query = "SELECT
             reservation.AdvancePaymentDate,
             reservation.PriceDiffrenceDate,
             reservation.DepositDate,
+            reservation.DepositStatus,
             emp1.Username AS Employee,
             emp2.Username AS DepartureEmployee,
             reservation.Note,
@@ -140,6 +141,7 @@ while($row = mysqli_fetch_assoc($result))
     $AdvancePaymentDate = $row['AdvancePaymentDate'];
     $PriceDiffrenceDate = $row['PriceDiffrenceDate'];
     $DepositDate = $row['DepositDate'];
+    $DepositStatus = $row['DepositStatus'];
     $Employee = $row['Employee'];
     $Note = $row['Note'];
     $Platform = $row['Platform'];
@@ -168,6 +170,7 @@ while($row = mysqli_fetch_assoc($result))
         'AdvancePaymentDate' => $AdvancePaymentDate,
         'PriceDiffrenceDate' => $PriceDiffrenceDate,
         'DepositDate' => $DepositDate,
+        'DepositStatus' => $DepositStatus,
         'Employee' => $Employee,
         'Note' => $Note,
         'Platform' => $Platform,
@@ -270,8 +273,8 @@ echo '
                             <div class="card-grid">
                                 <div class="col">
                                     <div class="card-title">'.$value['BoatName'].' - '.$value['ClientName'].'</div>
-                                    <div class="card-time">Od: '.$value['StartTimeH'].':'.$value['StartTimeM'].'h do '.$value['FinishTimeH'].':'.$value['FinishTimeM'].'h</div>
-                                    <div class="card-time">Od: '.dateToCroatianFormatNoYear($value['StartDate']).' do '.dateToCroatianFormatNoYear($value['FinishDate']).'</div>
+                                    <div class="card-time">Od: <b>'.$value['StartTimeH'].':'.$value['StartTimeM'].'</b>h do <b>'.$value['FinishTimeH'].':'.$value['FinishTimeM'].'</b>h</div>
+                                    <div class="card-time">Od: <b>'.dateToCroatianFormatNoYear($value['StartDate']).'</b> do <b>'.dateToCroatianFormatNoYear($value['FinishDate']).'</b></div>
                                     <div class="flex">
                                         <div>Status:</div>
                                         ';
@@ -471,6 +474,7 @@ echo '
             </div>
             <div class="popup-flex popup-text">
                 <div><b>Akontacije:</b></div>
+                <div id="popupAdvancePaymentStatus"></div>
                 <div id="popupAdvancePayment">€00</div>
             </div>
             <div class="popup-flex popup-text">
@@ -478,7 +482,8 @@ echo '
                 <div id="popupPriceDiffrence">€00</div>
             </div>
             <div class="popup-flex popup-text">
-                <div><b>Depozit:</b></div>
+                <div><b>Deposit:</b></div>
+                <div id="popupDepositStatus"></div>
                 <div id="popupDeposit">€000</div>
             </div>
         </div>
