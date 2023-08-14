@@ -11,13 +11,16 @@ if(!isset($_SESSION['IDEmployee']))
     header("Location: ../index.php");
     exit;
     echo '
-        <script>
-        function redirectToReservations() {
-            var reservationsURL = "../index.php";
-            window.location.href = reservationsURL;
-        }
-        redirectToReservations();
-        </script>
+    <script>
+    // Function to redirect the user to the reservations page with the specified date
+    function redirectToReservations() {
+        var reservationsURL = "../index.php";
+        window.location.href = reservationsURL;
+    }
+
+    // Automatically redirect the user to the reservations page on page load
+    redirectToReservations(); // Enclose $redirectDate in quotes
+    </script>
     ';
 }
 
@@ -69,24 +72,6 @@ if(isset($_POST["btn_edit"]))
         $DepartureEmployeeID = 0;
     }
 
-    if(isset($_POST["Deposit"]))
-    {
-        $DepositStatus = 1;
-    }
-    else
-    {
-        $DepositStatus = 0;
-    }
-
-    if(isset($_POST["AdvancePayment"]))
-    {
-        $AdvancePaymentStatus = 1;
-    }
-    else
-    {
-        $AdvancePaymentStatus = 0;
-    }
-
     $IDr = (int)$_GET["IDr"];
     $IDr = mysqli_real_escape_string($con, $IDr);
 
@@ -106,10 +91,8 @@ if(isset($_POST["btn_edit"]))
                     PriceDiffrence = $PriceDiffrence,
                     Deposit = $Deposit,
                     AdvancePaymentDate = $AdvancePaymentDate,
-                    AdvancePaymentStatus = $AdvancePaymentStatus,
                     PriceDiffrenceDate = $PriceDiffrenceDate,
                     DepositDate = $DepositDate,
-                    DepositStatus = $DepositStatus,
                     EmployeeID = '$EmployeeID',
                     SessionEmployeeID = '$SessionEmployeeID',
                     Note = '$Note',
