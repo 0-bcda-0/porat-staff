@@ -129,8 +129,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AdvancePaymentSubmitBu
                             $advancePaymentSum += $rowAdvancePayment['AdvancePayment'];
                             if($rowAdvancePayment['StartDate'] == date('Y-m-d')){
                                 $classRedAdvancedPayment = 'class="red"';
+                                echo 'test';
                             } else {
                                 $classRedAdvancedPayment = '';
+                                echo 'nije proslo'
                             }
                             echo '<tr'.$classRedAdvancedPayment.'>';
                                 echo '<td>' . dateToCroatianFormatNoYear($rowAdvancePayment['StartDate']) . '</td>';
