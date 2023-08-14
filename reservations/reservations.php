@@ -28,9 +28,10 @@ if(!isset($_SESSION['IDEmployee']))
 
 
 // ||||||||||||||||||||||||||||||||||||||| PRETHODNI I SLJEDECI DAN |||||||||||||||||||||||||||||||||||||||
+/*
 if (isset($_GET["move"]) && $_GET['move'] == "previous") {
     $dayDisplayed = date("Y-m-d", strtotime("-1 day", strtotime($_GET["day"])));
-} elseif (isset($_GET["move"]) &&$_GET['move'] == "next") {
+} elseif (isset($_GET["move"]) && $_GET['move'] == "next") {
     $dayDisplayed = date("Y-m-d", strtotime("+1 day", strtotime($_GET["day"])));
 } elseif (isset($_GET["day"])){
     $dayDisplayed = $_GET["day"];
@@ -39,6 +40,24 @@ if (isset($_GET["move"]) && $_GET['move'] == "previous") {
 } else {
     $dayDisplayed = date("Y-m-d");
 }
+*/
+
+if (isset($_GET["move"])) {
+    if (isset($_POST["input-dateSubmit"])) {
+        $dayDisplayed = $_POST["input-dateSubmit"];
+    } else if ($_GET['move'] == "previous") {
+        $dayDisplayed = date("Y-m-d", strtotime("-1 day", strtotime($_GET["day"])));
+    } elseif ($_GET['move'] == "next") {
+        $dayDisplayed = date("Y-m-d", strtotime("+1 day", strtotime($_GET["day"])));
+    }
+} elseif (isset($_GET["day"])) {
+    $dayDisplayed = $_GET["day"];
+} elseif (isset($_POST["input-dateSubmit"])) {
+    $dayDisplayed = $_POST["input-dateSubmit"];
+} else {
+    $dayDisplayed = date("Y-m-d");
+}
+
 
 
 // ||||||||||||||||||||||||||||||||||||||| BRISANJE REZERVACIJE |||||||||||||||||||||||||||||||||||||||

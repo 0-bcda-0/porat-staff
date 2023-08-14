@@ -127,6 +127,7 @@ if($_SESSION["Level"] === '1')
                             <div class="change-title">15.8.</div>
                             <div class="change-text">-Svi sljedeci updati nece zahtjevati ciscenje cachea</div>
                             <div class="change-text">-Odabir datuma za pregled rezervacija vise nema tipku odaberi ako se stisne na datum i odabere preko kaledara.</div>
+                            <div class="change-text">-Omogucen odabir datuma preko kalendara nakon koristenja strelica</div>
 
                             <div class="change-title">14.8. (zahtjeva ciscenje cache-a)</div>
                             <div class="change-text">-Vremenske informacije na karticama su podebljane</div>
