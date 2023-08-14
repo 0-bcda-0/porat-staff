@@ -181,6 +181,24 @@ if (isset($_POST["btn_save"])) {
         $Departure = 0;
     }
 
+    if(isset($_POST["Deposit"]) && is_numeric($_POST["Deposit"]))
+    {
+        $DepositStatus = 1;
+    }
+    else
+    {
+        $DepositStatus = 0;
+    }
+
+    if(isset($_POST["AdvancePayment"]) && is_numeric($_POST["AdvancePayment"]))
+    {
+        $AdvancePaymentStatus = 1;
+    }
+    else
+    {
+        $AdvancePaymentStatus = 0;
+    }
+
     // Provjera dal je $Finish time prije $StartTime
     if (strtotime($FinishDate) < strtotime($StartDate)) {
         echo '<script type="text/javascript">';

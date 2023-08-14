@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['DepositSubmitButton']
     $reservationId = $_POST['reservationId'];
     
     // Update the DepositStatus to 0 for the selected reservation
-    $updateQuery = "UPDATE reservation SET DepositStatus = '0' WHERE IDReservation = '$reservationId'";
+    $updateQuery = "UPDATE reservation SET DepositStatus = '2' WHERE IDReservation = '$reservationId'";
     $updateResult = mysqli_query($con, $updateQuery);
     
     if ($updateResult) {
@@ -50,7 +50,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AdvancePaymentSubmitBu
     $reservationId = $_POST['reservationId'];
     
     // Update the AdvancePaymentStatus to 0 for the selected reservation
-    $updateQuery = "UPDATE reservation SET AdvancePaymentStatus = '0' WHERE IDReservation = '$reservationId'";
+    $updateQuery = "UPDATE reservation SET AdvancePaymentStatus = '2' WHERE IDReservation = '$reservationId'";
     $updateResult = mysqli_query($con, $updateQuery);
     
     if ($updateResult) {

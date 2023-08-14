@@ -29,7 +29,8 @@ function popup2(json) {
     var dateDeposit = formatDate(reservation.DepositDate);
     var dateCreatedDate = formatDate(reservation.CreatedDate);
 
-    console.log(reservation.DepositStatus);
+    console.log('1. ' + reservation.AdvancePaymentStatus);
+    console.log('2. ' + reservation.DepositStatus);
 
     // console.log(reservation.Employee, dateCreatedDate, reservation.CreatedDate);
 
@@ -41,11 +42,13 @@ function popup2(json) {
     document.getElementById('popupTelNum').innerHTML = reservation.ClientTelNum;
     document.getElementById('popupOib').innerHTML = reservation.ClientOIB;
     document.getElementById('popupPrice').innerHTML = reservation.Price + "€";
-    
+
     document.getElementById('popupAdvancePaymentStatus').innerHTML =
-    reservation.DepositStatus === '1'
+    reservation.AdvancePaymentStatus === '1'
         ? '<div class="status open"></div>'
-        : '<div class="status dead"></div>';
+        : reservation.AdvancePaymentStatus === '2'
+            ? '<div class="status dead"></div>'
+            : '<div></div>';
     
     document.getElementById('popupAdvancePayment').innerHTML = reservation.AdvancePayment !== null ? reservation.AdvancePayment + "€ / " + dateAdvancePayment : '';
     document.getElementById('popupPriceDiffrence').innerHTML = reservation.PriceDiffrence !== null ? reservation.PriceDiffrence + "€ / " + datePriceDiffrence : '';
@@ -53,7 +56,9 @@ function popup2(json) {
     document.getElementById('popupDepositStatus').innerHTML =
     reservation.DepositStatus === '1'
         ? '<div class="status open"></div>'
-        : '<div class="status dead"></div>';
+        : reservation.DepositStatus === '2'
+            ? '<div class="status dead"></div>'
+            : '<div></div>';
     
     document.getElementById('popupDeposit').innerHTML = 
     reservation.Deposit !== null

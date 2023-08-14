@@ -113,6 +113,7 @@ $query = "SELECT
             reservation.Deposit,
             reservation.CreatedDate,
             reservation.AdvancePaymentDate,
+            reservation.AdvancePaymentStatus,
             reservation.PriceDiffrenceDate,
             reservation.DepositDate,
             reservation.DepositStatus,
@@ -154,6 +155,7 @@ while($row = mysqli_fetch_assoc($result))
     $Deposit = $row['Deposit'];
     $CreatedDate = $row['CreatedDate'];
     $AdvancePaymentDate = $row['AdvancePaymentDate'];
+    $AdvancePaymentStatus = $row['AdvancePaymentStatus'];
     $PriceDiffrenceDate = $row['PriceDiffrenceDate'];
     $DepositDate = $row['DepositDate'];
     $DepositStatus = $row['DepositStatus'];
@@ -184,6 +186,7 @@ while($row = mysqli_fetch_assoc($result))
         'CreatedDate' => $CreatedDate,
         'AdvancePaymentDate' => $AdvancePaymentDate,
         'PriceDiffrenceDate' => $PriceDiffrenceDate,
+        'AdvancePaymentStatus' => $AdvancePaymentStatus,
         'DepositDate' => $DepositDate,
         'DepositStatus' => $DepositStatus,
         'Employee' => $Employee,
