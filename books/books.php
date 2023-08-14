@@ -127,11 +127,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AdvancePaymentSubmitBu
                         while ($rowAdvancePayment = mysqli_fetch_array($resultAdvancePayment)) {
                             $advancePaymentSum += $rowAdvancePayment['AdvancePayment'];
                             if($rowAdvancePayment['StartDate'] == date('Y-m-d')){
-                                $classRedAdvancedPayment = 'class="red"';
+                                $classRedAdvancedPayment = 'red';
                             } else {
-                                $classRedAdvancedPayment = 'class="NiJeReD"';
+                                $classRedAdvancedPayment = 'NiJeReD';
                             }
-                            echo '<tr'.$classRedAdvancedPayment.'>';
+                            echo '<tr class="'.$classRedAdvancedPayment.'">';
                                 echo '<td>' . dateToCroatianFormatNoYear($rowAdvancePayment['StartDate']) . '</td>';
                                 echo '<td>'.$rowAdvancePayment['BoatName'].' - '.$rowAdvancePayment['Name'].'</td>';
                                 echo '<td>€'. $rowAdvancePayment['AdvancePayment'] .'</td>';
