@@ -42,6 +42,8 @@ if (isset($_GET["move"]) && $_GET['move'] == "previous") {
 }
 */
 
+date_default_timezone_set("Europe/Zagreb");
+
 if (isset($_GET["move"])) {
     if (isset($_POST["input-dateSubmit"])) {
         $dayDisplayed = $_POST["input-dateSubmit"];
