@@ -11,6 +11,21 @@ include("../PHP/conf2.php");
 // Functions
 include("../PHP/functions.php");
 
+if(!isset($_SESSION['IDEmployee']))
+{
+    // header("Location: ../index.php");
+    // exit;
+    echo '
+        <script>
+        function redirectToReservations() {
+            var reservationsURL = "../index.php";
+            window.location.href = reservationsURL;
+        }
+        redirectToReservations();
+        </script>
+    ';
+}
+
 
 // ||||||||||||||||||||||||||||||||||||||| PRETHODNI I SLJEDECI DAN |||||||||||||||||||||||||||||||||||||||
 if (isset($_GET["move"]) && $_GET['move'] == "previous") {

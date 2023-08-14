@@ -5,6 +5,21 @@ include("../navigation/navigation.php");
 
 include("../PHP/db_connection.php");
 
+if(!isset($_SESSION['IDEmployee']))
+{
+    // header("Location: ../index.php");
+    // exit;
+    echo '
+        <script>
+        function redirectToReservations() {
+            var reservationsURL = "../index.php";
+            window.location.href = reservationsURL;
+        }
+        redirectToReservations();
+        </script>
+    ';
+}
+
 //1 - Obicni korisnik
 if($_SESSION["Level"] === '1')
 {

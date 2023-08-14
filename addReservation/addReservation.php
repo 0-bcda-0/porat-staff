@@ -8,8 +8,8 @@ include("../PHP/functions.php");
 
 if(!isset($_SESSION['IDEmployee']))
 {
-    header("Location: ../index.php");
-    exit;
+    // header("Location: ../index.php");
+    // exit;
     echo '
         <script>
         function redirectToReservations() {
