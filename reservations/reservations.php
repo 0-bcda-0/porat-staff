@@ -416,7 +416,7 @@ echo '
         </div>
     </div>
 
-    <div class="spacer spacer-bottom"></div>
+    <div class="spacer-bottom"></div>
 </main>
 
 <div id="popup">

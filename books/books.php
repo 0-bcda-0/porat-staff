@@ -75,7 +75,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AdvancePaymentSubmitBu
             <div class="add-panel add-panel-left">
                 <table>
                     <thead>
-                        <th class="books-th">Uzet</th>
+                        <th class="books-th">DR</th>
                         <th class="books-th">Rezervacija</th>
                         <th class="books-th">Iznos</th>
                         <th class="books-th">Akcija</th>
@@ -85,8 +85,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AdvancePaymentSubmitBu
                         while ($rowDeposit = mysqli_fetch_array($resultDeposit)) {
                             $depositSum += $rowDeposit['Deposit'];
                             echo '<tr>';
-                                echo '<td>' . dateToCroatianFormatNoYear($rowDeposit['DepositDate']) . '</td>';
-                                echo '<td>(N.'. $rowDeposit['IDReservation']. ' ' . dateToCroatianFormatNoYear($rowDeposit['StartDate']) . ') <br>  '.$rowDeposit['BoatName'].'</td>';
+                                echo '<td>'. dateToCroatianFormatNoYear($rowDeposit['StartDate']) . '</td>';
+                                echo '<td>'.$rowDeposit['BoatName'].' - '.$rowDeposit['Name'].'</td>';
                                 echo '<td>€'. $rowDeposit['Deposit'] .'</td>';
                                 echo '<td>
                                         <form id="depositForm" method="POST" action="">
@@ -113,7 +113,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AdvancePaymentSubmitBu
             <div class="add-panel add-panel-left">
                 <table>
                     <thead>
-                        <th>Uzet</th>
+                        <th>DA</th>
                         <th>Rezervacija</th>
                         <th>Iznos</th>
                         <th>Akcija</th>
@@ -123,8 +123,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AdvancePaymentSubmitBu
                         while ($rowAdvancePayment = mysqli_fetch_array($resultAdvancePayment)) {
                             $advancePaymentSum += $rowAdvancePayment['AdvancePayment'];
                             echo '<tr>';
-                                echo '<td>' . dateToCroatianFormatNoYear($rowAdvancePayment['AdvancePaymentDate']) . '</td>';
-                                echo '<td>(N.'. $rowAdvancePayment['IDReservation']. ' ' . dateToCroatianFormatNoYear($rowAdvancePayment['StartDate']) . ') <br>  '.$rowAdvancePayment['BoatName'].'</td>';
+                                echo '<td>' . dateToCroatianFormatNoYear($rowAdvancePayment['StartDate']) . '</td>';
+                                echo '<td>'.$rowAdvancePayment['BoatName'].' - '.$rowAdvancePayment['Name'].'</td>';
                                 echo '<td>€'. $rowAdvancePayment['AdvancePayment'] .'</td>';
                                 echo '<td>
                                         <form id="depositForm" method="POST" action="">
@@ -145,7 +145,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AdvancePaymentSubmitBu
         
     </div>
 
-    <div class="spacer spacer-bottom"></div>
-    <div class="spacer spacer-bottom"></div>
-    <div class="spacer spacer-bottom"></div>
+    <div class="spacer-bottom"></div>
+    <div class="spacer-bottom"></div>
+    <div class="spacer-bottom"></div>
 </main>
