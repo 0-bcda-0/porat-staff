@@ -11,6 +11,8 @@ include("../PHP/conf2.php");
 // Functions
 include("../PHP/functions.php");
 
+date_default_timezone_set("Europe/Zagreb");
+
 $queryDeposit = "SELECT 
                     reservation.*,
                     boat.Name AS BoatName
@@ -124,8 +126,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AdvancePaymentSubmitBu
                         <?php
                         while ($rowAdvancePayment = mysqli_fetch_array($resultAdvancePayment)) {
                             $advancePaymentSum += $rowAdvancePayment['AdvancePayment'];
-                            echo $rowAdvancePayment['StartDate'];
-                            echo date('Y-m-d');
                             if($rowAdvancePayment['StartDate'] == date('Y-m-d')){
                                 $classRedAdvancedPayment = 'class="red"';
                             } else {

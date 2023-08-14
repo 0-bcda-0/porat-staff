@@ -5,6 +5,8 @@ include("../navigation/navigation.php");
 
 include("../PHP/db_connection.php");
 
+date_default_timezone_set("Europe/Zagreb");
+
 if(!isset($_SESSION['IDEmployee']))
 {
     // header("Location: ../index.php");
