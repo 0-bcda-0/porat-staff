@@ -13,3 +13,7 @@ tr:nth-child(even) {
     background-color: transparent;
     border-bottom: 2px dotted #F89B3E;
 }
+
+.red{
+    background-color: rgba(244, 177, 165, 0.4) !important;
+}

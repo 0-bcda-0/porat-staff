@@ -16,15 +16,17 @@ $queryDeposit = "SELECT
                     boat.Name AS BoatName
                 FROM reservation
                 LEFT JOIN boat ON (reservation.BoatID = boat.IDBoat)
-                WHERE reservation.DepositStatus = '1'";
+                WHERE reservation.DepositStatus = '1'
+                ORDER BY reservation.StartDate ASC;";
 $resultDeposit = mysqli_query($con, $queryDeposit);
 
 $queryAdvancePayment = "SELECT 
                             reservation.*,
                             boat.Name AS BoatName
-                        FROM reservation
-                        LEFT JOIN boat ON (reservation.BoatID = boat.IDBoat)
-                        WHERE reservation.AdvancePaymentStatus = '1'";
+                            FROM reservation
+                            LEFT JOIN boat ON (reservation.BoatID = boat.IDBoat)
+                            WHERE reservation.AdvancePaymentStatus = '1'
+                            ORDER BY reservation.StartDate ASC;";
 $resultAdvancePayment = mysqli_query($con, $queryAdvancePayment);
 
 // Create DepositSum variable that will be used to calculate the sum of all deposits from the database
@@ -122,7 +124,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AdvancePaymentSubmitBu
                         <?php
                         while ($rowAdvancePayment = mysqli_fetch_array($resultAdvancePayment)) {
                             $advancePaymentSum += $rowAdvancePayment['AdvancePayment'];
-                            echo '<tr>';
+                            if($rowAdvancePayment['StartDate'] == date('Y-m-d')){
+                                $classRedAdvancedPayment = 'red';
+                            } else {
+                                $classRedAdvancedPayment = '';
+                            }
+                            echo '<tr class="'.$classRedAdvancedPayment.'">';
                                 echo '<td>' . dateToCroatianFormatNoYear($rowAdvancePayment['StartDate']) . '</td>';
                                 echo '<td>'.$rowAdvancePayment['BoatName'].' - '.$rowAdvancePayment['Name'].'</td>';
                                 echo '<td>€'. $rowAdvancePayment['AdvancePayment'] .'</td>';
