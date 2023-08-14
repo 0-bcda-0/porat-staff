@@ -69,7 +69,7 @@ if(isset($_POST["btn_edit"]))
         $DepartureEmployeeID = 0;
     }
 
-    if(isset($_POST["Deposit"]))
+    if(isset($_POST["Deposit"]) && is_numeric($_POST["Deposit"]))
     {
         $DepositStatus = 1;
     }
@@ -78,7 +78,7 @@ if(isset($_POST["btn_edit"]))
         $DepositStatus = 0;
     }
 
-    if(isset($_POST["AdvancePayment"]))
+    if(isset($_POST["AdvancePayment"]) && is_numeric($_POST["AdvancePayment"]))
     {
         $AdvancePaymentStatus = 1;
     }
