@@ -227,9 +227,14 @@ echo '
                 </lord-icon>
                 </a>
                 </div>
+                <!--
                 <form class="form-dateSubmit" method="POST" action="">
                     <input type="date" id="input-dateSubmit" name="input-dateSubmit" value="'.$dayDisplayed.'" class="input-dateSubmit big-text">
                     <input type="submit" name="input-buttonSubmit" value="Odaberi" class="button-dateSubmit">
+                </form>
+                -->
+                <form class="form-dateSubmit" method="POST" action="" id="dateSubmitForm">
+                    <input type="date" id="input-dateSubmit" name="input-dateSubmit" value="'.$dayDisplayed.'" class="input-dateSubmit big-text">
                 </form>
                     <div class="arrow">
                 <a href="reservations.php?day='.$dayDisplayed.'&move=next">

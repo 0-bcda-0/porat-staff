@@ -241,4 +241,13 @@ window.addEventListener('orientationchange', function() {
     }, 1000);
 })();
 
+document.addEventListener('DOMContentLoaded', function() {
+    const dateInput = document.getElementById('input-dateSubmit');
+    const form = document.getElementById('dateSubmitForm');
+
+    dateInput.addEventListener('change', function() {
+        form.submit();
+    });
+});
+
 

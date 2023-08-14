@@ -124,6 +124,10 @@ if($_SESSION["Level"] === '1')
                     <div class="set-container w45">
                         <div class="set-title">Promjene</div>
                         <div>
+                            <div class="change-title">15.8.</div>
+                            <div class="change-text">-Svi sljedeci updati nece zahtjevati ciscenje cachea</div>
+                            <div class="change-text">-Odabir datuma za pregled rezervacija vise nema tipku odaberi ako se stisne na datum i odabere preko kaledara.</div>
+
                             <div class="change-title">14.8. (zahtjeva ciscenje cache-a)</div>
                             <div class="change-text">-Vremenske informacije na karticama su podebljane</div>
                             <div class="change-text">-Dodana stranica "Blagajna" koja vodi biljesku o stanju u kuvertama.</div>

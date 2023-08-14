@@ -17,6 +17,7 @@ echo '
         <link href="../reservations/reservations.css" rel="stylesheet">
         <link href="../addReservation/addReservation.css" rel="stylesheet">
         <link rel="stylesheet" href="../settings/settings.css">
+        <link rel="stylesheet" href="../books/books.css">
 
         <!-- Navigacija -->
         <link rel="stylesheet" href="../navigation/navigation.css">

@@ -1,0 +1,15 @@
+th{
+    background-color: transparent;
+    color: rgb(1, 51, 88);
+    border-bottom: 2px solid #F89B3E;
+}
+
+tr:nth-child(odd) {
+    background-color: transparent;
+    border-bottom: 2px dotted #F89B3E;
+}
+
+tr:nth-child(even) {
+    background-color: transparent;
+    border-bottom: 2px dotted #F89B3E;
+}

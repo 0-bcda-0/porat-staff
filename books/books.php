@@ -67,7 +67,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AdvancePaymentSubmitBu
 <main id="blur">
     <div class="spacer"></div>
     <div class="add-glass-container blurForClearFormPopup" id="blurForClearFormPopup">
-        <!--LIJEVI DIO-->
+        <!--DEPOSIT-->
         <div class="add-glass">
 
             <div class="add-title">Deposit</div>
@@ -75,10 +75,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AdvancePaymentSubmitBu
             <div class="add-panel add-panel-left">
                 <table>
                     <thead>
-                        <th>Uzet</th>
-                        <th>Rezervacija</th>
-                        <th>Iznos</th>
-                        <th>Akcija</th>
+                        <th class="books-th">Uzet</th>
+                        <th class="books-th">Rezervacija</th>
+                        <th class="books-th">Iznos</th>
+                        <th class="books-th">Akcija</th>
                     </thead>
                     <tbody>
                         <?php
@@ -104,7 +104,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AdvancePaymentSubmitBu
             </div>
         </div>
 
-        <!--DESNI DIO-->
+        <!--AKONTACIJE-->
+        
         <div class="add-glass">
 
             <div class="add-title">Akontacija</div>
@@ -139,8 +140,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AdvancePaymentSubmitBu
                 <div class="add-input-title">Ukupno:  €<?php echo $advancePaymentSum; ?></div>
             </div>
         </div>
+
+        <!-- DNEVNI-->
+        
     </div>
 
+    <div class="spacer spacer-bottom"></div>
     <div class="spacer spacer-bottom"></div>
     <div class="spacer spacer-bottom"></div>
 </main>

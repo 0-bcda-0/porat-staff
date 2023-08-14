@@ -40,9 +40,8 @@ echo '
           <!-- Blagajna -->
           <li class="nav-item">
             <a href="../books/books.php" class="nav-linkm">
-              <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
               <lord-icon class="icon"
-                  src="https://cdn.lordicon.com/wxnxiano.json"
+                  src="../icon/book.json"
                   target="a.nav-linkm"
                   trigger="loop-on-hover"
                   delay="500"
