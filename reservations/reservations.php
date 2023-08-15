@@ -318,7 +318,17 @@ echo '
                                 <div class="col">
                                     <div class="card-title">'.$value['BoatName'].' - '.$value['ClientName'].'</div>
                                     <div class="card-time">Od: <b>'.$value['StartTimeH'].':'.$value['StartTimeM'].'</b>h do <b>'.$value['FinishTimeH'].':'.$value['FinishTimeM'].'</b>h</div>
-                                    <div class="card-time">Od: <b>'.dateToCroatianFormatNoYear($value['StartDate']).'</b> do <b>'.dateToCroatianFormatNoYear($value['FinishDate']).'</b></div>
+                                    ';
+                                    if($value['StartDate'] == $value['FinishDate'])
+                                    {
+                                        echo '<div class="card-time">.</div>';
+                                    }
+                                    else
+                                    {
+                                        echo '<div class="card-time">Od: <b>'.dateToCroatianFormatNoYear($value['StartDate']).'</b> do <b>'.dateToCroatianFormatNoYear($value['FinishDate']).'</b></div>';
+                                    }
+
+                                    echo '
                                     <div class="flex">
                                         <div>Status:</div>
                                         ';

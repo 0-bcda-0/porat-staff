@@ -19,7 +19,7 @@ $queryDeposit = "SELECT
                 FROM reservation
                 LEFT JOIN boat ON (reservation.BoatID = boat.IDBoat)
                 WHERE reservation.DepositStatus = '1'
-                ORDER BY reservation.StartDate ASC;";
+                ORDER BY reservation.FinishDate ASC;";
 $resultDeposit = mysqli_query($con, $queryDeposit);
 
 $queryAdvancePayment = "SELECT 
@@ -79,7 +79,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AdvancePaymentSubmitBu
             <div class="add-panel add-panel-left">
                 <table>
                     <thead>
-                        <th class="books-th">DR</th>
+                        <th class="books-th">DZR</th>
                         <th class="books-th">Rezervacija</th>
                         <th class="books-th">Iznos</th>
                         <th class="books-th">Akcija</th>
@@ -88,8 +88,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AdvancePaymentSubmitBu
                         <?php
                         while ($rowDeposit = mysqli_fetch_array($resultDeposit)) {
                             $depositSum += $rowDeposit['Deposit'];
-                            echo '<tr>';
-                                echo '<td>'. dateToCroatianFormatNoYear($rowDeposit['StartDate']) . '</td>';
+                            if($rowDeposit['FinishDate'] == date('Y-m-d') || $rowDeposit['FinishDate'] < date('Y-m-d')){
+                                $classRedDeposit = 'red';
+                            } else {
+                                $classRedDeposit = 'NiJeReD';
+                            }
+                            echo '<tr class="'.$classRedDeposit.'">';
+                                echo '<td>'. dateToCroatianFormatNoYear($rowDeposit['FinishDate']) . '</td>';
                                 echo '<td>'.$rowDeposit['BoatName'].' - '.$rowDeposit['Name'].'</td>';
                                 echo '<td>€'. $rowDeposit['Deposit'] .'</td>';
                                 echo '<td>
@@ -103,6 +108,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AdvancePaymentSubmitBu
                         ?>
                     </tbody>
                 </table>
+                <div>*DZR - Datum Završetka Rezervacije</div>
                 <div class="add-input-title">Ukupno:  €<?php echo $depositSum; ?></div>
 
             </div>
@@ -117,7 +123,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AdvancePaymentSubmitBu
             <div class="add-panel add-panel-left">
                 <table>
                     <thead>
-                        <th>DA</th>
+                        <th>DPR</th>
                         <th>Rezervacija</th>
                         <th>Iznos</th>
                         <th>Akcija</th>
@@ -146,6 +152,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AdvancePaymentSubmitBu
                         ?>
                     </tbody>
                 </table>
+                <div>*DZR - Datum Početka Rezervacije</div>
                 <div class="add-input-title">Ukupno:  €<?php echo $advancePaymentSum; ?></div>
             </div>
         </div>
