@@ -152,7 +152,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AdvancePaymentSubmitBu
                         ?>
                     </tbody>
                 </table>
-                <div>*DZR - Datum Početka Rezervacije</div>
+                <div>*DPR - Datum Početka Rezervacije</div>
                 <div class="add-input-title">Ukupno:  €<?php echo $advancePaymentSum; ?></div>
             </div>
         </div>

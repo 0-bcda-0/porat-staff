@@ -26,6 +26,9 @@ if(!isset($_SESSION['IDEmployee']))
 
 if(isset($_POST["btn_edit"]))
 {
+    $IDr = (int)$_GET["IDr"];
+    $IDr = mysqli_real_escape_string($con, $IDr);
+    
     $BoatID = mysqli_real_escape_string($con, $_POST["BoatID"]);
     $StartDate = mysqli_real_escape_string($con, $_POST["StartDate"]);
     $FinishDate = mysqli_real_escape_string($con, $_POST["FinishDate"]);
@@ -71,26 +74,49 @@ if(isset($_POST["btn_edit"]))
         $DepartureEmployeeID = 0;
     }
 
-    if(isset($_POST["Deposit"]) && is_numeric($_POST["Deposit"]))
+    $queryStatus = "SELECT DepositStatus, AdvancePaymentStatus FROM reservation WHERE IDReservation = '$IDr'";
+
+    $resultStatus = mysqli_query($con, $queryStatus);
+
+    $rowStatus = mysqli_fetch_assoc($resultStatus);
+
+    $DepositStatusDatabase = $rowStatus['DepositStatus'];
+    $AdvancePaymentStatusDatabase = $rowStatus['AdvancePaymentStatus'];
+
+    if(isset($_POST["Deposit"]) && is_numeric($_POST["Deposit"]) && $DepositStatusDatabase == 0)
     {
         $DepositStatus = 1;
+    }
+    else if($DepositStatusDatabase == 1)
+    {
+        $DepositStatus = 1;
+    }
+    else if($DepositStatusDatabase == 2)
+    {
+        $DepositStatus = 2;
     }
     else
     {
         $DepositStatus = 0;
     }
 
-    if(isset($_POST["AdvancePayment"]) && is_numeric($_POST["AdvancePayment"]))
+    if(isset($_POST["AdvancePayment"]) && is_numeric($_POST["AdvancePayment"]) && $AdvancePaymentStatusDatabase == 0)
     {
         $AdvancePaymentStatus = 1;
+    }
+    else if($AdvancePaymentStatusDatabase == 1)
+    {
+        $AdvancePaymentStatus = 1;
+    }
+    else if($AdvancePaymentStatusDatabase == 2)
+    {
+        $AdvancePaymentStatus = 2;
     }
     else
     {
         $AdvancePaymentStatus = 0;
     }
 
-    $IDr = (int)$_GET["IDr"];
-    $IDr = mysqli_real_escape_string($con, $IDr);
 
     $query_upd = "UPDATE reservation
                     SET
@@ -178,9 +204,18 @@ if (isset($_POST["btn_save"])) {
     if (isset($_POST["Departure"])) {
         $Departure = (int)$_POST["Departure"];
         $Departure = mysqli_real_escape_string($con, $Departure);
+        if($Departure == 1)
+        {
+            $DepartureEmployeeID = $_SESSION['IDEmployee'];
+        }
+        else
+        {
+            $DepartureEmployeeID = 0;
+        }
     }
     else{
         $Departure = 0;
+        $DepartureEmployeeID = 0;
     }
 
     if(isset($_POST["Deposit"]) && is_numeric($_POST["Deposit"]))
@@ -238,9 +273,9 @@ if (isset($_POST["btn_save"])) {
         //Ako nije overbook: nastavi s insertom 
         else {
             $query_ins = "INSERT INTO reservation
-                            (BoatID, StartDate, StartTime, FinishDate, FinishTime, Name, Surname, TelNum, OIB, Price, AdvancePayment, PriceDiffrence, Deposit, CreatedDate, AdvancePaymentDate, PriceDiffrenceDate, DepositDate, EmployeeID, SessionEmployeeID, Note, Platform, Departure)
+                            (BoatID, StartDate, StartTime, FinishDate, FinishTime, Name, Surname, TelNum, OIB, Price, AdvancePayment, PriceDiffrence, Deposit, CreatedDate, AdvancePaymentDate, AdvancePaymentStatus, PriceDiffrenceDate, DepositDate, DepositStatus, EmployeeID, SessionEmployeeID, Note, Platform, Departure)
                             VALUES
-                            ('$BoatID', '$StartDate', '$StartTime', '$FinishDate', '$FinishTime', '$ClientName', '$ClientSurname', '$ClientTelNum', '$ClientOIB', '$Price', $AdvancePayment, $PriceDiffrence, $Deposit, '$CreatedDate', $AdvancePaymentDate, $PriceDiffrenceDate, $DepositDate, '$EmployeeID', '$SessionEmployeeID', '$Note', '$Platform', '$Departure')";
+                            ('$BoatID', '$StartDate', '$StartTime', '$FinishDate', '$FinishTime', '$ClientName', '$ClientSurname', '$ClientTelNum', '$ClientOIB', '$Price', $AdvancePayment, $PriceDiffrence, $Deposit, '$CreatedDate', $AdvancePaymentDate, $AdvancePaymentStatus, $PriceDiffrenceDate, $DepositDate, $DepositStatus, '$EmployeeID', '$SessionEmployeeID', '$Note', '$Platform', '$Departure')";
         
             $result_ins = mysqli_query($con, $query_ins);
         
