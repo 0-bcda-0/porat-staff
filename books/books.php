@@ -35,36 +35,39 @@ $resultAdvancePayment = mysqli_query($con, $queryAdvancePayment);
 $depositSum = 0;
 $advancePaymentSum = 0;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['DepositSubmitButton'])) {
-    $reservationId = $_POST['reservationId'];
-    
-    // Update the DepositStatus to 0 for the selected reservation
-    $updateQuery = "UPDATE reservation SET DepositStatus = '2' WHERE IDReservation = '$reservationId'";
-    $updateResult = mysqli_query($con, $updateQuery);
-    
-    if ($updateResult) {
-        echo '<script type="text/javascript">window.location.replace("books.php");</script>';
-    } else {
-        // Handle error, if the update query fails
-        echo '<script type="text/javascript">alert("Greška prilikom vraćanja akontacije!");</script>';
+if($_SESSION['Level'] == 3){
+
+}else{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['DepositSubmitButton'])) {
+        $reservationId = $_POST['reservationId'];
+        
+        // Update the DepositStatus to 0 for the selected reservation
+        $updateQuery = "UPDATE reservation SET DepositStatus = '2' WHERE IDReservation = '$reservationId'";
+        $updateResult = mysqli_query($con, $updateQuery);
+        
+        if ($updateResult) {
+            echo '<script type="text/javascript">window.location.replace("books.php");</script>';
+        } else {
+            // Handle error, if the update query fails
+            echo '<script type="text/javascript">alert("Greška prilikom vraćanja akontacije!");</script>';
+        }
+    }
+
+    if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AdvancePaymentSubmitButton'])) {
+        $reservationId = $_POST['reservationId'];
+        
+        // Update the AdvancePaymentStatus to 0 for the selected reservation
+        $updateQuery = "UPDATE reservation SET AdvancePaymentStatus = '2' WHERE IDReservation = '$reservationId'";
+        $updateResult = mysqli_query($con, $updateQuery);
+        
+        if ($updateResult) {
+            echo '<script type="text/javascript">window.location.replace("books.php");</script>';
+        } else {
+            // Handle error, if the update query fails
+            echo '<script type="text/javascript">alert("Greška prilikom vraćanja akontacije!");</script>';
+        }
     }
 }
-
-if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['AdvancePaymentSubmitButton'])) {
-    $reservationId = $_POST['reservationId'];
-    
-    // Update the AdvancePaymentStatus to 0 for the selected reservation
-    $updateQuery = "UPDATE reservation SET AdvancePaymentStatus = '2' WHERE IDReservation = '$reservationId'";
-    $updateResult = mysqli_query($con, $updateQuery);
-    
-    if ($updateResult) {
-        echo '<script type="text/javascript">window.location.replace("books.php");</script>';
-    } else {
-        // Handle error, if the update query fails
-        echo '<script type="text/javascript">alert("Greška prilikom vraćanja akontacije!");</script>';
-    }
-}
-
 
 ?>
 

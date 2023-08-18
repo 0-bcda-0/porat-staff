@@ -22,8 +22,8 @@ if(!isset($_SESSION['IDEmployee']))
     ';
 }
 
-//1 - Obicni korisnik
-if($_SESSION["Level"] === '1')
+//1 - Obicni korisnik i demo korisnik
+if($_SESSION["Level"] === '1' || $_SESSION["Level"] === '3')
 {
     // header("Location: ../reservations/reservations.php");
 
@@ -126,6 +126,9 @@ if($_SESSION["Level"] === '1')
                     <div class="set-container w45">
                         <div class="set-title">Promjene</div>
                         <div>
+                            <div class="change-title">15.8.</div>
+                            <div class="change-text">-Dodan view only/demo account. Username: Demo, Pin: 0000</div>
+                            
                             <div class="change-title">15.8.</div>
                             <div class="change-text">-Svi sljedeci updati nece zahtjevati ciscenje cachea</div>
                             <div class="change-text">-Odabir datuma za pregled rezervacija vise nema tipku odaberi ako se stisne na datum i odabere preko kaledara.</div>
@@ -883,7 +886,7 @@ else if($_SESSION["Level"] == '0'){
                             <input type="text" id="level" name="level" value="'.$Level.'" class="set-inputField ">
                         </div>
                         <div class="set-inputFlex">
-                            <div class="col-black">Levels: 0 - Admin, 1 - User, 2 - Manager</div>
+                            <div class="col-black">Levels: <br>0 - Admin, 1 - User, <br>2 - Manager, 3 - View only</div>
                         </div>
                         <input type="submit" value="Spremi" class="add-button-rezerviraj" name="'.$btnEmployeeForm.'">
                     </form>

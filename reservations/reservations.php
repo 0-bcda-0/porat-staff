@@ -61,6 +61,9 @@ if (isset($_GET["move"])) {
 }
 
 
+if($_SESSION['Level'] == 3){
+
+}else{
 
 // ||||||||||||||||||||||||||||||||||||||| BRISANJE REZERVACIJE |||||||||||||||||||||||||||||||||||||||
 if(isset($_GET["task"]) && $_GET["task"] == "del")
@@ -91,6 +94,9 @@ if(isset($_GET["task"]) && $_GET["task"] == "del")
     {
         echo 'Greska kod brisanja. Pokusajte ponovo';
     }
+}
+
+//Zatvaranje DEMO account elsa
 }
 
 

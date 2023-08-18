@@ -23,6 +23,9 @@ if(!isset($_SESSION['IDEmployee']))
     ';
 }
 
+if($_SESSION['Level'] == 3){
+
+}else{
 
 if(isset($_POST["btn_edit"]))
 {
@@ -305,6 +308,9 @@ if (isset($_POST["btn_save"])) {
         }
 }
 
+//zatvara DEMO account else
+}
+
 
 // Ako je stisnuta postojeca rezervacija
 if(isset($_GET["IDr"])){
@@ -568,7 +574,7 @@ echo '
                             <option value="">Rezervirao...</option>
                             ';
 
-                            $query_employee = "SELECT * FROM employee WHERE Username != 'Admin' ORDER BY IDEmployee ASC";
+                            $query_employee = "SELECT * FROM employee WHERE Username NOT IN ('Admin', 'Demo') ORDER BY Username ASC";
                             $result_employee = mysqli_query($con, $query_employee);
 
                             while($row = mysqli_fetch_assoc($result_employee))
