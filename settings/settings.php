@@ -126,7 +126,7 @@ if($_SESSION["Level"] === '1' || $_SESSION["Level"] === '3')
                     <div class="set-container w45">
                         <div class="set-title">Promjene</div>
                         <div>
-                            <div class="change-title">22.8.</div>
+                            <div class="change-title">22.8. (zahtjeva ciscenje cache-a)</div>
                             <div class="change-text">-Mjenjanje datuma se sada moze napraviti i sa swipe gesture po ekranu</div>
                             <div class="change-text">-Dodan plutajuci prozor prikaza datuma i dana kada se scrolla dolje</div>
                             <div class="change-text">-Kada se promjeni datum swipe-om, zadrzava se pozicija scrolla</div>
