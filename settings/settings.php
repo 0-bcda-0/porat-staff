@@ -126,7 +126,13 @@ if($_SESSION["Level"] === '1' || $_SESSION["Level"] === '3')
                     <div class="set-container w45">
                         <div class="set-title">Promjene</div>
                         <div>
-                            <div class="change-title">15.8.</div>
+                            <div class="change-title">22.8.</div>
+                            <div class="change-text">-Mjenjanje datuma se sada moze napraviti i sa swipe gesture po ekranu</div>
+                            <div class="change-text">-Dodan plutajuci prozor prikaza datuma i dana kada se scrolla dolje</div>
+                            <div class="change-text">-Kada se promjeni datum swipe-om, zadrzava se pozicija scrolla</div>
+                            <div class="change-text">-Kada se otvore detalji rezervacije, onemogucen je scroll u pozadini</div>
+
+                            <div class="change-title">16.8.</div>
                             <div class="change-text">-Dodan view only/demo account. Username: Demo, Pin: 0000</div>
                             
                             <div class="change-title">15.8.</div>

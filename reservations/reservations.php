@@ -226,7 +226,7 @@ while($row = mysqli_fetch_assoc($result))
 }
 
 // Dodavanje polja CardSlotPlace, TimeSlot, CardNumber u polje $booked_slots, te sortiranje po CardNumberu
-$booked_slots = modifyArray($booked_slots, $lookup);
+$booked_slots = modifyArray2($booked_slots, $lookup);
 
 $cardFlag = array();
 
@@ -276,7 +276,7 @@ echo '
             </div>
             <div class="big-text fix-width">'.$dayOfWeekCroatian.' / '.$dayOfWeekEnglish.'</div>
         </div>
-        <div class="grid">
+        <div class="grid" id="swipeArea">
             ';
 
             // Stavljamo sve u arrayu na false
@@ -568,6 +568,11 @@ echo '
 </div>
 </div>
 
+<div class="date-bubble" id="date-bubble">
+    <div class="">'.$dayDisplayedMyFormat.' - '.$dayOfWeekCroatian.' / '.$dayOfWeekEnglish.'</div>
+</div>
+
+
 <!--
 <div id="deleteWindow">
     <div class="deleteWindow-rows">
@@ -610,6 +615,10 @@ echo '
         colors="primary:#ffffff">
     </lord-icon>
 </button>
+<script>
+    // Output the PHP variable as a JavaScript variable
+    const dayDisplayed = "'.$dayDisplayed.'";
+</script>
 
 
 ';

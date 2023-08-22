@@ -485,6 +485,16 @@ a:hover {
   display: block;
 }
 
+/* ------------------------------------------------------------------------------------ */
+/* Zbog Bootstrapa je nadodano slovo m, inace se sve strga */
+.date-bubble{
+  display: none;
+}
+
+
+/* ------------------------------------------------------------------------------------ */
+
+
 
 /* BlueBook */
 /* TABLET */
@@ -656,5 +666,37 @@ a:hover {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .date-bubble{
+    display: block;
+    position: fixed;
+    background-color: #d88f8c;
+    /* border-radius: 0px 25px 25px 0px; */
+    transition: width 600ms ease;
+    overflow: hidden;
+    z-index: 2;
+
+    /* bottom: 1.0rem; */
+    top: 1.5rem;
+    width: 100vw;
+    /* height: 4rem; */
+    height: 3rem;
+    padding: 0;
+
+    /* width: 95%; */
+    width: 70%;
+
+    /* margin-left: 2.5%; */
+    margin-left: 15%;
+
+    /* border-radius: 20px; */
+    border-radius: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    visibility: hidden;
   }
 }

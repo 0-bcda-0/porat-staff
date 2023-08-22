@@ -36,6 +36,7 @@ function dateToDaysOfWeekCroatian($date) {
     return $dayOfWeekCroatian;
 }
 
+//VISE SE NE KORISTI...
 function modifyArray($array, $lookup) {
     for ($i = 0; $i < count($array); $i++) {
         $array[$i]['StartTimeH'] = date("H", strtotime($array[$i]['StartTime']));
@@ -60,6 +61,14 @@ function modifyArray($array, $lookup) {
             $array[$i]['TimeSlot'] = 3;
             $array[$i]['CardSlotPlace'] = 1;
         }
+
+        
+        // TIMESLOT 1 = 1/2 dana prva poloovica
+        // TIMESLOT 2 = 1/2 dana druga polovica
+        // TIMESLOT 3 = cijeli dan
+
+        // CARD SLOT PLACE 1 = Lijeva Kartica
+        // CARD SLOT PLACE 2 = Desna Kartica
     
     /*
     for ($i=0; $i < count($array); $i++) { 
@@ -170,5 +179,52 @@ function modifyArray($array, $lookup) {
 
     return $array;
 }
+
+function modifyArray2($array, $lookup) {
+    for ($i = 0; $i < count($array); $i++) {
+        $array[$i]['StartTimeH'] = date("H", strtotime($array[$i]['StartTime']));
+        $array[$i]['StartTimeM'] = date("i", strtotime($array[$i]['StartTime']));
+        $array[$i]['FinishTimeH'] = date("H", strtotime($array[$i]['FinishTime']));
+        $array[$i]['FinishTimeM'] = date("i", strtotime($array[$i]['FinishTime']));
+
+        if ($array[$i]['IDBoat'] > 5) {
+            $array[$i]['CardSlotPlace'] = 1;
+            $array[$i]['TimeSlot'] = 3; // Always set to full day for IDBoat > 5
+        } else {
+            if ($array[$i]['FinishTimeH'] <= 16) {
+                $array[$i]['CardSlotPlace'] = 1;
+                $array[$i]['TimeSlot'] = 1;
+            } else if ($array[$i]['StartTimeH'] > 12 && $array[$i]['FinishTimeH'] <= 23) {
+                $array[$i]['CardSlotPlace'] = 2;
+                $array[$i]['TimeSlot'] = 2;
+            } else if ($array[$i]['FinishTimeH'] <= 23) {
+                $array[$i]['CardSlotPlace'] = 1;
+                $array[$i]['TimeSlot'] = 3;
+            } else {
+                $array[$i]['CardSlotPlace'] = 1;
+                $array[$i]['TimeSlot'] = 3;
+            }
+        }
+    }
+
+    // Optimizirani nacin za izracunavanje pozicije rezervacije na kartici
+    // Tu se referencira sad na $lookup u config.php i iz njega uzima vrijednosti
+    for ($i = 0; $i < count($array); $i++) {
+        foreach ($lookup as $cardNumber => $values) {
+            if ($array[$i]['CardSlotPlace'] == $values['CardSlotPlace'] && $array[$i]['IDBoat'] == $values['IDBoat']) {
+                $array[$i]['CardNumber'] = $cardNumber;
+                break;
+            }
+        }
+    }
+
+    // Sortiranje $array po CardNumberu
+    usort($array, function($a, $b) {
+        return $a['CardNumber'] <=> $b['CardNumber'];
+    });
+
+    return $array;
+}
+
 
 ?>

@@ -2,6 +2,8 @@
 // 4. Funkcionalnost: Otvaranje telefona na klik broja telefona
 document.addEventListener("DOMContentLoaded", function() {
 function popup2(json) {
+    const body = document.body;
+    body.style.overflow = 'hidden';
     // Parsiranje jsona u varijablu
     var reservation = JSON.parse(json);
     
@@ -29,8 +31,6 @@ function popup2(json) {
     var dateDeposit = formatDate(reservation.DepositDate);
     var dateCreatedDate = formatDate(reservation.CreatedDate);
 
-    console.log('1. ' + reservation.AdvancePaymentStatus);
-    console.log('2. ' + reservation.DepositStatus);
 
     // console.log(reservation.Employee, dateCreatedDate, reservation.CreatedDate);
 
@@ -123,6 +123,8 @@ window.popup2 = popup2;
 
 function popup(json){
     popup2(json);
+    const body = document.body;
+    body.style.overflow = 'hidden';
 }
 
 function delete_popup() {
@@ -138,6 +140,8 @@ function delete_popup_in_popup () {
 // Add this function to prevent the default link behavior
 function closepopuphelp() {
     document.getElementById('popup').classList.remove('active');
+    const body = document.body;
+    body.style.overflow = 'auto';
 }
 
 function closepopup(event) {
@@ -249,5 +253,63 @@ document.addEventListener('DOMContentLoaded', function() {
         form.submit();
     });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const swipeArea = document.getElementById('swipeArea');
+    let startX, startY;
+    let initialScrollPosition = 0;
+
+    // Store the initial scroll position when the page loads
+    window.addEventListener('scroll', () => {
+        initialScrollPosition = window.scrollY;
+    });
+
+    swipeArea.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+    });
+
+    swipeArea.addEventListener('touchend', (e) => {
+        const endX = e.changedTouches[0].clientX;
+        const endY = e.changedTouches[0].clientY;
+        const deltaX = endX - startX;
+        const deltaY = endY - startY;
+
+        // Check if the swipe has more horizontal movement than vertical movement
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 150 && deltaX < 0) {
+            // Swipe from right to left detected
+            // Save the scroll position before navigating
+            const scrollPosition = initialScrollPosition;
+            window.location.href = `reservations.php?day=${dayDisplayed}&move=next&scroll=${scrollPosition}`;
+        }
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > -150 && deltaX > 0) {
+            // Swipe from left to right detected
+            // Save the scroll position before navigating
+            const scrollPosition = initialScrollPosition;
+            window.location.href = `reservations.php?day=${dayDisplayed}&move=previous&scroll=${scrollPosition}`;
+        }
+    });
+});
+
+function setScrollPositionFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const scrollPosition = parseInt(urlParams.get('scroll')) || 0;
+    window.scrollTo(0, scrollPosition);
+}
+
+// Call the function when the page loads
+window.addEventListener('load', setScrollPositionFromUrl);
+
+
+function toggleDateBubbleVisibility() {
+    const dateBubble = document.getElementById('date-bubble');
+    if (window.scrollY >= 300) {
+        dateBubble.style.visibility = 'visible';
+    } else {
+        dateBubble.style.visibility = 'hidden';
+    }
+}
+
+window.addEventListener('scroll', toggleDateBubbleVisibility);
 
 
