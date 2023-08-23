@@ -259,8 +259,8 @@ if (isset($_POST["btn_save"])) {
                                 AND FinishDate >= '$StartDate' 
                                 AND StartTime <= '$FinishTime' 
                                 AND FinishTime >= '$StartTime'
-                                AND Departure = '1'";
-        
+                                AND Deleted = 0";
+
         $result_check_overlap = mysqli_query($con, $query_check_overlap);
 
         //Ako je overbook: prikazi popup
