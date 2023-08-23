@@ -187,7 +187,7 @@ function modifyArray2($array, $lookup) {
         $array[$i]['FinishTimeH'] = date("H", strtotime($array[$i]['FinishTime']));
         $array[$i]['FinishTimeM'] = date("i", strtotime($array[$i]['FinishTime']));
 
-        if ($array[$i]['IDBoat'] > 5) {
+        if ($array[$i]['IDBoat'] >= 5) {
             $array[$i]['CardSlotPlace'] = 1;
             $array[$i]['TimeSlot'] = 3; // Always set to full day for IDBoat > 5
         } else {

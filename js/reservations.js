@@ -291,15 +291,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-function setScrollPositionFromUrl() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const scrollPosition = parseInt(urlParams.get('scroll')) || 0;
-    window.scrollTo(0, scrollPosition);
-}
-
-// Call the function when the page loads
-window.addEventListener('load', setScrollPositionFromUrl);
-
 
 function toggleDateBubbleVisibility() {
     const dateBubble = document.getElementById('date-bubble');

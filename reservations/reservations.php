@@ -71,7 +71,10 @@ if(isset($_GET["task"]) && $_GET["task"] == "del")
     $IDr = (int)$_GET["IDr"];
     $IDr = mysqli_real_escape_string($con, $IDr);
 
-    $query_del = "DELETE FROM reservation WHERE IDReservation = '$IDr'";
+    $DeletedDate = date("Y-m-d");
+    $DeletedEmployeeID = $_SESSION['IDEmployee'];
+
+    $query_del = "UPDATE reservation SET Deleted = 1, DeletedDate = '$DeletedDate', DeletedEmployeeID = '$DeletedEmployeeID' WHERE IDReservation = '$IDr'";
 
     $result_del = mysqli_query($con, $query_del);
 
@@ -155,6 +158,7 @@ $query = "SELECT
             LEFT JOIN employee emp1 ON (reservation.EmployeeID = emp1.IDEmployee)
             LEFT JOIN employee emp2 ON (reservation.DepartureEmployeeID = emp2.IDEmployee)
             WHERE '$dayDisplayed' BETWEEN DATE(reservation.StartDate) AND DATE(reservation.FinishDate)
+            AND reservation.Deleted = 0
             ORDER BY boat.IDBoat ASC";
 
 $result = mysqli_query($con, $query);

@@ -258,7 +258,8 @@ if (isset($_POST["btn_save"])) {
                                 AND StartDate <= '$FinishDate' 
                                 AND FinishDate >= '$StartDate' 
                                 AND StartTime <= '$FinishTime' 
-                                AND FinishTime >= '$StartTime'";
+                                AND FinishTime >= '$StartTime'
+                                AND Departure = '1'";
         
         $result_check_overlap = mysqli_query($con, $query_check_overlap);
 
@@ -392,10 +393,12 @@ elseif (isset($_GET["BoatSelected"]) && isset($_GET["DateSelected"])) {
         $boatid = $item['IDBoat'];
         $boatprice = $item['BoatPrice'];
         if($item['CardSlotPlace'] == 1){
+            $starttime = "08:00";
             $finishtime = "18:00";
         }
         else{
-            $finishtime = "13:00";
+            $starttime = "13:00";
+            $finishtime = "19:00";
         }
     }
     }
@@ -406,7 +409,7 @@ elseif (isset($_GET["BoatSelected"]) && isset($_GET["DateSelected"])) {
     $BoatPrice = $boatprice;
     $StartDate = $convertedDate;
     $FinishDate = "";
-    $StartTime = "08:00";
+    $StartTime = $starttime;
     $FinishTime = $finishtime;
     $ClientName = "";
     $ClientSurname = "";
