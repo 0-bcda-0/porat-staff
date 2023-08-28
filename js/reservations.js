@@ -207,6 +207,7 @@ window.addEventListener('orientationchange', function() {
     document.getElementById('countdown').innerHTML = minutes + ":" + seconds;
 })();
 
+// AUTO REFRESH COUNTDOWN TIMER
 (function refreshCountdown() {
     // Funkcija koja se poziva svakih 1000ms (1s)
     setInterval(function() {
@@ -245,6 +246,7 @@ window.addEventListener('orientationchange', function() {
     }, 1000);
 })();
 
+// CALENDAR NAVIGATION AUTO SUBMIT
 document.addEventListener('DOMContentLoaded', function() {
     const dateInput = document.getElementById('input-dateSubmit');
     const form = document.getElementById('dateSubmitForm');
@@ -292,6 +294,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // });
 
 
+// DATE FLOATING BUBBLE
 function toggleDateBubbleVisibility() {
     const dateBubble = document.getElementById('date-bubble');
     if (window.scrollY >= 300) {

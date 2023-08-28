@@ -120,56 +120,81 @@ if(isset($_POST["btn_edit"]))
         $AdvancePaymentStatus = 0;
     }
 
+    // Provjera overbookinga
+    $query_check_overlap = "SELECT * FROM reservation 
+                                WHERE BoatID = '$BoatID' 
+                                AND StartDate <= '$FinishDate' 
+                                AND FinishDate >= '$StartDate' 
+                                AND StartTime <= '$FinishTime' 
+                                AND FinishTime >= '$StartTime'
+                                AND Deleted = 0";
 
-    $query_upd = "UPDATE reservation
-                    SET
-                    BoatID = '$BoatID',
-                    StartDate = '$StartDate',
-                    FinishDate = '$FinishDate',
-                    StartTime = '$StartTime',
-                    FinishTime = '$FinishTime',
-                    Name = '$ClientName',
-                    Surname = '$ClientSurname',
-                    TelNum = '$ClientTelNum',
-                    OIB = '$ClientOIB',
-                    Price = '$Price',
-                    AdvancePayment = $AdvancePayment,
-                    PriceDiffrence = $PriceDiffrence,
-                    Deposit = $Deposit,
-                    AdvancePaymentDate = $AdvancePaymentDate,
-                    AdvancePaymentStatus = $AdvancePaymentStatus,
-                    PriceDiffrenceDate = $PriceDiffrenceDate,
-                    DepositDate = $DepositDate,
-                    DepositStatus = $DepositStatus,
-                    EmployeeID = '$EmployeeID',
-                    SessionEmployeeID = '$SessionEmployeeID',
-                    Note = '$Note',
-                    Platform = '$Platform',
-                    Departure = '$Departure',
-                    DepartureEmployeeID = '$DepartureEmployeeID'
-                    WHERE IDReservation = '$IDr'";
-    
-    $result_upd = mysqli_query($con, $query_upd);
+    $result_check_overlap = mysqli_query($con, $query_check_overlap);
 
-    if ($result_upd) {
-        //header('Location: ../reservations/reservations.php?day='.date("Y-m-d", strtotime($StartDate)).'');
-        $redirectDate = date("Y-m-d", strtotime($StartDate));
-        echo '
-        <script>
-        // Function to redirect the user to the reservations page with the specified date
-        function redirectToReservations(redirectDate) {
-            var reservationsURL = "../reservations/reservations.php?day=" + redirectDate;
-            window.location.href = reservationsURL;
+    //Ako je overbook: prikazi popup
+    if (mysqli_num_rows($result_check_overlap) > 0) {
+    echo '<script type="text/javascript">';
+    echo '// Wrap the code inside a DOMContentLoaded event listener
+    document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("blurForClearFormPopup").classList.toggle("active");
+    document.getElementById("errorPopup").classList.toggle("active");
+    });
+    ';
+    echo '</script>';
+    }
+    //Ako nije overbook: nastavi s insertom 
+    else {
+
+        $query_upd = "UPDATE reservation
+                        SET
+                        BoatID = '$BoatID',
+                        StartDate = '$StartDate',
+                        FinishDate = '$FinishDate',
+                        StartTime = '$StartTime',
+                        FinishTime = '$FinishTime',
+                        Name = '$ClientName',
+                        Surname = '$ClientSurname',
+                        TelNum = '$ClientTelNum',
+                        OIB = '$ClientOIB',
+                        Price = '$Price',
+                        AdvancePayment = $AdvancePayment,
+                        PriceDiffrence = $PriceDiffrence,
+                        Deposit = $Deposit,
+                        AdvancePaymentDate = $AdvancePaymentDate,
+                        AdvancePaymentStatus = $AdvancePaymentStatus,
+                        PriceDiffrenceDate = $PriceDiffrenceDate,
+                        DepositDate = $DepositDate,
+                        DepositStatus = $DepositStatus,
+                        EmployeeID = '$EmployeeID',
+                        SessionEmployeeID = '$SessionEmployeeID',
+                        Note = '$Note',
+                        Platform = '$Platform',
+                        Departure = '$Departure',
+                        DepartureEmployeeID = '$DepartureEmployeeID'
+                        WHERE IDReservation = '$IDr'";
+        
+        $result_upd = mysqli_query($con, $query_upd);
+
+        if ($result_upd) {
+            //header('Location: ../reservations/reservations.php?day='.date("Y-m-d", strtotime($StartDate)).'');
+            $redirectDate = date("Y-m-d", strtotime($StartDate));
+            echo '
+            <script>
+            // Function to redirect the user to the reservations page with the specified date
+            function redirectToReservations(redirectDate) {
+                var reservationsURL = "../reservations/reservations.php?day=" + redirectDate;
+                window.location.href = reservationsURL;
+            }
+        
+            // Automatically redirect the user to the reservations page on page load
+            redirectToReservations("' . $redirectDate . '"); // Enclose $redirectDate in quotes
+            </script>
+            ';
+        }    
+        else
+        {
+            echo 'Error in the SQL query (postojeca): ' . mysqli_error($con);
         }
-    
-        // Automatically redirect the user to the reservations page on page load
-        redirectToReservations("' . $redirectDate . '"); // Enclose $redirectDate in quotes
-        </script>
-        ';
-    }    
-    else
-    {
-        echo 'Error in the SQL query (postojeca): ' . mysqli_error($con);
     }
 }
 
