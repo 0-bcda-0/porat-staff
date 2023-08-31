@@ -43,6 +43,7 @@ function popup2(json) {
     document.getElementById('popupOib').innerHTML = reservation.ClientOIB;
     document.getElementById('popupPrice').innerHTML = reservation.Price + "€";
 
+    //* 2.5.2.
     document.getElementById('popupAdvancePaymentStatus').innerHTML =
     reservation.AdvancePaymentStatus === '1'
         ? '<div class="status open"></div>'
@@ -53,6 +54,7 @@ function popup2(json) {
     document.getElementById('popupAdvancePayment').innerHTML = reservation.AdvancePayment !== null ? reservation.AdvancePayment + "€ / " + dateAdvancePayment : '';
     document.getElementById('popupPriceDiffrence').innerHTML = reservation.PriceDiffrence !== null ? reservation.PriceDiffrence + "€ / " + datePriceDiffrence : '';
     
+    //* 2.5.2.
     document.getElementById('popupDepositStatus').innerHTML =
     reservation.DepositStatus === '1'
         ? '<div class="status open"></div>'
@@ -69,6 +71,7 @@ function popup2(json) {
 
     //  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
     // Kreiramo link za telefon
+    //* 2.5.1.
     let a = document.createElement('a');
     // Dodamo href atribut
     a.href = 'tel:' + reservation.ClientTelNum;
@@ -80,6 +83,7 @@ function popup2(json) {
 
     //  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
     // Kreiranje Popupa za potvrdu brisanja rezervacije, te prosljedivanje ID-a rezervacije u reservations.php za brisanje
+    //* 2.5.3.
     document.getElementById('popup').insertAdjacentHTML('afterend', `
     <div id="deleteWindow">
     <div class="deleteWindow-rows">
@@ -182,6 +186,7 @@ window.addEventListener('orientationchange', function() {
 
 //  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 // 9. Funkcionalnost: Prikaz Countdown timera, te refresh stranice kada timer istekne
+//* 2.9.
 (function refreshPage() {
     // Admin mijenja vrijeme u minutama
     var timeoutInMinutes = 3;

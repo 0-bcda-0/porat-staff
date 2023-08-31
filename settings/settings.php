@@ -7,6 +7,8 @@ include("../PHP/db_connection.php");
 
 date_default_timezone_set("Europe/Zagreb");
 
+//* 5.1.
+//* ~5.2.
 if(!isset($_SESSION['IDEmployee']))
 {
     // header("Location: ../index.php");
@@ -27,6 +29,7 @@ if($_SESSION["Level"] === '1' || $_SESSION["Level"] === '3')
 {
     // header("Location: ../reservations/reservations.php");
 
+    //* 5.4.
     if(isset($_POST["btn-prijava"])){
         $prijava = $_POST["prijava"];
         // insert into Text and EmployeeID
@@ -49,7 +52,8 @@ if($_SESSION["Level"] === '1' || $_SESSION["Level"] === '3')
             echo '<script>alert("Greška prilikom podnošenja prijave!")</script>';
         }
     }
-
+    
+    //* 5.3.
     if(isset($_POST["btn-pin"])){
         $cPin = $_POST["user-cPin"];
         $nPin = $_POST["user-nPin"];

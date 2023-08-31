@@ -15,6 +15,7 @@ function datumpopup() {
 } 
 
 // 2. Funkcionalnost: Resetiranje forme
+//* 3.3.
 function clearForm() {
     document.getElementById("reservationForm").reset();
     document.getElementById('blurForClearFormPopup').classList.toggle('active');
@@ -22,6 +23,7 @@ function clearForm() {
 }
 
 // 3. Funkcionalnost: Submit forme na enter
+//* 3.4.
 document.getElementById("reservationForm").addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
     event.preventDefault();
@@ -39,6 +41,7 @@ function calculatePrice() {
 }
 
 // 9. Funkcionalnost: Autocomplete addInput-razlika (razlika u cijeni) na temelju addInput-cijena i addInput-akontacija
+//* 3.5.
 document.getElementById('addInput-akontacija').addEventListener('input', function() {
   if (document.getElementById('addInput-cijena').value && document.getElementById('addInput-akontacija').value) {
     document.getElementById('addInput-Razlika-Span').innerHTML = document.getElementById('addInput-cijena').value - document.getElementById('addInput-akontacija').value;
@@ -48,6 +51,7 @@ document.getElementById('addInput-akontacija').addEventListener('input', functio
 });
 
 // 9. Funkcionalnost: Autocomplete addInput-razlika (razlika u cijeni) na temelju addInput-cijena i addInput-akontacija kada je addInput-razlika prazan
+//* 3.6.
 if(document.getElementById('addInput-razlika').value == "") {
   razlika2 = parseFloat(document.getElementById('addInput-razlika').value)
   console.log(razlika2);
@@ -91,6 +95,8 @@ document.getElementById('addInput-cijena').addEventListener('input', function() 
   }
 });
 
+// 11. Funkcionalnost: Provjera da li je addInput-akontacija popunjen, ako je, onda je addInput-AdvancePaymentDate required
+//* 3.7.
 function checkDateRequired(input, date) {
   // Get the input elements
   const addInputAkontacija = document.getElementById(input);

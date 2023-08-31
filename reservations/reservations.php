@@ -44,6 +44,7 @@ if (isset($_GET["move"]) && $_GET['move'] == "previous") {
 
 date_default_timezone_set("Europe/Zagreb");
 
+//* 2.1.
 if (isset($_GET["move"])) {
     if (isset($_POST["input-dateSubmit"])) {
         $dayDisplayed = $_POST["input-dateSubmit"];
@@ -112,7 +113,9 @@ $dayOfWeekEnglish = dateToDaysOfWeekEnglish($dayDisplayedMyFormat);
 
 $dayOfWeekCroatian = dateToDaysOfWeekCroatian($dayDisplayedMyFormat);
 
+
 // ||||||||||||||||||||||||||||||||||||||| BROD IKONA PROMJENA BOJE |||||||||||||||||||||||||||||||||||||||
+//* 2.2.
 $day = (int)explode("-", $dayDisplayed)[2];
 
 if ($day % 2 == 1) {
@@ -243,6 +246,7 @@ echo '
             <div class="flex-column">
                 <div class="big-text m-title">Kalendar Rezervacija</div>
                 <div class="flexcol-row">
+                    <!-- 2.9. -->
                     <div class="big-text m-title" id="countdown"></div>
                     <a href="reservations.php" class="button-dateSubmit">Danas '.date("d.m.").'</a>
                 </div>
@@ -300,6 +304,7 @@ echo '
                         // make $value array in json format
                         $json = json_encode($value);
 
+                        //* 2.3.
                         if($value['Platform'] == 1){
                             $platformClass = 'platform1';
                         }
@@ -310,8 +315,10 @@ echo '
                             $platformClass = '';
                         }
                         
+                        //* 2.4.
                         // Ako je rezervacija na cijeli dan, onda je kartica extended
                         if($value['TimeSlot'] == 3 && $value['CardNumber'] < 8){
+                            //* 2.5.
                             // Koristi se cudan echo zbog parsiranja jsona
                             echo <<<EOT
                                     <div class="card extended $platformClass" id="card'.$cardIndex.'" onclick='popup(`$json`)'>
@@ -342,6 +349,7 @@ echo '
                                     <div class="flex">
                                         <div>Status:</div>
                                         ';
+                                        //* 2.6.
                                         if($value['Departure'] == 1){
                                             echo '<div class="status in-progress"></div>';
                                             echo '<div>Isplovio by: '.$value['DepartureEmployee'].'</div>';
@@ -572,6 +580,7 @@ echo '
 </div>
 </div>
 
+<!-- 2.7. -->
 <div class="date-bubble" id="date-bubble">
     <div class="">'.$dayDisplayedMyFormat.' - '.$dayOfWeekCroatian.' / '.$dayOfWeekEnglish.'</div>
 </div>
@@ -611,6 +620,7 @@ echo '
 </div>
 -->
 
+<!-- 2.8. -->
 <button id="scrollToTop" class="scrollToTopArrow">
     <lord-icon
         src="../icon/dateArrow.json"

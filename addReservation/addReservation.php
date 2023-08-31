@@ -121,6 +121,7 @@ if(isset($_POST["btn_edit"]))
     }
 
     // Provjera overbookinga
+    //* 3.2.
     $query_check_overlap = "SELECT * FROM reservation 
                                 WHERE BoatID = '$BoatID' 
                                 AND StartDate <= '$FinishDate' 
@@ -339,6 +340,7 @@ if (isset($_POST["btn_save"])) {
 
 
 // Ako je stisnuta postojeca rezervacija
+//* 3.1.
 if(isset($_GET["IDr"])){
     $IDr = (int)$_GET["IDr"];
 

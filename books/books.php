@@ -32,12 +32,14 @@ $queryAdvancePayment = "SELECT
 $resultAdvancePayment = mysqli_query($con, $queryAdvancePayment);
 
 // Create DepositSum variable that will be used to calculate the sum of all deposits from the database
+//* 4.1.
 $depositSum = 0;
 $advancePaymentSum = 0;
 
 if($_SESSION['Level'] == 3){
 
 }else{
+    //* 4.2.
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['DepositSubmitButton'])) {
         $reservationId = $_POST['reservationId'];
         

@@ -1,5 +1,6 @@
 <?php
 
+// ! Ovo je samo za testiranje
 //ini_set('display_errors', 1);
 //ini_set('display_startup_errors', 1);
 //error_reporting(E_ALL);
@@ -7,13 +8,15 @@
 session_start();
 
 
+// ! Ukloniti sve instance ovog featura
 $_SESSION['NWD'] = 'js';
 $_SESSION["NWDScript-reservations"] = '<script src="../js/reservations.js"></script>';
 $_SESSION["NWDScript-addReservation"] = '<script src="../js/addReservation.js"></script>';
 
 include("PHP/db_connection.php");
 
-echo'
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -21,7 +24,7 @@ echo'
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="color-scheme" content="light only">
-    
+
         <!-- Bootstrap CSS -->
         <link href="css/login.css" rel="stylesheet">
         <!-- <link href="../css/background.css" rel="stylesheet"> -->
@@ -32,10 +35,10 @@ echo'
         <meta name="theme-color" content="#F89B3E">
         <link rel="apple-touch-icon" href="img/Logo-192.png">
 
+        <!-- Font -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
-        <!-- Navigacija ikone -->
-    
+        <!-- Browser kartica -->
         <title>Rent a boat Porat</title>
         <link rel = "icon" href = "img/Icon.ico" type = "image/x-icon">
 
@@ -51,21 +54,19 @@ echo'
             <form method="POST" action="#">
                 <div class="field">
                     <input type="text" name="frm_u2" class="input input-top" placeholder="Username" value="" />
-                    <!-- <label for="frm_u2" class="label">Username</label> -->
                 </div>
-        
+
                 <div class="field">
                     <input type="password" name="bgh_u1" class="input input-bottom" placeholder="Pin"pattern="\d{4,6}" maxlength="6" inputmode="numeric" value=""/>
-                    <!-- <label for="bgh_u1" class="label">Pin</label> -->
                 </div>
                 <div class="buttonFrame">
-                    <!-- a element je privremen dok se ne poveze PHP i SQL -->
                     <input type="submit" name="submit" value="Login" class="button">
                 </div>
             </form>
             </div>
         </div>
     </main>
+
     <div id="errorPopup" class="clearFormPopup">
         <div class="deleteWindow-rows">
             <div class="popup-title h4">Krivi username ili pin.</div>
@@ -92,18 +93,19 @@ echo'
 <script src="pwa.js"></script>
 <script src="js/background.js"></script>
 </html>
-';
+
+<?php
 
 if (isset($_POST['frm_u2'])) {
     $username = $_POST['frm_u2'];
     $pin = $_POST['bgh_u1'];
 
-    // $query = "SELECT * FROM employee WHERE Username = ? AND Pin = ? LIMIT 1";
     $query = "SELECT * FROM employee WHERE Username = '".$username."' AND Pin = '".$pin."'";
     $result = mysqli_query($con, $query);
 
     $br_rows = mysqli_num_rows($result);
 
+    // * 1.1.
     if($br_rows <= 0)
     {
         echo '<script type="text/javascript">';
@@ -114,6 +116,7 @@ if (isset($_POST['frm_u2'])) {
     {
         $korisnik = mysqli_fetch_assoc($result);
 
+        // ! Naci prigodno rjesenje za Header
         $_SESSION['Level'] = $korisnik["Level"];
         $_SESSION['IDEmployee'] = $korisnik["IDEmployee"];
         //header("Location: reservations/reservations.php");
