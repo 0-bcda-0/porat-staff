@@ -124,6 +124,7 @@ if(isset($_POST["btn_edit"]))
     //* 3.2.
     $query_check_overlap = "SELECT * FROM reservation 
                                 WHERE BoatID = '$BoatID' 
+                                AND IDReservation != '$IDr'
                                 AND StartDate <= '$FinishDate' 
                                 AND FinishDate >= '$StartDate' 
                                 AND StartTime <= '$FinishTime' 
