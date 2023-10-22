@@ -52,6 +52,21 @@ echo '
               <span class="link-text">Blagajna</span>
             </a>
           </li>
+          <!-- Maps -->
+          <li class="nav-item">
+            <a href="../maps/index.php" class="nav-linkm">
+              <img class="icon"
+                  src="../icon/maps.png"
+                  target="a.nav-linkm"
+                  trigger="loop-on-hover"
+                  delay="500"
+                  colors="primary:#ffffff,secondary:#ffffff"
+                  stroke="105"
+                  state="hover">
+              </img>
+              <span class="link-text">Karta</span>
+            </a>
+          </li>
           <!-- Setting -->
           <li class="nav-item bottom" id="themeButton">
             <a href="../settings/settings.php" class="nav-linkm">

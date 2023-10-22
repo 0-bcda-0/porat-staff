@@ -18,6 +18,7 @@ echo '
         <link href="../addReservation/addReservation.css" rel="stylesheet">
         <link rel="stylesheet" href="../settings/settings.css">
         <link rel="stylesheet" href="../books/books.css">
+        <link rel="stylesheet" href="../maps/style.css" />
 
         <!-- Navigacija -->
         <link rel="stylesheet" href="../navigation/navigation.css">
@@ -27,6 +28,9 @@ echo '
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet"/>
+
+        <script type="text/javascript" src="//code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript" src="//hst-api.wialon.com/wsdk/script/wialon.js"></script>
     
         <title>Rent a boat Porat</title>
         <link rel = "icon" href = "../img/Icon.ico" type = "image/x-icon">
