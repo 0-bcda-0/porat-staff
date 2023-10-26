@@ -59,7 +59,13 @@ new Chart("vp-chart", {
 
 // ----------------- Analiza najbolje sezone -----------------
 var anz = phpData.anz;
-var anjz = [
+var anzs = [
+    {
+        "0": "1",
+        "1": "0",
+        "weekNumber": "1",
+        "NumberOfReservations": "0"
+    },
     {
         "0": "33",
         "1": "63",
@@ -129,6 +135,12 @@ var anjz = [
     {
         "0": "41",
         "1": "2",
+        "weekNumber": "41",
+        "NumberOfReservations": "2"
+    },
+    {
+        "0": "50",
+        "1": "0",
         "weekNumber": "41",
         "NumberOfReservations": "2"
     }

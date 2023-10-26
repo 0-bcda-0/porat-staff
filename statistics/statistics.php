@@ -93,10 +93,23 @@ $anzQuery = "SELECT
                 ORDER BY NumberOfReservations DESC;";
 $anzResult = mysqli_query($con, $anzQuery);
 
-
 $data['anz'] = array();
 while($row = mysqli_fetch_array($anzResult)){
     $data['anz'][] = $row;
+}
+
+// finf what week number from $data.anz is missing and add it to $anz array with value 0
+$anzWeekNumbers = array();
+foreach($data['anz'] as $key => $value){
+    $anzWeekNumbers[] = $value['weekNumber'];
+}
+for($i = 1; $i <= 52; $i++){
+    if(!in_array($i, $anzWeekNumbers)){
+        $data['anz'][] = array(
+            'weekNumber' => $i,
+            'NumberOfReservations' => 0
+        );
+    }
 }
 
 $randomNumber = rand();
