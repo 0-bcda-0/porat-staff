@@ -15,7 +15,7 @@ $currentYear = date("Y");
 
 // Define current season
 $seasonSartDate = $currentYear."-01-01";
-$seasonEndDate = $currentYear."-12-30";
+$seasonEndDate = $currentYear."-12-20";
 
 $data = array();
 

@@ -58,10 +58,6 @@ new Chart("vp-chart", {
 });
 
 // ----------------- Analiza najbolje sezone -----------------
-// const anzxValues = [50,60,70,80,90,100,110,120,130,140,150];
-// const anzyValues = [7,8,8,9,9,9,10,11,14,14,15];
-
-// from phpData extract anz array, then go through it and extract week and NumberOfReservations in two separate arrays
 var anz = phpData.anz;
 var anzxValues = [];
 var anzyValues = [];
@@ -73,34 +69,37 @@ for (var i = 0; i < anz.length; i++) {
     anzyValues[i] = parseInt(anzyValues[i]);
 }
 
-// console.log(anzxValues);
-// console.log(anzyValues);
-
-// anzxValues = [50,60,70,80,90,100,110,120,130,140,150];
-// anzyValues = [7,8,8,9,9,9,10,11,14,14,15];
-
-// console.log(anzxValues);
-// console.log(anzyValues);
-
 new Chart("anz-chart", {
     type: "line",
     data: {
-    labels: anzxValues,
-    datasets: [{
-        fill: false,
-        lineTension: 0,
-        backgroundColor: "rgba(0,0,255,1.0)",
-        borderColor: "rgba(0,0,255,0.1)",
-        data: anzyValues
-    }]
+        labels: anzxValues,
+        datasets: [{
+            fill: false,
+            lineTension: 0,
+            backgroundColor: "rgba(0,0,255,1.0)",
+            borderColor: "rgba(0,0,255,0.1)",
+            data: anzyValues
+        }]
     },
     options: {
-    legend: {display: false},
-    scales: {
-        yAxes: [{ticks: {min: 6, max:16}}],
-    }
+        legend: { display: false },
+        scales: {
+            xAxes: [{
+                ticks: {
+                    min: Math.min(...anzxValues), // Set the minimum value to the lowest data point
+                    max: Math.max(...anzxValues)  // Set the maximum value to the highest data point
+                }
+            }],
+            yAxes: [{
+                ticks: {
+                    min: Math.min(...anzyValues), // Set the minimum value to the lowest data point
+                    max: Math.max(...anzyValues)  // Set the maximum value to the highest data point
+                }
+            }]
+        }
     }
 });
+
 
 // ----------------- Rekordni najmodavac -----------------
 // from phpData extract rn array, then go through it and extract employeeUsername and NumberOfReservations in two separate arrays
