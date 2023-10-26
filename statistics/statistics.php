@@ -103,6 +103,10 @@ while($row = mysqli_fetch_array($anzResult)){
 
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
 <main id="blur">
     <div class="spacer"></div>
     <div class="add-glass-container blurForClearFormPopup" id="blurForClearFormPopup">

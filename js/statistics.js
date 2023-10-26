@@ -59,8 +59,84 @@ new Chart("vp-chart", {
 
 // ----------------- Analiza najbolje sezone -----------------
 var anz = phpData.anz;
+var anjz = [
+    {
+        "0": "33",
+        "1": "63",
+        "weekNumber": "33",
+        "NumberOfReservations": "63"
+    },
+    {
+        "0": "34",
+        "1": "63",
+        "weekNumber": "34",
+        "NumberOfReservations": "63"
+    },
+    {
+        "0": "32",
+        "1": "45",
+        "weekNumber": "32",
+        "NumberOfReservations": "45"
+    },
+    {
+        "0": "35",
+        "1": "34",
+        "weekNumber": "35",
+        "NumberOfReservations": "34"
+    },
+    {
+        "0": "37",
+        "1": "18",
+        "weekNumber": "37",
+        "NumberOfReservations": "18"
+    },
+    {
+        "0": "36",
+        "1": "18",
+        "weekNumber": "36",
+        "NumberOfReservations": "18"
+    },
+    {
+        "0": "38",
+        "1": "8",
+        "weekNumber": "38",
+        "NumberOfReservations": "8"
+    },
+    {
+        "0": "39",
+        "1": "8",
+        "weekNumber": "39",
+        "NumberOfReservations": "8"
+    },
+    {
+        "0": "31",
+        "1": "3",
+        "weekNumber": "31",
+        "NumberOfReservations": "3"
+    },
+    {
+        "0": "43",
+        "1": "3",
+        "weekNumber": "43",
+        "NumberOfReservations": "3"
+    },
+    {
+        "0": "40",
+        "1": "2",
+        "weekNumber": "40",
+        "NumberOfReservations": "2"
+    },
+    {
+        "0": "41",
+        "1": "2",
+        "weekNumber": "41",
+        "NumberOfReservations": "2"
+    }
+];
 var anzxValues = [];
 var anzyValues = [];
+
+console.log(anz);
 
 for (var i = 0; i < anz.length; i++) {
     anzxValues.push(anz[i].weekNumber);
@@ -86,14 +162,14 @@ new Chart("anz-chart", {
         scales: {
             xAxes: [{
                 ticks: {
-                    min: Math.min(...anzxValues), // Set the minimum value to the lowest data point
-                    max: Math.max(...anzxValues)  // Set the maximum value to the highest data point
+                    // min: Math.min(...anzxValues), // Set the minimum value to the lowest data point
+                    // max: Math.max(...anzxValues)  // Set the maximum value to the highest data point
                 }
             }],
             yAxes: [{
                 ticks: {
-                    min: Math.min(...anzyValues), // Set the minimum value to the lowest data point
-                    max: Math.max(...anzyValues)  // Set the maximum value to the highest data point
+                    // min: Math.min(...anzyValues), // Set the minimum value to the lowest data point
+                    // max: Math.max(...anzyValues)  // Set the maximum value to the highest data point
                 }
             }]
         }
