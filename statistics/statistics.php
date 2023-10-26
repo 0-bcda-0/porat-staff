@@ -99,7 +99,7 @@ while($row = mysqli_fetch_array($anzResult)){
     $data['anz'][] = $row;
 }
 
-
+$randomNumber = rand();
 
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
@@ -155,7 +155,11 @@ while($row = mysqli_fetch_array($anzResult)){
     <div class="spacer-bottom"></div>
 </main>
 
-<script src="../js/statistics.js"></script>
+<?php
+
+echo '<script src="../js/statistics.js?='.$randomNumber.'"></script>'
+
+?>
 <script>
     var phpData = <?php echo json_encode($data); ?>;
 </script>
