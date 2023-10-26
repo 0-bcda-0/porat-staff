@@ -26,7 +26,7 @@ $rnQuery = "SELECT
                     COUNT(reservation.IDReservation) AS NumberOfReservations
                 FROM reservation
                 LEFT JOIN employee ON (reservation.EmployeeID = employee.IDEmployee)
-                WHERE reservation.StartDate >= '$seasonSartDate' AND reservation.FinishDate <= '$seasonEndDate'
+                WHERE reservation.StartDate >= '$seasonSartDate' AND reservation.FinishDate <= '$seasonEndDate' AND reservation.Deleted = '0'
                 GROUP BY employee.Username
                 ORDER BY NumberOfReservations DESC;";
 $rnResult = mysqli_query($con, $rnQuery);
@@ -42,7 +42,7 @@ $vpQuery = "SELECT
                     reservation.Platform AS platform,
                     COUNT(reservation.IDReservation) AS NumberOfReservations
                 FROM reservation
-                WHERE reservation.StartDate >= '$seasonSartDate' AND reservation.FinishDate <= '$seasonEndDate'
+                WHERE reservation.StartDate >= '$seasonSartDate' AND reservation.FinishDate <= '$seasonEndDate' AND reservation.Deleted = '0'
                 GROUP BY reservation.Platform
                 ORDER BY NumberOfReservations DESC;";
 $vpResult = mysqli_query($con, $vpQuery);
@@ -72,7 +72,7 @@ $btQuery = "SELECT
                     COUNT(reservation.IDReservation) AS NumberOfReservations
                 FROM reservation
                 LEFT JOIN boat ON (reservation.BoatID = boat.IDBoat)
-                WHERE reservation.StartDate >= '$seasonSartDate' AND reservation.FinishDate <= '$seasonEndDate'
+                WHERE reservation.StartDate >= '$seasonSartDate' AND reservation.FinishDate <= '$seasonEndDate' AND reservation.Deleted = '0'
                 GROUP BY boat.Name
                 ORDER BY NumberOfReservations DESC;";
 $btResult = mysqli_query($con, $btQuery);
@@ -88,7 +88,7 @@ $anzQuery = "SELECT
                     WEEK(reservation.StartDate) AS weekNumber,
                     COUNT(reservation.IDReservation) AS NumberOfReservations
                 FROM reservation
-                WHERE reservation.StartDate >= '$seasonSartDate' AND reservation.FinishDate <= '$seasonEndDate'
+                WHERE reservation.StartDate >= '$seasonSartDate' AND reservation.FinishDate <= '$seasonEndDate' AND reservation.Deleted = '0'
                 GROUP BY WEEK(reservation.StartDate)
                 ORDER BY NumberOfReservations DESC;";
 $anzResult = mysqli_query($con, $anzQuery);
