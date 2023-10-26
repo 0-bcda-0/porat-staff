@@ -112,6 +112,11 @@ for($i = 1; $i <= 52; $i++){
     }
 }
 
+// sort $data.anz by weekNumber
+usort($data['anz'], function($a, $b) {
+    return $a['weekNumber'] <=> $b['weekNumber'];
+});
+
 $randomNumber = rand();
 
 ?>
