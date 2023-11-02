@@ -59,7 +59,7 @@ window.onload = function () {
 
     // ----------------- Analiza najbolje sezone -----------------
     var anz = phpData.anz;
-    var anz = [
+    var anzs = [
         [
             {
                 "weekNumber": 1,
