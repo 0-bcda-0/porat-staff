@@ -20,28 +20,28 @@
     ],
     "shortcuts": [
         {
-          "name": "Calendar",
-          "url": "reservations/reservations.php",
-          "icons": [
-            {
-              "src": "icon/calendar.png",
-              "sizes": "512x512",
-              "type": "image/png",
-              "purpose": "maskable"
-            }
-          ]
+            "name": "Calendar",
+            "url": "reservations/reservations.php",
+            "icons": [
+                {
+                    "src": "icon/calendar.png",
+                    "sizes": "512x512",
+                    "type": "image/png",
+                    "purpose": "maskable"
+                }
+            ]
         },
         {
-          "name": "Add Reservation",
-          "url": "addReservation/addReservation.php",
-          "icons": [
-            {
-              "src": "icon/addReservation.png",
-              "sizes": "512x512",
-              "type": "image/png",
-              "purpose": "maskable"
-            }
-          ]
+            "name": "Add Reservation",
+            "url": "addReservation/addReservation.php",
+            "icons": [
+                {
+                    "src": "icon/addReservation.png",
+                    "sizes": "512x512",
+                    "type": "image/png",
+                    "purpose": "maskable"
+                }
+            ]
         }
-      ]
+    ]
 }

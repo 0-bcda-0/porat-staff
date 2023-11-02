@@ -1,4 +1,4 @@
-:root{
+:root {
     /* za koristenje rem mjera */
     font-size: 16px;
     font-family: 'Montserrat';
@@ -10,13 +10,13 @@
 
     /* za navigaciju */
     --transition-speed: 600ms;
-    
+
     /* tako da se ne prilagodava za dark mode */
     color-scheme: light only;
 }
 
 
-body{
+body {
     margin: 0;
     padding: 0;
     background-image: url('../img/back.svg');
@@ -25,7 +25,7 @@ body{
     background-size: cover;
 }
 
-.container{
+.container {
     width: 15%;
     height: 500px;
     background-color: rgba(255, 255, 255, 0.4);
@@ -38,13 +38,13 @@ body{
     align-items: center;
 }
 
-.logo{
+.logo {
     width: 250px;
     height: 100px;
     padding-top: 2rem;
 }
 
-.buttonFrame{
+.buttonFrame {
     width: 250px;
     height: 100px;
     display: flex;
@@ -53,14 +53,14 @@ body{
     border: 0px;
 }
 
-.button{
+.button {
     background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
 
     width: 150px;
     height: 50px;
@@ -71,21 +71,20 @@ body{
     font-size: 1.2rem;
 }
 
-.box{
+.box {
     width: 250px;
     margin: 0px auto;
 }
 
 label {
-	display: block;
+    display: block;
 }
 
 form {
     --text-color: rgb(94, 94, 94);
 }
 
-.input
-{
+.input {
     width: 100%;
     padding: 15px 5px;
     border: none;
@@ -94,36 +93,34 @@ form {
     font-size: 1.2rem;
 }
 
-.input-top
-{
+.input-top {
     border-bottom: 2px solid var(--bg-secundary);
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 }
 
-.input-bottom
-{
+.input-bottom {
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
 }
 
 
 /* POP UP */
-.blurForClearFormPopup.active{
+.blurForClearFormPopup.active {
     filter: blur(15px);
     pointer-events: none;
     user-select: none;
     --webkit-user-select: none;
 }
 
-.clearFormPopup{
+.clearFormPopup {
     position: fixed;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 550px;
     padding: 50px;
-    box-shadow: 0 5px 30px rgba(0,0,0,0.30);
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.30);
     background: #fff;
     visibility: hidden;
     opacity: 0;
@@ -139,7 +136,7 @@ form {
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.clearFormPopup.active{
+.clearFormPopup.active {
     top: 50%;
     visibility: visible;
     opacity: 1;
@@ -148,17 +145,17 @@ form {
 
 /* TABLET */
 @media only screen and (max-width: 1920px) {
-    .container{
+    .container {
         width: 30%;
     }
 }
 
 @media only screen and (max-width: 768px) {
-    body{
+    body {
         background-image: url('../img/back-moba.svg');
     }
-    
-    .container{
+
+    .container {
         width: 90%;
     }
 }

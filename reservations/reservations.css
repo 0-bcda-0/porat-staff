@@ -1,494 +1,501 @@
 body {
-  font-size: 16px;
-  font-family: "Montserrat";
+    font-size: 16px;
+    font-family: "Montserrat";
 }
 
 a {
-  color: inherit; /* blue colors for links too */
-  text-decoration: inherit; /* no underline */
+    color: inherit;
+    /* blue colors for links too */
+    text-decoration: inherit;
+    /* no underline */
 }
 
 /* Daje mt i mb glass elementu jer standardno ne radi */
 .spacer {
-  height: 1rem;
+    height: 1rem;
 }
 
 .flex-column {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Stakleni container */
 .glass {
 
-  width: 1fr;
-  height: calc(100vh - 2rem);
-  margin-left: 1rem;
-  margin-right: 1rem;
+    width: 1fr;
+    height: calc(100vh - 2rem);
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
+
 /* Red u kojem stoje naslov(big-text) datum sa strelicama (data-wrapper), te dan u tjednu */
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 1rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 2.5rem;
 }
 
 .big-text {
-  color: white;
-  font-size: 2rem;
+    color: white;
+    font-size: 2rem;
 }
 
 a:hover {
-  color:#f89b3e; 
-  text-decoration:none; 
-  cursor:pointer;  
+    color: #f89b3e;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-.fix-width{
-  width: 250px;
-  text-align: end;
+.fix-width {
+    width: 250px;
+    text-align: end;
 }
 
 .submitButton {
-  align-items: normal;
-  background-color: transparent;
-  border: none;
-  box-sizing: border-box;
-  color: inherit;
-  cursor: default;
-  display: inline;
-  flex-shrink: 0;
-  font: inherit;
-  font-size: 100%;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: normal;
-  line-height: normal;
-  margin: 0;
-  outline: none;
-  overflow: visible;
-  padding: 0;
-  text-align: start;
-  text-decoration: none;
-  text-indent: 0;
-  text-overflow: clip;
-  text-shadow: none;
-  text-transform: none;
-  white-space: normal;
-  width: auto;
+    align-items: normal;
+    background-color: transparent;
+    border: none;
+    box-sizing: border-box;
+    color: inherit;
+    cursor: default;
+    display: inline;
+    flex-shrink: 0;
+    font: inherit;
+    font-size: 100%;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: normal;
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    padding: 0;
+    text-align: start;
+    text-decoration: none;
+    text-indent: 0;
+    text-overflow: clip;
+    text-shadow: none;
+    text-transform: none;
+    white-space: normal;
+    width: auto;
 }
 
 .date-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-self: center;
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
 }
 
 .arrow-icon {
-  width: 50px;
-  height: 50px;
-  margin-right: 2rem;
-  margin-left: 2rem;
+    width: 50px;
+    height: 50px;
+    margin-right: 2rem;
+    margin-left: 2rem;
 }
+
 /* Janky rjesenje za rotaciju lijeve strelice */
 .rotate-arrow {
-  transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
 /* Glavni grid za sadrzaj */
 .grid {
-  height: 80%;
-  margin: 2.5rem;
-  display: grid;
-  column-gap: 2rem;
-  row-gap: 8rem;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+    height: 80%;
+    margin: 2.5rem;
+    display: grid;
+    column-gap: 2rem;
+    row-gap: 8rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
 }
 
 /* Pojedina kartica */
 .card {
-  background-color: rgba(255, 255, 255, 0.4);
-  border: 2px solid rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.4);
 
-  height: 100%;
-  width: 100%;
-  border-radius: 15px;
-  overflow: hidden;
-  justify-content: center;
-  font-size: 0.8rem;
-  border: none;
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    justify-content: center;
+    font-size: 0.8rem;
+    border: none;
 }
 
 /* SamBoat */
-.platform1{
-  /* border: rgba(129, 209, 219, 0.4) !important; */
-  border: 2px solid rgb(24, 195, 218) !important;
+.platform1 {
+    /* border: rgba(129, 209, 219, 0.4) !important; */
+    border: 2px solid rgb(24, 195, 218) !important;
 }
 
 /* ClickAndBoat */
-.platform2{
-  /* background-color: rgba(222, 143, 181, 0.4) !important; */
-  border: 2px solid rgba(222, 143, 181, 1) !important;
+.platform2 {
+    /* background-color: rgba(222, 143, 181, 0.4) !important; */
+    border: 2px solid rgba(222, 143, 181, 1) !important;
 }
 
 /* Svojstvo koje ce se primjenjivati kada je brod rezerviran na cijeli dan */
 .disabled {
-  background-color: rgba(164, 164, 164, 0.4);
+    background-color: rgba(164, 164, 164, 0.4);
 }
 
 .noclick {
-  pointer-events: none !important;
-  visibility: hidden;
+    pointer-events: none !important;
+    visibility: hidden;
 }
 
-.extended{
-  /* background-color: #e7e9eb; */
-  background-color: rgba(255, 255, 255, 0.4);
-  width: calc(204%);
-  z-index: 1;
+.extended {
+    /* background-color: #e7e9eb; */
+    background-color: rgba(255, 255, 255, 0.4);
+    width: calc(204%);
+    z-index: 1;
 }
 
 /* Grid unutar kartice koji razdvaja sadrzaj u 5 kolona */
 .card-grid {
-  margin: 0rem 0.8rem 0rem 0.8rem;
-  display: grid;
-  grid-template-columns: 25% auto auto auto auto;
-  gap: 1rem;
+    margin: 0rem 0.8rem 0rem 0.8rem;
+    display: grid;
+    grid-template-columns: 25% auto auto auto auto;
+    gap: 1rem;
 }
 
 /* Pojedina kolona u card-gridu */
 .col {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 /* Svojstvo primjenjeno jedino na eurima */
 .col-align {
-  align-items: flex-end;
+    align-items: flex-end;
 }
 
 /* Skaliranje ikonice broda */
 .card-icon-size {
-  height: 100%;
-  width: 100px;
+    height: 100%;
+    width: 100px;
 }
 
 /* Naziv broda */
 .card-title {
-  font-weight: bold;
-  font-size: 1.2rem;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 /* Odvajanje skupa podataka */
 .card-textrow {
-  margin-top: 0.5rem;
+    margin-top: 0.5rem;
 }
 
 /* Janky rjesenja za odvajanje sadrzaja drugog i treceg stupca */
 .col-special {
-  margin-left: 2rem;
+    margin-left: 2rem;
 }
 
 /* OBOJANI KRUG (ne znam kako radi :before) */
 .status:before {
-  content: "";
-  display: inline-block;
-  width: 0.6rem;
-  height: 0.6rem;
-  margin-right: 10px;
-  border: 1px solid #000;
-  border-radius: 7px;
-  margin-left: 0.5rem;
+    content: "";
+    display: inline-block;
+    width: 0.6rem;
+    height: 0.6rem;
+    margin-right: 10px;
+    border: 1px solid #000;
+    border-radius: 7px;
+    margin-left: 0.5rem;
 }
 
 .open:before {
-  background-color: #94e185;
-  border-color: #78d965;
-  box-shadow: 0px 0px 4px 1px #94e185;
+    background-color: #94e185;
+    border-color: #78d965;
+    box-shadow: 0px 0px 4px 1px #94e185;
 }
 
 .in-progress:before {
-  background-color: #ffc182;
-  border-color: #ffb161;
-  box-shadow: 0px 0px 4px 1px #ffc182;
+    background-color: #ffc182;
+    border-color: #ffb161;
+    box-shadow: 0px 0px 4px 1px #ffc182;
 }
+
 .dead:before {
-  background-color: #c9404d;
-  border-color: #c42c3b;
-  box-shadow: 0px 0px 4px 1px #c9404d;
+    background-color: #c9404d;
+    border-color: #c42c3b;
+    box-shadow: 0px 0px 4px 1px #c9404d;
 }
 
 /* Koristi se za "Status" sadrzaj */
 .flex {
-  display: flex;
+    display: flex;
 }
 
 /* POPUP */
 /* Gdje se stavi ovaj ID, to ce se zamaglit */
 #blur.active {
-  filter: blur(15px);
-  pointer-events: none;
-  user-select: none;
-  --webkit-user-select: none;
+    filter: blur(15px);
+    pointer-events: none;
+    user-select: none;
+    --webkit-user-select: none;
 }
+
 /* Popup div */
 #popup {
-  position: fixed;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  padding: 50px;
-  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-  background: #fff;
-  visibility: hidden;
-  opacity: 0;
-  transition: 0.5s;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    padding: 50px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    background: #fff;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
 
-  /* Glass efekt */
-  /* From https://css.glass */
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  z-index: 3;
+    /* Glass efekt */
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    z-index: 3;
 }
 
 #popup.active {
-  top: 50%;
-  visibility: visible;
-  opacity: 1;
-  transition: 0.5s;
+    top: 50%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
 }
 
 /* DELETE POPUP */
 #popupWindow.active {
-  filter: blur(15px);
-  pointer-events: none;
-  user-select: none;
-  --webkit-user-select: none;
+    filter: blur(15px);
+    pointer-events: none;
+    user-select: none;
+    --webkit-user-select: none;
 }
 
 #deleteWindow {
-  position: fixed;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 550px;
-  padding: 50px;
-  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-  background: #fff;
-  visibility: hidden;
-  opacity: 0;
-  transition: 0.5s;
-  z-index: 4;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 550px;
+    padding: 50px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    background: #fff;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+    z-index: 4;
 
-  /* Glass efekt */
-  /* From https://css.glass */
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+    /* Glass efekt */
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 #deleteWindow.active {
-  top: 50%;
-  visibility: visible;
-  opacity: 1;
-  transition: 0.5s;
+    top: 50%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
 }
 
 .deleteWindow-rows {
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 1rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
 /* Pozicioniranje ikonice Close */
 .popup-icon-close-position {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 1rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1rem;
 }
 
 /* Velicina ikonice Close */
 .popup-icon-close-size {
-  width: 35px;
-  height: 35px;
+    width: 35px;
+    height: 35px;
 }
 
 /* Velicina ikonice Boat */
 .popup-icon-size {
-  height: 100px;
-  width: 100px;
+    height: 100px;
+    width: 100px;
 }
 
 /* div za redove podataka */
 .popup-flex {
-  display: flex;
-  justify-content: space-between;
-  gap: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
 }
 
 /* div za redove */
 .popup-col-flex {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 2rem;
 }
 
 /* container za button */
 .popup-col-flex-buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .popup-title {
-  text-align: center;
+    text-align: center;
 }
 
 .popup-text {
-  border-bottom: 2px solid #f89b3e;
-  padding: 0.6rem;
+    border-bottom: 2px solid #f89b3e;
+    padding: 0.6rem;
 }
 
 .button-delete {
-  padding: 0.5rem 1rem 0.5rem 1rem;
-  border-radius: 25px;
-  color: #da1a20;
-  border: 1px solid #da1a20;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.25rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 25px;
+    color: #da1a20;
+    border: 1px solid #da1a20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.25rem;
 }
 
 .form-dateSubmit {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .button-dateSubmit {
-  padding: 0.5rem 1rem 0.5rem 1rem;
-  border-radius: 25px;
-  color: #f89b3e;
-  border: 1px solid #f89b3e;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.25rem;
-  margin-top: 10px;
-  background-color: white;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 25px;
+    color: #f89b3e;
+    border: 1px solid #f89b3e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    margin-top: 10px;
+    background-color: white;
 }
 
-.input-dateSubmit{
-  background-color: transparent;
-  border: none;
+.input-dateSubmit {
+    background-color: transparent;
+    border: none;
 }
 
 ::-webkit-calendar-picker-indicator {
-  filter: invert(.8);
+    filter: invert(.8);
 }
 
 .button-delete-deletePopup {
-  padding: 0.5rem 1rem 0.5rem 1rem;
-  border-radius: 20px;
-  color: #da1a20;
-  border: 1px solid #da1a20;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.25rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 20px;
+    color: #da1a20;
+    border: 1px solid #da1a20;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.25rem;
 }
+
 .button-edit {
-  padding: 0.5rem 1rem 0.5rem 1rem;
-  border-radius: 20px;
-  color: #337895;
-  border: 2px solid #337895;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.25rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 20px;
+    color: #337895;
+    border: 2px solid #337895;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.25rem;
 }
 
-.scrollToTopArrow{
-  position: fixed;
-  bottom: 100px;
-  right: 110px;
+.scrollToTopArrow {
+    position: fixed;
+    bottom: 100px;
+    right: 110px;
 
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  outline: inherit;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    outline: inherit;
 
-  width: 50px;
-  height: 50px;
-  transform: rotate(-90deg);
+    width: 50px;
+    height: 50px;
+    transform: rotate(-90deg);
 
-  background-color: #d88f8c;
-  border-radius: 50%;
+    background-color: #d88f8c;
+    border-radius: 50%;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-  display: none;
-  z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    display: none;
+    z-index: 2;
 }
 
 .flexcol-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .tooltip-container {
-  position: relative;
-  display: inline-block;
+    position: relative;
+    display: inline-block;
 }
 
 .tooltip-text {
-  display: none;
-  width: 120px;
-  background-color: #f89b3e;
-  color: #fff;
-  text-align: center;
-  padding: 5px;
-  border-radius: 6px;
-  position: absolute;
-  z-index: 1;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -60px;
+    display: none;
+    width: 120px;
+    background-color: #f89b3e;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
 }
 
 .tooltip-container.active .tooltip-text {
-  display: block;
+    display: block;
 }
 
 /* ------------------------------------------------------------------------------------ */
 /* Zbog Bootstrapa je nadodano slovo m, inace se sve strga */
-.date-bubble{
-  display: none;
+.date-bubble {
+    display: none;
 }
 
 
@@ -500,203 +507,220 @@ a:hover {
 /* TABLET */
 /* Testirano na Crnom Win10 tabletu */
 @media only screen and (max-width: 2560px) {
-  .big-text {
-    font-size: 23px;
-  }
-  .grid {
-    gap: 1rem;
-  }
-  .card-title {
-    font-size: 1.1rem;
-  }
-  .card-icon-size {
-    height: 100%;
-    width: 80px;
-  }
-  .col-hidden {
-    display: none;
-  }
-  .card-grid {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
+    .big-text {
+        font-size: 23px;
+    }
+
+    .grid {
+        gap: 1rem;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+    }
+
+    .card-icon-size {
+        height: 100%;
+        width: 80px;
+    }
+
+    .col-hidden {
+        display: none;
+    }
+
+    .card-grid {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
 }
 
 /* MOBILE */
 /* Testirano na Samsung S20+ */
 @media only screen and (max-width: 600px) {
-  main {
-    background-image: none;
-  }
-  /* Micanje janky mt i mb za glass element */
-  .spacer {
-    display: none;
-  }
-  /* Janky rjesenje da se uvijek vidi zadnji sadrzaj (inade ode iza navigacije */
-  .spacer-bottom {
-    display: grid;
-    height: 2rem;
-  }
-  /* Resetiranje/nuliranje/micanje glass containera */
-  .glass {
-    border-radius: 0;
-    border: none;
+    main {
+        background-image: none;
+    }
 
-    background: none;
-    box-shadow: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+    /* Micanje janky mt i mb za glass element */
+    .spacer {
+        display: none;
+    }
 
-    width: 100%;
-    height: calc(100% - 5rem);
-    margin-bottom: 4rem;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-  }
-  .header {
-    flex-direction: column;
-    margin: 1rem;
-  }
-  .flexcol-row {
-    flex-direction: column;
-    align-items: center;
-  }
-  .big-text {
-    font-size: 20px;
-    color: white;
-  }
-  .fix-width {
-    text-align: center;
-  }
-  .m-title {
-    font-size: 25px;
-  }
-  .date-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-  .arrow-icon {
-    width: 50px;
-    height: 50px;
-    margin-right: 1.7rem;
-    margin-left: 1.7rem;
-  }
-  .grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    /* Janky rjesenje da se uvijek vidi zadnji sadrzaj (inade ode iza navigacije */
+    .spacer-bottom {
+        display: grid;
+        height: 2rem;
+    }
 
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-  .card {
-    height: 100px;
-    width: 100%;
-    border: 0;
-  }
+    /* Resetiranje/nuliranje/micanje glass containera */
+    .glass {
+        border-radius: 0;
+        border: none;
 
-  .card-grid {
-    margin: 0.5rem 1rem 0.5rem 1rem;
-  }
+        background: none;
+        box-shadow: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
 
-  .card-icon-size {
-    height: 70px;
-    width: 70px;
-  }
+        width: 100%;
+        height: calc(100% - 5rem);
+        margin-bottom: 4rem;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+    }
 
-  .card-title {
-    font-size: .9rem;
-  }
+    .header {
+        flex-direction: column;
+        margin: 1rem;
+    }
 
-  .col-hidden {
-    display: none;
-  }
+    .flexcol-row {
+        flex-direction: column;
+        align-items: center;
+    }
 
-  .noclick{
-    display: none;
-  }
+    .big-text {
+        font-size: 20px;
+        color: white;
+    }
 
-  #blur.active {
-    height: calc(100vh - 6rem);
-    overflow-y: hidden;
-  }
+    .fix-width {
+        text-align: center;
+    }
 
-  #popup {
-    width: 95%;
-    padding: 30px;
-  }
+    .m-title {
+        font-size: 25px;
+    }
 
-  #deleteWindow {
-    width: 90%;
-    padding: 30px;
-  }
+    .date-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
 
-  /* Janky nacin, moguce da ce se raspast  */
-  #popup.active {
-    top: 50%;
-  }
+    .arrow-icon {
+        width: 50px;
+        height: 50px;
+        margin-right: 1.7rem;
+        margin-left: 1.7rem;
+    }
 
-  .popup-col-flex-mobile {
-    flex-direction: column;
-  }
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
 
-  .popup-icon-size {
-    width: 58px;
-    height: 58px;
-  }
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
 
-  .button-delete {
-    padding: 0.3rem 0.6rem 0.3rem 0.6rem;
-    border-radius: 25px;
-    color: #da1a20;
-    border: 1px solid #da1a20;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
-    font-size: 0.9rem;
-  }
+    .card {
+        height: 100px;
+        width: 100%;
+        border: 0;
+    }
 
-  .popup-col-flex-mobile-icon {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-  }
+    .card-grid {
+        margin: 0.5rem 1rem 0.5rem 1rem;
+    }
 
-  .date-bubble{
-    display: block;
-    position: fixed;
-    background-color: #d88f8c;
-    /* border-radius: 0px 25px 25px 0px; */
-    transition: width 600ms ease;
-    overflow: hidden;
-    z-index: 2;
+    .card-icon-size {
+        height: 70px;
+        width: 70px;
+    }
 
-    /* bottom: 1.0rem; */
-    top: 1.5rem;
-    width: 100vw;
-    /* height: 4rem; */
-    height: 3rem;
-    padding: 0;
+    .card-title {
+        font-size: .9rem;
+    }
 
-    /* width: 95%; */
-    width: 70%;
+    .col-hidden {
+        display: none;
+    }
 
-    /* margin-left: 2.5%; */
-    margin-left: 15%;
+    .noclick {
+        display: none;
+    }
 
-    /* border-radius: 20px; */
-    border-radius: 100px;
+    #blur.active {
+        height: calc(100vh - 6rem);
+        overflow-y: hidden;
+    }
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    visibility: hidden;
-  }
+    #popup {
+        width: 95%;
+        padding: 30px;
+    }
+
+    #deleteWindow {
+        width: 90%;
+        padding: 30px;
+    }
+
+    /* Janky nacin, moguce da ce se raspast  */
+    #popup.active {
+        top: 50%;
+    }
+
+    .popup-col-flex-mobile {
+        flex-direction: column;
+    }
+
+    .popup-icon-size {
+        width: 58px;
+        height: 58px;
+    }
+
+    .button-delete {
+        padding: 0.3rem 0.6rem 0.3rem 0.6rem;
+        border-radius: 25px;
+        color: #da1a20;
+        border: 1px solid #da1a20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .popup-col-flex-mobile-icon {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .date-bubble {
+        display: block;
+        position: fixed;
+        background-color: #d88f8c;
+        /* border-radius: 0px 25px 25px 0px; */
+        transition: width 600ms ease;
+        overflow: hidden;
+        z-index: 2;
+
+        /* bottom: 1.0rem; */
+        top: 1.5rem;
+        width: 100vw;
+        /* height: 4rem; */
+        height: 3rem;
+        padding: 0;
+
+        /* width: 95%; */
+        width: 70%;
+
+        /* margin-left: 2.5%; */
+        margin-left: 15%;
+
+        /* border-radius: 20px; */
+        border-radius: 100px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        visibility: hidden;
+    }
 }

@@ -1,4 +1,4 @@
-:root{
+:root {
     /* za koristenje rem mjera */
     font-size: 16px;
     font-family: 'Montserrat';
@@ -16,7 +16,7 @@
     color-scheme: light only;
 }
 
-body{
+body {
     margin: 0;
     padding: 0;
     background-color: #7bbddf;
@@ -44,10 +44,11 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
     background: var(--bg-secundary);
 }
+
 /* MOBILE */
 /* Testirano na Samsung S20+ */
 @media only screen and (max-width: 600px) {
-    body{
+    body {
         background-image: url('../img/back-moba.svg');
     }
 }

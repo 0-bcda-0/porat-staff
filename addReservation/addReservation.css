@@ -1,9 +1,9 @@
-:root{
+:root {
     --element-background: rgba(255, 255, 255, .4);
     --orange: rgb(248, 155, 62);
 }
 
-body{
+body {
     font-size: 16px;
     font-family: 'Montserrat';
 }
@@ -15,42 +15,42 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-/* Firefox */ 
+/* Firefox */
 input[type=number] {
     appearance: textfield;
     -moz-appearance: textfield;
 }
 
-.add-glass-container{
+.add-glass-container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     height: calc(100vh - 2rem);
 }
 
-.add-glass{
+.add-glass {
     width: 40%;
 }
 
-.add-title{
+.add-title {
     font-size: 40px;
     color: white;
 }
 
-.add-panel{
+.add-panel {
     padding: 20px;
     background-color: var(--element-background);
     border-radius: 20px;
 }
 
-.add-dropdown-container{
+.add-dropdown-container {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
 }
 
-.add-radio-button-container{
+.add-radio-button-container {
     display: flex;
     justify-content: end;
     align-items: center;
@@ -58,7 +58,7 @@ input[type=number] {
     gap: 5px;
 }
 
-.add-radio-button-div-container{
+.add-radio-button-div-container {
     width: 100%;
     display: flex;
     justify-content: end;
@@ -67,7 +67,7 @@ input[type=number] {
     gap: 5px;
 }
 
-.add-radio-button-div-container-2{
+.add-radio-button-div-container-2 {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -76,42 +76,42 @@ input[type=number] {
     gap: 5px;
 }
 
-.add-dropdown{
+.add-dropdown {
     padding: 10px 5px 10px 5px;
     border-radius: 15px;
     background-color: var(--element-background);
     width: 400px;
 }
 
-.addDjelatnici-dropdown{
+.addDjelatnici-dropdown {
     border: none;
 }
 
-.addBrodovi-dropdown{
+.addBrodovi-dropdown {
     border: 1.5px solid var(--orange);
 }
 
-.add-input-title{
+.add-input-title {
     font-size: 20px;
     color: rgb(1, 51, 88);
     margin: 20px 0px 10px 0px;
 }
 
-.add-inputs-top{
+.add-inputs-top {
     display: flex;
     justify-content: space-around;
     align-items: center;
     gap: 20px;
 }
 
-.add-input-container-flex{
+.add-input-container-flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 80%;
 }
 
-.inputField{
+.inputField {
     width: 130px;
     border: none;
     background-color: var(--element-background);
@@ -120,15 +120,15 @@ input[type=number] {
     color: #757575;
 }
 
-.color-grey{
+.color-grey {
     color: #757575;
 }
 
-.addDjelatnici-dropdown-container{
+.addDjelatnici-dropdown-container {
     margin-top: 20px;
 }
 
-.add-input-container-flex2{
+.add-input-container-flex2 {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -136,52 +136,53 @@ input[type=number] {
     gap: 20px;
 }
 
-.add-small-container{
+.add-small-container {
     width: 100%;
 }
 
-.add-input-group-flex{
+.add-input-group-flex {
     width: 100%;
 }
 
-.add-input{
-    width:100%;
+.add-input {
+    width: 100%;
     border: none;
     background-color: rgba(255, 255, 255, 0.4);
     padding: 10px 10px 10px 10px;
 }
-.add-input-first{
+
+.add-input-first {
     border-radius: 15px 15px 0px 0px;
     border-bottom: 1.5px solid orange !important;
 }
 
-.add-input-middle{
+.add-input-middle {
     border-radius: 0px 0px 0px 0px;
     border-bottom: 1.5px solid orange !important;
 }
 
-.add-input-last{
+.add-input-last {
     border-radius: 0px 0px 15px 15px;
 }
 
-.add-input-last-right{
+.add-input-last-right {
     border-radius: 0px 0px 15px 0px;
 }
 
-.add-input-last-left{
+.add-input-last-left {
     border-radius: 0px 0px 0px 15px;
 }
 
-.add-razlika-container{
+.add-razlika-container {
     display: flex;
     justify-content: space-between;
 }
 
-.add-razlika-left{
+.add-razlika-left {
     width: 70%;
 }
 
-.add-razlika-right{
+.add-razlika-right {
     width: 30%;
     padding: 0;
     text-align: center;
@@ -189,7 +190,7 @@ input[type=number] {
     color: #757575;
 }
 
-.add-panel-flex{
+.add-panel-flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -209,7 +210,7 @@ input[type=number] {
     border: none;
 }
 
-.add-panel-left-content-buttons{
+.add-panel-left-content-buttons {
     margin-top: 20px;
     display: flex;
     justify-content: space-around;
@@ -223,7 +224,7 @@ input[type=number] {
     font-weight: 400;
 }
 
-.add-button-rezerviraj{
+.add-button-rezerviraj {
     background-color: #337895;
     padding: 0.3rem 1rem 0.3rem 1rem;
     border-radius: 20px;
@@ -232,71 +233,73 @@ input[type=number] {
     color: white;
 }
 
-.add-panel-left-content-bottom-right-side{
+.add-panel-left-content-bottom-right-side {
     width: 50%;
 }
+
 .add-input-group-flex-left-half {
     border-right: 1.5px solid var(--orange);
 }
 
 /* CALCULATOR */
 
-.calculator-container{
+.calculator-container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
 }
 
-@media only screen and (max-width: 600px){
-.add-glass-container {
-    width: 100%;
-    flex-direction: column;
-    justify-content: center;
-    height: auto;
-}
+@media only screen and (max-width: 600px) {
+    .add-glass-container {
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        height: auto;
+    }
 
-.add-glass{
-    width: 85%;
-    margin: auto;
-}
-.add-title{
-    font-size: 28px;
-    margin: 20px 0px 30px 0px;
-}
+    .add-glass {
+        width: 85%;
+        margin: auto;
+    }
 
-.add-dropdown{
-    width: 200px;
-}
+    .add-title {
+        font-size: 28px;
+        margin: 20px 0px 30px 0px;
+    }
 
-.add-radio-button-container{
-    flex-direction: column;
-    gap: 0px;
-}
+    .add-dropdown {
+        width: 200px;
+    }
 
-.add-inputs-top{
-    flex-direction: column;
-    gap: 20px;
-}
+    .add-radio-button-container {
+        flex-direction: column;
+        gap: 0px;
+    }
 
-.add-input-container-flex2{
-    flex-direction: column;
-}
+    .add-inputs-top {
+        flex-direction: column;
+        gap: 20px;
+    }
 
-.add-text-area{
-    width: 100%;
-}
+    .add-input-container-flex2 {
+        flex-direction: column;
+    }
 
-/* CALCULATOR */
+    .add-text-area {
+        width: 100%;
+    }
 
-.calculator-container{
-    flex-direction: column;
-    gap: 10px;
-}
+    /* CALCULATOR */
+
+    .calculator-container {
+        flex-direction: column;
+        gap: 10px;
+    }
 
 
-.calculator-container-input{
-    flex-direction: row;
-}
+    .calculator-container-input {
+        flex-direction: row;
+    }
 
 }

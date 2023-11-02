@@ -1,96 +1,96 @@
 // 1. Funkcionalnost: Popup za prikaz svih podataka o rezervaciji
 // 4. Funkcionalnost: Otvaranje telefona na klik broja telefona
-document.addEventListener("DOMContentLoaded", function() {
-function popup2(json) {
-    // const body = document.body;
-    // body.style.overflow = 'hidden';
-    // Parsiranje jsona u varijablu
-    var reservation = JSON.parse(json);
-    
-    // Dohvacanje i toglanje popupa
-    document.getElementById('popup').classList.toggle('active');
+document.addEventListener("DOMContentLoaded", function () {
+    function popup2(json) {
+        // const body = document.body;
+        // body.style.overflow = 'hidden';
+        // Parsiranje jsona u varijablu
+        var reservation = JSON.parse(json);
 
-    // Konvertiranje datuma u d.m.yyyy format
-    var dateStart = new Date(reservation.StartDate);
-    var dateStart = dateStart.getDate() + "." + (dateStart.getMonth() + 1) + "." + dateStart.getFullYear();
+        // Dohvacanje i toglanje popupa
+        document.getElementById('popup').classList.toggle('active');
 
-    var dateFinish = new Date(reservation.FinishDate);
-    var dateFinish = dateFinish.getDate() + "." + (dateFinish.getMonth() + 1) + "." + dateFinish.getFullYear();
+        // Konvertiranje datuma u d.m.yyyy format
+        var dateStart = new Date(reservation.StartDate);
+        var dateStart = dateStart.getDate() + "." + (dateStart.getMonth() + 1) + "." + dateStart.getFullYear();
 
-    function formatDate(dateValue) {
-        if (dateValue !== null) {
-            var dateObj = new Date(dateValue);
-            return dateObj.getDate() + "." + (dateObj.getMonth() + 1) + ".";
-        } else {
-            return '';
+        var dateFinish = new Date(reservation.FinishDate);
+        var dateFinish = dateFinish.getDate() + "." + (dateFinish.getMonth() + 1) + "." + dateFinish.getFullYear();
+
+        function formatDate(dateValue) {
+            if (dateValue !== null) {
+                var dateObj = new Date(dateValue);
+                return dateObj.getDate() + "." + (dateObj.getMonth() + 1) + ".";
+            } else {
+                return '';
+            }
         }
-    }
-    
-    var dateAdvancePayment = formatDate(reservation.AdvancePaymentDate);
-    var datePriceDiffrence = formatDate(reservation.PriceDiffrenceDate);
-    var dateDeposit = formatDate(reservation.DepositDate);
-    var dateCreatedDate = formatDate(reservation.CreatedDate);
+
+        var dateAdvancePayment = formatDate(reservation.AdvancePaymentDate);
+        var datePriceDiffrence = formatDate(reservation.PriceDiffrenceDate);
+        var dateDeposit = formatDate(reservation.DepositDate);
+        var dateCreatedDate = formatDate(reservation.CreatedDate);
 
 
-    // console.log(reservation.Employee, dateCreatedDate, reservation.CreatedDate);
+        // console.log(reservation.Employee, dateCreatedDate, reservation.CreatedDate);
 
-    // Inner html na popupu
-    document.getElementById('popupBoat').innerHTML = reservation.BoatName + " (N." + reservation.IDReservation + ")";
-    document.getElementById('popupTime').innerHTML = "Od: " + reservation.StartTimeH + ":" + reservation.StartTimeM + " Do: " + reservation.FinishTimeH + ":" + reservation.FinishTimeM ;
-    document.getElementById('popupDate').innerHTML = "Od datuma: " + dateStart + " <br> Do datuma: " + dateFinish;
-    document.getElementById('popupNameSurname').innerHTML = reservation.ClientName + " " + reservation.ClientSurname;
-    document.getElementById('popupTelNum').innerHTML = reservation.ClientTelNum;
-    document.getElementById('popupOib').innerHTML = reservation.ClientOIB;
-    document.getElementById('popupPrice').innerHTML = reservation.Price + "€";
+        // Inner html na popupu
+        document.getElementById('popupBoat').innerHTML = reservation.BoatName + " (N." + reservation.IDReservation + ")";
+        document.getElementById('popupTime').innerHTML = "Od: " + reservation.StartTimeH + ":" + reservation.StartTimeM + " Do: " + reservation.FinishTimeH + ":" + reservation.FinishTimeM;
+        document.getElementById('popupDate').innerHTML = "Od datuma: " + dateStart + " <br> Do datuma: " + dateFinish;
+        document.getElementById('popupNameSurname').innerHTML = reservation.ClientName + " " + reservation.ClientSurname;
+        document.getElementById('popupTelNum').innerHTML = reservation.ClientTelNum;
+        document.getElementById('popupOib').innerHTML = reservation.ClientOIB;
+        document.getElementById('popupPrice').innerHTML = reservation.Price + "€";
 
-    //* 2.5.2.
-    document.getElementById('popupAdvancePaymentStatus').innerHTML =
-    reservation.AdvancePaymentStatus === '1'
-        ? '<div class="status open"></div>'
-        : reservation.AdvancePaymentStatus === '2'
-            ? '<div class="status dead"></div>'
-            : '<div></div>';
-    
-    document.getElementById('popupAdvancePayment').innerHTML = reservation.AdvancePayment !== null ? reservation.AdvancePayment + "€ / " + dateAdvancePayment : '';
-    document.getElementById('popupPriceDiffrence').innerHTML = reservation.PriceDiffrence !== null ? reservation.PriceDiffrence + "€ / " + datePriceDiffrence : '';
-    
-    //* 2.5.2.
-    document.getElementById('popupDepositStatus').innerHTML =
-    reservation.DepositStatus === '1'
-        ? '<div class="status open"></div>'
-        : reservation.DepositStatus === '2'
-            ? '<div class="status dead"></div>'
-            : '<div></div>';
-    
-    document.getElementById('popupDeposit').innerHTML = 
-    reservation.Deposit !== null
+        //* 2.5.2.
+        document.getElementById('popupAdvancePaymentStatus').innerHTML =
+            reservation.AdvancePaymentStatus === '1'
+                ? '<div class="status open"></div>'
+                : reservation.AdvancePaymentStatus === '2'
+                    ? '<div class="status dead"></div>'
+                    : '<div></div>';
+
+        document.getElementById('popupAdvancePayment').innerHTML = reservation.AdvancePayment !== null ? reservation.AdvancePayment + "€ / " + dateAdvancePayment : '';
+        document.getElementById('popupPriceDiffrence').innerHTML = reservation.PriceDiffrence !== null ? reservation.PriceDiffrence + "€ / " + datePriceDiffrence : '';
+
+        //* 2.5.2.
+        document.getElementById('popupDepositStatus').innerHTML =
+            reservation.DepositStatus === '1'
+                ? '<div class="status open"></div>'
+                : reservation.DepositStatus === '2'
+                    ? '<div class="status dead"></div>'
+                    : '<div></div>';
+
+        document.getElementById('popupDeposit').innerHTML =
+            reservation.Deposit !== null
                 ? reservation.Deposit + "€ / " + dateDeposit
                 : '';
-    document.getElementById('popupEmployee').innerHTML = reservation.Employee + " / " + dateCreatedDate;
-    document.getElementById('popupNote').innerHTML = reservation.Note;
+        document.getElementById('popupEmployee').innerHTML = reservation.Employee + " / " + dateCreatedDate;
+        document.getElementById('popupNote').innerHTML = reservation.Note;
 
-    //  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-    // Kreiramo link za telefon
-    //* 2.5.1.
-    let a = document.createElement('a');
-    // Dodamo href atribut
-    a.href = 'tel:' + reservation.ClientTelNum;
-    // Dodamo text
-    a.innerHTML = reservation.ClientTelNum;
-    // Dodamo link u html
-    document.getElementById('popupTelNum').innerHTML = '';
-    document.getElementById('popupTelNum').appendChild(a);
+        //  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+        // Kreiramo link za telefon
+        //* 2.5.1.
+        let a = document.createElement('a');
+        // Dodamo href atribut
+        a.href = 'tel:' + reservation.ClientTelNum;
+        // Dodamo text
+        a.innerHTML = reservation.ClientTelNum;
+        // Dodamo link u html
+        document.getElementById('popupTelNum').innerHTML = '';
+        document.getElementById('popupTelNum').appendChild(a);
 
-    //  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-    // Kreiranje Popupa za potvrdu brisanja rezervacije, te prosljedivanje ID-a rezervacije u reservations.php za brisanje
-    //* 2.5.3.
-    document.getElementById('popup').insertAdjacentHTML('afterend', `
+        //  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+        // Kreiranje Popupa za potvrdu brisanja rezervacije, te prosljedivanje ID-a rezervacije u reservations.php za brisanje
+        //* 2.5.3.
+        document.getElementById('popup').insertAdjacentHTML('afterend', `
     <div id="deleteWindow">
     <div class="deleteWindow-rows">
-        <div class="popup-title h4">Potvrdi brisanje rezervacije br. `+ reservation.IDReservation +`</div>
+        <div class="popup-title h4">Potvrdi brisanje rezervacije br. `+ reservation.IDReservation + `</div>
         <div class="row">
             <div class="popup-col-flex-buttons">
-                <a href="reservations.php?IDr=`+ reservation.IDReservation +`&task=del&day=`+ reservation.StartDate +`"  class="button-delete-deletePopup">
+                <a href="reservations.php?IDr=`+ reservation.IDReservation + `&task=del&day=` + reservation.StartDate + `"  class="button-delete-deletePopup">
                     <lord-icon
                         src="../icon/delete.json"
                         target=".button-delete-deletePopup"
@@ -118,14 +118,14 @@ function popup2(json) {
     </div>
     `);
 
-    //  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-    // Prosljedivanje ID-a rezervacije u addReservation.php za edit
-    document.querySelector('#editButton').href = `../addReservation/addReservation.php?IDr=`+ reservation.IDReservation +``;
-}
-window.popup2 = popup2;
+        //  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+        // Prosljedivanje ID-a rezervacije u addReservation.php za edit
+        document.querySelector('#editButton').href = `../addReservation/addReservation.php?IDr=` + reservation.IDReservation + ``;
+    }
+    window.popup2 = popup2;
 });
 
-function popup(json){
+function popup(json) {
     popup2(json);
     // const body = document.body;
     // body.style.overflow = 'hidden';
@@ -136,7 +136,7 @@ function delete_popup() {
     document.getElementById('deleteWindow').classList.toggle('active');
 }
 
-function delete_popup_in_popup () {
+function delete_popup_in_popup() {
     document.getElementById('popupWindow').classList.toggle('active');
     document.getElementById('deleteWindow').classList.toggle('active');
 }
@@ -164,25 +164,25 @@ tooltipContainer.addEventListener("click", () => {
 
 //  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 // 5. Funkcionalnost: Tipka za povratak na vrh stranice
-document.getElementById('scrollToTop').addEventListener('click', function() {
+document.getElementById('scrollToTop').addEventListener('click', function () {
     window.scrollTo(0, 0);
 });
 
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
     document.getElementById('scrollToTop').style.display = window.scrollY > 100 ? 'flex' : 'none';
 });
 
 
 //  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 // 6. Funkcionalnost: Prikazivanje poruke za rotiranje uredjaja
-window.addEventListener('orientationchange', function() {
+window.addEventListener('orientationchange', function () {
     if (Math.abs(window.orientation) === 90) {
         window.location.href = '../rotated/rotated.html';
     }
     else {
         window.location.href = '../reservations/reservations.php';
     }
-}); 
+});
 
 //  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 // 9. Funkcionalnost: Prikaz Countdown timera, te refresh stranice kada timer istekne
@@ -195,7 +195,7 @@ window.addEventListener('orientationchange', function() {
     var timeout = timeoutInMinutes * 60 * 1000;
 
     // Refresh stranice
-    setTimeout(function() {
+    setTimeout(function () {
         window.location.reload();
     }, timeout);
 
@@ -215,7 +215,7 @@ window.addEventListener('orientationchange', function() {
 // AUTO REFRESH COUNTDOWN TIMER
 (function refreshCountdown() {
     // Funkcija koja se poziva svakih 1000ms (1s)
-    setInterval(function() {
+    setInterval(function () {
         // Uzimanje vrijednosti iz html-a (namjesteno u prijasnjoj funkciji)
         var countdown = document.getElementById('countdown');
         var time = countdown.innerHTML;
@@ -252,11 +252,11 @@ window.addEventListener('orientationchange', function() {
 })();
 
 // CALENDAR NAVIGATION AUTO SUBMIT
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const dateInput = document.getElementById('input-dateSubmit');
     const form = document.getElementById('dateSubmitForm');
 
-    dateInput.addEventListener('change', function() {
+    dateInput.addEventListener('change', function () {
         form.submit();
     });
 });

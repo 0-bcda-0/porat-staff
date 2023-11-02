@@ -1,173 +1,168 @@
 /* Zbog Bootstrapa je nadodano slovo m, inace se sve strga */
 .navbarm {
-  position: fixed;
-  background-color: #d88f8c;
-  /* border-radius: 0px 25px 25px 0px; */
-  border-radius: 25px;
-  transition: width 600ms ease;
-  overflow: hidden;
-  z-index: 2;
+    position: fixed;
+    background-color: #d88f8c;
+    /* border-radius: 0px 25px 25px 0px; */
+    border-radius: 25px;
+    transition: width 600ms ease;
+    overflow: hidden;
+    z-index: 2;
 }
 
 .navbar-navm {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  z-index: 2;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    z-index: 2;
 }
 
 .nav-item {
-  width: 100%;
+    width: 100%;
 }
 
 /* Targetiramo predzadnji element u flex-u */
-.bottom{
-  /* Auto ce stavit najcevi moguci margin, sto ce ga stavit skroz dolje */
-  margin-top: auto;
+.bottom {
+    /* Auto ce stavit najcevi moguci margin, sto ce ga stavit skroz dolje */
+    margin-top: auto;
 }
 
 /* Hardcode centriranje ikona */
-.icon{
-  margin-left: 1rem;
-  width: 48px;
-  height: 48px;
+.icon {
+    margin-left: 1rem;
+    width: 48px;
+    height: 48px;
 }
 
 .nav-linkm {
-  display: flex;
-  align-items: center;
-  height: 5rem;
-  color: var(--text-primary);
-  text-decoration: none;
-  filter: grayscale(100%) opacity(1);
-  transition: var(--transition-speed);
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    filter: grayscale(100%) opacity(1);
+    transition: var(--transition-speed);
 }
 
 .nav-linkm:hover {
-  filter: grayscale(0%) opacity(1);
-  background: var(--bg-secondary);
-  color: var(--text-secondary);
+    filter: grayscale(0%) opacity(1);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
 }
 
-.nav-linkm-logo
-{
-  filter: grayscale(0%) opacity(1) !important;
+.nav-linkm-logo {
+    filter: grayscale(0%) opacity(1) !important;
 }
 
 .link-text {
-  display: none;
-  margin-left: 1rem;
+    display: none;
+    margin-left: 1rem;
 }
 
 .logo {
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-  text-align: center;
-  color: var(--text-secondary);
-  background: var(--bg-secondary);
-  font-size: 1.5rem;
-  letter-spacing: 0.3ch;
-  width: 100%;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    font-size: 1.5rem;
+    letter-spacing: 0.3ch;
+    width: 100%;
 }
 
 /* Pomicanje logotipa u desno */
 .logo img {
-  transition: var(--transition-speed);
+    transition: var(--transition-speed);
 }
 
 /* Slajdanje logotip teksta */
-.logo-text
-{
-  display: inline;
-  position: absolute;
-  left: -999px;
-  transition: var(--transition-speed);
-  font-family: 'Kalam';
+.logo-text {
+    display: inline;
+    position: absolute;
+    left: -999px;
+    transition: var(--transition-speed);
+    font-family: 'Kalam';
 }
 
 /* Small screens */
 @media only screen and (max-width: 600px) {
-  .navbarm {
-    /* bottom: 1.0rem; */
-    bottom: 1.5rem;
-    width: 100vw;
-    /* height: 4rem; */
-    height: 3rem;
-    padding: 0;
+    .navbarm {
+        /* bottom: 1.0rem; */
+        bottom: 1.5rem;
+        width: 100vw;
+        /* height: 4rem; */
+        height: 3rem;
+        padding: 0;
 
-    /* width: 95%; */
-    width: 70%;
+        /* width: 95%; */
+        width: 70%;
 
-    /* margin-left: 2.5%; */
-    margin-left: 15%;
+        /* margin-left: 2.5%; */
+        margin-left: 15%;
 
-    /* border-radius: 20px; */
-    border-radius: 100px;
-  }
+        /* border-radius: 20px; */
+        border-radius: 100px;
+    }
 
-  .nav-linkm {
-    /* height: 4rem; */
-    height: 3rem;
-  }
+    .nav-linkm {
+        /* height: 4rem; */
+        height: 3rem;
+    }
 
-  .logo {
-    display: none;
-  }
+    .logo {
+        display: none;
+    }
 
-  .navbar-navm {
-    flex-direction: row;
-  }
+    .navbar-navm {
+        flex-direction: row;
+    }
 
-  .nav-linkm {
-    justify-content: center;
-  }
+    .nav-linkm {
+        justify-content: center;
+    }
 
-  main {
-    margin: 0 !important;
-  }
+    main {
+        margin: 0 !important;
+    }
 
-  .bottom{
-    margin-top: 0;
-  }
+    .bottom {
+        margin-top: 0;
+    }
 
-  .icon{
-    margin-left: 0rem;
-    /* width: 40px; */
-    width: 30px;
-    /* height: 40px; */
-    height: 30px;
-  }
+    .icon {
+        margin-left: 0rem;
+        /* width: 40px; */
+        width: 30px;
+        /* height: 40px; */
+        height: 30px;
+    }
 }
 
 /* Large screens */
 @media only screen and (min-width: 600px) {
-  .navbarm {
-    top: 0;
-    width: 5rem;
-    height: 100vh;
-  }
+    .navbarm {
+        top: 0;
+        width: 5rem;
+        height: 100vh;
+    }
 
-  .navbarm:hover {
-    width: 16rem;
-  }
+    .navbarm:hover {
+        width: 16rem;
+    }
 
-  .navbarm:hover .link-text {
-    display: inline;
-  }
+    .navbarm:hover .link-text {
+        display: inline;
+    }
 
-  .navbarm:hover .logo img
-  {
-    margin-left: 11rem;
-  }
+    .navbarm:hover .logo img {
+        margin-left: 11rem;
+    }
 
-  .navbarm:hover .logo-text
-  {
-    left: 0px;
-  }
+    .navbarm:hover .logo-text {
+        left: 0px;
+    }
 }
-

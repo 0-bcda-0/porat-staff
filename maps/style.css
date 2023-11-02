@@ -1,4 +1,6 @@
-html, body, #map {
+html,
+body,
+#map {
     height: 100% !important;
     margin: 0 !important;
 }
@@ -24,7 +26,7 @@ html, body, #map {
     border-radius: 20px;
 }
 
-.dropdown{
+.dropdown {
     padding: 10px 5px 10px 5px;
     border-radius: 15px;
     background-color: var(--element-background);
@@ -42,5 +44,5 @@ html, body, #map {
         left: 10px;
         width: auto;
     }
-    
+
 }
